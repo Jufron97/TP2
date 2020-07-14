@@ -63,5 +63,10 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             formPlanes.ShowDialog();
             Listar();*/
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Listar();
+        }
     }
 }
