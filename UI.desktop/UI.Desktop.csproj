@@ -76,6 +76,12 @@
     <Compile Include="Forms Entidades\Planes\Planes.Designer.cs">
       <DependentUpon>Planes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms Entidades\Planes\PlanesDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms Entidades\Planes\PlanesDesktop.Designer.cs">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms Entidades\Especialidades\EspecialidadesDesktop.resx">
       <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms Entidades\Planes\Planes.resx">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms Entidades\Planes\PlanesDesktop.resx">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
