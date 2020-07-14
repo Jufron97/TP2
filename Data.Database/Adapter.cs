@@ -4,7 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace Data.Database
+namespace Academia.Data.Database
 {
     public class Adapter
     {

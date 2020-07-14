@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Academia.Business.Entities;
-using Data.Database;
+using Academia.Data.Database;
 
 namespace Academia.Business.Logic
 {

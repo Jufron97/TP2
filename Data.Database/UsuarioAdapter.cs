@@ -5,7 +5,7 @@ using Academia.Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Data.Database
+namespace Academia.Data.Database
 {
     public class UsuarioAdapter:Adapter
     {
@@ -92,7 +92,7 @@ namespace Data.Database
             finally
             {
                 CloseConnection();
-            }         
+            }
             return Usuarios;
         }
 
