@@ -70,6 +70,12 @@
     <Compile Include="Forms Entidades\Especialidades\EspecialidadesDesktop.Designer.cs">
       <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms Entidades\Planes\Planes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms Entidades\Planes\Planes.Designer.cs">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,8 +159,6 @@
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms Entidades\Planes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
