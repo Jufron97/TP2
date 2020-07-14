@@ -76,7 +76,7 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan=@desc_plan,id_especialidad=@id_especialidad" +
+                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan=@desc_plan,id_especialidad=@id_especialidad " +
                 "WHERE id_plan=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
@@ -135,6 +135,7 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
+
         public void Save(Plan plan)
         {
             if (plan.State == BusinessEntity.States.New)
@@ -151,8 +152,5 @@ namespace Academia.Data.Database
             }
             plan.State = BusinessEntity.States.Unmodified;
         }
-
-
-
     }
 }
