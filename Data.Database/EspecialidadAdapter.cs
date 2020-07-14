@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using Data.Database;
+using Academia.Data.Database;
 using Academia.Business.Entities;
 
 namespace Academia.Data.Database

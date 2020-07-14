@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Academia.Business.Entities;
 using Academia.Data.Database;
-using Data.Database;
 
 namespace Academia.Business.Logic
 {
