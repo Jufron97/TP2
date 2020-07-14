@@ -40,27 +40,28 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         }
 
         private void tsNuevo_Click(object sender, EventArgs e)
-        {
+        {/*
             PlanesDesktop formPlanes = new PlanesDesktop(ApplicationForm.ModoForm.Alta);
             formPlanes.ShowDialog();
-            Listar();
+            Listar();*/
         }
  
 
         private void tsEditar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
             PlanesDesktop formPlanes = new PlanesDesktop(ID,ApplicationForm.ModoForm.Modificacion);
             formPlanes.ShowDialog();
-            Listar();
+            Listar();*/
         }
 
         private void tsEliminar_Click(object sender, EventArgs e)
-        {
+        {/*
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
             PlanesDesktop formPlanes = new PlanesDesktop(ID, ApplicationForm.ModoForm.Baja);
             formPlanes.ShowDialog();
-            Listar();
+            Listar();*/
         }
     }
 }

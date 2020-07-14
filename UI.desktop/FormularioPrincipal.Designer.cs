@@ -37,6 +37,7 @@
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textoFormularioPrincipal = new System.Windows.Forms.Label();
             this.imgNet = new System.Windows.Forms.PictureBox();
+            this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNet)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,8 @@
             // 
             this.listadoGeneralToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
-            this.especialidadesToolStripMenuItem});
+            this.especialidadesToolStripMenuItem,
+            this.planesToolStripMenuItem});
             this.listadoGeneralToolStripMenuItem.Name = "listadoGeneralToolStripMenuItem";
             this.listadoGeneralToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listadoGeneralToolStripMenuItem.Text = "ABM";
@@ -114,6 +116,13 @@
             this.imgNet.TabIndex = 2;
             this.imgNet.TabStop = false;
             // 
+            // planesToolStripMenuItem
+            // 
+            this.planesToolStripMenuItem.Name = "planesToolStripMenuItem";
+            this.planesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.planesToolStripMenuItem.Text = "Planes";
+            this.planesToolStripMenuItem.Click += new System.EventHandler(this.planesToolStripMenuItem_Click);
+            // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,5 +152,6 @@
         private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;
         private System.Windows.Forms.Label textoFormularioPrincipal;
         private System.Windows.Forms.PictureBox imgNet;
+        private System.Windows.Forms.ToolStripMenuItem planesToolStripMenuItem;
     }
 }
