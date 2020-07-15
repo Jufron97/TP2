@@ -9,7 +9,7 @@ using Academia.Business.Entities;
 
 namespace Academia.Data.Database
 {
-    class MateriaAdapter:Adapter
+    public class MateriaAdapter:Adapter
     {
         public List<Materia> GetAll()
         {
@@ -33,7 +33,7 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -49,7 +49,7 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdMaterias = new SqlCommand("select * from materias where id_especialidad=@id", sqlConn);
+                SqlCommand cmdMaterias = new SqlCommand("select * from materias where id_materia=@id", sqlConn);
                 cmdMaterias.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
                 if (drMaterias.Read())
@@ -64,7 +64,7 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la especialidad", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -90,7 +90,7 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar datos de la especialidad", Ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar datos de la materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -103,13 +103,13 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete from materias where id_materias=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete from materias where id_materia=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar a la especialidad", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar a la materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -123,8 +123,8 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into materias (desc_especialidad,hs_semanales,hs_totales,id_plan) " +
-                "values (@desc_especialidad,@hs_semanales,@hs_totales,@id_plan) " + "select @@identity", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("insert into materias (desc_materia,hs_semanales,hs_totales,id_plan) " +
+                "values (@desc_materia,@hs_semanales,@hs_totales,@id_plan) " + "select @@identity", sqlConn);
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
                 cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HsSemanales;
                 cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HsTotales;
@@ -133,7 +133,7 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al crear la especialidad", Ex);
+                Exception ExcepcionManejada = new Exception("Error al crear la materia", Ex);
                 throw ExcepcionManejada;
             }
             finally
