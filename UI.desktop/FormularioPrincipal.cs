@@ -1,4 +1,5 @@
 ﻿using Academia.UI.Desktop.Forms_Entidades.Especialidades;
+using Academia.UI.Desktop.Forms_Entidades.Materias;
 using Academia.UI.Desktop.Forms_Entidades.Planes;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,11 @@ namespace Academia.UI.Desktop
         private void planesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Planes().ShowDialog();
+        }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Materias().ShowDialog();
         }
     }
 }
