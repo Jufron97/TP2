@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Academia.Business.Entities
 {
-    class Comision:BusinessEntity
+    public class Comision:BusinessEntity
     {
         #region Atributos
 
