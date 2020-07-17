@@ -71,12 +71,12 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             {
                 EspecialidadActual = new Especialidad();
                 this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
-                EspecialidadActual.State = Especialidad.States.New;
+                EspecialidadActual.State = BusinessEntity.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 EspecialidadActual.Descripcion = this.txtDescripcion.Text;
-                EspecialidadActual.State = Usuario.States.Modified;
+                EspecialidadActual.State = BusinessEntity.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
             {

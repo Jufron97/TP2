@@ -53,26 +53,26 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         }
 
         private void tsNuevo_Click(object sender, EventArgs e)
-        {/*
+        {
             MateriasDesktop formMaterias = new MateriasDesktop(ApplicationForm.ModoForm.Alta);
             formMaterias.ShowDialog();
-            this.Listar();*/
+            this.Listar();
         }
 
         private void tsEditar_Click(object sender, EventArgs e)
-        {/*
+        {
             int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
             MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formMaterias.ShowDialog();
-            this.Listar();*/
+            this.Listar();
         }
 
         private void tsEliminar_Click(object sender, EventArgs e)
-        {/*
+        {
             int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
             MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Baja);
             formMaterias.ShowDialog();
-            this.Listar();*/
+            this.Listar();
         }
     }
 }
