@@ -57,6 +57,9 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         {
             this.txtID.Text = this.MateriaActual.ID.ToString();
             this.txtDescripcion.Text = this.MateriaActual.Descripcion.ToString();
+            this.txtHsSemanales.Text = this.MateriaActual.HsSemanales.ToString();
+            this.txtHorasTotales.Text = this.MateriaActual.HsSemanales.ToString();
+            this.txtIDPlan.Text = this.MateriaActual.HsSemanales.ToString();
             if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 btnAceptar.Text = "Guardar";
@@ -97,6 +100,33 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 
             }
         }
+        new public virtual bool Validar()
+        {
+            if (this.txtDescripcion.TextLength == 0 || this.txtHsSemanales.TextLength == 0 || this.txtHorasTotales.TextLength == 0 || this.txtIDPlan.TextLength == 0)
+            {
+                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                if (Int32.TryParse(txtHsSemanales.Text, out int valor) == false)
+                {
+                    Notificar("HsSemanales ingresadas no validas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else if(Int32.TryParse(txtHorasTotales.Text, out int valor1) == false)
+                    {
+                        Notificar("HsTotales ingresadas no validas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    else if(Int32.TryParse(txtIDPlan.Text, out int valor2) == false)
+                    {
+                        Notificar("ID Plan ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+            return true;  
+            }
+        }
 
         new public virtual void GuardarCambios()
         {
@@ -116,8 +146,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         #region EventosFormulario
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            GuardarCambios();
-            this.Close();
+            if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                if (Validar() == true)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
+            }
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                GuardarCambios();
+                this.Close();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

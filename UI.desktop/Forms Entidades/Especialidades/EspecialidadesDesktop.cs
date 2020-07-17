@@ -84,6 +84,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             }
         }
 
+        new public virtual bool Validar()
+        {
+            if (this.txtDescripcion.TextLength == 0)
+            {
+                Notificar("El campo Descripcion esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         new public virtual void GuardarCambios()
         {
             MapearADatos();
@@ -105,8 +118,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            GuardarCambios();
-            this.Close();
+            if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                if (Validar() == true)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
+            }
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                GuardarCambios();
+                this.Close();
+            }
         }
     }
 }

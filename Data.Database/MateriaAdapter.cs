@@ -85,7 +85,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
                 cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HsSemanales;
                 cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HsTotales;
-                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.IdPlan;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IdPlan;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

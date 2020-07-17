@@ -97,6 +97,24 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             }
         }
 
+        new public virtual bool Validar()
+        {
+            if (this.txtDescripcion.TextLength == 0 || this.txtIDEspecialidad.TextLength == 0)
+            {
+                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                if (Int32.TryParse(txtIDEspecialidad.Text,out int valor) == false)
+                {
+                    Notificar("ID ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }              
+                else
+                    return true;
+            }
+        }
         new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
@@ -104,8 +122,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            GuardarCambios();
-            this.Close();
+            if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                if (Validar() == true)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
+            }
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                GuardarCambios();
+                this.Close();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
