@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Materias
 {
-    partial class MateriasDesktop
+    partial class MateriaDesktop
     {
         /// <summary>
         /// Required designer variable.

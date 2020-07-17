@@ -51,7 +51,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         private void toolStripNuevo_Click(object sender, EventArgs e)
         {
-            EspecialidadesDesktop formEspecialidad = new EspecialidadesDesktop(ApplicationForm.ModoForm.Alta);
+            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ApplicationForm.ModoForm.Alta);
             formEspecialidad.ShowDialog();
             this.Listar();
         }
@@ -59,7 +59,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
         private void toolStripEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-            EspecialidadesDesktop formEspecialidad = new EspecialidadesDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Modificacion);
             formEspecialidad.ShowDialog();
             this.Listar();
         }
@@ -67,7 +67,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
         private void toolStripEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-            EspecialidadesDesktop formEspecialiad = new EspecialidadesDesktop(ID,ApplicationForm.ModoForm.Baja);
+            EspecialidadDesktop formEspecialiad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Baja);
             formEspecialiad.ShowDialog();
             this.Listar();
         }

@@ -12,7 +12,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
-    public partial class EspecialidadesDesktop : ApplicationForm
+    public partial class EspecialidadDesktop : ApplicationForm
     {
         private Especialidad m_especialidadActual;
 
@@ -21,18 +21,18 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             get => m_especialidadActual;
             set => m_especialidadActual= value;
         }
-        public EspecialidadesDesktop()
+        public EspecialidadDesktop()
         {
             InitializeComponent();
         }
 
-        public EspecialidadesDesktop(ModoForm modo):this()
+        public EspecialidadDesktop(ModoForm modo):this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
         }
 
-        public EspecialidadesDesktop(int ID, ModoForm modo):this()
+        public EspecialidadDesktop(int ID, ModoForm modo):this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

@@ -1,4 +1,5 @@
-﻿using Academia.UI.Desktop.Forms_Entidades.Especialidades;
+﻿using Academia.UI.Desktop.Forms_Entidades.Comisiones;
+using Academia.UI.Desktop.Forms_Entidades.Especialidades;
 using Academia.UI.Desktop.Forms_Entidades.Materias;
 using Academia.UI.Desktop.Forms_Entidades.Planes;
 using System;
@@ -43,6 +44,11 @@ namespace Academia.UI.Desktop
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Materias().ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Comisiones().ShowDialog();
         }
     }
 }

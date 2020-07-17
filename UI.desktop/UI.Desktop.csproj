@@ -64,11 +64,11 @@
     <Compile Include="Forms Entidades\Comisiones\Comisiones.Designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\ComisionesDesktop.cs">
+    <Compile Include="Forms Entidades\Comisiones\ComisionDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\ComisionesDesktop.Designer.cs">
-      <DependentUpon>ComisionesDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Comisiones\ComisionDesktop.Designer.cs">
+      <DependentUpon>ComisionDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms Entidades\Especialidades\Especialidades.cs">
       <SubType>Form</SubType>
@@ -76,11 +76,11 @@
     <Compile Include="Forms Entidades\Especialidades\Especialidades.Designer.cs">
       <DependentUpon>Especialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\EspecialidadesDesktop.cs">
+    <Compile Include="Forms Entidades\Especialidades\EspecialidadDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\EspecialidadesDesktop.Designer.cs">
-      <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Especialidades\EspecialidadDesktop.Designer.cs">
+      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms Entidades\Materias\Materias.cs">
       <SubType>Form</SubType>
@@ -88,11 +88,11 @@
     <Compile Include="Forms Entidades\Materias\Materias.Designer.cs">
       <DependentUpon>Materias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\MateriasDesktop.cs">
+    <Compile Include="Forms Entidades\Materias\MateriaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\MateriasDesktop.Designer.cs">
-      <DependentUpon>MateriasDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Materias\MateriaDesktop.Designer.cs">
+      <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms Entidades\Planes\Planes.cs">
       <SubType>Form</SubType>
@@ -100,11 +100,11 @@
     <Compile Include="Forms Entidades\Planes\Planes.Designer.cs">
       <DependentUpon>Planes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\PlanesDesktop.cs">
+    <Compile Include="Forms Entidades\Planes\PlanDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\PlanesDesktop.Designer.cs">
-      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Planes\PlanDesktop.Designer.cs">
+      <DependentUpon>PlanDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
@@ -135,23 +135,29 @@
     <EmbeddedResource Include="Forms Entidades\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms Entidades\Comisiones\ComisionDesktop.resx">
+      <DependentUpon>ComisionDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms Entidades\Comisiones\Comisiones.resx">
+      <DependentUpon>Comisiones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms Entidades\Especialidades\Especialidades.resx">
       <DependentUpon>Especialidades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Especialidades\EspecialidadesDesktop.resx">
-      <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Especialidades\EspecialidadDesktop.resx">
+      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms Entidades\Materias\Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Materias\MateriasDesktop.resx">
-      <DependentUpon>MateriasDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Materias\MateriaDesktop.resx">
+      <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms Entidades\Planes\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Planes\PlanesDesktop.resx">
-      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Planes\PlanDesktop.resx">
+      <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>

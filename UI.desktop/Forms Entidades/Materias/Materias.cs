@@ -54,7 +54,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            MateriasDesktop formMaterias = new MateriasDesktop(ApplicationForm.ModoForm.Alta);
+            MateriaDesktop formMaterias = new MateriaDesktop(ApplicationForm.ModoForm.Alta);
             formMaterias.ShowDialog();
             this.Listar();
         }
@@ -62,7 +62,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         private void tsEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+            MateriaDesktop formMaterias = new MateriaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formMaterias.ShowDialog();
             this.Listar();
         }
@@ -70,7 +70,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         private void tsEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            MateriasDesktop formMaterias = new MateriasDesktop(ID, ApplicationForm.ModoForm.Baja);
+            MateriaDesktop formMaterias = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja);
             formMaterias.ShowDialog();
             this.Listar();
         }

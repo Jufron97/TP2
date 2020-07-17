@@ -41,7 +41,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            PlanesDesktop formPlanes = new PlanesDesktop(ApplicationForm.ModoForm.Alta);
+            PlanDesktop formPlanes = new PlanDesktop(ApplicationForm.ModoForm.Alta);
             formPlanes.ShowDialog();
             this.Listar();
         }
@@ -50,7 +50,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         private void tsEditar_Click(object sender, EventArgs e)
         {         
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-            PlanesDesktop formPlanes = new PlanesDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            PlanDesktop formPlanes = new PlanDesktop(ID,ApplicationForm.ModoForm.Modificacion);
             formPlanes.ShowDialog();
             this.Listar();
         }
@@ -58,7 +58,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         private void tsEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-            PlanesDesktop formPlanes = new PlanesDesktop(ID, ApplicationForm.ModoForm.Baja);
+            PlanDesktop formPlanes = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja);
             formPlanes.ShowDialog();
            this.Listar();
         }

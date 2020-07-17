@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
-    partial class EspecialidadesDesktop
+    partial class EspecialidadDesktop
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Planes
 {
-    partial class PlanesDesktop
+    partial class PlanDesktop
     {
         /// <summary>
         /// Required designer variable.
