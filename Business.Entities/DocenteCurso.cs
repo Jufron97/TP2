@@ -9,25 +9,18 @@ namespace Academia.Business.Entities
     public class DocenteCurso:BusinessEntity
     {
         #region Atributos 
-
-        //private TiposCargos m_cargo;
+        private TiposCargos m_cargo;
         private int m_IDCurso;
         private int m_IDDocente;
 
         #endregion
 
-        #region Propiedades
-
-        /*
+        #region Propiedades    
         public TiposCargos Cargo
         {
             get => m_cargo;
-            set
-            {
-                m_cargo = value;
-            }
-        }
-        */
+            set => m_cargo = value;
+        }     
         public int IDCurso
         {
             get => m_IDCurso;
@@ -40,5 +33,12 @@ namespace Academia.Business.Entities
         }
 
         #endregion
+
+        public enum TiposCargos
+        {
+            Profesor,
+            JefeDeCatedra,
+            Auxiliar,
+        }
     }
 }

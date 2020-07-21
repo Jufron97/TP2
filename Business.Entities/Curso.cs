@@ -12,7 +12,7 @@ namespace Academia.Business.Entities
 
         private int m_anioCalendario;
         private int m_cupo;
-        private int m_descripcion;
+        private string m_descripcion;
         private int m_IDComision;
         private int m_IDMateria;
 
@@ -31,7 +31,7 @@ namespace Academia.Business.Entities
             set => m_cupo = value;
         }
 
-        public int Descripcion
+        public string Descripcion
         {
             get => m_descripcion;
             set => m_descripcion = value;
