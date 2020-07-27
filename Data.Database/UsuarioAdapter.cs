@@ -4,6 +4,7 @@ using System.Text;
 using Academia.Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Policy;
 
 namespace Academia.Data.Database
 {
@@ -217,5 +218,41 @@ namespace Academia.Data.Database
             }
             usuario.State = BusinessEntity.States.Unmodified;            
         }
+
+        public Usuario GetOne(string nomUsu,string cont)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@cont", sqlConn);
+                cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar,50).Value = nomUsu;
+                cmdUsuarios.Parameters.Add("@cont", SqlDbType.VarChar, 50).Value = cont;
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+                if (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.Nombre = (string)drUsuarios["nombre"];
+                    usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.Email = (string)drUsuarios["email"];
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Datos de inicio de sesion invalidos", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return usr;
+        }
+
+
     }
 }

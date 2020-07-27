@@ -110,7 +110,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
         {
             if (this.txtAnioEspecialidad.TextLength == 0 || this.txtDescripcion.TextLength == 0 || this.txtIDPlan.TextLength == 0)
             {
-                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error); //concatenar mensajes y llamar a notificar una sola vez al final
                 return false;
             }
             else

@@ -144,7 +144,7 @@ namespace Academia.UI.Desktop
                     Notificar("Clave menor a 8 caracteres",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                     }
-                else if (this.txtEmail.Text.Contains("@")!= true)
+                else if (this.txtEmail.Text.Contains("@")!= true) //Implementar clase validaciones con expresion regular de email para validar mejor el mail
                 {
                 Notificar("Email ingresado no es correcto",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

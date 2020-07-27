@@ -23,7 +23,7 @@ namespace Academia.Util
             string cadena = "";
             string nombre = nombreDirectorio();
             //Aca tendria que ir el directorio de la carpeta Util automaticamente, cosa que no puedo encontrar como hacerlo
-            Ruta = @"C:\Users\Jeremias\Desktop\Gonza\Facultad\4°\.Net\Laboratorios\Unidad 4\TP 2 - Laboratorio 5\TP2\Util";
+            Ruta = @"A:\Juan\Facu\NET\Unidad 4\TP2L05\TP2L05\Util"; // buscar elmah-log4net
             crearDirectorio();
             nombre = nombreDirectorio();
             cadena +=DateTime.Now + " - " + error + Environment.NewLine;

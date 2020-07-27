@@ -17,7 +17,7 @@ namespace Academia.Business.Entities
         private string m_email;
         private DateTime m_fechaNacimiento;
         private int m_IDPlan;
-        //private TiposPersonas m_tipoPersona;
+        private TiposPersonas m_tipoPersona;
 
         #endregion
 
@@ -73,13 +73,24 @@ namespace Academia.Business.Entities
             set => m_legajo = value;
         }
 
-        /*
-        public int TipoPersona 
+        
+        public TiposPersonas TipoPersona 
         {
             get => m_tipoPersona;
             set => m_tipoPersona=value;
         }
-        */
+        
+
+        public enum TiposPersonas 
+        {
+            Admin,
+            Alumno,
+            Docente
+        
+        }
+
+
+
         #endregion
     }
 }
