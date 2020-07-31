@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Academia.Business.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Academia.Util
 {
     public class Validaciones
     {
-        public static Boolean email_bien_escrito(String email)
+        public static Boolean emailBienEscrito(String email)
         {
             String expresion;
             expresion = @"\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*";
@@ -30,6 +31,17 @@ namespace Academia.Util
             }
         }
 
+        public static Boolean usuarioLogeado(Usuario usu)
+        {
+            if (usu.Nombre!=null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
+        }
 
     }
 }

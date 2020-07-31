@@ -221,6 +221,10 @@
       <Project>{554f2c13-3116-420c-acef-12cf0661f7b7}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{6eb5e6a2-b4f1-4c4b-a319-eb7ee81228ef}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />

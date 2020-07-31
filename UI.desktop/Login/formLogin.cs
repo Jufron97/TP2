@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Business.Entities;
+using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop
 {
@@ -19,14 +22,29 @@ namespace Academia.UI.Desktop
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "Admin" && txtContraseña.Text == "Admin")
+            UsuarioLogic usuLogic = new UsuarioLogic();
+            Usuario usuarioLogeado = new Usuario();
+            try
             {
-                MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                usuarioLogeado = usuLogic.GetOne(txtUsuario.Text, txtContraseña.Text);
+                //Esto sirve para saber si devuelve el objeto de la base de datos, solo modifico el txtUsuario con el Apellido          
+                //Tendria que ir un metodo usuarioLogeado en validaciones, no se batialgo asi
+
+                if (Validaciones.usuarioLogeado(usuarioLogeado))
+                {
+                    //Aca iria lo del formulario que se despliega con el usuario, pero no se como seguirlo
+                    MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contrasela invalidos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                MessageBox.Show("Usuario y/o contrasela invalidos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
             }
         }
 

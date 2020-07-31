@@ -22,21 +22,50 @@ namespace Academia.Business.Logic
             UsuarioData = new UsuarioAdapter();
         }
 
+        /// <summary>
+        /// Listado de todos los usuarios en la base de datos
+        /// </summary>
+        /// <param name="nombUsu"></param>
+        /// <param name="claveUsu"></param>
+        /// <returns></returns>
         public List<Usuario> GetAll()
         {
            return UsuarioData.GetAll();
         }
 
+        /// <summary>
+        /// Recibe el ID de un usuario, devuelve un objeto Usuario persistido en la base de datos
+        /// </summary>
+        /// <returns></returns>
         public Usuario GetOne(int id)
         {
             return UsuarioData.GetOne(id);
         }
 
+        /// <summary>
+        /// Recibe el nombre y la clave del usuario, devuelve un objeto Usuario persistido en la base de datos
+        /// </summary>
+        /// <param name="nombUsu"></param>
+        /// <param name="claveUsu"></param>
+        /// <returns></returns>
+        public Usuario GetOne(string nombUsu,string claveUsu)
+        {
+            return UsuarioData.GetOne(nombUsu, claveUsu);
+        }
+
+        /// <summary>
+        /// Elimina a un usuario persistido con el ID especificado de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public void Delete(int id)
         {
             UsuarioData.Delete(id);
         }
 
+        /// <summary>
+        /// Guarda al objeto usuario en la base de datos para poder ser persistido
+        /// </summary>
+        /// <param name="usuario"></param>
         public void Save(Usuario usuario)
         {
             UsuarioData.Save(usuario);

@@ -219,15 +219,15 @@ namespace Academia.Data.Database
             usuario.State = BusinessEntity.States.Unmodified;            
         }
 
-        public Usuario GetOne(string nomUsu,string cont)
+        public Usuario GetOne(string nomUsu,string claveUsu)
         {
             Usuario usr = new Usuario();
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@cont", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@claveUsu", sqlConn);
                 cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar,50).Value = nomUsu;
-                cmdUsuarios.Parameters.Add("@cont", SqlDbType.VarChar, 50).Value = cont;
+                cmdUsuarios.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = claveUsu;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
                 {
