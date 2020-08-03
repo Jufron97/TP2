@@ -26,20 +26,22 @@ namespace Academia.UI.Desktop
             Usuario usuarioLogeado = new Usuario();
             try
             {
-                usuarioLogeado = usuLogic.GetOne(txtUsuario.Text, txtContraseña.Text);
-                //Esto sirve para saber si devuelve el objeto de la base de datos, solo modifico el txtUsuario con el Apellido          
+                usuarioLogeado = usuLogic.GetOne(txtUsuario.Text, txtContraseña.Text);                          
                 //Tendria que ir un metodo usuarioLogeado en validaciones, no se batialgo asi
 
                 if (Validaciones.usuarioLogeado(usuarioLogeado))
                 {
                     //Aca iria lo del formulario que se despliega con el usuario, pero no se como seguirlo
                     MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
+                    this.Hide();
+                    new FormularioPrincipal().ShowDialog();
+                    this.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario y/o contrasela invalidos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario y/o contraseña invalidos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
             }
             catch (Exception Ex)
             {

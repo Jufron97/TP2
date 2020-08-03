@@ -56,5 +56,7 @@ namespace Academia.UI.Desktop
         {
             new Cursos().ShowDialog();
         }
+
+
     }
 }

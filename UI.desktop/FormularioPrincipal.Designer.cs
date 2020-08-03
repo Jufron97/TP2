@@ -38,9 +38,13 @@
             this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bjasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textoFormularioPrincipal = new System.Windows.Forms.Label();
             this.imgNet = new System.Windows.Forms.PictureBox();
-            this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoGeneralToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNet)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +52,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem});
+            this.loginToolStripMenuItem,
+            this.listadoGeneralToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(421, 24);
@@ -59,7 +64,10 @@
             // 
             this.loginToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loginToolStripMenuItem1,
-            this.listadoGeneralToolStripMenuItem});
+            this.listadoGeneralToolStripMenuItem,
+            this.bjasToolStripMenuItem,
+            this.modificacionToolStripMenuItem,
+            this.modificacionesToolStripMenuItem});
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.loginToolStripMenuItem.Text = "Archivo";
@@ -82,7 +90,7 @@
             this.cursosToolStripMenuItem});
             this.listadoGeneralToolStripMenuItem.Name = "listadoGeneralToolStripMenuItem";
             this.listadoGeneralToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listadoGeneralToolStripMenuItem.Text = "ABM";
+            this.listadoGeneralToolStripMenuItem.Text = "Listados Generales";
             // 
             // usuariosToolStripMenuItem
             // 
@@ -119,6 +127,19 @@
             this.comisionesToolStripMenuItem.Text = "Comisiones";
             this.comisionesToolStripMenuItem.Click += new System.EventHandler(this.comisionesToolStripMenuItem_Click);
             // 
+            // cursosToolStripMenuItem
+            // 
+            this.cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
+            this.cursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cursosToolStripMenuItem.Text = "Cursos";
+            this.cursosToolStripMenuItem.Click += new System.EventHandler(this.cursosToolStripMenuItem_Click);
+            // 
+            // bjasToolStripMenuItem
+            // 
+            this.bjasToolStripMenuItem.Name = "bjasToolStripMenuItem";
+            this.bjasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bjasToolStripMenuItem.Text = "Altas";
+            // 
             // textoFormularioPrincipal
             // 
             this.textoFormularioPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -143,12 +164,23 @@
             this.imgNet.TabIndex = 2;
             this.imgNet.TabStop = false;
             // 
-            // cursosToolStripMenuItem
+            // modificacionToolStripMenuItem
             // 
-            this.cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
-            this.cursosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cursosToolStripMenuItem.Text = "Cursos";
-            this.cursosToolStripMenuItem.Click += new System.EventHandler(this.cursosToolStripMenuItem_Click);
+            this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
+            this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificacionToolStripMenuItem.Text = "Bajas";
+            // 
+            // modificacionesToolStripMenuItem
+            // 
+            this.modificacionesToolStripMenuItem.Name = "modificacionesToolStripMenuItem";
+            this.modificacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificacionesToolStripMenuItem.Text = "Modificaciones";
+            // 
+            // listadoGeneralToolStripMenuItem1
+            // 
+            this.listadoGeneralToolStripMenuItem1.Name = "listadoGeneralToolStripMenuItem1";
+            this.listadoGeneralToolStripMenuItem1.Size = new System.Drawing.Size(97, 20);
+            this.listadoGeneralToolStripMenuItem1.Text = "ListadoGeneral";
             // 
             // FormularioPrincipal
             // 
@@ -183,5 +215,9 @@
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cursosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bjasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listadoGeneralToolStripMenuItem1;
     }
 }
