@@ -33,7 +33,7 @@ namespace Academia.Util
 
         public static Boolean usuarioLogeado(Usuario usu)
         {
-            if (usu.Nombre!=null)
+            if (usu.NombreUsuario!=null)
             {
                 return true;
             }

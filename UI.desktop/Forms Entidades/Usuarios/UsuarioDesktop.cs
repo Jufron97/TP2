@@ -68,9 +68,9 @@ namespace Academia.UI.Desktop
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtNombre.Text = this.UsuarioActual.Nombre;
-            this.txtApellido.Text = this.UsuarioActual.Apellido;
-            this.txtEmail.Text = this.UsuarioActual.Email;
+            //this.txtNombre.Text = this.UsuarioActual.Nombre;
+            //this.txtApellido.Text = this.UsuarioActual.Apellido;
+           //this.txtEmail.Text = this.UsuarioActual.Email;
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;         
             if (this.Modo == ApplicationForm.ModoForm.Modificacion)
@@ -93,9 +93,9 @@ namespace Academia.UI.Desktop
             {   
             UsuarioActual = new Usuario();
             this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-            this.UsuarioActual.Nombre = this.txtNombre.Text;
-            this.UsuarioActual.Apellido = this.txtApellido.Text;
-            this.UsuarioActual.Email = this.txtEmail.Text;
+            //this.UsuarioActual.Nombre = this.txtNombre.Text;
+            //this.UsuarioActual.Apellido = this.txtApellido.Text;
+            //this.UsuarioActual.Email = this.txtEmail.Text;
             this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
             this.UsuarioActual.Clave = this.txtClave.Text;
             UsuarioActual.State = Usuario.States.New;
@@ -103,9 +103,9 @@ namespace Academia.UI.Desktop
          else if(this.Modo == ApplicationForm.ModoForm.Modificacion)
                 {
                 this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Apellido = this.txtApellido.Text;
-                this.UsuarioActual.Email = this.txtEmail.Text;
+                //this.UsuarioActual.Nombre = this.txtNombre.Text;
+                //this.UsuarioActual.Apellido = this.txtApellido.Text;
+                //this.UsuarioActual.Email = this.txtEmail.Text;
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
                 UsuarioActual.State = Usuario.States.Modified;

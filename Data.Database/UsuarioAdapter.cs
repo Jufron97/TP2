@@ -10,6 +10,7 @@ namespace Academia.Data.Database
 {
     public class UsuarioAdapter:Adapter
     {
+        /*
         #region DatosEnMemoria
         
         // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
@@ -59,9 +60,9 @@ namespace Academia.Data.Database
                 }
                 return _Usuarios;
             }
-        }
-        
+        }       
         #endregion
+            */
 
         public List<Usuario> GetAll()
         {
@@ -78,9 +79,9 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    //usr.Nombre = (string)drUsuarios["nombre"];
+                    //usr.Apellido = (string)drUsuarios["apellido"];
+                    //usr.Email = (string)drUsuarios["email"];
                     Usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -112,9 +113,9 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    //usr.Nombre = (string)drUsuarios["nombre"];
+                    //usr.Apellido = (string)drUsuarios["apellido"];
+                    //usr.Email = (string)drUsuarios["email"];
                 }
                 drUsuarios.Close();
             }
@@ -141,9 +142,9 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
+                //cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
+               //cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -187,9 +188,9 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
+                //cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
+                //cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
@@ -235,9 +236,9 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.Nombre = (string)drUsuarios["nombre"];
-                    usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    //usr.Nombre = (string)drUsuarios["nombre"];
+                    //usr.Apellido = (string)drUsuarios["apellido"];
+                    //usr.Email = (string)drUsuarios["email"];
                 }
                 drUsuarios.Close();
             }
