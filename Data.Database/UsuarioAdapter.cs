@@ -234,7 +234,7 @@ namespace Academia.Data.Database
                 {
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
-                    usr.Clave = (string)drUsuarios["clave"];
+                    //usr.Clave = (string)drUsuarios["clave"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     //usr.Nombre = (string)drUsuarios["nombre"];
                     //usr.Apellido = (string)drUsuarios["apellido"];
