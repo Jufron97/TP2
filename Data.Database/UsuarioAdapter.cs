@@ -182,16 +182,28 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email)"+
-                "values (@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email)"+
+                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado)"+
+                "values (@nombre_usuario,@clave,@habilitado)"+
                 "select @@identity",sqlConn); 
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                //cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-                //cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                //
+                /* TODO ESTO SERIA EL OBJETO PERSONA QUE SE CREARIA CON EL USUARIO, HAY QUE MODIFICAR EL FORM PARA ESO
+                cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan)" +
+                "values (@nombre,@apellido,@direccion,@email,@telefono,@fecha_nac,@legajo,@tipo_persona,@id_plan)" +
+                "select @@identity", sqlConn);
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
+                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
+                cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
+                usuario.Persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                */
             }
             catch (Exception Ex)
             {
@@ -220,27 +232,23 @@ namespace Academia.Data.Database
             usuario.State = BusinessEntity.States.Unmodified;            
         }
 
-        public Usuario GetOne(string nomUsu,string claveUsu)
+        public bool verificoLogin(string nomUsu, string claveUsu)
         {
-            Usuario usr = new Usuario();
             try
             {
-                OpenConnection();
+                OpenConnection();              
                 SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@claveUsu", sqlConn);
-                cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar,50).Value = nomUsu;
+                cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar, 50).Value = nomUsu;
                 cmdUsuarios.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = claveUsu;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
-                if (drUsuarios.Read())
+                if (drUsuarios.HasRows)
                 {
-                    usr.ID = (int)drUsuarios["id_usuario"];
-                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
-                    //usr.Clave = (string)drUsuarios["clave"];
-                    usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    //usr.Nombre = (string)drUsuarios["nombre"];
-                    //usr.Apellido = (string)drUsuarios["apellido"];
-                    //usr.Email = (string)drUsuarios["email"];
+                    return true;
                 }
-                drUsuarios.Close();
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception Ex)
             {
@@ -251,9 +259,56 @@ namespace Academia.Data.Database
             {
                 CloseConnection();
             }
+
+        }
+        public Usuario GetOne(string nomUsu,string claveUsu)
+        {
+            Usuario usr = new Usuario() 
+            { 
+                Persona= new Persona() 
+            };
+            //Se simplifica la inicializacion con las llaves
+            try
+            {
+                OpenConnection();
+                //Aca habria que hacer el inner con la tabla personas por medio de id_persona para poder recuperar al objeto persona
+                //El tema que pienso es que si alguno de estos atributos esta en nulo, tirara una excepcion, ya que un nulo no se puede castear a el tipo especificado
+                //Probar y ver como es que responde el sistema
+                //SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios inner join personas on usuarios.id_persona=personas.id_persona where nombre_usuario=@nomUsu and clave=@claveUsu", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@claveUsu", sqlConn);
+                cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar,50).Value = nomUsu;
+                cmdUsuarios.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = claveUsu;
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+                if (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    //usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    /*
+                    usr.Persona.ID = (int)drUsuarios["id_persona"];
+                    usr.Persona.Nombre = (string)drUsuarios["nombre"];
+                    usr.Persona.Apellido = (string)drUsuarios["apellido"];
+                    usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                    usr.Persona.Email = (string)drUsuarios["email"];
+                    usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                    usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
+                    usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                    usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
+                    usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];*/
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar al usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
             return usr;
         }
-
-
     }
 }

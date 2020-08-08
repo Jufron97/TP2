@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.UI.Desktop.Formularios_Principales;
 using Academia.Util;
 
 namespace Academia.UI.Desktop
@@ -23,25 +24,44 @@ namespace Academia.UI.Desktop
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             UsuarioLogic usuLogic = new UsuarioLogic();
-            Usuario usuarioLogeado = new Usuario();
             try
-            {
-                usuarioLogeado = usuLogic.GetOne(txtUsuario.Text, txtContraseña.Text);                          
-                //Tendria que ir un metodo usuarioLogeado en validaciones, no se batialgo asi
-
-                if (Validaciones.usuarioLogeado(usuarioLogeado))
+            {                      
+                //Cree este metodo para primero, verificar que el usuario exista, luego poder tener los datos menos la clave
+                //de ser necesarios en caso que los usemos para mostrarlos en los forms dependiendo de los tipos
+                if (usuLogic.verificoLogin(txtUsuario.Text, txtContraseña.Text))
                 {
-                    //Aca iria lo del formulario que se despliega con el usuario, pero no se como seguirlo
-                    MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    new FormularioPrincipal().ShowDialog();
-                    this.Show();
+                    Usuario usuarioLogeado = new Usuario();
+                    usuarioLogeado = usuLogic.GetOne(txtUsuario.Text, txtContraseña.Text);
+                    //Verifico que el usuario este habilitado o no para ingresar
+                    if (usuarioLogeado.Habilitado)
+                    {
+                        MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        //Aca estan los formularios hay que crearlos y darles una apariencia
+                        /* 
+                        if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
+                        {
+                            new FormularioAlumno().ShowDialog();
+                        }
+                       if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)
+                        {
+                            new FormularioDocente().ShowDialog();
+                        }
+                       if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
+                        {
+                            new FormularioPrincipal().ShowDialog();
+                        }*/
+                        this.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario no habilitado al sistema", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                    
                 }
                 else
                 {
                     MessageBox.Show("Usuario y/o contraseña invalidos", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
             catch (Exception Ex)
             {

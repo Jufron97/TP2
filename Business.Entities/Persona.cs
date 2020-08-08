@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Academia.Business.Entities
 {
-    public class Persona
+    public class Persona:BusinessEntity
     {
         #region Atributos
 
@@ -28,8 +28,7 @@ namespace Academia.Business.Entities
             get => m_apellido;
             set => m_apellido = value;
         }
-
-        
+       
         public string Nombre
         {
             get => m_nombre;
@@ -72,25 +71,19 @@ namespace Academia.Business.Entities
             get => m_legajo;
             set => m_legajo = value;
         }
-
-        
+     
         public TiposPersonas TipoPersona 
         {
             get => m_tipoPersona;
             set => m_tipoPersona=value;
         }
         
-
         public enum TiposPersonas 
         {
             Admin,
             Alumno,
-            Docente
-        
+            Docente       
         }
-
-
-
         #endregion
     }
 }

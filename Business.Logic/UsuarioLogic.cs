@@ -54,6 +54,17 @@ namespace Academia.Business.Logic
         }
 
         /// <summary>
+        /// Recibe el nombre y clave del usuario para verificar que el mismo existe, devuelve un booleano
+        /// </summary>
+        /// <param name="nombUsu"></param>
+        /// <param name="claveUsu"></param>
+        /// <returns></returns>
+        public bool verificoLogin(string nombUsu, string claveUsu)
+        {
+            return UsuarioData.verificoLogin(nombUsu, claveUsu);
+        }
+
+        /// <summary>
         /// Elimina a un usuario persistido con el ID especificado de la base de datos
         /// </summary>
         /// <returns></returns>

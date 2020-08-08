@@ -118,16 +118,28 @@
     <Compile Include="Forms Entidades\Planes\PlanDesktop.Designer.cs">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios Principales\FormularioAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Principales\FormularioAlumno.Designer.cs">
+      <DependentUpon>FormularioAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Principales\FormularioDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Principales\FormularioDocente.Designer.cs">
+      <DependentUpon>FormularioDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login\formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormularioPrincipal.cs">
+    <Compile Include="Formularios Principales\FormularioPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormularioPrincipal.Designer.cs">
+    <Compile Include="Formularios Principales\FormularioPrincipal.Designer.cs">
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -177,10 +189,13 @@
     <EmbeddedResource Include="Forms Entidades\Planes\PlanDesktop.resx">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Principales\FormularioAlumno.resx">
+      <DependentUpon>FormularioAlumno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormularioPrincipal.resx">
+    <EmbeddedResource Include="Formularios Principales\FormularioPrincipal.resx">
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms Entidades\Usuarios\UsuarioDesktop.resx">
