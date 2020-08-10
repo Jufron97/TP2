@@ -61,7 +61,14 @@ namespace Academia.Business.Logic
         /// <returns></returns>
         public bool verificoLogin(string nombUsu, string claveUsu)
         {
-            return UsuarioData.verificoLogin(nombUsu, claveUsu);
+            if (UsuarioData.GetOne(nombUsu, claveUsu).NombreUsuario != null)
+            { 
+                return true;
+            }
+            else
+            {
+                return false;
+            }               
         }
 
         /// <summary>
