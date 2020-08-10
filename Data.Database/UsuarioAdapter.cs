@@ -75,10 +75,7 @@ namespace Academia.Data.Database
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
-                    Usuario usr = new Usuario() 
-                    { 
-                        Persona = new Persona() 
-                    };
+                    Usuario usr = new Usuario();
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     //usr.Clave = (string)drUsuarios["clave"];
@@ -112,10 +109,7 @@ namespace Academia.Data.Database
 
         public Usuario GetOne(int ID)
         {
-            Usuario usr = new Usuario()
-            {
-                Persona = new Persona(),
-            };
+            Usuario usr = new Usuario();
             try
             {
                 OpenConnection();
@@ -209,16 +203,8 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado)"+
-                "values (@nombre_usuario,@clave,@habilitado)"+
-                "select @@identity",sqlConn); 
-                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
-                //
-                /* TODO ESTO SERIA EL OBJETO PERSONA QUE SE CREARIA CON EL USUARIO, HAY QUE MODIFICAR EL FORM PARA ESO
-                cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan)" +
+                /*
+                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan)" +
                 "values (@nombre,@apellido,@direccion,@email,@telefono,@fecha_nac,@legajo,@tipo_persona,@id_plan)" +
                 "select @@identity", sqlConn);
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
@@ -229,8 +215,16 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
-                usuario.Persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
-                */
+                usuario.Persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());*/
+
+                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,id_persona)"+
+                "values (@nombre_usuario,@clave,@habilitado,@id_persona)"+
+                "select @@identity",sqlConn); 
+                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
+                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.Persona.ID;
+                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
             {
@@ -261,10 +255,7 @@ namespace Academia.Data.Database
         
         public Usuario GetOne(string nomUsu,string claveUsu)
         {
-            Usuario usr = new Usuario() 
-            { 
-                Persona= new Persona() 
-            };
+            Usuario usr = new Usuario();          
             //Se simplifica la inicializacion con las llaves
             try
             {

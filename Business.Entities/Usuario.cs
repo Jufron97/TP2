@@ -16,6 +16,10 @@ namespace Academia.Business.Entities
         private Persona m_persona;
 
         #endregion
+        public Usuario()
+        {
+            Persona = new Persona();
+        }
 
         #region Propiedades
         public string NombreUsuario
@@ -35,7 +39,7 @@ namespace Academia.Business.Entities
             get => m_habilitado;
             set => m_habilitado = value;
         }
-        public  Persona Persona
+        public Persona Persona
         {
             get => m_persona;
             set => m_persona = value;

@@ -37,6 +37,7 @@ namespace Academia.UI.Desktop
                     {
                         MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
+                        new FormularioPrincipal().ShowDialog();
                         //Aca estan los formularios hay que crearlos y darles una apariencia
                         /* 
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
