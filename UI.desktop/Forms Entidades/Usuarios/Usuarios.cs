@@ -25,7 +25,7 @@ namespace Academia.UI.Desktop
             UsuarioLogic ul = new UsuarioLogic();
             try
             {
-                dgvUsuarios.DataSource = ul.GetAll();
+                dgvUsuarios.DataSource = ul.GetAll();               
             }
             catch (Exception Ex)
             {
