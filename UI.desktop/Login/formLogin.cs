@@ -42,15 +42,15 @@ namespace Academia.UI.Desktop
                         /* 
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
                         {
-                            new FormularioAlumno().ShowDialog();
+                            new FormularioAlumno(usuarioLogeado).ShowDialog();
                         }
                        if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)
                         {
-                            new FormularioDocente().ShowDialog();
+                            new FormularioDocente(usuarioLogeado).ShowDialog();
                         }
                        if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
                         {
-                            new FormularioPrincipal().ShowDialog();
+                            new FormularioPrincipal(usuarioLogeado).ShowDialog();
                         }*/
                         this.Show();
                     }

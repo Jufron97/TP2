@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Business.Entities;
+using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Formularios_Principales
 {
     public partial class FormularioDocente : Form
     {
-        public FormularioDocente()
+        private Usuario m_usuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get => m_usuarioActual;
+            set => m_usuarioActual = value;
+        }
+
+        public FormularioDocente(Usuario usuActual)
         {
             InitializeComponent();
+            UsuarioActual = usuActual;
         }
     }
 }

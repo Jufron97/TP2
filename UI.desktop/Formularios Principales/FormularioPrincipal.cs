@@ -12,14 +12,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Business.Entities;
+using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop
 {
     public partial class FormularioPrincipal : Form
     {
-        public FormularioPrincipal()
+        private Usuario m_usuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get => m_usuarioActual;
+            set => m_usuarioActual = value;
+        }
+
+        public FormularioPrincipal(Usuario usuActual)
         {
             InitializeComponent();
+            UsuarioActual = usuActual;
+
+
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
