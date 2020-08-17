@@ -66,7 +66,7 @@ namespace Academia.Data.Database
 
         public List<Usuario> GetAll()
         {
-            List<Usuario> Usuarios= new List<Usuario>();
+            List<Usuario> Usuarios = new List<Usuario>();
             try
             {
                 OpenConnection();
@@ -143,7 +143,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 //cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-               //cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                //cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value=usuario.Email;
                 cmdSave.ExecuteNonQuery();
             }
