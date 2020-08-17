@@ -22,12 +22,7 @@ namespace Academia.UI.Desktop
             InitializeComponent();
         }
 
-        private void loginToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            new formLogin().ShowDialog();
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             new Usuarios().ShowDialog();
         }
@@ -57,6 +52,94 @@ namespace Academia.UI.Desktop
             new Cursos().ShowDialog();
         }
 
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new UsuarioDesktop().ShowDialog();
+        }
 
+        private void especialidadesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new EspecialidadDesktop().ShowDialog();
+        }
+
+        private void planesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new PlanDesktop().ShowDialog();
+        }
+
+        private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new MateriaDesktop().ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ComisionDesktop().ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new CursoDesktop().ShowDialog();
+        }
+
+        /*private void uusariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new BajaUsuario().ShowDialog();
+        }
+
+        private void especialidadesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BajaEspecialidad().ShowDialog();
+        }
+
+        private void planesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BajaPlan().ShowDialog();
+        }
+
+        private void materiasToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BajaMateria().ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BajaComision().ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BajaCurso().ShowDialog();
+        }
+
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ModUsuario().ShowDialog();
+        }
+
+        private void especialidadesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new ModEspecialidad().ShowDialog();
+        }
+
+        private void planesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new ModPlan().ShowDialog();
+        }
+
+        private void materiasToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new ModMateria().ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new ModComision().ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new ModCurso().ShowDialog();
+        }*/
     }
 }

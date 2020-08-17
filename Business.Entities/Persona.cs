@@ -18,6 +18,7 @@ namespace Academia.Business.Entities
         private DateTime m_fechaNacimiento;
         private int m_IDPlan;
         private TiposPersonas m_tipoPersona;
+        private int m_legajo;
 
         #endregion
 
@@ -65,7 +66,7 @@ namespace Academia.Business.Entities
             set => m_IDPlan = value;
         }
 
-        private int m_legajo;
+        
         public int Legajo
         {
             get => m_legajo;

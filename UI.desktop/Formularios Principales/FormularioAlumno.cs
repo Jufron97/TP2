@@ -16,5 +16,6 @@ namespace Academia.UI.Desktop.Formularios_Principales
         {
             InitializeComponent();
         }
+
     }
 }

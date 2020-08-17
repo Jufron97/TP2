@@ -232,35 +232,7 @@ namespace Academia.Data.Database
             usuario.State = BusinessEntity.States.Unmodified;            
         }
 
-        public bool verificoLogin(string nomUsu, string claveUsu)
-        {
-            try
-            {
-                OpenConnection();              
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@nomUsu and clave=@claveUsu", sqlConn);
-                cmdUsuarios.Parameters.Add("@nomUsu", SqlDbType.VarChar, 50).Value = nomUsu;
-                cmdUsuarios.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = claveUsu;
-                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
-                if (drUsuarios.HasRows)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception Ex)
-            {
-                Exception ExcepcionManejada = new Exception("Datos de inicio de sesion invalidos", Ex);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-
-        }
+        
         public Usuario GetOne(string nomUsu,string claveUsu)
         {
             Usuario usr = new Usuario() 
