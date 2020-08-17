@@ -25,6 +25,7 @@ namespace Academia.UI.Desktop.Formularios_Principales
         {
             InitializeComponent();
             UsuarioActual = usuActual;
+            lblNombreyApellido.Text = UsuarioActual.Persona.Apellido+","+UsuarioActual.Persona.Nombre;
         }
 
     }

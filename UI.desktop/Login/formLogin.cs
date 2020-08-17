@@ -41,7 +41,7 @@ namespace Academia.UI.Desktop
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
                         {
                             //new FormularioAlumno().ShowDialog();
-                            new FormularioPrincipal().ShowDialog();
+                            new FormularioAlumno(usuarioLogeado).ShowDialog();
                         }
                         /*
                        if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)

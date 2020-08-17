@@ -67,7 +67,7 @@
             // lblNombreyApellido
             // 
             this.lblNombreyApellido.AutoSize = true;
-            this.lblNombreyApellido.Location = new System.Drawing.Point(506, 9);
+            this.lblNombreyApellido.Location = new System.Drawing.Point(452, 9);
             this.lblNombreyApellido.Name = "lblNombreyApellido";
             this.lblNombreyApellido.Size = new System.Drawing.Size(35, 13);
             this.lblNombreyApellido.TabIndex = 3;
@@ -76,7 +76,7 @@
             // lblLegajo
             // 
             this.lblLegajo.AutoSize = true;
-            this.lblLegajo.Location = new System.Drawing.Point(506, 36);
+            this.lblLegajo.Location = new System.Drawing.Point(452, 36);
             this.lblLegajo.Name = "lblLegajo";
             this.lblLegajo.Size = new System.Drawing.Size(35, 13);
             this.lblLegajo.TabIndex = 4;
