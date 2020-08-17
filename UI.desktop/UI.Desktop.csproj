@@ -192,6 +192,9 @@
     <EmbeddedResource Include="Formularios Principales\FormularioAlumno.resx">
       <DependentUpon>FormularioAlumno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Principales\FormularioDocente.resx">
+      <DependentUpon>FormularioDocente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
     </EmbeddedResource>
