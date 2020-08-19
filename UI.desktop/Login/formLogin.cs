@@ -25,9 +25,8 @@ namespace Academia.UI.Desktop
         {
             UsuarioLogic usuLogic = new UsuarioLogic();
             try
-            {                      
-                //Cree este metodo para primero, verificar que el usuario exista, luego poder tener los datos menos la clave
-                //de ser necesarios en caso que los usemos para mostrarlos en los forms dependiendo de los tipos
+            {    
+                //VER EL TEMA DE LA VALIDACION DEL LOGIN
                 if (usuLogic.verificoLogin(txtUsuario.Text, txtContraseña.Text))
                 {
                     Usuario usuarioLogeado = new Usuario();
@@ -66,7 +65,7 @@ namespace Academia.UI.Desktop
             }
             catch (Exception Ex)
             {
-                MessageBox.Show(Ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message,"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
         }
