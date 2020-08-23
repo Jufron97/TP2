@@ -5,6 +5,7 @@ using Academia.Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Policy;
+using Academia.Util;
 
 namespace Academia.Data.Database
 {
@@ -92,6 +93,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
                 throw ExcepcionManejada;
             }
@@ -129,6 +132,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar datos de usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -175,6 +180,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar al usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -201,6 +208,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -221,6 +230,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al eliminar al usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -261,6 +272,8 @@ namespace Academia.Data.Database
             }
             catch (Exception Ex)
             {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -284,8 +297,6 @@ namespace Academia.Data.Database
                 Update(usuario);
             }
             usuario.State = BusinessEntity.States.Unmodified;            
-        }
-
-        
+        }       
     }
 }
