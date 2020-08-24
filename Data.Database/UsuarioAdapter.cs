@@ -165,16 +165,28 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     //Datos para el objeto Persona
-                    usr.Persona.ID = (int)drUsuarios["id_persona"];
-                    usr.Persona.Nombre = (string)drUsuarios["nombre"];
-                    usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                    usr.Persona.Direccion = (string)drUsuarios["direccion"];
-                    usr.Persona.Email = (string)drUsuarios["email"];
-                    usr.Persona.Telefono = (string)drUsuarios["telefono"];
-                    usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
-                    usr.Persona.Legajo = (int)drUsuarios["legajo"];
-                    usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                    usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];
+                    //Esto es ya que el usuario admin no tiene un objeto persona ligado en si, y hay campos que tienen que ser
+                    //No nulos, y traen problemas ocn las conversiones
+                    //AHORA QUE PIENSO, SI HAY UN USUARIO DONDE LA PERSONA TIENE CAMPOS NULOS, VA A PASAR LO MISM OQUE ANTES
+                    if (usr.NombreUsuario!="admin")
+                    {
+                        usr.Persona.ID = (int)drUsuarios["id_persona"];
+                        usr.Persona.Nombre = (string)drUsuarios["nombre"];
+                        usr.Persona.Apellido = (string)drUsuarios["apellido"];
+                        usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                        usr.Persona.Email = (string)drUsuarios["email"];
+                        usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                        usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
+                        usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                        usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
+                        usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];
+                    }
+                    else
+                    {
+                        //Se cargar los atributos que se necesitan para 
+                        usr.Persona.Nombre = "Adminsitrador";
+                        usr.Persona.TipoPersona = Persona.TiposPersonas.Admin;
+                    }
                 }
                 drUsuarios.Close();
             }
