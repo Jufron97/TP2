@@ -1,4 +1,4 @@
-﻿namespace Academia.UI.Desktop.Formularios_Principales
+﻿namespace Academia.UI.Desktop
 {
     partial class FormularioDocente
     {

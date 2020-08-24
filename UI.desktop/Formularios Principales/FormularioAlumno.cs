@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
 
-namespace Academia.UI.Desktop.Formularios_Principales
+namespace Academia.UI.Desktop
 {
     public partial class FormularioAlumno : Form
     {
@@ -33,5 +33,6 @@ namespace Academia.UI.Desktop.Formularios_Principales
         {
             this.Close();
         }
+
     }
 }

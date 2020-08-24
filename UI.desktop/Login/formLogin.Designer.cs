@@ -40,12 +40,13 @@
             // lblLetrero
             // 
             this.lblLetrero.AutoSize = true;
+            this.lblLetrero.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lblLetrero.Location = new System.Drawing.Point(145, 34);
             this.lblLetrero.Name = "lblLetrero";
             this.lblLetrero.Size = new System.Drawing.Size(202, 52);
             this.lblLetrero.TabIndex = 0;
             this.lblLetrero.Text = "¡Bienvenido al Sistema!\r\nPor favor digite su información de Ingreso\r\n\r\n\r\n";
-            this.lblLetrero.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLetrero.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblUsuario
             // 
