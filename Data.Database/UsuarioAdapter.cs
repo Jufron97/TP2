@@ -195,7 +195,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar al usuario", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {

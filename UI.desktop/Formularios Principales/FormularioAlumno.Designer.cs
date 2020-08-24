@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioAlumno));
             this.btnMaterias = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCursos = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblNombreyApellido = new System.Windows.Forms.Label();
             this.lblLegajo = new System.Windows.Forms.Label();
@@ -52,15 +52,15 @@
             this.btnMaterias.Text = "Materias";
             this.btnMaterias.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnCursos
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(293, 134);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(237, 33);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Inscripción a Materia";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCursos.Location = new System.Drawing.Point(293, 134);
+            this.btnCursos.Name = "btnCursos";
+            this.btnCursos.Size = new System.Drawing.Size(237, 33);
+            this.btnCursos.TabIndex = 1;
+            this.btnCursos.Text = "Inscripción a Cursos";
+            this.btnCursos.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
@@ -80,9 +80,9 @@
             this.lblNombreyApellido.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblNombreyApellido.Location = new System.Drawing.Point(94, 23);
             this.lblNombreyApellido.Name = "lblNombreyApellido";
-            this.lblNombreyApellido.Size = new System.Drawing.Size(35, 13);
+            this.lblNombreyApellido.Size = new System.Drawing.Size(86, 13);
             this.lblNombreyApellido.TabIndex = 3;
-            this.lblNombreyApellido.Text = "label1";
+            this.lblNombreyApellido.Text = "nombreYApellido";
             // 
             // lblLegajo
             // 
@@ -92,7 +92,7 @@
             this.lblLegajo.Name = "lblLegajo";
             this.lblLegajo.Size = new System.Drawing.Size(35, 13);
             this.lblLegajo.TabIndex = 4;
-            this.lblLegajo.Text = "label2";
+            this.lblLegajo.Text = "legajo";
             // 
             // pnlAlumno
             // 
@@ -133,7 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 364);
             this.Controls.Add(this.pnlAlumno);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.btnMaterias);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormularioAlumno";
@@ -150,7 +150,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnMaterias;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblNombreyApellido;
         private System.Windows.Forms.Label lblLegajo;
