@@ -36,23 +36,21 @@ namespace Academia.UI.Desktop
                     {
                         MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
-                        //Aca estan los formularios hay que crearlos y darles una apariencia                      
+                        //Se crea el formulario especifico
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
                         {
-                            //new FormularioAlumno().ShowDialog();
                             new FormularioAlumno(usuarioLogeado).ShowDialog();
                         }
-                        /*
-                       if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)
-                        {
-                            new FormularioDocente().ShowDialog();
-                        }
-                       if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
-                        {
-                            new FormularioPrincipal().ShowDialog();
-                        }*/
+                        else if (usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)
+                            {
+                                new FormularioDocente(usuarioLogeado).ShowDialog();
+                            }
+                            else if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
+                                {
+                                    new FormularioPrincipal(usuarioLogeado).ShowDialog();
+                                }
                         this.Show();
-                    }
+                        }
                     else
                     {
                         MessageBox.Show("Usuario no habilitado al sistema", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);

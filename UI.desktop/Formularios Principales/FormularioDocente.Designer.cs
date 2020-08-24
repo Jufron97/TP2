@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnSalir = new System.Windows.Forms.Button();
             this.lblNombreyApellido = new System.Windows.Forms.Label();
             this.lblLegajo = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(471, 329);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(95, 23);
+            this.btnSalir.TabIndex = 4;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblNombreyApellido
             // 
@@ -72,15 +82,6 @@
             this.button2.Text = "Reporte de Cursos";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(471, 329);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Salir";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(167, 226);
@@ -96,7 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 364);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblLegajo);
@@ -109,12 +110,11 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblNombreyApellido;
         private System.Windows.Forms.Label lblLegajo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
     }
 }
