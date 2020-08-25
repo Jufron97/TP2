@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.UI.Desktop.Forms_Entidades.Cursos;
 
 namespace Academia.UI.Desktop
 {
@@ -34,5 +35,9 @@ namespace Academia.UI.Desktop
             this.Close();
         }
 
+        private void btnMaterias_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

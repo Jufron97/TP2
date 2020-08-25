@@ -49,8 +49,9 @@
             this.btnMaterias.Name = "btnMaterias";
             this.btnMaterias.Size = new System.Drawing.Size(237, 33);
             this.btnMaterias.TabIndex = 0;
-            this.btnMaterias.Text = "Materias";
+            this.btnMaterias.Text = "Visualizar Cursos";
             this.btnMaterias.UseVisualStyleBackColor = true;
+            this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
             // 
             // btnCursos
             // 
