@@ -58,11 +58,11 @@
             // tcUsuario.ContentPanel
             // 
             this.tcUsuario.ContentPanel.Controls.Add(this.tlUsuarios);
-            this.tcUsuario.ContentPanel.Size = new System.Drawing.Size(639, 183);
+            this.tcUsuario.ContentPanel.Size = new System.Drawing.Size(617, 183);
             this.tcUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcUsuario.Location = new System.Drawing.Point(0, 0);
             this.tcUsuario.Name = "tcUsuario";
-            this.tcUsuario.Size = new System.Drawing.Size(639, 210);
+            this.tcUsuario.Size = new System.Drawing.Size(617, 210);
             this.tcUsuario.TabIndex = 0;
             this.tcUsuario.Text = "toolStripContainer1";
             // 
@@ -84,7 +84,7 @@
             this.tlUsuarios.RowCount = 2;
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlUsuarios.Size = new System.Drawing.Size(639, 183);
+            this.tlUsuarios.Size = new System.Drawing.Size(617, 183);
             this.tlUsuarios.TabIndex = 0;
             // 
             // dgvUsuarios
@@ -107,7 +107,7 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(633, 148);
+            this.dgvUsuarios.Size = new System.Drawing.Size(611, 148);
             this.dgvUsuarios.TabIndex = 0;
             // 
             // id
@@ -156,7 +156,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(480, 157);
+            this.btnActualizar.Location = new System.Drawing.Point(458, 157);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -166,7 +166,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(561, 157);
+            this.btnSalir.Location = new System.Drawing.Point(539, 157);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 210);
+            this.ClientSize = new System.Drawing.Size(617, 210);
             this.Controls.Add(this.tcUsuario);
             this.Name = "Usuarios";
             this.Text = "Usuarios";

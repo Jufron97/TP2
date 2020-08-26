@@ -32,16 +32,16 @@
             this.tsComisiones = new System.Windows.Forms.ToolStripContainer();
             this.tlpComisiones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvComisiones = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Año_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Año_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsComisiones.ContentPanel.SuspendLayout();
             this.tsComisiones.TopToolStripPanel.SuspendLayout();
             this.tsComisiones.SuspendLayout();
@@ -56,11 +56,11 @@
             // tsComisiones.ContentPanel
             // 
             this.tsComisiones.ContentPanel.Controls.Add(this.tlpComisiones);
-            this.tsComisiones.ContentPanel.Size = new System.Drawing.Size(502, 176);
+            this.tsComisiones.ContentPanel.Size = new System.Drawing.Size(452, 176);
             this.tsComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tsComisiones.Location = new System.Drawing.Point(0, 0);
             this.tsComisiones.Name = "tsComisiones";
-            this.tsComisiones.Size = new System.Drawing.Size(502, 201);
+            this.tsComisiones.Size = new System.Drawing.Size(452, 201);
             this.tsComisiones.TabIndex = 0;
             this.tsComisiones.Text = "toolStripContainer1";
             // 
@@ -82,7 +82,7 @@
             this.tlpComisiones.RowCount = 2;
             this.tlpComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpComisiones.Size = new System.Drawing.Size(502, 176);
+            this.tlpComisiones.Size = new System.Drawing.Size(452, 176);
             this.tlpComisiones.TabIndex = 0;
             // 
             // dgvComisiones
@@ -103,44 +103,13 @@
             this.dgvComisiones.ReadOnly = true;
             this.dgvComisiones.RowHeadersVisible = false;
             this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComisiones.Size = new System.Drawing.Size(496, 141);
+            this.dgvComisiones.Size = new System.Drawing.Size(446, 141);
             this.dgvComisiones.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 150;
-            // 
-            // Año_Especialidad
-            // 
-            this.Año_Especialidad.DataPropertyName = "AnioEspecialidad";
-            this.Año_Especialidad.HeaderText = "Año Especialidad";
-            this.Año_Especialidad.Name = "Año_Especialidad";
-            this.Año_Especialidad.ReadOnly = true;
-            this.Año_Especialidad.Width = 150;
-            // 
-            // ID_Plan
-            // 
-            this.ID_Plan.DataPropertyName = "IDPlan";
-            this.ID_Plan.HeaderText = "ID Plan";
-            this.ID_Plan.Name = "ID_Plan";
-            this.ID_Plan.ReadOnly = true;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(343, 150);
+            this.btnActualizar.Location = new System.Drawing.Point(293, 150);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -150,7 +119,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(424, 150);
+            this.btnSalir.Location = new System.Drawing.Point(374, 150);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -200,11 +169,43 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 150;
+            // 
+            // Año_Especialidad
+            // 
+            this.Año_Especialidad.DataPropertyName = "AnioEspecialidad";
+            this.Año_Especialidad.HeaderText = "Año Especialidad";
+            this.Año_Especialidad.Name = "Año_Especialidad";
+            this.Año_Especialidad.ReadOnly = true;
+            this.Año_Especialidad.Width = 150;
+            // 
+            // ID_Plan
+            // 
+            this.ID_Plan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID_Plan.DataPropertyName = "IDPlan";
+            this.ID_Plan.HeaderText = "ID Plan";
+            this.ID_Plan.Name = "ID_Plan";
+            this.ID_Plan.ReadOnly = true;
+            // 
             // Comisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 201);
+            this.ClientSize = new System.Drawing.Size(452, 201);
             this.Controls.Add(this.tsComisiones);
             this.Name = "Comisiones";
             this.Text = "Comisiones";

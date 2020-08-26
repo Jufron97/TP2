@@ -31,8 +31,6 @@ namespace Academia.UI.Desktop
         {
             InitializeComponent();
             UsuarioActual = usuActual;
-
-
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

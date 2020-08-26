@@ -32,15 +32,15 @@
             this.tcPlanes = new System.Windows.Forms.ToolStripContainer();
             this.tlPlanes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPlanes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsPlanes = new System.Windows.Forms.ToolStrip();
             this.tsNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsEliminar = new System.Windows.Forms.ToolStripButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcPlanes.ContentPanel.SuspendLayout();
             this.tcPlanes.TopToolStripPanel.SuspendLayout();
             this.tcPlanes.SuspendLayout();
@@ -55,11 +55,11 @@
             // tcPlanes.ContentPanel
             // 
             this.tcPlanes.ContentPanel.Controls.Add(this.tlPlanes);
-            this.tcPlanes.ContentPanel.Size = new System.Drawing.Size(528, 272);
+            this.tcPlanes.ContentPanel.Size = new System.Drawing.Size(413, 272);
             this.tcPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPlanes.Location = new System.Drawing.Point(0, 0);
             this.tcPlanes.Name = "tcPlanes";
-            this.tcPlanes.Size = new System.Drawing.Size(528, 297);
+            this.tcPlanes.Size = new System.Drawing.Size(413, 297);
             this.tcPlanes.TabIndex = 0;
             this.tcPlanes.Text = "toolStripContainer1";
             // 
@@ -81,7 +81,7 @@
             this.tlPlanes.RowCount = 2;
             this.tlPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlPlanes.Size = new System.Drawing.Size(528, 272);
+            this.tlPlanes.Size = new System.Drawing.Size(413, 272);
             this.tlPlanes.TabIndex = 0;
             // 
             // dgvPlanes
@@ -101,34 +101,13 @@
             this.dgvPlanes.ReadOnly = true;
             this.dgvPlanes.RowHeadersVisible = false;
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanes.Size = new System.Drawing.Size(522, 237);
+            this.dgvPlanes.Size = new System.Drawing.Size(407, 237);
             this.dgvPlanes.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // ID_Especialidad
-            // 
-            this.ID_Especialidad.DataPropertyName = "IDEspecialidad";
-            this.ID_Especialidad.HeaderText = "ID_Especialidad";
-            this.ID_Especialidad.Name = "ID_Especialidad";
-            this.ID_Especialidad.ReadOnly = true;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(369, 246);
+            this.btnActualizar.Location = new System.Drawing.Point(254, 246);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -138,7 +117,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(450, 246);
+            this.btnSalir.Location = new System.Drawing.Point(335, 246);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -188,11 +167,33 @@
             this.tsEliminar.Text = "Eliminar";
             this.tsEliminar.Click += new System.EventHandler(this.tsEliminar_Click);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // ID_Especialidad
+            // 
+            this.ID_Especialidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID_Especialidad.DataPropertyName = "IDEspecialidad";
+            this.ID_Especialidad.HeaderText = "ID_Especialidad";
+            this.ID_Especialidad.Name = "ID_Especialidad";
+            this.ID_Especialidad.ReadOnly = true;
+            // 
             // Planes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 297);
+            this.ClientSize = new System.Drawing.Size(413, 297);
             this.Controls.Add(this.tcPlanes);
             this.Name = "Planes";
             this.Text = "Planes";

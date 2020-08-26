@@ -25,7 +25,6 @@ namespace Academia.UI.Desktop
             UsuarioLogic usuLogic = new UsuarioLogic();
             try
             {    
-                //VER EL TEMA DE LA VALIDACION DEL LOGIN
                 if (usuLogic.verificoLogin(txtUsuario.Text, txtContraseña.Text))
                 {
                     Usuario usuarioLogeado = new Usuario();
@@ -35,7 +34,7 @@ namespace Academia.UI.Desktop
                     {
                         MessageBox.Show("Usted ah ingresado correctamente al sistema.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
-                        //Se crea el formulario especifico
+                        //Se oculta el formulario del logeo y se crea el formulario especifico segun el usuario
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
                         {
                             new FormularioAlumno(usuarioLogeado).ShowDialog();
@@ -48,6 +47,9 @@ namespace Academia.UI.Desktop
                                 {
                                     new FormularioPrincipal(usuarioLogeado).ShowDialog();
                                 }
+                        //Se vuelve a mostrar el formulario de logeo y se ponen los txt en nulos
+                        this.txtContraseña.Text = "";
+                        this.txtUsuario.Text = "";
                         this.Show();
                         }
                     else
