@@ -99,6 +99,7 @@
             this.dgvPlanes.MultiSelect = false;
             this.dgvPlanes.Name = "dgvPlanes";
             this.dgvPlanes.ReadOnly = true;
+            this.dgvPlanes.RowHeadersVisible = false;
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanes.Size = new System.Drawing.Size(522, 237);
             this.dgvPlanes.TabIndex = 0;

@@ -89,6 +89,7 @@
             // 
             this.dgvComisiones.AllowUserToAddRows = false;
             this.dgvComisiones.AllowUserToDeleteRows = false;
+            this.dgvComisiones.AllowUserToOrderColumns = true;
             this.dgvComisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvComisiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -100,6 +101,7 @@
             this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
             this.dgvComisiones.Name = "dgvComisiones";
             this.dgvComisiones.ReadOnly = true;
+            this.dgvComisiones.RowHeadersVisible = false;
             this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvComisiones.Size = new System.Drawing.Size(496, 141);
             this.dgvComisiones.TabIndex = 0;
