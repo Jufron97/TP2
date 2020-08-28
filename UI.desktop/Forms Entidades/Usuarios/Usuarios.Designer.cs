@@ -187,6 +187,7 @@
             // 
             this.usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.usuario.DataPropertyName = "NombreUsuario";
+            this.usuario.FillWeight = 130F;
             this.usuario.HeaderText = "Nombre de Usuario";
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;

@@ -173,14 +173,18 @@
             // 
             // IDMateria
             // 
+            this.IDMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDMateria.DataPropertyName = "ID";
+            this.IDMateria.FillWeight = 50F;
             this.IDMateria.HeaderText = "IDMateria";
             this.IDMateria.Name = "IDMateria";
             this.IDMateria.ReadOnly = true;
             // 
             // Descripcion
             // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.FillWeight = 120F;
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
@@ -188,13 +192,16 @@
             // HorasSemanales
             // 
             this.HorasSemanales.DataPropertyName = "HsSemanales";
+            this.HorasSemanales.FillWeight = 50F;
             this.HorasSemanales.HeaderText = "HorasSemanales";
             this.HorasSemanales.Name = "HorasSemanales";
             this.HorasSemanales.ReadOnly = true;
             // 
             // HorasTotales
             // 
+            this.HorasTotales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.HorasTotales.DataPropertyName = "HsTotales";
+            this.HorasTotales.FillWeight = 50F;
             this.HorasTotales.HeaderText = "HorasTotales";
             this.HorasTotales.Name = "HorasTotales";
             this.HorasTotales.ReadOnly = true;
@@ -203,6 +210,7 @@
             // 
             this.IDPlan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDPlan.DataPropertyName = "IdPlan";
+            this.IDPlan.FillWeight = 50F;
             this.IDPlan.HeaderText = "IDPlan";
             this.IDPlan.Name = "IDPlan";
             this.IDPlan.ReadOnly = true;

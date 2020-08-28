@@ -71,5 +71,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             formEspecialiad.ShowDialog();
             this.Listar();
         }
+
     }
 }

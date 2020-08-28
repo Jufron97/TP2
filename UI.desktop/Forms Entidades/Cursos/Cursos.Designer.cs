@@ -102,6 +102,7 @@
             this.dgvCursos.Location = new System.Drawing.Point(3, 3);
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
+            this.dgvCursos.RowHeadersVisible = false;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(542, 199);
             this.dgvCursos.TabIndex = 0;
@@ -172,6 +173,7 @@
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
@@ -179,6 +181,7 @@
             // 
             // IDMateria
             // 
+            this.IDMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDMateria.DataPropertyName = "IDMateria";
             this.IDMateria.HeaderText = "IDMateria";
             this.IDMateria.Name = "IDMateria";
@@ -186,6 +189,7 @@
             // 
             // IDComision
             // 
+            this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDComision.DataPropertyName = "IDComision";
             this.IDComision.HeaderText = "IDComision";
             this.IDComision.Name = "IDComision";
@@ -193,6 +197,7 @@
             // 
             // AñoCalendario
             // 
+            this.AñoCalendario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AñoCalendario.DataPropertyName = "AnioCalendario";
             this.AñoCalendario.HeaderText = "AñoCalendario";
             this.AñoCalendario.Name = "AñoCalendario";
@@ -200,6 +205,7 @@
             // 
             // Cupo
             // 
+            this.Cupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Cupo.DataPropertyName = "Cupo";
             this.Cupo.HeaderText = "Cupo";
             this.Cupo.Name = "Cupo";

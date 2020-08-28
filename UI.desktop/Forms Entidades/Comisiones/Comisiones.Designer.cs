@@ -171,27 +171,28 @@
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 50;
             // 
             // Descripcion
             // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descripcion.DataPropertyName = "Descripcion";
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 150;
             // 
             // Año_Especialidad
             // 
+            this.Año_Especialidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Año_Especialidad.DataPropertyName = "AnioEspecialidad";
+            this.Año_Especialidad.FillWeight = 120F;
             this.Año_Especialidad.HeaderText = "Año Especialidad";
             this.Año_Especialidad.Name = "Año_Especialidad";
             this.Año_Especialidad.ReadOnly = true;
-            this.Año_Especialidad.Width = 150;
             // 
             // ID_Plan
             // 
