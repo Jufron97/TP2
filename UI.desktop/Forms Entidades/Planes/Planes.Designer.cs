@@ -188,7 +188,7 @@
             // 
             this.ID_Especialidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ID_Especialidad.DataPropertyName = "IDEspecialidad";
-            this.ID_Especialidad.HeaderText = "ID_Especialidad";
+            this.ID_Especialidad.HeaderText = "ID Especialidad";
             this.ID_Especialidad.Name = "ID_Especialidad";
             this.ID_Especialidad.ReadOnly = true;
             // 

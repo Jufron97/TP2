@@ -183,7 +183,7 @@
             // 
             this.IDMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDMateria.DataPropertyName = "IDMateria";
-            this.IDMateria.HeaderText = "IDMateria";
+            this.IDMateria.HeaderText = "ID Materia";
             this.IDMateria.Name = "IDMateria";
             this.IDMateria.ReadOnly = true;
             // 
@@ -191,7 +191,7 @@
             // 
             this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDComision.DataPropertyName = "IDComision";
-            this.IDComision.HeaderText = "IDComision";
+            this.IDComision.HeaderText = "ID Comision";
             this.IDComision.Name = "IDComision";
             this.IDComision.ReadOnly = true;
             // 
@@ -199,7 +199,7 @@
             // 
             this.AñoCalendario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AñoCalendario.DataPropertyName = "AnioCalendario";
-            this.AñoCalendario.HeaderText = "AñoCalendario";
+            this.AñoCalendario.HeaderText = "Año Calendario";
             this.AñoCalendario.Name = "AñoCalendario";
             this.AñoCalendario.ReadOnly = true;
             // 
