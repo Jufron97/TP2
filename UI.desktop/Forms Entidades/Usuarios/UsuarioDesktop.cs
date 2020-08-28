@@ -93,21 +93,41 @@ namespace Academia.UI.Desktop
             {   
             UsuarioActual = new Usuario();
             this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-            //this.UsuarioActual.Nombre = this.txtNombre.Text;
-            //this.UsuarioActual.Apellido = this.txtApellido.Text;
-            //this.UsuarioActual.Email = this.txtEmail.Text;
             this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
             this.UsuarioActual.Clave = this.txtClave.Text;
+            this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+            this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
+            this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+            this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                //Se verifica el tipo de persona seleccionada
+                if (rdbAlumno.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
+                }
+                else if (rdbDocente.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
+                }           
             UsuarioActual.State = Usuario.States.New;
             }
          else if(this.Modo == ApplicationForm.ModoForm.Modificacion)
                 {
                 this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                //this.UsuarioActual.Nombre = this.txtNombre.Text;
-                //this.UsuarioActual.Apellido = this.txtApellido.Text;
-                //this.UsuarioActual.Email = this.txtEmail.Text;
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
+                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
+                this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                //Se verifica el tipo de persona seleccionada
+                if (rdbAlumno.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
+                }
+                else if (rdbDocente.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
+                }
                 UsuarioActual.State = Usuario.States.Modified;
                 }
                 else if(this.Modo ==ApplicationForm.ModoForm.Baja)
@@ -127,7 +147,7 @@ namespace Academia.UI.Desktop
 
         new public virtual bool Validar()
         {
-            if (this.txtApellido.TextLength==0 || this.txtNombre.TextLength==0 || this.txtUsuario.TextLength==0 || this.txtEmail.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
+            if ( this.txtUsuario.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
             {
             Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);         
             return false;
@@ -144,11 +164,6 @@ namespace Academia.UI.Desktop
                     Notificar("Clave menor a 8 caracteres",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                     }
-                else if (this.txtEmail.Text.Contains("@")!= true) //Implementar clase validaciones con expresion regular de email para validar mejor el mail
-                {
-                Notificar("Email ingresado no es correcto",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-                }
                 else
                     return true;
             }
