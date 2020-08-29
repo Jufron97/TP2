@@ -81,6 +81,11 @@ namespace Academia.Business.Logic
             UsuarioData.Delete(id);
         }
 
+        public void Delete(Usuario Usu)
+        {
+            UsuarioData.Delete(Usu);
+        }
+
         /// <summary>
         /// Guarda al objeto usuario en la base de datos para poder ser persistido
         /// </summary>
@@ -89,5 +94,6 @@ namespace Academia.Business.Logic
         {
             UsuarioData.Save(usuario);
         }
+
     }
 }

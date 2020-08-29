@@ -52,26 +52,65 @@ namespace Academia.UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop formUsuario = new UsuarioDesktop(ApplicationForm.ModoForm.Alta);
+            UsuarioDesktop formUsuario = new UsuarioDesktop();
+            formUsuario.Modo = ApplicationForm.ModoForm.Alta;
             formUsuario.ShowDialog();
             Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-            UsuarioDesktop formUsuario = new UsuarioDesktop(ID,ApplicationForm.ModoForm.Modificacion);
-            formUsuario.ShowDialog();
-            Listar();
+            if (itemSeleccionado())
+            {/*
+                int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+                UsuarioDesktop formUsuario = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                Aca implemente otra forma de invocar alformulario de alumno
+                */
+                //Se crea el formulario
+                UsuarioDesktop formUsuario = new UsuarioDesktop();
+                //Se asigna el tipo de formulario
+                formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
+                //Se selecciona al usuario
+                formUsuario.UsuarioActual=((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
+                //Se muestra al usuario en el formulario con los datos cargados
+                formUsuario.ShowDialog();
+
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay Usuarios seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
             UsuarioDesktop formUsuario = new UsuarioDesktop(ID,ApplicationForm.ModoForm.Baja);
-            formUsuario.ShowDialog();
-            Listar();
+            */
+            if(itemSeleccionado())
+            {
+                UsuarioDesktop formUsuario = new UsuarioDesktop();
+                formUsuario.Modo = ApplicationForm.ModoForm.Baja;
+                formUsuario.UsuarioActual = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
+                formUsuario.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay Usuarios seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
+
+        /// <summary>
+        /// Devuelve si hay alguna fila/item seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private bool itemSeleccionado()
+        {
+            return (dgvUsuarios.SelectedRows.Count > 0);
+        }
     }
 }

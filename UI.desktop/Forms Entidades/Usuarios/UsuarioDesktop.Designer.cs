@@ -185,6 +185,7 @@
             this.btnCancelar.TabIndex = 34;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtApellido
             // 
@@ -304,6 +305,7 @@
             this.Controls.Add(this.gpbUsuario);
             this.Name = "UsuarioDesktop";
             this.Text = "UsuarioDesktop";
+            this.Shown += new System.EventHandler(this.UsuarioDesktop_Shown);
             this.gpbUsuario.ResumeLayout(false);
             this.gpbUsuario.PerformLayout();
             this.ResumeLayout(false);
