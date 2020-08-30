@@ -14,11 +14,17 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
     public partial class Especialidades : Form
     {
+        #region Constructores
+
         public Especialidades()
         {
             InitializeComponent();
             dgvEspecialidades.AutoGenerateColumns = false;
         }
+
+        #endregion
+
+        #region Metodos
 
         public void Listar()
         {
@@ -33,6 +39,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                 Close();
             }
         }
+
+        /// <summary>
+        /// Devuelve si hay alguna fila/item seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private bool itemSeleccionado()
+        {
+            return (dgvEspecialidades.SelectedRows.Count > 0);
+        }
+
+        #endregion
+
+        #region EventosFormulario
 
         private void Especialidades_Load(object sender, EventArgs e)
         {
@@ -51,26 +70,56 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         private void toolStripNuevo_Click(object sender, EventArgs e)
         {
-            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ApplicationForm.ModoForm.Alta);
+            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+            formEspecialidad.Modo = ApplicationForm.ModoForm.Alta;
             formEspecialidad.ShowDialog();
             this.Listar();
         }
 
         private void toolStripEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Modificacion);
-            formEspecialidad.ShowDialog();
-            this.Listar();
+            if (itemSeleccionado())
+            {
+                /*
+                int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+                formEspecialidad.ShowDialog();
+                this.Listar();
+                */
+                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+                formEspecialidad.Modo = ApplicationForm.ModoForm.Modificacion;
+                formEspecialidad.EspecialidadActual = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem);
+                formEspecialidad.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay especialidades seleccionadas", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
         private void toolStripEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-            EspecialidadDesktop formEspecialiad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Baja);
-            formEspecialiad.ShowDialog();
-            this.Listar();
+            if (itemSeleccionado())
+            {
+                /*
+                int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ID,ApplicationForm.ModoForm.Baja);
+                formEspecialidad.ShowDialog();
+                this.Listar();
+                */
+                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+                formEspecialidad.Modo = ApplicationForm.ModoForm.Baja;
+                formEspecialidad.EspecialidadActual =((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem);
+                formEspecialidad.ShowDialog();
+                this.Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay especialidades seleccionadas", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
+        #endregion
     }
 }

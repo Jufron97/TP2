@@ -32,9 +32,9 @@ namespace Academia.Business.Logic
             return MateriaData.GetOne(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Materia materia)
         {
-            MateriaData.Delete(id);
+            MateriaData.Delete(materia);
         }
 
         public void Save(Materia materia)

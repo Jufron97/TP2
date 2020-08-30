@@ -34,6 +34,15 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             }
         }
 
+        /// <summary>
+        /// Devuelve si hay alguna fila/item seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private bool itemSeleccionado()
+        {
+            return (dgvPlanes.SelectedRows.Count > 0);
+        }
+
         private void Planes_Load(object sender, EventArgs e)
         {
             this.Listar();
@@ -41,26 +50,53 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            PlanDesktop formPlanes = new PlanDesktop(ApplicationForm.ModoForm.Alta);
+            PlanDesktop formPlanes = new PlanDesktop();
+            formPlanes.Modo = ApplicationForm.ModoForm.Alta;
             formPlanes.ShowDialog();
             this.Listar();
         }
  
 
         private void tsEditar_Click(object sender, EventArgs e)
-        {         
+        {
+            /*
             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-            PlanDesktop formPlanes = new PlanDesktop(ID,ApplicationForm.ModoForm.Modificacion);
+            PlanDesktop formPlanes = new PlanDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formPlanes.ShowDialog();
-            this.Listar();
+            */
+            if (itemSeleccionado())
+            {
+                PlanDesktop formUsuario = new PlanDesktop();
+                formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
+                formUsuario.PlanActual = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem);
+                formUsuario.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay planes seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void tsEliminar_Click(object sender, EventArgs e)
-        {
-            int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
+        {       
+            /*
+             int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
             PlanDesktop formPlanes = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja);
             formPlanes.ShowDialog();
-           this.Listar();
+            */
+            if (itemSeleccionado())
+            {
+                PlanDesktop formUsuario = new PlanDesktop();
+                formUsuario.Modo = ApplicationForm.ModoForm.Baja;
+                formUsuario.PlanActual = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem);
+                formUsuario.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay planes seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

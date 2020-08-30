@@ -30,19 +30,21 @@ namespace Academia.UI.Desktop
         {
             InitializeComponent();
         }
-    
-        #endregion      
+
+        #endregion
+
+        #region Metodos
 
         /// <summary>
-        /// Dependiendo del tipo de formulario, se creara uno especifico
+        /// Crea el formulario especificado segun el tipo de Operacion a realizar
         /// </summary>
         public void IniciarFormulario()
         {
             if (this.Modo == ApplicationForm.ModoForm.Alta)
-                {
-                    this.btnAceptar.Text = "Guardar";
-                }               
-            else if(Modo == ApplicationForm.ModoForm.Baja)
+            {
+                this.btnAceptar.Text = "Guardar";
+            }
+            else if (Modo == ApplicationForm.ModoForm.Baja)
             {
                 this.lblConfirmarClave.Visible = false;
                 this.txtConfirmarClave.Visible = false;
@@ -56,32 +58,56 @@ namespace Academia.UI.Desktop
             }
         }
 
-        #region Metodos
         /// <summary>
-        /// Metodo que se utiliza para pasar los datos del objeto a los TXT correspindientes
+        /// Se utiliza para pasar los datos del objeto a los TXT correspondientes
         /// </summary>
         new public virtual void MapearDeDatos()
         {
             //Usuario
-            txtID.Text = UsuarioActual.ID.ToString();
-            chkHabilitado.Checked = UsuarioActual.Habilitado;
-            txtUsuario.Text = UsuarioActual.NombreUsuario;
+            this.txtID.Text = this.UsuarioActual.ID.ToString();
+            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
+            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             //Persona 
-            txtIDPlan.Text = Convert.ToString(UsuarioActual.Persona.IDPlan);
-            txtNombre.Text = UsuarioActual.Persona.Nombre ;
-            txtApellido.Text = UsuarioActual.Persona.Apellido;
-            if (UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
+            this.txtIDPlan.Text = Convert.ToString(this.UsuarioActual.Persona.IDPlan);
+            this.txtNombre.Text = this.UsuarioActual.Persona.Nombre ;
+            this.txtApellido.Text = this.UsuarioActual.Persona.Apellido;
+            if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
             {
-                rdbAlumno.Checked = true;
+                this.rdbAlumno.Checked = true;
             }
-            else if(UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
+            else if(this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
             {
-                rdbDocente.Checked = true;
+                this.rdbDocente.Checked = true;
             }
             dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;            
             /*
              * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
              */
+        }
+
+        /// <summary>
+        /// Metodo Utilizado para modificar los datos del usuario seleccionado o para dar de alta uno nuevo
+        /// </summary>
+        public void CastearDatosUsurio()
+        {
+            UsuarioActual = new Usuario();
+            this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
+            this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+            this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
+            this.UsuarioActual.Clave = this.txtClave.Text;
+            this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+            this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
+            this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+            this.UsuarioActual.Persona.IDPlan = Convert.ToInt32(this.txtIDPlan.Text);
+            //Se verifica el tipo de persona seleccionada
+            if (rdbAlumno.Checked)
+            {
+                this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
+            }
+            else if (rdbDocente.Checked)
+                {
+                this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
+                }
         }
 
         /// <summary>
@@ -96,48 +122,29 @@ namespace Academia.UI.Desktop
             }
             else
             {
-                UsuarioActual = new Usuario();
-                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-                this.UsuarioActual.Clave = this.txtClave.Text;
-                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
-                this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.IDPlan = Convert.ToInt32(this.txtIDPlan.Text);
-                //Se verifica el tipo de persona seleccionada
-                if (rdbAlumno.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
-                }
-                else if (rdbDocente.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
-                }
+                CastearDatosUsurio();
                 //Se asigna el tipo de operacion al usuarios para posteriormente poder dejarlo en la BD
                 if (this.Modo == ApplicationForm.ModoForm.Alta)
                 {
-                    UsuarioActual.State = Usuario.States.New;
+                    this.UsuarioActual.State = Usuario.States.New;
                 }
                 else
                 {
-                    UsuarioActual.State = Usuario.States.Modified;
+                    this.UsuarioActual.State = Usuario.States.Modified;
                 }
             }
         }
 
         new public virtual void GuardarCambios() 
         {
-            MapearADatos2();           
-            if(this.Modo == ApplicationForm.ModoForm.Modificacion || this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                new UsuarioLogic().Save(UsuarioActual);
-            }
-            else
-            {
-                new UsuarioLogic().Delete(UsuarioActual);
-            }
+            MapearADatos2();
+            new UsuarioLogic().Save(UsuarioActual);
         }
 
+        /// <summary>
+        /// Verifica los datos ingresados al formulario, devuelve un booleano
+        /// </summary>
+        /// <returns></returns>
         new public virtual bool Validar()
         {
             if ( this.txtUsuario.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
@@ -149,14 +156,15 @@ namespace Academia.UI.Desktop
             { 
                 if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 {
-                Notificar("Las claves no coinciden",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                    Notificar("Las claves no coinciden",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-                else if(this.txtClave.TextLength < 8)
-                    {
+                else 
+                if(this.txtClave.TextLength < 8)
+                {
                     Notificar("Clave menor a 8 caracteres",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
-                    }
+                }
                 else
                     return true;
             }
@@ -169,11 +177,12 @@ namespace Academia.UI.Desktop
         #endregion
 
         #region EventosFormulario
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
-                if (Validar() == true)
+                if (Validar())
                 {
                     GuardarCambios();
                     this.Close();
@@ -195,6 +204,7 @@ namespace Academia.UI.Desktop
         {
             IniciarFormulario();
         }
+
         #endregion
 
         #region CodigoViejo

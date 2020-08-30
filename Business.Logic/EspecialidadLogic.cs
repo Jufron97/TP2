@@ -12,15 +12,24 @@ namespace Academia.Business.Logic
     {
         private EspecialidadAdapter m_especialidadData;
 
+        #region Propiedades
+
         public EspecialidadAdapter EspecialidadData
         {
             get => m_especialidadData;
             set => m_especialidadData = value;
         }
+
+        #endregion
+
+        #region Constructores
+
         public EspecialidadLogic()
         {
             EspecialidadData = new EspecialidadAdapter();
         }
+
+        #endregion 
 
         public List<Especialidad> GetAll()
         {

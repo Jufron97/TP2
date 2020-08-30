@@ -15,12 +15,16 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 {
     public partial class Cursos : Form
     {
+        #region Constructores
         public Cursos()
         {
             InitializeComponent();
             dgvCursos.AutoGenerateColumns = false;
         }
 
+        #endregion
+
+        #region Metodos
         public void Listar()
         {
             CursoLogic cl = new CursoLogic();
@@ -35,7 +39,18 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             }
         }
 
-        #region Eventos
+        /// <summary>
+        /// Devuelve si hay alguna fila/item seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private bool itemSeleccionado()
+        {
+            return (dgvCursos.SelectedRows.Count > 0);
+        }
+
+        #endregion
+        #region EventosFormulario
+
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
@@ -48,25 +63,54 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            CursoDesktop formCurso = new CursoDesktop(ApplicationForm.ModoForm.Alta);
+            CursoDesktop formCurso = new CursoDesktop();
+            formCurso.Modo = ApplicationForm.ModoForm.Alta;
             formCurso.ShowDialog();
-            Listar();
+            this.Listar();
         }
 
         private void tsEditar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
             CursoDesktop formComision = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formComision.ShowDialog();
             Listar();
+            */
+            if(itemSeleccionado())
+            {
+                CursoDesktop formCurso = new CursoDesktop();
+                formCurso.Modo = ApplicationForm.ModoForm.Modificacion;
+                formCurso.CursoActual = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem);
+                formCurso.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay cursos seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void tsEliminar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
             CursoDesktop formUsuario = new CursoDesktop(ID, ApplicationForm.ModoForm.Baja);
             formUsuario.ShowDialog();
             Listar();
+            */
+            if (itemSeleccionado())
+            {
+                CursoDesktop formCurso = new CursoDesktop();
+                formCurso.Modo = ApplicationForm.ModoForm.Baja;
+                formCurso.CursoActual = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem);
+                formCurso.ShowDialog();
+                Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay cursos seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Cursos_Load(object sender, EventArgs e)

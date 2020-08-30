@@ -48,7 +48,7 @@
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.55556F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.44444F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tlpComision.Controls.Add(this.lblID, 0, 0);
             this.tlpComision.Controls.Add(this.lblDescripcion, 0, 1);
             this.tlpComision.Controls.Add(this.lblAnio_Especialidad, 0, 2);
@@ -160,7 +160,7 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(351, 229);
+            this.btnAceptar.Location = new System.Drawing.Point(350, 229);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 5;
@@ -176,6 +176,7 @@
             this.Controls.Add(this.tlpComision);
             this.Name = "ComisionDesktop";
             this.Text = "Comision";
+            this.Shown += new System.EventHandler(this.ComisionDesktop_Shown);
             this.tlpComision.ResumeLayout(false);
             this.tlpComision.PerformLayout();
             this.ResumeLayout(false);

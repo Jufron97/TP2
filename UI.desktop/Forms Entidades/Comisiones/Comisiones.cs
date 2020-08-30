@@ -14,11 +14,16 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
     public partial class Comisiones : Form
     {
+        #region Constructores
         public Comisiones()
         {
             InitializeComponent();
             dgvComisiones.AutoGenerateColumns = false;
         }
+
+        #endregion
+
+        #region Metodos
 
         public void Listar()
         {
@@ -34,7 +39,20 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             }
         }
 
-        #region
+        /// <summary>
+        /// Devuelve si hay alguna fila/item seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private bool itemSeleccionado()
+        {
+            return (dgvComisiones.SelectedRows.Count > 0);
+        }
+
+        #endregion
+
+
+        #region EventosFormulario
+
         private void Comisiones_Load(object sender, EventArgs e)
         {
             Listar();
@@ -52,25 +70,54 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            ComisionDesktop formComision = new ComisionDesktop(ApplicationForm.ModoForm.Alta);
+            ComisionDesktop formComision = new ComisionDesktop();
+            formComision.Modo = ApplicationForm.ModoForm.Alta;
             formComision.ShowDialog();
             Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
             ComisionDesktop formComision = new ComisionDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formComision.ShowDialog();
             Listar();
+            */
+            if (itemSeleccionado())
+            {
+                ComisionDesktop formComision = new ComisionDesktop();
+                formComision.Modo = ApplicationForm.ModoForm.Modificacion;
+                formComision.ComisionActual = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem);
+                formComision.ShowDialog();
+                this.Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay comisiones seleccionadas", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
+            /*
             int ID = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem).ID;
             ComisionDesktop formUsuario = new ComisionDesktop(ID, ApplicationForm.ModoForm.Baja);
             formUsuario.ShowDialog();
             Listar();
+            */
+            if (itemSeleccionado())
+            {
+                ComisionDesktop formComision = new ComisionDesktop();
+                formComision.Modo = ApplicationForm.ModoForm.Baja;
+                formComision.ComisionActual = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem);
+                formComision.ShowDialog();
+                this.Listar();
+            }
+            else
+            {
+                MessageBox.Show("No hay comisiones seleccionadas", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         #endregion

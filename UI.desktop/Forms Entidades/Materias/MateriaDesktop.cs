@@ -17,89 +17,91 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
     {
         private Materia m_materiaActual;
 
+        #region Propiedades
         public Materia MateriaActual
         {
             get => m_materiaActual;
             set => m_materiaActual = value;
         }
 
+        #endregion
+
         #region Constructores
+
         public MateriaDesktop()
         {
             InitializeComponent();
         }
-
         
-        public MateriaDesktop(ModoForm modo):this()
-        {
-            this.Modo = modo;
-            this.btnAceptar.Text = "Guardar";
-        }
-
-        public MateriaDesktop(int ID, ModoForm modo):this()
-        {
-            Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                MateriaActual = new MateriaLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                MateriaActual = new MateriaLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-        }
         #endregion
 
         #region Metodos
+
+        public void IniciarFormulario()
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            {
+                this.btnAceptar.Text = "Guardar";
+            }
+            else if (Modo == ApplicationForm.ModoForm.Baja)
+                {
+                    this.btnAceptar.Text = "Eliminar";
+                    MapearDeDatos();
+                }
+                else
+                {
+                    this.btnAceptar.Text = "Guardar";
+                    MapearDeDatos();
+                }
+        }
+
         new public virtual void MapearDeDatos()
         {
             this.txtID.Text = this.MateriaActual.ID.ToString();
             this.txtDescripcion.Text = this.MateriaActual.Descripcion.ToString();
             this.txtHsSemanales.Text = this.MateriaActual.HsSemanales.ToString();
-            this.txtHorasTotales.Text = this.MateriaActual.HsSemanales.ToString();
-            this.txtIDPlan.Text = this.MateriaActual.HsSemanales.ToString();
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
+            this.txtHorasTotales.Text = this.MateriaActual.HsTotales.ToString();
+            this.txtIDPlan.Text = this.MateriaActual.IdPlan.ToString();
+        }
+
+        /// <summary>
+        /// Metodo Utilizado para modificar los datos de la materia seleccionada o para dar de alta una nuevo
+        /// </summary>
+        public void CastearDatosMateria()
+        {
+            this.MateriaActual = new Materia();
+            this.MateriaActual.ID = Convert.ToInt32(this.txtID.Text);
+            this.MateriaActual.Descripcion = this.txtDescripcion.Text;
+            this.MateriaActual.HsSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
+            this.MateriaActual.HsTotales = Convert.ToInt32(this.txtHorasTotales.Text);
+            this.MateriaActual.IdPlan = Convert.ToInt32(this.txtIDPlan.Text);
+        }
+
+        /// <summary>
+        /// Metodo que se utiliza para pasar los datos de los TXT a un objeto correspindientes
+        /// </summary>
+        public void MapearADatos2()
+        {
+            //Dependiendo del tipo de formulario, se le asigna el tipo al usuario
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
             {
-                btnAceptar.Text = "Guardar";
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                btnAceptar.Text = "Eliminar";
+                MateriaActual.State = Usuario.States.Deleted;
             }
             else
             {
-                btnAceptar.Text = "Aceptar";
+                CastearDatosMateria();
+                //Se asigna el tipo de operacion al usuarios para posteriormente poder dejarlo en la BD
+                if (this.Modo == ApplicationForm.ModoForm.Alta)
+                {
+                    this.MateriaActual.State = Usuario.States.New;
+                }
+                else
+                {
+                    this.MateriaActual.State = Usuario.States.Modified;
+                }
             }
         }
-
-        new public virtual void MapearADatos()
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                MateriaActual = new Materia();
-                this.MateriaActual.Descripcion = this.txtDescripcion.Text;
-                this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
-                this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
-                MateriaActual.State = BusinessEntity.States.New;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                MateriaActual.Descripcion = this.txtDescripcion.Text;
-                this.MateriaActual.Descripcion = this.txtDescripcion.Text;
-                this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
-                this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
-                MateriaActual.State = BusinessEntity.States.Modified;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                new MateriaLogic().Delete(Int32.Parse(this.txtID.Text));
-                
-            }
-        }
+        
         new public virtual bool Validar()
         {
             if (this.txtDescripcion.TextLength == 0 || this.txtHsSemanales.TextLength == 0 || this.txtHorasTotales.TextLength == 0 || this.txtIDPlan.TextLength == 0)
@@ -130,11 +132,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos();
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion || this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                new MateriaLogic().Save(MateriaActual);
-            }
+            MapearADatos2();
+            new MateriaLogic().Save(MateriaActual);
         }
 
         new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
@@ -144,17 +143,22 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         #endregion
 
         #region EventosFormulario
+
+        /// <summary>
+        /// Verifica los datos ingresados al formulario, devuelve un booleano
+        /// </summary>
+        /// <returns></returns>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
-                if (Validar() == true)
+                if (Validar())
                 {
                     GuardarCambios();
                     this.Close();
                 }
             }
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            else
             {
                 GuardarCambios();
                 this.Close();
@@ -165,7 +169,65 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         {
                 this.Close();
         }
+
+        private void MateriaDesktop_Shown(object sender, EventArgs e)
+        {
+            IniciarFormulario();
+        }
+
         #endregion
+
+        #region CodigoViejo
+
+        new public virtual void MapearADatos()
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            {
+                MateriaActual = new Materia();
+                this.MateriaActual.Descripcion = this.txtDescripcion.Text;
+                this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
+                this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
+                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
+                MateriaActual.State = BusinessEntity.States.New;
+            }
+            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                MateriaActual.Descripcion = this.txtDescripcion.Text;
+                this.MateriaActual.Descripcion = this.txtDescripcion.Text;
+                this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
+                this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
+                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
+                MateriaActual.State = BusinessEntity.States.Modified;
+            }
+            else if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                //new MateriaLogic().Delete(Int32.Parse(this.txtID.Text));
+            }
+        }
+
+        public MateriaDesktop(ModoForm modo) : this()
+        {
+            this.Modo = modo;
+            this.btnAceptar.Text = "Guardar";
+        }
+
+        public MateriaDesktop(int ID, ModoForm modo) : this()
+        {
+            Modo = modo;
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                MateriaActual = new MateriaLogic().GetOne(ID);
+                MapearDeDatos();
+            }
+            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                MateriaActual = new MateriaLogic().GetOne(ID);
+                MapearDeDatos();
+            }
+        }
+
+        #endregion
+
 
     }
 }

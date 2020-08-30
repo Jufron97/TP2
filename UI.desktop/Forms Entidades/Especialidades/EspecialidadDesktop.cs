@@ -15,24 +15,164 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
     public partial class EspecialidadDesktop : ApplicationForm
     {
         private Especialidad m_especialidadActual;
+        
+        #region Propiedades
 
         public Especialidad EspecialidadActual
         {
             get => m_especialidadActual;
-            set => m_especialidadActual= value;
+            set => m_especialidadActual = value;
         }
+
+        #endregion
+
+        #region Constructores
+
         public EspecialidadDesktop()
         {
             InitializeComponent();
         }
 
-        public EspecialidadDesktop(ModoForm modo):this()
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// Crea el formulario especifico segun el tipo especificado
+        /// </summary>
+        public void IniciarFormulario()
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            {
+                this.btnAceptar.Text = "Guardar";
+            }
+            else if (Modo == ApplicationForm.ModoForm.Baja)
+            {
+                this.btnAceptar.Text = "Eliminar";
+                MapearDeDatos();
+            }
+            else
+            {
+                this.btnAceptar.Text = "Guardar";
+                MapearDeDatos();
+            }
+        }
+
+        /// <summary>
+        /// Se utiliza para modificar los datos de un plan especifico o para dar de alta uno nuevo
+        /// </summary>
+        public void CastearDatosEspecialidad()
+        {
+            this.EspecialidadActual = new Especialidad();
+            this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text);
+            this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
+        }
+
+        public void MapearADatos2()
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                this.EspecialidadActual.State = BusinessEntity.States.Deleted;
+            }
+            else
+            {
+                CastearDatosEspecialidad();
+                if (this.Modo == ApplicationForm.ModoForm.Alta)
+                {
+                    this.EspecialidadActual.State = BusinessEntity.States.New;
+                }
+                else
+                {
+                    this.EspecialidadActual.State = BusinessEntity.States.Modified;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Se utiliza para pasar los datos del objeto a los TXT correspondientes
+        /// </summary>
+        new public virtual void MapearDeDatos()
+        {
+            this.txtID.Text = this.EspecialidadActual.ID.ToString();
+            this.txtDescripcion.Text = this.EspecialidadActual.Descripcion.ToString();           
+        }
+
+        /// <summary>
+        /// Metodo utilizado para validar los datos ingresados al formulario 
+        /// </summary>
+        /// <returns></returns>
+        new public virtual bool Validar()
+        {
+            if (this.txtDescripcion.TextLength == 0)
+            {
+                Notificar("El campo Descripcion esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        new public virtual void GuardarCambios()
+        {
+            MapearADatos();
+            new EspecialidadLogic().Save(EspecialidadActual);
+        }
+
+        /// <summary>
+        /// Crea un MessageBox especifico con el mensaje
+        /// </summary>
+        /// <param name="mensaje"></param>
+        /// <param name="botones"></param>
+        /// <param name="icono"></param>
+        new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
+        {
+            this.Notificar(this.Text, mensaje, botones, icono);
+        }
+
+        #endregion
+
+        #region EventosFormularios
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                if (Validar())
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
+            }
+            else
+            {
+                GuardarCambios();
+                this.Close();
+            }
+        }
+
+        private void EspecialidadDesktop_Shown(object sender, EventArgs e)
+        {
+            IniciarFormulario();
+        }
+
+        #endregion
+
+        #region CodigoViejo
+
+        public EspecialidadDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
         }
 
-        public EspecialidadDesktop(int ID, ModoForm modo):this()
+        public EspecialidadDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)
@@ -44,24 +184,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             {
                 EspecialidadActual = new EspecialidadLogic().GetOne(ID);
                 MapearDeDatos();
-            }
-        }
-
-        new public virtual void MapearDeDatos()
-        {
-            this.txtID.Text = this.EspecialidadActual.ID.ToString();
-            this.txtDescripcion.Text = this.EspecialidadActual.Descripcion.ToString();
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                btnAceptar.Text = "Guardar";
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                btnAceptar.Text = "Eliminar";
-            }
-            else
-            {
-                btnAceptar.Text = "Aceptar";
             }
         }
 
@@ -80,57 +202,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
             {
-                new EspecialidadLogic().Delete(Int32.Parse(this.txtID.Text));
+                //new EspecialidadLogic().Delete(Int32.Parse(this.txtID.Text));
             }
         }
 
-        new public virtual bool Validar()
-        {
-            if (this.txtDescripcion.TextLength == 0)
-            {
-                Notificar("El campo Descripcion esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        #endregion
 
-        new public virtual void GuardarCambios()
-        {
-            MapearADatos();
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion || this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                new EspecialidadLogic().Save(EspecialidadActual);
-            }
-        }
-
-        new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
-        {
-            this.Notificar(this.Text, mensaje, botones, icono);
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                if (Validar() == true)
-                {
-                    GuardarCambios();
-                    this.Close();
-                }
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                GuardarCambios();
-                this.Close();
-            }
-        }
     }
 }

@@ -32,9 +32,9 @@ namespace Academia.Business.Logic
             return PlanData.GetOne(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Plan plan)
         {
-            PlanData.Delete(id);
+            PlanData.Delete(plan);
         }
 
         public void Save(Plan plan)
