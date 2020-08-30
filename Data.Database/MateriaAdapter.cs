@@ -98,13 +98,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(int ID)
+        public void Delete(Materia materia)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from materias where id_materia=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = materia.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -149,7 +149,7 @@ namespace Academia.Data.Database
             }
             else if (materia.State == BusinessEntity.States.Deleted)
             {
-                Delete(materia.ID);
+                Delete(materia);
             }
             else if (materia.State == BusinessEntity.States.Modified)
             {

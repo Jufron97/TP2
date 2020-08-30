@@ -93,13 +93,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(int ID)
+        public void Delete(Plan plan)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from planes where id_plan=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -144,7 +144,7 @@ namespace Academia.Data.Database
             }
             if (plan.State == BusinessEntity.States.Deleted)
             {
-                Delete(plan.ID);
+                Delete(plan);
             }
             if (plan.State == BusinessEntity.States.Modified)
             {
