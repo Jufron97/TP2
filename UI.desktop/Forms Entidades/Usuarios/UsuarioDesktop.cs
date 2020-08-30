@@ -30,37 +30,7 @@ namespace Academia.UI.Desktop
         {
             InitializeComponent();
         }
-        /*
-        /// <summary>
-        /// Constructor utilizado para las Altas
-        /// </summary>
-        /// <param name="modo"></param>
-        public UsuarioDesktop(ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            this.btnAceptar.Text = "Guardar";
-        }
-
-        /// <summary>
-        /// Constructor utilizado para las Bajas y Modificaciones
-        /// </summary>
-        /// <param name="modo"></param>
-        public UsuarioDesktop(int ID, ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {                
-                this.lblConfirmarClave.Visible = false;
-                this.txtConfirmarClave.Visible = false;
-                UsuarioActual = new UsuarioLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                UsuarioActual = new UsuarioLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-        }*/
+    
         #endregion      
 
         /// <summary>
@@ -92,16 +62,30 @@ namespace Academia.UI.Desktop
         /// </summary>
         new public virtual void MapearDeDatos()
         {
-            this.txtID.Text = this.UsuarioActual.ID.ToString();
-            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
+            //Usuario
+            txtID.Text = UsuarioActual.ID.ToString();
+            chkHabilitado.Checked = UsuarioActual.Habilitado;
+            txtUsuario.Text = UsuarioActual.NombreUsuario;
+            //Persona 
+            txtIDPlan.Text = Convert.ToString(UsuarioActual.Persona.IDPlan);
+            txtNombre.Text = UsuarioActual.Persona.Nombre ;
+            txtApellido.Text = UsuarioActual.Persona.Apellido;
+            if (UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
+            {
+                rdbAlumno.Checked = true;
+            }
+            else if(UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
+            {
+                rdbDocente.Checked = true;
+            }
+            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;            
             /*
              * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
              */
         }
 
         /// <summary>
-        /// Metodo que se utiliza para pasar los datos de los TXT a objeto un correspindientes
+        /// Metodo que se utiliza para pasar los datos de los TXT a un objeto correspindientes
         /// </summary>
         public void MapearADatos2()
         {
@@ -129,6 +113,7 @@ namespace Academia.UI.Desktop
                 {
                     this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
                 }
+                //Se asigna el tipo de operacion al usuarios para posteriormente poder dejarlo en la BD
                 if (this.Modo == ApplicationForm.ModoForm.Alta)
                 {
                     UsuarioActual.State = Usuario.States.New;
@@ -140,59 +125,9 @@ namespace Academia.UI.Desktop
             }
         }
 
-        new public virtual void MapearADatos() 
-        {                 
-        if (this.Modo == ApplicationForm.ModoForm.Alta)
-            { 
-            UsuarioActual = new Usuario();
-            this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-            this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-            this.UsuarioActual.Clave = this.txtClave.Text;
-            this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
-            this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
-            this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-            this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
-            //Se verifica el tipo de persona seleccionada
-                if (rdbAlumno.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
-                }
-                else if (rdbDocente.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
-                }                 
-            UsuarioActual.State = Usuario.States.New;
-            }
-            else if(this.Modo == ApplicationForm.ModoForm.Modificacion)
-                {
-                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-                this.UsuarioActual.Clave = this.txtClave.Text;
-                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
-                this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
-                //Se verifica el tipo de persona seleccionada
-                if (rdbAlumno.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
-                }
-                else if (rdbDocente.Checked)
-                {
-                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
-                }
-                UsuarioActual.State = Usuario.States.Modified;
-                }
-                else if(this.Modo ==ApplicationForm.ModoForm.Baja)
-                {
-                    new UsuarioLogic().Delete(Int32.Parse(this.txtID.Text));
-                }
-            }
-
         new public virtual void GuardarCambios() 
         {
-            MapearADatos2();
-            //MapearADatos();
+            MapearADatos2();           
             if(this.Modo == ApplicationForm.ModoForm.Modificacion || this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 new UsuarioLogic().Save(UsuarioActual);
@@ -240,11 +175,11 @@ namespace Academia.UI.Desktop
             {
                 if (Validar() == true)
                 {
-                GuardarCambios();
-                this.Close();
+                    GuardarCambios();
+                    this.Close();
                 }
             }
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            else
             {
                 GuardarCambios();
                 this.Close();
@@ -260,6 +195,91 @@ namespace Academia.UI.Desktop
         {
             IniciarFormulario();
         }
+        #endregion
+
+        #region CodigoViejo
+
+
+        new public virtual void MapearADatos()
+        {
+            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            {
+                UsuarioActual = new Usuario();
+                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
+                this.UsuarioActual.Clave = this.txtClave.Text;
+                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
+                this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                //Se verifica el tipo de persona seleccionada
+                if (rdbAlumno.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
+                }
+                else if (rdbDocente.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
+                }
+                UsuarioActual.State = Usuario.States.New;
+            }
+            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
+                this.UsuarioActual.Clave = this.txtClave.Text;
+                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
+                this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                //Se verifica el tipo de persona seleccionada
+                if (rdbAlumno.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Alumno;
+                }
+                else if (rdbDocente.Checked)
+                {
+                    this.UsuarioActual.Persona.TipoPersona = Persona.TiposPersonas.Docente;
+                }
+                UsuarioActual.State = Usuario.States.Modified;
+            }
+            else if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                new UsuarioLogic().Delete(Int32.Parse(this.txtID.Text));
+            }
+        }
+
+        /// <summary>
+        /// Constructor utilizado para las Altas
+        /// </summary>
+        /// <param name="modo"></param>
+        public UsuarioDesktop(ModoForm modo) : this()
+        {
+            this.Modo = modo;
+            this.btnAceptar.Text = "Guardar";
+        }
+
+        /// <summary>
+        /// Constructor utilizado para las Bajas y Modificaciones
+        /// </summary>
+        /// <param name="modo"></param>
+        public UsuarioDesktop(int ID, ModoForm modo) : this()
+        {
+            this.Modo = modo;
+            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            {
+                this.lblConfirmarClave.Visible = false;
+                this.txtConfirmarClave.Visible = false;
+                UsuarioActual = new UsuarioLogic().GetOne(ID);
+                MapearDeDatos();
+            }
+            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
+            {
+                UsuarioActual = new UsuarioLogic().GetOne(ID);
+                MapearDeDatos();
+            }
+        }
+
         #endregion
     }
 }
