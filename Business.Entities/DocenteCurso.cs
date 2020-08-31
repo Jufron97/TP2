@@ -10,26 +10,48 @@ namespace Academia.Business.Entities
     {
         #region Atributos 
         private TiposCargos m_cargo;
-        private int m_IDCurso;
-        private int m_IDDocente;
+        private Curso m_curso;
+        private Persona m_docente;
 
         #endregion
 
-        #region Propiedades    
+        #region Constructores
+
+        public DocenteCurso()
+        {
+            Curso = new Curso();
+            Docente = new Persona();
+        }
+
+        #endregion
+        #region Propiedades  
+
         public TiposCargos Cargo
         {
             get => m_cargo;
             set => m_cargo = value;
         }     
+
+        public Curso Curso
+        {
+            get => m_curso;
+            set => m_curso = value;
+        }
+
         public int IDCurso
         {
-            get => m_IDCurso;
-            set => m_IDCurso = value;
+            get => Curso.ID;
         }
+
+        public Persona Docente
+        {
+            get => m_docente;
+            set => m_docente = value;
+        }
+
         public int IDDocente
         {
-            get => m_IDDocente;
-            set => m_IDDocente = value;
+            get => Docente.ID;
         }
 
         #endregion

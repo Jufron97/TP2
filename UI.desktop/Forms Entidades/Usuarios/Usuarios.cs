@@ -71,10 +71,10 @@ namespace Academia.UI.Desktop
                 //Se asigna el tipo de formulario
                 formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
                 //Se selecciona al usuario
+                //AACA IRIA FORMULARIO Y DESPUES LA CONSULTA A BD              
                 formUsuario.UsuarioActual=((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
                 //Se muestra al usuario en el formulario con los datos cargados
                 formUsuario.ShowDialog();
-
                 Listar();
             }
             else

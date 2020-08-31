@@ -44,6 +44,7 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcUsuario.ContentPanel.SuspendLayout();
             this.tcUsuario.TopToolStripPanel.SuspendLayout();
             this.tcUsuario.SuspendLayout();
@@ -58,11 +59,11 @@
             // tcUsuario.ContentPanel
             // 
             this.tcUsuario.ContentPanel.Controls.Add(this.tlUsuarios);
-            this.tcUsuario.ContentPanel.Size = new System.Drawing.Size(617, 183);
+            this.tcUsuario.ContentPanel.Size = new System.Drawing.Size(757, 183);
             this.tcUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcUsuario.Location = new System.Drawing.Point(0, 0);
             this.tcUsuario.Name = "tcUsuario";
-            this.tcUsuario.Size = new System.Drawing.Size(617, 210);
+            this.tcUsuario.Size = new System.Drawing.Size(757, 210);
             this.tcUsuario.TabIndex = 0;
             this.tcUsuario.Text = "toolStripContainer1";
             // 
@@ -84,7 +85,7 @@
             this.tlUsuarios.RowCount = 2;
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlUsuarios.Size = new System.Drawing.Size(617, 183);
+            this.tlUsuarios.Size = new System.Drawing.Size(757, 183);
             this.tlUsuarios.TabIndex = 0;
             // 
             // dgvUsuarios
@@ -98,7 +99,8 @@
             this.habilitado,
             this.nombre,
             this.apellido,
-            this.email});
+            this.email,
+            this.Legajo});
             this.tlUsuarios.SetColumnSpan(this.dgvUsuarios, 2);
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
@@ -107,13 +109,13 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(611, 148);
+            this.dgvUsuarios.Size = new System.Drawing.Size(751, 148);
             this.dgvUsuarios.TabIndex = 0;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(458, 157);
+            this.btnActualizar.Location = new System.Drawing.Point(598, 157);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -123,7 +125,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(539, 157);
+            this.btnSalir.Location = new System.Drawing.Point(679, 157);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -179,6 +181,7 @@
             // 
             this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.id.DataPropertyName = "ID";
+            this.id.FillWeight = 30F;
             this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
@@ -187,7 +190,7 @@
             // 
             this.usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.usuario.DataPropertyName = "NombreUsuario";
-            this.usuario.FillWeight = 130F;
+            this.usuario.FillWeight = 70F;
             this.usuario.HeaderText = "Nombre de Usuario";
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
@@ -196,6 +199,7 @@
             // 
             this.habilitado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.habilitado.DataPropertyName = "Habilitado";
+            this.habilitado.FillWeight = 50F;
             this.habilitado.HeaderText = "Habilitado";
             this.habilitado.Name = "habilitado";
             this.habilitado.ReadOnly = true;
@@ -203,7 +207,8 @@
             // nombre
             // 
             this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.DataPropertyName = "Persona.Nombre";
+            this.nombre.DataPropertyName = "Nombre";
+            this.nombre.FillWeight = 70F;
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
@@ -211,7 +216,8 @@
             // apellido
             // 
             this.apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.apellido.DataPropertyName = "Persona.Apellido";
+            this.apellido.DataPropertyName = "Apellido";
+            this.apellido.FillWeight = 70F;
             this.apellido.HeaderText = "Apellido";
             this.apellido.Name = "apellido";
             this.apellido.ReadOnly = true;
@@ -219,16 +225,24 @@
             // email
             // 
             this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.email.DataPropertyName = "Persona.Email";
+            this.email.DataPropertyName = "Email";
+            this.email.FillWeight = 150F;
             this.email.HeaderText = "Email";
             this.email.Name = "email";
             this.email.ReadOnly = true;
+            // 
+            // Legajo
+            // 
+            this.Legajo.DataPropertyName = "Legajo";
+            this.Legajo.HeaderText = "Legajo";
+            this.Legajo.Name = "Legajo";
+            this.Legajo.ReadOnly = true;
             // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 210);
+            this.ClientSize = new System.Drawing.Size(757, 210);
             this.Controls.Add(this.tcUsuario);
             this.Name = "Usuarios";
             this.Text = "Usuarios";
@@ -263,6 +277,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
     }
 }
 

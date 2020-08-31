@@ -26,7 +26,8 @@ namespace Academia.Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HsSemanales = (int)drMaterias["hs_semanales"];
                     mat.HsTotales = (int)drMaterias["hs_totales"];
-                    mat.IdPlan = (int)drMaterias["id_plan"];
+                    //Datos del Plan
+                    mat.Plan.ID = (int)drMaterias["id_plan"];
                     Materias.Add(mat);
                 }
                 drMaterias.Close();
@@ -58,7 +59,8 @@ namespace Academia.Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HsSemanales = (int)drMaterias["hs_semanales"];
                     mat.HsTotales = (int)drMaterias["hs_totales"];
-                    mat.IdPlan = (int)drMaterias["id_plan"];
+                    //Datos del Pplan
+                    mat.Plan.ID = (int)drMaterias["id_plan"];
                 }
                 drMaterias.Close();
             }
@@ -91,7 +93,7 @@ namespace Academia.Data.Database
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al modificar datos de la materia", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {
@@ -148,13 +150,13 @@ namespace Academia.Data.Database
                 Insert(materia);
             }
             else if (materia.State == BusinessEntity.States.Deleted)
-            {
-                Delete(materia);
-            }
-            else if (materia.State == BusinessEntity.States.Modified)
-            {
-                Update(materia);
-            }
+                {
+                    Delete(materia);
+                }
+                else
+                {
+                    Update(materia);
+                }               
             materia.State = BusinessEntity.States.Unmodified;
         }
     }

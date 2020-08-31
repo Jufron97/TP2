@@ -42,7 +42,5 @@ namespace Academia.Business.Logic
             ComisionData.Save(comision);
         }
 
-
-
     }
 }

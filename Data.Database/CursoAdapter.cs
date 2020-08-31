@@ -25,8 +25,9 @@ namespace Academia.Data.Database
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.ID = (int)drCursos["id_curso"];
-                    cur.IDComision = (int)drCursos["id_comision"];
-                    cur.IDMateria = (int)drCursos["id_materia"];
+                    //Aca irian los objetos Comision y Materia
+                    cur.Comision.ID = (int)drCursos["id_comision"];
+                    cur.Materia.ID = (int)drCursos["id_materia"];
                     //cur.Descripcion = (string)drCursos["descripcion"];
                     Cursos.Add(cur);
                 }
@@ -58,8 +59,9 @@ namespace Academia.Data.Database
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.ID = (int)drCursos["id_curso"];
-                    cur.IDComision = (int)drCursos["id_comision"];
-                    cur.IDMateria = (int)drCursos["id_materia"];
+                    //ACA FALTAN LOS OBJETOS DEL CURSO
+                    cur.Comision.ID = (int)drCursos["id_comision"];
+                    cur.Comision.ID = (int)drCursos["id_materia"];
                 }
                 drCursos.Close();
             }

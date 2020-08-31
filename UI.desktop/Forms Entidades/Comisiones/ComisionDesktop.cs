@@ -76,7 +76,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.ComisionActual.ID = Convert.ToInt32(this.txtID.Text);
             this.ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAnioEspecialidad.Text);
             this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-            this.ComisionActual.IDPlan = Convert.ToInt32(this.txtIDPlan.Text);
+            this.ComisionActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
         }
 
         public void MapearADatos2()
@@ -178,14 +178,14 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
                 ComisionActual = new Comision();
                 this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
                 this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                this.ComisionActual.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 ComisionActual.State = Comision.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
                 this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                this.ComisionActual.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 ComisionActual.State = Comision.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)

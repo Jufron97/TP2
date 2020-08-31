@@ -74,7 +74,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             this.MateriaActual.Descripcion = this.txtDescripcion.Text;
             this.MateriaActual.HsSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
             this.MateriaActual.HsTotales = Convert.ToInt32(this.txtHorasTotales.Text);
-            this.MateriaActual.IdPlan = Convert.ToInt32(this.txtIDPlan.Text);
+            this.MateriaActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                 this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
                 this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 MateriaActual.State = BusinessEntity.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
@@ -196,7 +196,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                 this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
                 this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.IdPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 MateriaActual.State = BusinessEntity.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)

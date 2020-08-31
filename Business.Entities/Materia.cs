@@ -12,8 +12,17 @@ namespace Academia.Business.Entities
 
         private int m_hsSemanales;
         private int m_hsTotales;
-        private int m_idPlan;
+        private Plan m_Plan;
         private string m_descripcion;
+
+        #endregion
+
+        #region Constructores
+
+        public Materia()
+        {
+            Plan = new Plan();
+        }
 
         #endregion
 
@@ -36,10 +45,16 @@ namespace Academia.Business.Entities
             set => m_hsTotales = value;
         }
 
+        public Plan Plan
+        {
+            get => m_Plan;
+            set => m_Plan = value;
+        }
+
         public int IdPlan
         {
-            get => m_idPlan;
-            set => m_idPlan = value;
+            get => Plan.ID;
+
         }
 
         #endregion

@@ -16,9 +16,18 @@ namespace Academia.Business.Entities
         private string m_direccion;
         private string m_email;
         private DateTime m_fechaNacimiento;
-        private int m_IDPlan;
+        private Plan m_plan;
         private TiposPersonas m_tipoPersona;
         private int m_legajo;
+
+        #endregion
+
+        #region Constructores
+
+        public Persona()
+        {
+            Plan = new Plan();
+        }
 
         #endregion
 
@@ -59,14 +68,18 @@ namespace Academia.Business.Entities
             get => m_fechaNacimiento;
             set => m_fechaNacimiento = value;
         }
-        
-        public int IDPlan
+       
+        public Plan Plan
         {
-            get => m_IDPlan;
-            set => m_IDPlan = value;
+            get => m_plan;
+            set => m_plan = value;
         }
 
-        
+        public int IDPlan
+        {
+            get =>Plan.ID;
+        }
+
         public int Legajo
         {
             get => m_legajo;

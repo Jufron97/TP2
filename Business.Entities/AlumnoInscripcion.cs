@@ -8,22 +8,47 @@ namespace Academia.Business.Entities
 {
     public class AlumnoInscripcion:BusinessEntity
     {
+        #region Atributos
+
         private int m_nota;
-        private int m_IDAlumno;
-        private int m_IDCurso;
+        private Persona m_alumno;
+        private Curso m_curso;
         private string m_condicion;
+
+        #endregion
+
+        #region Constructores
+
+        public AlumnoInscripcion()
+        {
+            Alumno = new Persona();
+            Curso = new Curso();
+        }
+
+        #endregion
+
+        #region Propiedades
+
+        public Persona Alumno
+        {
+            get => m_alumno;
+            set => m_alumno = value;
+        }
 
         public int IDAlumno
         {
-            get => m_IDAlumno;
-            set => m_IDAlumno = value;
+            get => Alumno.ID;
+        }
 
+        public Curso Curso
+        {
+            get => m_curso;
+            set => m_curso = value;
         }
 
         public int IDCurso
         {
-            get => m_IDCurso;
-            set => m_IDCurso = value;
+            get => Curso.ID;
         }
 
         public string Condicion
@@ -37,5 +62,7 @@ namespace Academia.Business.Entities
             get => m_nota;
             set => m_nota = value;
         }
+
+        #endregion
     }
 }

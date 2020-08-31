@@ -65,28 +65,66 @@ namespace Academia.Data.Database
         #endregion
             */
 
+        /// <summary>
+        /// Devuelve una coleccion con todos los Usuarios de la BD
+        /// </summary>
+        /// <returns></returns>
         public List<Usuario> GetAll()
         {
             List<Usuario> Usuarios = new List<Usuario>();
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("ListadoGeneral", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("ListadoGeneralUsuarios", sqlConn);
                 cmdUsuarios.CommandType=CommandType.StoredProcedure;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
-                    Usuario usr = new Usuario()
-                    {
-                        Persona = new Persona()
-                    };
+                    Usuario usr = new Usuario();
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     //Datos de la persona 
+                    usr.Persona.ID = (int)drUsuarios["id_persona"];
                     usr.Persona.Nombre = (string)drUsuarios["nombre"];
                     usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                    usr.Persona.Email = (string)drUsuarios["email"];
+                    usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
+                    usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
+                    //ACA FALTAN LOS DATOS DEL OBJETO PLAN Y ESPECIALIDAD EN SI HAY QUE MODIFICAR EL PROCEDIMIENTO
+                    //Asi se verifica si son nulos o no los datos
+                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    {
+                        usr.Persona.Direccion = "No posee";
+                    }
+                    else
+                    {
+                        usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                    }                   
+                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    {
+                        usr.Persona.Email = "No posee";
+                    }
+                    else
+                    {
+                        usr.Persona.Email = (string)drUsuarios["email"];
+                    }
+                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    {
+                        usr.Persona.Telefono = "No posee";
+                    }
+                    else
+                    {
+                        usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                    }
+                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    {
+                        usr.Persona.Legajo = 0;
+                    }
+                    else
+                    {
+                        usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                    }                    
+
                     Usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -96,7 +134,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {
@@ -105,12 +143,14 @@ namespace Academia.Data.Database
             return Usuarios;
         }
 
+        /// <summary>
+        /// Devuelve un objeto Usuario especificado por el ID ingresado
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public Usuario GetOne(int ID)
         {
-            Usuario usr = new Usuario()
-            { 
-                Persona = new Persona() 
-            };
+            Usuario usr = new Usuario();
             try
             {
                 OpenConnection();
@@ -144,12 +184,15 @@ namespace Academia.Data.Database
             return usr;
         }
 
+        /// <summary>
+        /// Metodo utilizado para buscar un usuario por su Nombre y Clave
+        /// </summary>
+        /// <param name="nomUsu"></param>
+        /// <param name="claveUsu"></param>
+        /// <returns></returns>
         public Usuario GetOne(string nomUsu, string claveUsu)
         {
-            Usuario usr = new Usuario()
-            {
-                Persona = new Persona()
-            };
+            Usuario usr = new Usuario();
             //Se simplifica la inicializacion con las llaves
             try
             {
@@ -167,19 +210,20 @@ namespace Academia.Data.Database
                     //Datos para el objeto Persona
                     //Esto es ya que el usuario admin no tiene un objeto persona ligado en si, y hay campos que tienen que ser
                     //No nulos, y traen problemas ocn las conversiones
-                    //AHORA QUE PIENSO, SI HAY UN USUARIO DONDE LA PERSONA TIENE CAMPOS NULOS, VA A PASAR LO MISM OQUE ANTES
+                    //AHORA QUE PIENSO, SI HAY UN USUARIO DONDE LA PERSONA TIENE CAMPOS NULOS, VA A PASAR LO MISMO QUE ANTES
                     if (usr.NombreUsuario!="admin")
                     {
                         usr.Persona.ID = (int)drUsuarios["id_persona"];
                         usr.Persona.Nombre = (string)drUsuarios["nombre"];
                         usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                        usr.Persona.Direccion = (string)drUsuarios["direccion"];
-                        usr.Persona.Email = (string)drUsuarios["email"];
-                        usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                        //usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                        //usr.Persona.Email = (string)drUsuarios["email"];
+                        //usr.Persona.Telefono = (string)drUsuarios["telefono"];
                         usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
-                        usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                        //usr.Persona.Legajo = (int)drUsuarios["legajo"];
                         usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                        usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];
+                        //ACA FALTAN LOS DATOS DEL OBJETO PLAN Y ESPECIALIDAD EN SI HAY QUE MODIFICAR EL PROCEDIMIENTO
+                        //usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];
                     }
                     else
                     {
@@ -195,7 +239,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar al usuario", Ex);
-                throw Ex;
+                throw ExcepcionManejada;
             }
             finally
             {
@@ -206,38 +250,46 @@ namespace Academia.Data.Database
 
         public void Update(Usuario usuario)
         {
+            OpenConnection();
+            SqlTransaction sqlTran = sqlConn.BeginTransaction();
             try
             {
-                //ESTO SE RESUELVE CON SQLTRANSACTIONS, BUSCAR EN INTERNET
-                OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario=@nombre_usuario,clave=@clave," +
-                "habilitado=@habilitado,nombre=@nombre,apellido=@apellido,email=@email WHERE id_usuario=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
-                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
+                SqlCommand cmdSave = new SqlCommand("ActualizarUsuario",sqlConn);
+                cmdSave.CommandType = CommandType.StoredProcedure;
+                cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdSave.Parameters.Add("@idUsu", SqlDbType.Int).Value = usuario.ID;
+                //Aca queda pendiente con respecto a los datos de la persona, hay que discutirlo
+                cmdSave.Transaction = sqlTran;
                 cmdSave.ExecuteNonQuery();
+                sqlTran.Commit();
             }
             catch (Exception Ex)
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
+                //En caso de que no se ejecute correctamente las transaccion, se volvera aplicara el rollback
+                //Para volve a tener la base en un estado consistente
+                sqlTran.Rollback();
                 Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario", Ex);
                 throw ExcepcionManejada;
             }
             finally
             {
+                //sqlTran.Commit();
                 CloseConnection();
             }
         }
-        public void Delete(Usuario usuario)
+        
+        public void Delete(Usuario usu)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("EliminarUsuario", sqlConn);
                 cmdDelete.CommandType = CommandType.StoredProcedure;
-                cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = usuario.ID;
+                cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = usu.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -255,39 +307,42 @@ namespace Academia.Data.Database
 
         public void Insert(Usuario usuario)
         {
+            OpenConnection();
+            //Se inicializa la transaccion 
+            SqlTransaction sqlTran = sqlConn.BeginTransaction();
             try
             {
-                //VER CLASE SQLTRANSACTION, PODRIAMOS APLICARLA PARA RESOLVER TODO ESTO
-                OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado)"+
-                "values (@nombre_usuario,@clave,@habilitado)"+
-                "select @@identity",sqlConn); 
-                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
-                //
-                /* TODO ESTO SERIA EL OBJETO PERSONA QUE SE CREARIA CON EL USUARIO, HAY QUE MODIFICAR EL FORM PARA ESO
-                cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan)" +
-                "values (@nombre,@apellido,@direccion,@email,@telefono,@fecha_nac,@legajo,@tipo_persona,@id_plan)" +
-                "select @@identity", sqlConn);
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
-                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
-                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
-                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
-                cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
-                cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
-                usuario.Persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
+                cmdSave.CommandType = CommandType.StoredProcedure;
+                //Datos del objeto persona
+                cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
+                cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
+                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
+                //cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
+                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
+                //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
+                cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
+                cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
+                //Datos del objeto usuario
+                /*
+                 * Se podria hacer dos storeProcedure
+                cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
+                
                 */
+                cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdSave.Transaction = sqlTran;
+                cmdSave.ExecuteNonQuery();
+                sqlTran.Commit();
             }
             catch (Exception Ex)
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
+                sqlTran.Rollback();
                 Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {
@@ -300,15 +355,42 @@ namespace Academia.Data.Database
             {
                 Insert(usuario);
             }
-            if (usuario.State == BusinessEntity.States.Deleted)
-            {
-                Delete(usuario);
-            }
-            if (usuario.State == BusinessEntity.States.Modified)
-            {
-                Update(usuario);
-            }
+            else if (usuario.State == BusinessEntity.States.Deleted)
+                {
+                    Delete(usuario);
+                }
+                if (usuario.State == BusinessEntity.States.Modified)
+                    {
+                        Update(usuario);
+                    }
             usuario.State = BusinessEntity.States.Unmodified;            
-        }       
+        }
+
+        #region Codigo viejo
+
+        public void Delete(int ID)
+        {
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("EliminarUsuario", sqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
+                cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = ID;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
+                //new Log(Ex.Message);
+                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        #endregion
     }
 }

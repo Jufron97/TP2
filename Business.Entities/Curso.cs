@@ -13,8 +13,18 @@ namespace Academia.Business.Entities
         private int m_anioCalendario;
         private int m_cupo;
         private string m_descripcion;
-        private int m_IDComision;
-        private int m_IDMateria;
+        private Comision m_comision;
+        private Materia m_materia;
+
+        #endregion
+
+        #region Constructores
+
+        public Curso()
+        {
+            Comision = new Comision();
+            Materia = new Materia();
+        }
 
         #endregion
 
@@ -37,16 +47,26 @@ namespace Academia.Business.Entities
             set => m_descripcion = value;
         }
 
+        public Comision Comision
+        {
+            get => m_comision;
+            set => m_comision = value;
+        }
+
         public int IDComision
         {
-            get => m_IDComision;
-            set => m_IDComision = value;
+            get => Comision.ID;
+        }
+
+        public Materia Materia
+        {
+            get => m_materia;
+            set => m_materia = value;
         }
 
         public int IDMateria
         {
-            get => m_IDMateria;
-            set => m_IDMateria = value;
+            get => Materia.ID;
         }
 
         #endregion

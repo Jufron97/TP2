@@ -12,7 +12,16 @@ namespace Academia.Business.Entities
 
         private int m_anioEspecialidad;
         private string m_descripcion;
-        private int m_IDPlan;
+        private Plan m_Plan;
+
+        #endregion
+
+        #region Constructores
+
+        public Comision()
+        {
+            Plan = new Plan();
+        }
 
         #endregion
 
@@ -28,11 +37,16 @@ namespace Academia.Business.Entities
             get => m_descripcion;
             set => m_descripcion = value;
         }
+
+        public Plan Plan
+        {
+            get => m_Plan;
+            set => m_Plan = value;
+        }
     
         public int IDPlan
         {
-            get => m_IDPlan;
-            set => m_IDPlan = value;
+            get => Plan.ID;
         }
 
         #endregion

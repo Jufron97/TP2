@@ -71,7 +71,6 @@ namespace Academia.UI.Desktop
             this.txtIDPlan.Text = Convert.ToString(this.UsuarioActual.Persona.IDPlan);
             this.txtNombre.Text = this.UsuarioActual.Persona.Nombre ;
             this.txtApellido.Text = this.UsuarioActual.Persona.Apellido;
-            this.dtpFechaNac.Value = this.UsuarioActual.Persona.FechaNacimiento;
             if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
             {
                 this.rdbAlumno.Checked = true;
@@ -80,7 +79,7 @@ namespace Academia.UI.Desktop
             {
                 this.rdbDocente.Checked = true;
             }
-       
+            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;            
             /*
              * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
              */
@@ -99,7 +98,7 @@ namespace Academia.UI.Desktop
             this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
             this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
             this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-            this.UsuarioActual.Persona.IDPlan = Convert.ToInt32(this.txtIDPlan.Text);
+            this.UsuarioActual.Persona.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
             //Se verifica el tipo de persona seleccionada
             if (rdbAlumno.Checked)
             {
@@ -222,7 +221,7 @@ namespace Academia.UI.Desktop
                 this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
                 this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 //Se verifica el tipo de persona seleccionada
                 if (rdbAlumno.Checked)
                 {
@@ -242,7 +241,7 @@ namespace Academia.UI.Desktop
                 this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
                 this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.IDPlan = Int32.Parse(this.txtIDPlan.Text);
+                this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 //Se verifica el tipo de persona seleccionada
                 if (rdbAlumno.Checked)
                 {
@@ -256,7 +255,7 @@ namespace Academia.UI.Desktop
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
             {
-                //new UsuarioLogic().Delete(Int32.Parse(this.txtID.Text));
+                new UsuarioLogic().Delete(Int32.Parse(this.txtID.Text));
             }
         }
 

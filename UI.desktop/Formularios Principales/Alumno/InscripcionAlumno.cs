@@ -23,8 +23,8 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
 
         public InscripcionAlumno(Usuario usuario)
         {
-            InitializeComponent();
             UsuarioActual = usuario;
+            InitializeComponent();
         }
 
     }

@@ -73,7 +73,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             this.PlanActual = new Plan();
             this.PlanActual.ID = Convert.ToInt32(this.txtID.Text);
             this.PlanActual.Descripcion = this.txtDescripcion.Text;
-            this.PlanActual.IDEspecialidad = Convert.ToInt32(this.txtIDEspecialidad.Text);
+            this.PlanActual.Especialidad.ID = Convert.ToInt32(this.txtIDEspecialidad.Text);
         }
 
         public void MapearADatos2()
@@ -198,13 +198,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             {
                 PlanActual = new Plan();
                 this.PlanActual.Descripcion = this.txtDescripcion.Text;
-                this.PlanActual.IDEspecialidad = Int32.Parse(this.txtIDEspecialidad.Text);
+                this.PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
                 PlanActual.State = Especialidad.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 PlanActual.Descripcion = this.txtDescripcion.Text;
-                PlanActual.IDEspecialidad = Int32.Parse(this.txtIDEspecialidad.Text);
+                PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
                 PlanActual.State = Usuario.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)

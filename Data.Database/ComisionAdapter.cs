@@ -25,7 +25,7 @@ namespace Academia.Data.Database
                     Comision com = new Comision();
                     com.ID = (int)drComisiones["id_comision"];
                     com.Descripcion = (string)drComisiones["desc_comision"];
-                    com.IDPlan = (int)drComisiones["id_plan"];
+                    com.Plan.ID = (int)drComisiones["id_plan"];
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                     Comisiones.Add(com);
                 }
@@ -56,7 +56,7 @@ namespace Academia.Data.Database
                 {
                     com.ID = (int)drComisiones["id_comision"];
                     com.Descripcion = (string)drComisiones["desc_comision"];
-                    com.IDPlan = (int)drComisiones["id_plan"];
+                    com.Plan.ID = (int)drComisiones["id_plan"];
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                 }
                 drComisiones.Close();

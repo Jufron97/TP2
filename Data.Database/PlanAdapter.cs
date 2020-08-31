@@ -18,14 +18,17 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPlanes = new SqlCommand("select * from planes", sqlConn);
+                SqlCommand cmdPlanes = new SqlCommand("ListadoGeneralPlanes", sqlConn);
+                cmdPlanes.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 while (drPlanes.Read())
                 {
                     Plan pl = new Plan();
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
-                    pl.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    //Datos de especialidad
+                    pl.Especialidad.ID = (int)drPlanes["id_especialidad"];
+                    pl.Especialidad.Descripcion = (string)drPlanes["desc_especialidad"];
                     Planes.Add(pl);
                 }
                 drPlanes.Close();
@@ -48,14 +51,17 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPlanes = new SqlCommand("select * from Planes where id_plan=@id", sqlConn);
-                cmdPlanes.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlCommand cmdPlanes = new SqlCommand("BuscarPlanID", sqlConn);
+                cmdPlanes.CommandType = CommandType.StoredProcedure;
+                cmdPlanes.Parameters.Add("@idPlan", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 if (drPlanes.Read())
                 {
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
-                    pl.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    //Datos de especialidad
+                    pl.Especialidad.ID = (int)drPlanes["id_especialidad"];
+                    pl.Especialidad.Descripcion = (string)drPlanes["desc_especialidad"];
                 }
                 drPlanes.Close();
             }
@@ -76,11 +82,11 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan=@desc_plan,id_especialidad=@id_especialidad " +
-                "WHERE id_plan=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
-                cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                SqlCommand cmdSave = new SqlCommand("ActualizarPlan", sqlConn);
+                cmdSave.CommandType = CommandType.StoredProcedure;
+                cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = plan.ID;
+                cmdSave.Parameters.Add("@DescPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
+                cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -93,13 +99,19 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
+
+        /// <summary>
+        /// Elimina el plan especificado por el ID
+        /// </summary>
+        /// <param name="plan"></param>
         public void Delete(Plan plan)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete from planes where id_plan=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
+                SqlCommand cmdDelete = new SqlCommand("EliminarPlan", sqlConn);
+                cmdDelete.CommandType = CommandType.StoredProcedure;
+                cmdDelete.Parameters.Add("@idPlan", SqlDbType.Int).Value = plan.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -113,17 +125,21 @@ namespace Academia.Data.Database
             }
         }
 
+        /// <summary>
+        /// Inserta los datos del objeto Plan en la BD
+        /// </summary>
+        /// <param name="plan"></param>
         public void Insert(Plan plan)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into planes (desc_plan,id_especialidad)" +
-                "values (@desc_plan,@id_especialidad)" +
-                "select @@identity", sqlConn);
-                cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
-                plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                SqlCommand cmdSave = new SqlCommand("InsertarPlan", sqlConn);
+                cmdSave.CommandType = CommandType.StoredProcedure;
+                cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
+                cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                //Hay que ver si se nos solicita el ID del plan que se crea
+                //plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
             {

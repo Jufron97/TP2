@@ -80,8 +80,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             this.CursoActual = new Curso();
             this.CursoActual.ID = Convert.ToInt32(this.txtID.Text);
             this.CursoActual.AnioCalendario = Convert.ToInt32(this.txtAñoCalendario.Text);
-            this.CursoActual.IDComision = Convert.ToInt32(this.txtIDComision.Text);
-            this.CursoActual.IDMateria = Convert.ToInt32(this.txtIDMateria.Text);
+            this.CursoActual.Comision.ID = Convert.ToInt32(this.txtIDComision.Text);
+            this.CursoActual.Materia.ID = Convert.ToInt32(this.txtIDMateria.Text);
             this.CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
         }
 
@@ -221,16 +221,16 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 CursoActual = new Curso();
-                this.CursoActual.IDMateria = Int32.Parse(this.txtIDMateria.Text);
-                this.CursoActual.IDComision = Int32.Parse(this.txtIDComision.Text);
+                this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
+                this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
                 this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
                 this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
                 CursoActual.State = BusinessEntity.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
-                this.CursoActual.IDMateria = Int32.Parse(this.txtIDMateria.Text);
-                this.CursoActual.IDComision = Int32.Parse(this.txtIDComision.Text);
+                this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
+                this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
                 this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
                 this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
                 CursoActual.State = BusinessEntity.States.Modified;

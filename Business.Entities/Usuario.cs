@@ -19,6 +19,7 @@ namespace Academia.Business.Entities
         public Usuario()
         {
             Persona = new Persona();
+            //Persona.Plan = new Plan();
         }
 
         #region Propiedades
@@ -28,6 +29,7 @@ namespace Academia.Business.Entities
             set => m_nombreUsuario = value;
         }
 
+        
         public string Clave
         {
             get => m_clave;
@@ -43,6 +45,30 @@ namespace Academia.Business.Entities
         {
             get => m_persona;
             set => m_persona = value;
+        }
+
+        public string Nombre
+        {
+            get => Persona.Nombre;
+            set => Persona.Nombre = value;
+        }
+
+        public string Apellido
+        {
+            get => Persona.Apellido;
+            set => Persona.Apellido = value;
+        }
+
+        public string Email
+        {
+            get => Persona.Email;
+            set => Persona.Email = value;
+        }
+
+        public int Legajo
+        {
+            get => Persona.Legajo;
+            set => Persona.Legajo = value;
         }
 
         #endregion
