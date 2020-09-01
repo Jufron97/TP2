@@ -124,7 +124,6 @@ namespace Academia.Data.Database
                     {
                         usr.Persona.Legajo = (int)drUsuarios["legajo"];
                     }                    
-
                     Usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -134,7 +133,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
-                throw Ex;
+                throw ExcepcionManejada;
             }
             finally
             {
@@ -216,14 +215,41 @@ namespace Academia.Data.Database
                         usr.Persona.ID = (int)drUsuarios["id_persona"];
                         usr.Persona.Nombre = (string)drUsuarios["nombre"];
                         usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                        //usr.Persona.Direccion = (string)drUsuarios["direccion"];
-                        //usr.Persona.Email = (string)drUsuarios["email"];
-                        //usr.Persona.Telefono = (string)drUsuarios["telefono"];
                         usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
-                        //usr.Persona.Legajo = (int)drUsuarios["legajo"];
                         usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                        //ACA FALTAN LOS DATOS DEL OBJETO PLAN Y ESPECIALIDAD EN SI HAY QUE MODIFICAR EL PROCEDIMIENTO
-                        //usr.Persona.IDPlan = (int)drUsuarios["id_Plan"];
+                        usr.Persona.Plan.ID = (int)drUsuarios["id_Plan"];
+                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                        {
+                            usr.Persona.Direccion = "No posee";
+                        }
+                        else
+                        {
+                            usr.Persona.Direccion = (string)drUsuarios["direccion"];
+                        }
+                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                        {
+                            usr.Persona.Email = "No posee";
+                        }
+                        else
+                        {
+                            usr.Persona.Email = (string)drUsuarios["email"];
+                        }
+                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                        {
+                            usr.Persona.Telefono = "No posee";
+                        }
+                        else
+                        {
+                            usr.Persona.Telefono = (string)drUsuarios["telefono"];
+                        }
+                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                        {
+                            usr.Persona.Legajo = 0;
+                        }
+                        else
+                        {
+                            usr.Persona.Legajo = (int)drUsuarios["legajo"];
+                        }
                     }
                     else
                     {

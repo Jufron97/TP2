@@ -88,16 +88,16 @@
             this.IDMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDMateria.DataPropertyName = "IDMateria";
             this.IDMateria.FillWeight = 30F;
-            this.IDMateria.HeaderText = "ID Materia";
+            this.IDMateria.HeaderText = "Materia";
             this.IDMateria.Name = "IDMateria";
             this.IDMateria.ReadOnly = true;
             // 
             // IDComision
             // 
             this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDComision.DataPropertyName = "IDComision";
+            this.IDComision.DataPropertyName = "IDMateria";
             this.IDComision.FillWeight = 30F;
-            this.IDComision.HeaderText = "ID Comision";
+            this.IDComision.HeaderText = "Comision";
             this.IDComision.Name = "IDComision";
             this.IDComision.ReadOnly = true;
             // 
