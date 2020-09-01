@@ -62,6 +62,7 @@
             this.btnCursos.TabIndex = 1;
             this.btnCursos.Text = "Inscripción a Cursos";
             this.btnCursos.UseVisualStyleBackColor = true;
+            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
             // 
             // btnSalir
             // 

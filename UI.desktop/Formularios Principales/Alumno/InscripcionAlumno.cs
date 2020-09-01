@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Formularios_Principales.Alumno
 {
@@ -15,11 +16,17 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
     {
         private Usuario m_usuario;
 
+        #region Propiedades
+
         public Usuario UsuarioActual
         {
             get => m_usuario;
             set => m_usuario = value;
         }
+
+        #endregion
+
+        #region Constructores
 
         public InscripcionAlumno(Usuario usuario)
         {
@@ -27,5 +34,30 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Metodos
+
+        public void Listar()
+        {
+            AlumnoInscripcionLogic InsLogic = new AlumnoInscripcionLogic();
+            try
+            {
+                dgvInscripcionAlumno.DataSource = InsLogic.GetAll();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+        }
+
+        #endregion
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
+        }
     }
 }

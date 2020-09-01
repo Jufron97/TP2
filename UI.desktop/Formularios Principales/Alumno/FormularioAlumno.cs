@@ -18,11 +18,18 @@ namespace Academia.UI.Desktop
     {
         private Usuario m_usuarioActual;
 
+        #region Propiedades
+
         public Usuario UsuarioActual
         {
             get => m_usuarioActual;
             set => m_usuarioActual = value;
         }
+
+        #endregion
+
+        #region Constructores
+
         public FormularioAlumno(Usuario usuActual)
         {
             InitializeComponent();
@@ -31,6 +38,11 @@ namespace Academia.UI.Desktop
             lblLegajo.Text = UsuarioActual.Persona.Legajo.ToString();
         }
 
+        #endregion
+
+
+        #region EventosFormulario
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -38,7 +50,15 @@ namespace Academia.UI.Desktop
 
         private void btnMaterias_Click(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
             new InscripcionAlumno(UsuarioActual).ShowDialog();
         }
+
+        #endregion
     }
 }
