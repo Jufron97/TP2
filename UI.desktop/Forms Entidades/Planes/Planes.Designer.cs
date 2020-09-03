@@ -188,7 +188,7 @@
             // Especialidad
             // 
             this.Especialidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Especialidad.DataPropertyName = "DescripcionEspecialidad";
+            this.Especialidad.DataPropertyName = "DescEspecialidad";
             this.Especialidad.FillWeight = 120F;
             this.Especialidad.HeaderText = "Especialidad";
             this.Especialidad.Name = "Especialidad";

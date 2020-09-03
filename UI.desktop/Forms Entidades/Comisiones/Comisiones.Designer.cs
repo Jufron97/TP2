@@ -41,7 +41,7 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Año_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsComisiones.ContentPanel.SuspendLayout();
             this.tsComisiones.TopToolStripPanel.SuspendLayout();
             this.tsComisiones.SuspendLayout();
@@ -95,7 +95,7 @@
             this.ID,
             this.Descripcion,
             this.Año_Especialidad,
-            this.ID_Plan});
+            this.Plan});
             this.tlpComisiones.SetColumnSpan(this.dgvComisiones, 2);
             this.dgvComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
@@ -194,13 +194,13 @@
             this.Año_Especialidad.Name = "Año_Especialidad";
             this.Año_Especialidad.ReadOnly = true;
             // 
-            // ID_Plan
+            // Plan
             // 
-            this.ID_Plan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_Plan.DataPropertyName = "IDPlan";
-            this.ID_Plan.HeaderText = "ID Plan";
-            this.ID_Plan.Name = "ID_Plan";
-            this.ID_Plan.ReadOnly = true;
+            this.Plan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Plan.DataPropertyName = "DescPlan";
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
             // 
             // Comisiones
             // 
@@ -238,6 +238,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Año_Especialidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Plan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
     }
 }

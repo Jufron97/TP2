@@ -54,7 +54,11 @@ namespace Academia.Business.Entities
         public int IdPlan
         {
             get => Plan.ID;
+        }
 
+        public string DescripcionPlan
+        {
+            get => Plan.Descripcion;
         }
 
         #endregion
