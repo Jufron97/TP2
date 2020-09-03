@@ -48,17 +48,17 @@ namespace Academia.UI.Desktop
             this.Close();
         }
 
-        private void btnMaterias_Click(object sender, EventArgs e)
-        {
-            
 
-        }
+        #endregion
 
-        private void btnCursos_Click(object sender, EventArgs e)
+        private void btnInscripcionCursos_Click(object sender, EventArgs e)
         {
             new InscripcionAlumno(UsuarioActual).ShowDialog();
         }
 
-        #endregion
+        private void btnVisualizarCursos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
