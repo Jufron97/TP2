@@ -25,8 +25,9 @@ namespace Academia.Data.Database
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.ID = (int)drCursos["id_curso"];
-                    //Aca irian los objetos Comision y Materia
-                    cur.Comision.ID = (int)drCursos["id_comision"];
+                    //Objeto Comision
+                    cur.Comision = new ComisionAdapter().GetOne((int)drCursos["id_comision"]);
+                    //Objeto Materia
                     cur.Materia.ID = (int)drCursos["id_materia"];
                     //cur.Descripcion = (string)drCursos["descripcion"];
                     Cursos.Add(cur);

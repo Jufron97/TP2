@@ -18,8 +18,10 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
+                SqlCommand cmdPlanes = new SqlCommand("select * from planes", sqlConn);
+                /*
                 SqlCommand cmdPlanes = new SqlCommand("ListadoGeneralPlanes", sqlConn);
-                cmdPlanes.CommandType = CommandType.StoredProcedure;
+                cmdPlanes.CommandType = CommandType.StoredProcedure;*/
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 while (drPlanes.Read())
                 {
@@ -27,8 +29,7 @@ namespace Academia.Data.Database
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
                     //Datos de especialidad
-                    pl.Especialidad.ID = (int)drPlanes["id_especialidad"];
-                    pl.Especialidad.Descripcion = (string)drPlanes["desc_especialidad"];
+                    pl.Especialidad = new EspecialidadAdapter().GetOne((int)drPlanes["id_especialidad"]);
                     Planes.Add(pl);
                 }
                 drPlanes.Close();
@@ -51,8 +52,9 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPlanes = new SqlCommand("BuscarPlanID", sqlConn);
-                cmdPlanes.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmdPlanes = new SqlCommand("select * from planes where id_plan=@idPlan", sqlConn);
+                /*SqlCommand cmdPlanes = new SqlCommand("BuscarPlanID", sqlConn);
+                cmdPlanes.CommandType = CommandType.StoredProcedure;*/
                 cmdPlanes.Parameters.Add("@idPlan", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 if (drPlanes.Read())
@@ -60,8 +62,7 @@ namespace Academia.Data.Database
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
                     //Datos de especialidad
-                    pl.Especialidad.ID = (int)drPlanes["id_especialidad"];
-                    pl.Especialidad.Descripcion = (string)drPlanes["desc_especialidad"];
+                    pl.Especialidad = new EspecialidadAdapter().GetOne((int)drPlanes["id_especialidad"]);
                 }
                 drPlanes.Close();
             }
