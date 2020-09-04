@@ -22,13 +22,12 @@ namespace Academia.Data.Database
                 while (drCursos.Read())
                 {
                     Curso cur = new Curso();
-                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
-                    cur.Cupo = (int)drCursos["cupo"];
                     cur.ID = (int)drCursos["id_curso"];
                     //Aca irian los objetos Comision y Materia
                     cur.Comision.ID = (int)drCursos["id_comision"];
                     cur.Materia.ID = (int)drCursos["id_materia"];
-                    //cur.Descripcion = (string)drCursos["descripcion"];
+                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
+                    cur.Cupo = (int)drCursos["cupo"];
                     Cursos.Add(cur);
                 }
                 drCursos.Close();

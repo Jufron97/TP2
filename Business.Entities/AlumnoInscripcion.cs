@@ -11,7 +11,7 @@ namespace Academia.Business.Entities
         #region Atributos
 
         private int m_nota;
-        private Persona m_alumno;
+        private Usuario m_alumno;
         private Curso m_curso;
         private string m_condicion;
 
@@ -21,7 +21,7 @@ namespace Academia.Business.Entities
 
         public AlumnoInscripcion()
         {
-            Alumno = new Persona();
+            Alumno = new Usuario();
             Curso = new Curso();
         }
 
@@ -29,7 +29,7 @@ namespace Academia.Business.Entities
 
         #region Propiedades
 
-        public Persona Alumno
+        public Usuario Alumno
         {
             get => m_alumno;
             set => m_alumno = value;

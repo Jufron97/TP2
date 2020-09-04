@@ -97,6 +97,37 @@ namespace Academia.Data.Database
         return AlIns;
     }
 
+    public bool GetOne(AlumnoInscripcion insAlumno)
+    {    
+        AlumnoInscripcion AlIns = new AlumnoInscripcion();   
+        try
+        {
+            OpenConnection();
+            
+            SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlumno and id_curso=@idCurso", sqlConn);
+            cmdInscripciones.Parameters.Add("@idAlumno", SqlDbType.Int).Value = insAlumno.Alumno.ID;
+            cmdInscripciones.Parameters.Add("@idCurso", SqlDbType.Int).Value = insAlumno.Curso.ID;
+            SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+            if(drInscripciones.HasRows)
+                {
+                    return true;
+                }                  
+            else
+                {
+                    return false;
+                }                   
+        }
+        catch (Exception Ex)
+        {
+            Exception ExcepcionManejada = new Exception("Error al recuperar datos de la inscripcion", Ex);
+            throw ExcepcionManejada;
+        }
+        finally
+        {
+            CloseConnection();
+        }
+    }
+
     public void Update(AlumnoInscripcion alumnoInscripcion)
     {
         try

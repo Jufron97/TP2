@@ -43,5 +43,15 @@ namespace Academia.Business.Logic
             InscripcionData.Save(InscripAlumno);
         }
 
+        /// <summary>
+        /// Metodo que valida que el alumno no este inscripto en ese curso
+        /// </summary>
+        /// <param name="InscripAlumno"></param>
+        /// <returns></returns>
+        public bool validarInscripcion(AlumnoInscripcion InscripAlumno)
+        {
+            return InscripcionData.GetOne(InscripAlumno);
+        }
+
     }
 }

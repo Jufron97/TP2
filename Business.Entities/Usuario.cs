@@ -19,7 +19,6 @@ namespace Academia.Business.Entities
         public Usuario()
         {
             Persona = new Persona();
-            //Persona.Plan = new Plan();
         }
 
         #region Propiedades

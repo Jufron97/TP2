@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioAlumno));
-            this.btnMaterias = new System.Windows.Forms.Button();
-            this.btnCursos = new System.Windows.Forms.Button();
+            this.btnVisualizarCursos = new System.Windows.Forms.Button();
+            this.btnInscripcionCursos = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblNombreyApellido = new System.Windows.Forms.Label();
             this.lblLegajo = new System.Windows.Forms.Label();
@@ -42,27 +42,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnMaterias
+            // btnVisualizarCursos
             // 
-            this.btnMaterias.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaterias.Location = new System.Drawing.Point(293, 56);
-            this.btnMaterias.Name = "btnMaterias";
-            this.btnMaterias.Size = new System.Drawing.Size(237, 33);
-            this.btnMaterias.TabIndex = 0;
-            this.btnMaterias.Text = "Visualizar Cursos";
-            this.btnMaterias.UseVisualStyleBackColor = true;
-            this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
+            this.btnVisualizarCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizarCursos.Location = new System.Drawing.Point(293, 56);
+            this.btnVisualizarCursos.Name = "btnVisualizarCursos";
+            this.btnVisualizarCursos.Size = new System.Drawing.Size(237, 33);
+            this.btnVisualizarCursos.TabIndex = 0;
+            this.btnVisualizarCursos.Text = "Visualizar Cursos";
+            this.btnVisualizarCursos.UseVisualStyleBackColor = true;
+            this.btnVisualizarCursos.Click += new System.EventHandler(this.btnVisualizarCursos_Click);
             // 
-            // btnCursos
+            // btnInscripcionCursos
             // 
-            this.btnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCursos.Location = new System.Drawing.Point(293, 134);
-            this.btnCursos.Name = "btnCursos";
-            this.btnCursos.Size = new System.Drawing.Size(237, 33);
-            this.btnCursos.TabIndex = 1;
-            this.btnCursos.Text = "Inscripción a Cursos";
-            this.btnCursos.UseVisualStyleBackColor = true;
-            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
+            this.btnInscripcionCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInscripcionCursos.Location = new System.Drawing.Point(293, 134);
+            this.btnInscripcionCursos.Name = "btnInscripcionCursos";
+            this.btnInscripcionCursos.Size = new System.Drawing.Size(237, 33);
+            this.btnInscripcionCursos.TabIndex = 1;
+            this.btnInscripcionCursos.Text = "Inscripción a Cursos";
+            this.btnInscripcionCursos.UseVisualStyleBackColor = true;
+            this.btnInscripcionCursos.Click += new System.EventHandler(this.btnInscripcionCursos_Click);
             // 
             // btnSalir
             // 
@@ -135,8 +135,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 364);
             this.Controls.Add(this.pnlAlumno);
-            this.Controls.Add(this.btnCursos);
-            this.Controls.Add(this.btnMaterias);
+            this.Controls.Add(this.btnInscripcionCursos);
+            this.Controls.Add(this.btnVisualizarCursos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormularioAlumno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -151,8 +151,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnMaterias;
-        private System.Windows.Forms.Button btnCursos;
+        private System.Windows.Forms.Button btnVisualizarCursos;
+        private System.Windows.Forms.Button btnInscripcionCursos;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblNombreyApellido;
         private System.Windows.Forms.Label lblLegajo;
