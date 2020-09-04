@@ -51,7 +51,8 @@ namespace Academia.UI.Desktop
                         this.txtContraseña.Text = "";
                         this.txtUsuario.Text = "";
                         this.Show();
-                        }
+                        this.txtUsuario.Focus();
+                    }
                     else
                     {
                         MessageBox.Show("Usuario no habilitado al sistema", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);

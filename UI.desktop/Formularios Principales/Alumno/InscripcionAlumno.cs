@@ -15,6 +15,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
     public partial class InscripcionAlumno : Form
     {
         private Usuario m_usuario;
+        private Operacion m_operacion;
 
         #region Propiedades
 
@@ -22,6 +23,12 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
         {
             get => m_usuario;
             set => m_usuario = value;
+        }
+
+        public Operacion TipoFormulario
+        {
+            get => m_operacion;
+            set => m_operacion = value;
         }
 
         #endregion
@@ -43,7 +50,14 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
             AlumnoInscripcionLogic InsLogic = new AlumnoInscripcionLogic();
             try
             {
-                dgvInscripcionAlumno.DataSource = InsLogic.GetAll();
+                if (this.TipoFormulario== InscripcionAlumno.Operacion.ListadoCursos)
+                {                   
+                    dgvInscripcionAlumno.DataSource = InsLogic.GetAll();
+                }
+                else
+                {
+                    dgvInscripcionAlumno.DataSource = InsLogic.GetAll(UsuarioActual);
+                }
             }
             catch (Exception Ex)
             {
@@ -58,6 +72,12 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
         {
             this.Close();
             this.Dispose();
+        }
+
+        public enum Operacion
+        {
+            ListadoCursos,
+            VisualizarCursos
         }
     }
 }

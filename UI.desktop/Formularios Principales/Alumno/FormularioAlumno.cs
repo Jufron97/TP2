@@ -53,12 +53,16 @@ namespace Academia.UI.Desktop
 
         private void btnInscripcionCursos_Click(object sender, EventArgs e)
         {
-            new InscripcionAlumno(UsuarioActual).ShowDialog();
+           InscripcionAlumno formInscripcion = new InscripcionAlumno(UsuarioActual);
+           formInscripcion.TipoFormulario = InscripcionAlumno.Operacion.ListadoCursos;
+           formInscripcion.ShowDialog();
         }
 
         private void btnVisualizarCursos_Click(object sender, EventArgs e)
         {
-
+            InscripcionAlumno formInscripcion = new InscripcionAlumno(UsuarioActual);
+            formInscripcion.TipoFormulario = InscripcionAlumno.Operacion.VisualizarCursos;
+            formInscripcion.ShowDialog();
         }
     }
 }

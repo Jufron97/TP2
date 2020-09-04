@@ -49,6 +49,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         }
 
         #endregion
+
         #region EventosFormulario
 
         private void btnActualizar_Click(object sender, EventArgs e)
