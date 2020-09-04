@@ -43,7 +43,7 @@ namespace Academia.Business.Entities
             get => Especialidad.ID;
         }
 
-        public string DescripcionEspecialidad
+        public string DescEspecialidad
         {
             get => Especialidad.Descripcion;
         }

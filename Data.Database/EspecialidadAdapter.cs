@@ -18,7 +18,7 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdEspecialidades = new SqlCommand("select * from especialidades", sqlConn);
+                SqlCommand cmdEspecialidades = new SqlCommand("ListadoGeneralEspecialidades", sqlConn);
                 SqlDataReader drEspecialidades = cmdEspecialidades.ExecuteReader();
                 while (drEspecialidades.Read())
                 {

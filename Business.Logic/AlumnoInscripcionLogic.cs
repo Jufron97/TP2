@@ -28,6 +28,11 @@ namespace Academia.Business.Logic
             return InscripcionData.GetAll();
         }
 
+        public List<AlumnoInscripcion> GetAll(Usuario usuario)
+        {
+            return InscripcionData.GetAll(usuario);
+        }
+
         public AlumnoInscripcion GetOne(int id)
         {
             return InscripcionData.GetOne(id);

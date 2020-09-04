@@ -37,21 +37,22 @@ namespace Academia.UI.Desktop
                         //Se oculta el formulario del logeo y se crea el formulario especifico segun el usuario
                         if(usuarioLogeado.Persona.TipoPersona==Persona.TiposPersonas.Alumno)
                         {
-                            new FormularioAlumno(usuarioLogeado).ShowDialog();
+                             new FormularioAlumno(usuarioLogeado).ShowDialog();
                         }
                         else if (usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Docente)
-                            {
+                             {
                                 new FormularioDocente(usuarioLogeado).ShowDialog();
-                            }
-                            else if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
-                                {
-                                    new FormularioPrincipal(usuarioLogeado).ShowDialog();
-                                }
+                             }
+                             else if(usuarioLogeado.Persona.TipoPersona == Persona.TiposPersonas.Admin)
+                             {
+                                new FormularioPrincipal(usuarioLogeado).ShowDialog();
+                             }
                         //Se vuelve a mostrar el formulario de logeo y se ponen los txt en nulos
                         this.txtContraseña.Text = "";
                         this.txtUsuario.Text = "";
                         this.Show();
-                        }
+                        this.txtUsuario.Focus();
+                    }
                     else
                     {
                         MessageBox.Show("Usuario no habilitado al sistema", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);

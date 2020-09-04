@@ -12,7 +12,6 @@ namespace Academia.Data.Database
     public class AlumnoInscripcionAdapter : Adapter
     { 
 
-
     public List<AlumnoInscripcion> GetAll()
     {
         List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>();
@@ -55,7 +54,50 @@ namespace Academia.Data.Database
         return Inscripciones;
     }
 
-    public AlumnoInscripcion GetOne(int ID)
+    public List<AlumnoInscripcion> GetAll(Usuario usuario)
+        {
+            List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdAlumnoInscripcion = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlumno", sqlConn);
+                cmdAlumnoInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = usuario.ID;
+                SqlDataReader drInscripciones = cmdAlumnoInscripcion.ExecuteReader();
+                while (drInscripciones.Read())
+                {
+                    AlumnoInscripcion AlIns = new AlumnoInscripcion();
+                    AlIns.ID = (int)drInscripciones["id_inscripcion"];
+                    //Objeto Alumno
+                    //Objeto Curso
+                    AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
+                    AlIns.Condicion = (string)drInscripciones["condicion"];
+                    //Por si las notas no fueron cargadas
+                    if (String.IsNullOrEmpty(drInscripciones["nota"].ToString()))
+                    {
+                        AlIns.Nota = 0;
+                    }
+                    else
+                    {
+                        AlIns.Nota = (int)drInscripciones["nota"];
+                    }
+                    Inscripciones.Add(AlIns);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return Inscripciones;
+        }
+
+
+        public AlumnoInscripcion GetOne(int ID)
     {    
         AlumnoInscripcion AlIns = new AlumnoInscripcion();   
         try

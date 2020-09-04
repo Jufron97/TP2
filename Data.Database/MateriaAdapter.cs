@@ -27,7 +27,7 @@ namespace Academia.Data.Database
                     mat.HsSemanales = (int)drMaterias["hs_semanales"];
                     mat.HsTotales = (int)drMaterias["hs_totales"];
                     //Datos del Plan
-                    mat.Plan.ID = (int)drMaterias["id_plan"];
+                    mat.Plan = new PlanAdapter().GetOne((int)drMaterias["id_plan"]);
                     Materias.Add(mat);
                 }
                 drMaterias.Close();
@@ -35,7 +35,7 @@ namespace Academia.Data.Database
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {

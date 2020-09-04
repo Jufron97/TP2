@@ -58,6 +58,11 @@ namespace Academia.Business.Entities
             get => Comision.ID;
         }
 
+        public string DescComision
+        {
+            get => Comision.Descripcion;
+        }
+
         public Materia Materia
         {
             get => m_materia;
@@ -67,6 +72,11 @@ namespace Academia.Business.Entities
         public int IDMateria
         {
             get => Materia.ID;
+        }
+
+        public string DescMateria
+        {
+            get => Materia.Descripcion; 
         }
 
         #endregion
