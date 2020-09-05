@@ -62,28 +62,28 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                 if (this.TipoOperacion == InscripcionAlumno.Operacion.InscripcionCurso)
                 {
                     this.Nota.Visible = false;
+                    this.Condicion.Visible = false;
                     CursoLogic curLogic = new CursoLogic();
                     dgvInscripcionAlumno.DataSource = curLogic.GetAll();
-                    
                 }
                 else 
                 {
-                    this.Nota.Visible = true;
+                    //Dado que tengo que se muestra otra propiedad, hay que cambiarle eel DataPropertyName
+                    this.Materia.DataPropertyName = "DescCursoMateria";
+                    this.Comision.DataPropertyName = "DescCursoComision";
                     AlumnoInscripcionLogic alInsLogic = new AlumnoInscripcionLogic();
                     dgvInscripcionAlumno.DataSource = alInsLogic.GetAll(UsuarioActual);                 
                 }
             }
             catch (Exception Ex)
             {
+
                 MessageBox.Show(Ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
         }
 
-        public void ocultoColumnas()
-        {
 
-        }
         /// <summary>
         /// Devuelve si hay alguna fila/item seleccionada
         /// </summary>

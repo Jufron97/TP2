@@ -33,7 +33,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionAlumno)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,8 @@
             this.dgvInscripcionAlumno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Materia,
-            this.IDComision,
+            this.Comision,
+            this.Condicion,
             this.Nota});
             this.dgvInscripcionAlumno.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvInscripcionAlumno.Location = new System.Drawing.Point(0, 0);
@@ -55,7 +57,7 @@
             this.dgvInscripcionAlumno.ReadOnly = true;
             this.dgvInscripcionAlumno.RowHeadersVisible = false;
             this.dgvInscripcionAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInscripcionAlumno.Size = new System.Drawing.Size(413, 209);
+            this.dgvInscripcionAlumno.Size = new System.Drawing.Size(507, 209);
             this.dgvInscripcionAlumno.TabIndex = 0;
             // 
             // btnSeleccionar
@@ -91,23 +93,34 @@
             // 
             this.Materia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Materia.DataPropertyName = "DescMateria";
-            this.Materia.FillWeight = 30F;
+            this.Materia.FillWeight = 150F;
             this.Materia.HeaderText = "Materia";
             this.Materia.Name = "Materia";
             this.Materia.ReadOnly = true;
             // 
-            // IDComision
+            // Comision
             // 
-            this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDComision.DataPropertyName = "DescComision";
-            this.IDComision.FillWeight = 30F;
-            this.IDComision.HeaderText = "Comision";
-            this.IDComision.Name = "IDComision";
-            this.IDComision.ReadOnly = true;
+            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Comision.DataPropertyName = "DescComision";
+            this.Comision.FillWeight = 70F;
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            // 
+            // Condicion
+            // 
+            this.Condicion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Condicion.DataPropertyName = "Condicion";
+            this.Condicion.FillWeight = 70F;
+            this.Condicion.HeaderText = "Condicion";
+            this.Condicion.Name = "Condicion";
+            this.Condicion.ReadOnly = true;
             // 
             // Nota
             // 
+            this.Nota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nota.DataPropertyName = "Nota";
+            this.Nota.FillWeight = 30F;
             this.Nota.HeaderText = "Nota";
             this.Nota.Name = "Nota";
             this.Nota.ReadOnly = true;
@@ -116,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 256);
+            this.ClientSize = new System.Drawing.Size(507, 251);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.dgvInscripcionAlumno);
@@ -135,7 +148,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Materia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDComision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }
 }

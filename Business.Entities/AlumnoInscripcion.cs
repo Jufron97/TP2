@@ -29,6 +29,18 @@ namespace Academia.Business.Entities
 
         #region Propiedades
 
+        public string Condicion
+        {
+            get => m_condicion;
+            set => m_condicion = value;
+        }
+
+        public int Nota
+        {
+            get => m_nota;
+            set => m_nota = value;
+        }
+
         public Usuario Alumno
         {
             get => m_alumno;
@@ -51,17 +63,16 @@ namespace Academia.Business.Entities
             get => Curso.ID;
         }
 
-        public string Condicion
+        public string DescCursoMateria
         {
-            get => m_condicion;
-            set => m_condicion = value;
+            get => Curso.Materia.Descripcion;
         }
 
-        public int Nota
+        public string DescCursoComision
         {
-            get => m_nota;
-            set => m_nota = value;
+            get => Curso.Comision.Descripcion;
         }
+
 
         #endregion
     }
