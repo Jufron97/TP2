@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
-    partial class Comisiones
+    partial class ListadoComisiones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comisiones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoComisiones));
             this.tsComisiones = new System.Windows.Forms.ToolStripContainer();
             this.tlpComisiones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvComisiones = new System.Windows.Forms.DataGridView();

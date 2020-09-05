@@ -12,7 +12,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop
 {
-    public partial class UsuarioDesktop : ApplicationForm
+    public partial class UsuarioABM : ApplicationForm
     {
 
         private Usuario m_usuarioActual;
@@ -26,7 +26,7 @@ namespace Academia.UI.Desktop
         #endregion
 
         #region Constructores
-        public UsuarioDesktop()
+        public UsuarioABM()
         {
             InitializeComponent();
         }
@@ -263,7 +263,7 @@ namespace Academia.UI.Desktop
         /// Constructor utilizado para las Altas
         /// </summary>
         /// <param name="modo"></param>
-        public UsuarioDesktop(ModoForm modo) : this()
+        public UsuarioABM(ModoForm modo) : this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
@@ -273,7 +273,7 @@ namespace Academia.UI.Desktop
         /// Constructor utilizado para las Bajas y Modificaciones
         /// </summary>
         /// <param name="modo"></param>
-        public UsuarioDesktop(int ID, ModoForm modo) : this()
+        public UsuarioABM(int ID, ModoForm modo) : this()
         {
             this.Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

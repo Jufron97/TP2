@@ -13,10 +13,10 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 {
-    public partial class Cursos : Form
+    public partial class ListadoCursos : Form
     {
         #region Constructores
-        public Cursos()
+        public ListadoCursos()
         {
             InitializeComponent();
             dgvCursos.AutoGenerateColumns = false;
@@ -64,7 +64,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            CursoDesktop formCurso = new CursoDesktop();
+            CursoABM formCurso = new CursoABM();
             formCurso.Modo = ApplicationForm.ModoForm.Alta;
             formCurso.ShowDialog();
             this.Listar();
@@ -80,7 +80,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             */
             if(itemSeleccionado())
             {
-                CursoDesktop formCurso = new CursoDesktop();
+                CursoABM formCurso = new CursoABM();
                 formCurso.Modo = ApplicationForm.ModoForm.Modificacion;
                 formCurso.CursoActual = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem);
                 formCurso.ShowDialog();
@@ -102,7 +102,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             */
             if (itemSeleccionado())
             {
-                CursoDesktop formCurso = new CursoDesktop();
+                CursoABM formCurso = new CursoABM();
                 formCurso.Modo = ApplicationForm.ModoForm.Baja;
                 formCurso.CursoActual = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem);
                 formCurso.ShowDialog();

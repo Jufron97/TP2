@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
-    partial class ComisionDesktop
+    partial class ComisionABM
     {
         /// <summary>
         /// Required designer variable.

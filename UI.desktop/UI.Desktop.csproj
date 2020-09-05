@@ -58,65 +58,65 @@
     <Compile Include="Forms Entidades\ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\Comisiones.cs">
+    <Compile Include="Forms Entidades\Comisiones\ListadoComisiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\Comisiones.Designer.cs">
-      <DependentUpon>Comisiones.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Comisiones\ListadoComisiones.Designer.cs">
+      <DependentUpon>ListadoComisiones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\ComisionDesktop.cs">
+    <Compile Include="Forms Entidades\Comisiones\ComisionABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Comisiones\ComisionDesktop.Designer.cs">
-      <DependentUpon>ComisionDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Comisiones\ComisionABM.Designer.cs">
+      <DependentUpon>ComisionABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Cursos\Cursos.cs">
+    <Compile Include="Forms Entidades\Cursos\ListadoCursos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Cursos\Cursos.Designer.cs">
-      <DependentUpon>Cursos.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Cursos\ListadoCursos.Designer.cs">
+      <DependentUpon>ListadoCursos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Cursos\CursoDesktop.cs">
+    <Compile Include="Forms Entidades\Cursos\CursoABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Cursos\CursoDesktop.Designer.cs">
-      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Cursos\CursoABM.Designer.cs">
+      <DependentUpon>CursoABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\Especialidades.cs">
+    <Compile Include="Forms Entidades\Especialidades\ListadoEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\Especialidades.Designer.cs">
-      <DependentUpon>Especialidades.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Especialidades\ListadoEspecialidades.Designer.cs">
+      <DependentUpon>ListadoEspecialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\EspecialidadDesktop.cs">
+    <Compile Include="Forms Entidades\Especialidades\EspecialidadABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Especialidades\EspecialidadDesktop.Designer.cs">
-      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Especialidades\EspecialidadABM.Designer.cs">
+      <DependentUpon>EspecialidadABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\Materias.cs">
+    <Compile Include="Forms Entidades\Materias\ListadoMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\Materias.Designer.cs">
-      <DependentUpon>Materias.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Materias\ListadoMaterias.Designer.cs">
+      <DependentUpon>ListadoMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\MateriaDesktop.cs">
+    <Compile Include="Forms Entidades\Materias\MateriaABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Materias\MateriaDesktop.Designer.cs">
-      <DependentUpon>MateriaDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Materias\MateriaABM.Designer.cs">
+      <DependentUpon>MateriaABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\Planes.cs">
+    <Compile Include="Forms Entidades\Planes\ListadoPlanes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\Planes.Designer.cs">
-      <DependentUpon>Planes.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Planes\ListadoPlanes.Designer.cs">
+      <DependentUpon>ListadoPlanes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\PlanDesktop.cs">
+    <Compile Include="Forms Entidades\Planes\PlanABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Planes\PlanDesktop.Designer.cs">
-      <DependentUpon>PlanDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Planes\PlanABM.Designer.cs">
+      <DependentUpon>PlanABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios Principales\Alumno\FormularioAlumno.cs">
       <SubType>Form</SubType>
@@ -149,51 +149,51 @@
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Forms Entidades\Usuarios\UsuarioDesktop.cs">
+    <Compile Include="Forms Entidades\Usuarios\UsuarioABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Usuarios\UsuarioDesktop.Designer.cs">
-      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Usuarios\UsuarioABM.Designer.cs">
+      <DependentUpon>UsuarioABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms Entidades\Usuarios\Usuarios.cs">
+    <Compile Include="Forms Entidades\Usuarios\ListadoUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms Entidades\Usuarios\Usuarios.Designer.cs">
-      <DependentUpon>Usuarios.cs</DependentUpon>
+    <Compile Include="Forms Entidades\Usuarios\ListadoUsuarios.Designer.cs">
+      <DependentUpon>ListadoUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms Entidades\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Comisiones\ComisionDesktop.resx">
-      <DependentUpon>ComisionDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Comisiones\ComisionABM.resx">
+      <DependentUpon>ComisionABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Comisiones\Comisiones.resx">
-      <DependentUpon>Comisiones.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Comisiones\ListadoComisiones.resx">
+      <DependentUpon>ListadoComisiones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Cursos\Cursos.resx">
-      <DependentUpon>Cursos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Cursos\ListadoCursos.resx">
+      <DependentUpon>ListadoCursos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Cursos\CursoDesktop.resx">
-      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Cursos\CursoABM.resx">
+      <DependentUpon>CursoABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Especialidades\Especialidades.resx">
-      <DependentUpon>Especialidades.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Especialidades\ListadoEspecialidades.resx">
+      <DependentUpon>ListadoEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Especialidades\EspecialidadDesktop.resx">
-      <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Especialidades\EspecialidadABM.resx">
+      <DependentUpon>EspecialidadABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Materias\Materias.resx">
-      <DependentUpon>Materias.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Materias\ListadoMaterias.resx">
+      <DependentUpon>ListadoMaterias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Materias\MateriaDesktop.resx">
-      <DependentUpon>MateriaDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Materias\MateriaABM.resx">
+      <DependentUpon>MateriaABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Planes\Planes.resx">
-      <DependentUpon>Planes.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Planes\ListadoPlanes.resx">
+      <DependentUpon>ListadoPlanes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Planes\PlanDesktop.resx">
-      <DependentUpon>PlanDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Planes\PlanABM.resx">
+      <DependentUpon>PlanABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios Principales\Alumno\FormularioAlumno.resx">
       <DependentUpon>FormularioAlumno.cs</DependentUpon>
@@ -210,8 +210,8 @@
     <EmbeddedResource Include="Formularios Principales\FormularioPrincipal.resx">
       <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms Entidades\Usuarios\UsuarioDesktop.resx">
-      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Usuarios\UsuarioABM.resx">
+      <DependentUpon>UsuarioABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -223,8 +223,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms Entidades\Usuarios\Usuarios.resx">
-      <DependentUpon>Usuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Forms Entidades\Usuarios\ListadoUsuarios.resx">
+      <DependentUpon>ListadoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

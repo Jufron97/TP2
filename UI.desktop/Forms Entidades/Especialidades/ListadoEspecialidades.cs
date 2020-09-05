@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
-    public partial class Especialidades : Form
+    public partial class ListadoEspecialidades : Form
     {
         #region Constructores
 
-        public Especialidades()
+        public ListadoEspecialidades()
         {
             InitializeComponent();
             dgvEspecialidades.AutoGenerateColumns = false;
@@ -70,7 +70,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         private void toolStripNuevo_Click(object sender, EventArgs e)
         {
-            EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+            EspecialidadABM formEspecialidad = new EspecialidadABM();
             formEspecialidad.Modo = ApplicationForm.ModoForm.Alta;
             formEspecialidad.ShowDialog();
             this.Listar();
@@ -86,7 +86,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                 formEspecialidad.ShowDialog();
                 this.Listar();
                 */
-                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+                EspecialidadABM formEspecialidad = new EspecialidadABM();
                 formEspecialidad.Modo = ApplicationForm.ModoForm.Modificacion;
                 formEspecialidad.EspecialidadActual = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem);
                 formEspecialidad.ShowDialog();
@@ -108,7 +108,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                 formEspecialidad.ShowDialog();
                 this.Listar();
                 */
-                EspecialidadDesktop formEspecialidad = new EspecialidadDesktop();
+                EspecialidadABM formEspecialidad = new EspecialidadABM();
                 formEspecialidad.Modo = ApplicationForm.ModoForm.Baja;
                 formEspecialidad.EspecialidadActual =((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem);
                 formEspecialidad.ShowDialog();

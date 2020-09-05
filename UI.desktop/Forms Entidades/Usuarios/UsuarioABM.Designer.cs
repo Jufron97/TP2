@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop
 {
-    partial class UsuarioDesktop
+    partial class UsuarioABM
     {
         /// <summary>
         /// Required designer variable.
@@ -290,7 +290,7 @@
             this.gpbTipoPersona.TabStop = false;
             this.gpbTipoPersona.Text = "Tipo de Persona";
             // 
-            // UsuarioDesktop
+            // UsuarioABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,8 +303,8 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.txtConfirmarClave);
             this.Controls.Add(this.gpbUsuario);
-            this.Name = "UsuarioDesktop";
-            this.Text = "UsuarioDesktop";
+            this.Name = "UsuarioABM";
+            this.Text = "Usuario";
             this.Shown += new System.EventHandler(this.UsuarioDesktop_Shown);
             this.gpbUsuario.ResumeLayout(false);
             this.gpbUsuario.PerformLayout();

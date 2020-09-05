@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 {
-    public partial class CursoDesktop : ApplicationForm
+    public partial class CursoABM : ApplicationForm
     {
         public Curso m_cursoActual;
 
@@ -28,7 +28,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 
         #region Constructores
 
-        public CursoDesktop()
+        public CursoABM()
         {
             InitializeComponent();
         }
@@ -195,13 +195,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 
         #region CodigoViejo
 
-        public CursoDesktop(ModoForm modo) : this()
+        public CursoABM(ModoForm modo) : this()
         {
             this.Modo = modo;
             btnAceptar.Text = "Guardar";
         }
 
-        public CursoDesktop(int ID, ModoForm modo) : this()
+        public CursoABM(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

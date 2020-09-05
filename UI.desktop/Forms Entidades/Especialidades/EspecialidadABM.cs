@@ -12,7 +12,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
-    public partial class EspecialidadDesktop : ApplicationForm
+    public partial class EspecialidadABM : ApplicationForm
     {
         private Especialidad m_especialidadActual;
         
@@ -28,7 +28,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         #region Constructores
 
-        public EspecialidadDesktop()
+        public EspecialidadABM()
         {
             InitializeComponent();
         }
@@ -166,13 +166,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         #region CodigoViejo
 
-        public EspecialidadDesktop(ModoForm modo) : this()
+        public EspecialidadABM(ModoForm modo) : this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
         }
 
-        public EspecialidadDesktop(int ID, ModoForm modo) : this()
+        public EspecialidadABM(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)
