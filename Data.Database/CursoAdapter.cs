@@ -23,12 +23,12 @@ namespace Academia.Data.Database
                 {
                     Curso cur = new Curso();
                     cur.ID = (int)drCursos["id_curso"];
+                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
+                    cur.Cupo = (int)drCursos["cupo"];
                     //Objeto Comision
                     cur.Comision = new ComisionAdapter().GetOne((int)drCursos["id_comision"]);
                     //Objeto Materia
-                    cur.Materia.ID = (int)drCursos["id_materia"];
-                    cur.AnioCalendario = (int)drCursos["anio_calendario"];
-                    cur.Cupo = (int)drCursos["cupo"];
+                    cur.Materia = new MateriaAdapter().GetOne((int)drCursos["id_materia"]);
                     Cursos.Add(cur);
                 }
                 drCursos.Close();
@@ -59,9 +59,10 @@ namespace Academia.Data.Database
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.ID = (int)drCursos["id_curso"];
-                    //ACA FALTAN LOS OBJETOS DEL CURSO
-                    cur.Comision.ID = (int)drCursos["id_comision"];
-                    cur.Comision.ID = (int)drCursos["id_materia"];
+                    //Objeto Comision
+                    cur.Comision = new ComisionAdapter().GetOne((int)drCursos["id_comision"]);
+                    //Objeto Materia
+                    cur.Materia = new MateriaAdapter().GetOne((int)drCursos["id_materia"]);
                 }
                 drCursos.Close();
             }
@@ -82,13 +83,13 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET cupo=@cupo,id_comision=@id_comision," +
-                    "anio_calendario=@anio_calendario,id_materia=@id_materia WHERE id_curso=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = curso.ID;
-                cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
+                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET cupo=@cupo,id_comision=@idComision," +
+                    "anio_calendario=@anioCalendario,id_materia=@idMateria WHERE id_curso=@idCurso", sqlConn);
+                cmdSave.Parameters.Add("@idCurso", SqlDbType.Int).Value = curso.ID;
+                cmdSave.Parameters.Add("@idComision", SqlDbType.Int).Value = curso.IDComision;
                 cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
-                cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.AnioCalendario;
-                cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
+                cmdSave.Parameters.Add("@anioCalendario", SqlDbType.Int).Value = curso.AnioCalendario;
+                cmdSave.Parameters.Add("@idMateria", SqlDbType.Int).Value = curso.IDMateria;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -106,8 +107,8 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete from cursos where id_curso=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlCommand cmdDelete = new SqlCommand("delete from cursos where id_curso=@idCurso", sqlConn);
+                cmdDelete.Parameters.Add("@idCurso", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -127,11 +128,11 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("insert into cursos (id_comision,cupo,anio_calendario,id_materia) " +
-                "values (@id_comision,@cupo,@anio_calendario,@id_materia) " + "select @@identity", sqlConn);
-                cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.IDComision;
+                "values (@idComision,@cupo,@anioCalendario,@idMateria) " + "select @@identity", sqlConn);
+                cmdSave.Parameters.Add("@idComision", SqlDbType.Int).Value = curso.IDComision;
                 cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
-                cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.AnioCalendario;
-                cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.IDMateria;
+                cmdSave.Parameters.Add("@anioCalendario", SqlDbType.Int).Value = curso.AnioCalendario;
+                cmdSave.Parameters.Add("@idMateria", SqlDbType.Int).Value = curso.IDMateria;
                 curso.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)

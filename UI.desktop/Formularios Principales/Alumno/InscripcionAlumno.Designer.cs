@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvInscripcionAlumno = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripcionAlumno)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,8 +45,9 @@
             this.dgvInscripcionAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInscripcionAlumno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.IDMateria,
-            this.IDComision});
+            this.Materia,
+            this.IDComision,
+            this.Nota});
             this.dgvInscripcionAlumno.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvInscripcionAlumno.Location = new System.Drawing.Point(0, 0);
             this.dgvInscripcionAlumno.MultiSelect = false;
@@ -55,33 +57,6 @@
             this.dgvInscripcionAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInscripcionAlumno.Size = new System.Drawing.Size(413, 209);
             this.dgvInscripcionAlumno.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.DataPropertyName = "ID";
-            this.ID.FillWeight = 30F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // IDMateria
-            // 
-            this.IDMateria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDMateria.DataPropertyName = "DescMateria";
-            this.IDMateria.FillWeight = 30F;
-            this.IDMateria.HeaderText = "Materia";
-            this.IDMateria.Name = "IDMateria";
-            this.IDMateria.ReadOnly = true;
-            // 
-            // IDComision
-            // 
-            this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDComision.DataPropertyName = "DescComision";
-            this.IDComision.FillWeight = 30F;
-            this.IDComision.HeaderText = "Comision";
-            this.IDComision.Name = "IDComision";
-            this.IDComision.ReadOnly = true;
             // 
             // btnSeleccionar
             // 
@@ -102,6 +77,40 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 30F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            this.Materia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Materia.DataPropertyName = "DescMateria";
+            this.Materia.FillWeight = 30F;
+            this.Materia.HeaderText = "Materia";
+            this.Materia.Name = "Materia";
+            this.Materia.ReadOnly = true;
+            // 
+            // IDComision
+            // 
+            this.IDComision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDComision.DataPropertyName = "DescComision";
+            this.IDComision.FillWeight = 30F;
+            this.IDComision.HeaderText = "Comision";
+            this.IDComision.Name = "IDComision";
+            this.IDComision.ReadOnly = true;
+            // 
+            // Nota
+            // 
+            this.Nota.DataPropertyName = "Nota";
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            this.Nota.ReadOnly = true;
             // 
             // InscripcionAlumno
             // 
@@ -125,7 +134,8 @@
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Materia;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDComision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }
 }

@@ -15,6 +15,13 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
     public partial class InscripcionAlumno : Form
     {
         private Usuario m_usuario;
+        private Operacion m_operacion;
+
+        public enum Operacion
+        {
+            VisualizarCursos,
+            InscripcionCurso
+        }
 
         #region Propiedades
 
@@ -22,6 +29,12 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
         {
             get => m_usuario;
             set => m_usuario = value;
+        }
+
+        public Operacion TipoOperacion
+        {
+            get => m_operacion;
+            set => m_operacion = value;
         }
 
         #endregion
@@ -44,10 +57,21 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
         /// </summary>
         public void Listar()
         {
-            CursoLogic curLogic = new CursoLogic();
             try
             {
-                dgvInscripcionAlumno.DataSource = curLogic.GetAll();
+                if (this.TipoOperacion == InscripcionAlumno.Operacion.InscripcionCurso)
+                {
+                    this.Nota.Visible = false;
+                    CursoLogic curLogic = new CursoLogic();
+                    dgvInscripcionAlumno.DataSource = curLogic.GetAll();
+                    
+                }
+                else 
+                {
+                    this.Nota.Visible = true;
+                    AlumnoInscripcionLogic alInsLogic = new AlumnoInscripcionLogic();
+                    dgvInscripcionAlumno.DataSource = alInsLogic.GetAll(UsuarioActual);                 
+                }
             }
             catch (Exception Ex)
             {
@@ -56,6 +80,10 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
             }
         }
 
+        public void ocultoColumnas()
+        {
+
+        }
         /// <summary>
         /// Devuelve si hay alguna fila/item seleccionada
         /// </summary>
@@ -93,7 +121,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                 }
                 else
                 {
-                    MessageBox.Show("El alumno ya se encuentra inscripto", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El alumno ya se encuentra inscripto en el curso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 new PlanLogic().GetOne(UsuarioActual.Persona.IDPlan);
             }

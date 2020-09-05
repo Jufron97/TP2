@@ -67,7 +67,6 @@ namespace Academia.Data.Database
                 {
                     AlumnoInscripcion AlIns = new AlumnoInscripcion();
                     AlIns.ID = (int)drInscripciones["id_inscripcion"];
-                    //Objeto Alumno
                     //Objeto Curso
                     AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
                     AlIns.Condicion = (string)drInscripciones["condicion"];

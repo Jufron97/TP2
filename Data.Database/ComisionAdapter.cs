@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +25,8 @@ namespace Academia.Data.Database
                     Comision com = new Comision();
                     com.ID = (int)drComisiones["id_comision"];
                     com.Descripcion = (string)drComisiones["desc_comision"];
-                    com.Plan.ID = (int)drComisiones["id_plan"];
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    com.Plan = new PlanAdapter().GetOne((int)drComisiones["id_plan"]);
                     Comisiones.Add(com);
                 }
                 drComisiones.Close();
@@ -56,8 +56,8 @@ namespace Academia.Data.Database
                 {
                     com.ID = (int)drComisiones["id_comision"];
                     com.Descripcion = (string)drComisiones["desc_comision"];
-                    com.Plan.ID = (int)drComisiones["id_plan"];
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    com.Plan = new PlanAdapter().GetOne((int)drComisiones["id_plan"]);
                 }
                 drComisiones.Close();
             }

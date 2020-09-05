@@ -120,7 +120,7 @@
             this.MinimizeBox = false;
             this.Name = "formLogin";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingreso";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -85,46 +85,10 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     //Datos de la persona 
-                    usr.Persona.ID = (int)drUsuarios["id_persona"];
-                    usr.Persona.Nombre = (string)drUsuarios["nombre"];
-                    usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                    usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
-                    usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                    //ACA FALTAN LOS DATOS DEL OBJETO PLAN Y ESPECIALIDAD EN SI HAY QUE MODIFICAR EL PROCEDIMIENTO
-                    //Asi se verifica si son nulos o no los datos
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    if (!String.IsNullOrEmpty(drUsuarios["id_persona"].ToString()))
                     {
-                        usr.Persona.Direccion = "No posee";
+                        usr.Persona = new PersonaAdapter().GetOne((int)drUsuarios["id_persona"]);
                     }
-                    else
-                    {
-                        usr.Persona.Direccion = (string)drUsuarios["direccion"];
-                    }                   
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                    {
-                        usr.Persona.Email = "No posee";
-                    }
-                    else
-                    {
-                        usr.Persona.Email = (string)drUsuarios["email"];
-                    }
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                    {
-                        usr.Persona.Telefono = "No posee";
-                    }
-                    else
-                    {
-                        usr.Persona.Telefono = (string)drUsuarios["telefono"];
-                    }
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                    {
-                        usr.Persona.Legajo = 0;
-                    }
-                    else
-                    {
-                        usr.Persona.Legajo = (int)drUsuarios["legajo"];
-                    }                    
-
                     Usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -134,7 +98,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
-                throw Ex;
+                throw ExcepcionManejada;
             }
             finally
             {
@@ -164,9 +128,7 @@ namespace Academia.Data.Database
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     //Datos del objeto persona
-                    usr.Persona.Nombre = (string)drUsuarios["nombre"];
-                    usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                    usr.Persona.Email = (string)drUsuarios["email"];
+                    usr.Persona = new PersonaAdapter().GetOne((int)drUsuarios["id_persona"]);
                 }
                 drUsuarios.Close();
             }
@@ -207,57 +169,14 @@ namespace Academia.Data.Database
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    //Datos para el objeto Persona
-                    //Esto es ya que el usuario admin no tiene un objeto persona ligado en si, y hay campos que tienen que ser
-                    //No nulos, y traen problemas ocn las conversiones
-                    //AHORA QUE PIENSO, SI HAY UN USUARIO DONDE LA PERSONA TIENE CAMPOS NULOS, VA A PASAR LO MISMO QUE ANTES
-                    if (usr.NombreUsuario!="admin")
+                    if(String.IsNullOrEmpty(drUsuarios["id_persona"].ToString()))
                     {
-                        usr.Persona.ID = (int)drUsuarios["id_persona"];
-                        usr.Persona.Nombre = (string)drUsuarios["nombre"];
-                        usr.Persona.Apellido = (string)drUsuarios["apellido"];
-                        usr.Persona.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
-                        usr.Persona.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                        //ACA FALTAN LOS DATOS DEL OBJETO PLAN Y ESPECIALIDAD EN SI HAY QUE MODIFICAR EL PROCEDIMIENTO
-                        //Asi se verifica si son nulos o no los datos
-                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                        {
-                            usr.Persona.Direccion = "No posee";
-                        }
-                        else
-                        {
-                            usr.Persona.Direccion = (string)drUsuarios["direccion"];
-                        }
-                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                        {
-                            usr.Persona.Email = "No posee";
-                        }
-                        else
-                        {
-                            usr.Persona.Email = (string)drUsuarios["email"];
-                        }
-                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                        {
-                            usr.Persona.Telefono = "No posee";
-                        }
-                        else
-                        {
-                            usr.Persona.Telefono = (string)drUsuarios["telefono"];
-                        }
-                        if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
-                        {
-                            usr.Persona.Legajo = 0;
-                        }
-                        else
-                        {
-                            usr.Persona.Legajo = (int)drUsuarios["legajo"];
-                        }
+                        usr.Persona.Nombre = "Adminsitrador";
+                        usr.Persona.TipoPersona = Persona.TiposPersonas.Admin;
                     }
                     else
                     {
-                        //Se cargar los atributos que se necesitan para 
-                        usr.Persona.Nombre = "Adminsitrador";
-                        usr.Persona.TipoPersona = Persona.TiposPersonas.Admin;
+                        usr.Persona = new PersonaAdapter().GetOne((int)drUsuarios["id_persona"]);
                     }
                 }
                 drUsuarios.Close();
@@ -267,7 +186,7 @@ namespace Academia.Data.Database
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
                 Exception ExcepcionManejada = new Exception("Error al recuperar al usuario", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {

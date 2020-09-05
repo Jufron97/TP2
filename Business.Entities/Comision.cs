@@ -43,10 +43,15 @@ namespace Academia.Business.Entities
             get => m_Plan;
             set => m_Plan = value;
         }
-    
+
         public int IDPlan
         {
             get => Plan.ID;
+        }
+
+        public string DescPlan
+        {
+            get => Plan.Descripcion;
         }
 
         #endregion
