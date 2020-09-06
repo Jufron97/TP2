@@ -190,8 +190,11 @@ namespace Academia.UI.Desktop
             }
             else
             {
-                GuardarCambios();
-                this.Close();
+                if (MessageBox.Show("Seguro que desea eliminar el curso seleccionado?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
             }
         }
 
@@ -291,5 +294,7 @@ namespace Academia.UI.Desktop
         }
 
         #endregion
+
+
     }
 }
