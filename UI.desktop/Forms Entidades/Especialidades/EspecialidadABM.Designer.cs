@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
-    partial class EspecialidadDesktop
+    partial class EspecialidadABM
     {
         /// <summary>
         /// Required designer variable.
@@ -118,14 +118,14 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // EspecialidadDesktop
+            // EspecialidadABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 122);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "EspecialidadDesktop";
-            this.Text = "EspecialidadesDesktop";
+            this.Name = "EspecialidadABM";
+            this.Text = "Especialidad";
             this.Shown += new System.EventHandler(this.EspecialidadDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

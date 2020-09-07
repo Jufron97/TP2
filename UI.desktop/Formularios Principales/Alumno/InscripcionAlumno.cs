@@ -109,20 +109,33 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
             {
                 AlumnoInscripcion insAlumno = new AlumnoInscripcion();
                 AlumnoInscripcionLogic insAlLogic = new AlumnoInscripcionLogic();
-                //Se pasarian los objetos correspondientes ala inscripcion
+                //Se pasarian los objetos correspondientes a la inscripcion
                 insAlumno.Alumno = UsuarioActual;
                 insAlumno.Curso = ((Curso)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem);
-                insAlumno.Condicion = "Por corregir";
-                insAlumno.State = BusinessEntity.States.New;                
+                insAlumno.Condicion = "En Cursado";
+                insAlumno.State = BusinessEntity.States.New;   
+                //En primera parte se valida que el usuario no este inscripto
                 if (!insAlLogic.validarInscripcion(insAlumno))               
                 {
-                    new AlumnoInscripcionLogic().Save(insAlumno);
-                    MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                
+                    //Como segunda validacion que el curso al cual se quiera inscribir tenga cupo disponible
+                    if(insAlumno.Curso.Cupo > 0)
+                    {
+                        new AlumnoInscripcionLogic().Save(insAlumno);
+                        MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El curso ingresado no tiene cupos", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                                 
                 }
                 else
                 {
                     MessageBox.Show("El alumno ya se encuentra inscripto en el curso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay items seleccionados", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

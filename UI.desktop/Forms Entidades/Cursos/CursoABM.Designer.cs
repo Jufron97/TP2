@@ -1,6 +1,6 @@
 ﻿namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 {
-    partial class CursoDesktop
+    partial class CursoABM
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDMateria, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblIDComision, 0, 2);
@@ -80,7 +80,7 @@
             // 
             this.lblID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(53, 11);
+            this.lblID.Location = new System.Drawing.Point(52, 11);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 0;
@@ -90,7 +90,7 @@
             // 
             this.lblIDMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDMateria.AutoSize = true;
-            this.lblIDMateria.Location = new System.Drawing.Point(34, 48);
+            this.lblIDMateria.Location = new System.Drawing.Point(33, 48);
             this.lblIDMateria.Name = "lblIDMateria";
             this.lblIDMateria.Size = new System.Drawing.Size(56, 13);
             this.lblIDMateria.TabIndex = 1;
@@ -120,7 +120,7 @@
             // 
             this.lblCupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCupo.AutoSize = true;
-            this.lblCupo.Location = new System.Drawing.Point(46, 181);
+            this.lblCupo.Location = new System.Drawing.Point(45, 181);
             this.lblCupo.Name = "lblCupo";
             this.lblCupo.Size = new System.Drawing.Size(32, 13);
             this.lblCupo.TabIndex = 4;
@@ -129,7 +129,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtID.Location = new System.Drawing.Point(127, 7);
+            this.txtID.Location = new System.Drawing.Point(126, 7);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(52, 20);
@@ -138,7 +138,7 @@
             // txtIDMateria
             // 
             this.txtIDMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIDMateria.Location = new System.Drawing.Point(127, 45);
+            this.txtIDMateria.Location = new System.Drawing.Point(126, 45);
             this.txtIDMateria.Name = "txtIDMateria";
             this.txtIDMateria.Size = new System.Drawing.Size(52, 20);
             this.txtIDMateria.TabIndex = 6;
@@ -146,7 +146,7 @@
             // txtIDComision
             // 
             this.txtIDComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIDComision.Location = new System.Drawing.Point(127, 83);
+            this.txtIDComision.Location = new System.Drawing.Point(126, 83);
             this.txtIDComision.Name = "txtIDComision";
             this.txtIDComision.Size = new System.Drawing.Size(52, 20);
             this.txtIDComision.TabIndex = 7;
@@ -154,7 +154,7 @@
             // txtAñoCalendario
             // 
             this.txtAñoCalendario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAñoCalendario.Location = new System.Drawing.Point(127, 123);
+            this.txtAñoCalendario.Location = new System.Drawing.Point(126, 123);
             this.txtAñoCalendario.Name = "txtAñoCalendario";
             this.txtAñoCalendario.Size = new System.Drawing.Size(100, 20);
             this.txtAñoCalendario.TabIndex = 8;
@@ -162,7 +162,7 @@
             // txtCupo
             // 
             this.txtCupo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCupo.Location = new System.Drawing.Point(127, 177);
+            this.txtCupo.Location = new System.Drawing.Point(126, 177);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(100, 20);
             this.txtCupo.TabIndex = 9;
@@ -170,7 +170,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(290, 224);
+            this.btnAceptar.Location = new System.Drawing.Point(289, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -189,14 +189,14 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
-            // CursoDesktop
+            // CursoABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 261);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "CursoDesktop";
-            this.Text = "CursosDesktop";
+            this.Name = "CursoABM";
+            this.Text = "Curso";
             this.Shown += new System.EventHandler(this.CursoDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

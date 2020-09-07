@@ -12,9 +12,9 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Materias
 {
-    public partial class Materias : Form
+    public partial class ListadoMaterias : Form
     {
-        public Materias()
+        public ListadoMaterias()
         {
             InitializeComponent();
             dgvMaterias.AutoGenerateColumns = false;
@@ -65,7 +65,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            MateriaDesktop formMaterias = new MateriaDesktop();
+            MateriaABM formMaterias = new MateriaABM();
             formMaterias.Modo = ApplicationForm.ModoForm.Alta;
             formMaterias.ShowDialog();
             this.Listar();
@@ -80,7 +80,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 MateriaDesktop formMaterias = new MateriaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
                 formMaterias.ShowDialog();
                 */
-                MateriaDesktop formMaterias = new MateriaDesktop();
+                MateriaABM formMaterias = new MateriaABM();
                 formMaterias.Modo = ApplicationForm.ModoForm.Modificacion;
                 formMaterias.MateriaActual = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem);
                 formMaterias.ShowDialog();
@@ -101,7 +101,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 MateriaDesktop formMaterias = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja);
                 formMaterias.ShowDialog();
                 */
-                MateriaDesktop formMaterias = new MateriaDesktop();
+                MateriaABM formMaterias = new MateriaABM();
                 formMaterias.Modo = ApplicationForm.ModoForm.Baja;
                 formMaterias.MateriaActual = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem);
                 formMaterias.ShowDialog();

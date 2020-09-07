@@ -12,7 +12,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Planes
 {
-    public partial class PlanDesktop : ApplicationForm
+    public partial class PlanABM : ApplicationForm
     {
         private Plan m_planActual;
 
@@ -26,7 +26,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         #endregion
 
         #region Constructores
-        public PlanDesktop()
+        public PlanABM()
         {
             InitializeComponent();
         }
@@ -171,13 +171,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         #region CodigoViejo
 
-        public PlanDesktop(ModoForm modo) : this()
+        public PlanABM(ModoForm modo) : this()
         {
             Modo = modo;
             btnAceptar.Text = "Guardar";
         }
 
-        public PlanDesktop(int ID, ModoForm modo) : this()
+        public PlanABM(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

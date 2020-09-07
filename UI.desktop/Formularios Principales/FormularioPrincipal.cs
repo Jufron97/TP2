@@ -35,62 +35,62 @@ namespace Academia.UI.Desktop
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            new Usuarios().ShowDialog();
+            new ListadoUsuarios().ShowDialog();
         }
 
         private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Especialidades().ShowDialog();
+            new ListadoEspecialidades().ShowDialog();
         }
 
         private void planesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Planes().ShowDialog();
+            new ListadoPlanes().ShowDialog();
         }
 
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Materias().ShowDialog();
+            new ListadoMaterias().ShowDialog();
         }
 
         private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Comisiones().ShowDialog();
+            new ListadoComisiones().ShowDialog();
         }
 
         private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Cursos().ShowDialog();
+            new ListadoCursos().ShowDialog();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            new UsuarioDesktop().ShowDialog();
+            new UsuarioABM().ShowDialog();
         }
 
         private void especialidadesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new EspecialidadDesktop().ShowDialog();
+            new EspecialidadABM().ShowDialog();
         }
 
         private void planesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new PlanDesktop().ShowDialog();
+            new PlanABM().ShowDialog();
         }
 
         private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new MateriaDesktop().ShowDialog();
+            new MateriaABM().ShowDialog();
         }
 
         private void comisionesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new ComisionDesktop().ShowDialog();
+            new ComisionABM().ShowDialog();
         }
 
         private void cursosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new CursoDesktop().ShowDialog();
+            new CursoABM().ShowDialog();
         }
     }
 }

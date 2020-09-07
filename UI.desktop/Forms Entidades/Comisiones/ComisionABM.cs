@@ -12,7 +12,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
-    public partial class ComisionDesktop : ApplicationForm
+    public partial class ComisionABM : ApplicationForm
     {
         private Comision m_comisionActual;
 
@@ -26,7 +26,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         #region Constructores
 
-        public ComisionDesktop()
+        public ComisionABM()
         {
             InitializeComponent();
         }
@@ -194,13 +194,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             }
         }
 
-        public ComisionDesktop(ModoForm modo) : this()
+        public ComisionABM(ModoForm modo) : this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
         }
 
-        public ComisionDesktop(int ID, ModoForm modo) : this()
+        public ComisionABM(int ID, ModoForm modo) : this()
         {
             this.Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

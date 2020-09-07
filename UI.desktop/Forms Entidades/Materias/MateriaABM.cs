@@ -13,7 +13,7 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Materias
 {
-    public partial class MateriaDesktop : ApplicationForm
+    public partial class MateriaABM : ApplicationForm
     {
         private Materia m_materiaActual;
 
@@ -28,7 +28,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
 
         #region Constructores
 
-        public MateriaDesktop()
+        public MateriaABM()
         {
             InitializeComponent();
         }
@@ -205,13 +205,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             }
         }
 
-        public MateriaDesktop(ModoForm modo) : this()
+        public MateriaABM(ModoForm modo) : this()
         {
             this.Modo = modo;
             this.btnAceptar.Text = "Guardar";
         }
 
-        public MateriaDesktop(int ID, ModoForm modo) : this()
+        public MateriaABM(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             if (this.Modo == ApplicationForm.ModoForm.Baja)

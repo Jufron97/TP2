@@ -13,9 +13,9 @@ using Academia.UI.Desktop;
 
 namespace Academia.UI.Desktop
 {
-    public partial class Usuarios : Form
+    public partial class ListadoUsuarios : Form
     {
-        public Usuarios()
+        public ListadoUsuarios()
         {
             InitializeComponent();
             dgvUsuarios.AutoGenerateColumns = false;
@@ -52,7 +52,7 @@ namespace Academia.UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop formUsuario = new UsuarioDesktop();
+            UsuarioABM formUsuario = new UsuarioABM();
             formUsuario.Modo = ApplicationForm.ModoForm.Alta;
             formUsuario.ShowDialog();
             Listar();
@@ -67,7 +67,7 @@ namespace Academia.UI.Desktop
                 Aca implemente otra forma de invocar alformulario de alumno
                 */
                 //Se crea el formulario
-                UsuarioDesktop formUsuario = new UsuarioDesktop();
+                UsuarioABM formUsuario = new UsuarioABM();
                 //Se asigna el tipo de formulario
                 formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
                 //Se selecciona al usuario
@@ -91,7 +91,7 @@ namespace Academia.UI.Desktop
             */
             if(itemSeleccionado())
             {
-                UsuarioDesktop formUsuario = new UsuarioDesktop();
+                UsuarioABM formUsuario = new UsuarioABM();
                 formUsuario.Modo = ApplicationForm.ModoForm.Baja;
                 formUsuario.UsuarioActual = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
                 formUsuario.ShowDialog();

@@ -12,9 +12,9 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Planes
 {
-    public partial class Planes : Form
+    public partial class ListadoPlanes : Form
     {
-        public Planes()
+        public ListadoPlanes()
         {
             InitializeComponent();
             dgvPlanes.AutoGenerateColumns = false;
@@ -50,7 +50,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         private void tsNuevo_Click(object sender, EventArgs e)
         {
-            PlanDesktop formPlanes = new PlanDesktop();
+            PlanABM formPlanes = new PlanABM();
             formPlanes.Modo = ApplicationForm.ModoForm.Alta;
             formPlanes.ShowDialog();
             this.Listar();
@@ -66,7 +66,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             */
             if (itemSeleccionado())
             {
-                PlanDesktop formUsuario = new PlanDesktop();
+                PlanABM formUsuario = new PlanABM();
                 formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
                 formUsuario.PlanActual = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem);
                 formUsuario.ShowDialog();
@@ -87,7 +87,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             */
             if (itemSeleccionado())
             {
-                PlanDesktop formUsuario = new PlanDesktop();
+                PlanABM formUsuario = new PlanABM();
                 formUsuario.Modo = ApplicationForm.ModoForm.Baja;
                 formUsuario.PlanActual = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem);
                 formUsuario.ShowDialog();

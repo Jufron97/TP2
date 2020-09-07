@@ -12,10 +12,10 @@ using Academia.Business.Logic;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
-    public partial class Comisiones : Form
+    public partial class ListadoComisiones : Form
     {
         #region Constructores
-        public Comisiones()
+        public ListadoComisiones()
         {
             InitializeComponent();
             dgvComisiones.AutoGenerateColumns = false;
@@ -70,7 +70,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            ComisionDesktop formComision = new ComisionDesktop();
+            ComisionABM formComision = new ComisionABM();
             formComision.Modo = ApplicationForm.ModoForm.Alta;
             formComision.ShowDialog();
             Listar();
@@ -86,7 +86,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             */
             if (itemSeleccionado())
             {
-                ComisionDesktop formComision = new ComisionDesktop();
+                ComisionABM formComision = new ComisionABM();
                 formComision.Modo = ApplicationForm.ModoForm.Modificacion;
                 formComision.ComisionActual = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem);
                 formComision.ShowDialog();
@@ -108,7 +108,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             */
             if (itemSeleccionado())
             {
-                ComisionDesktop formComision = new ComisionDesktop();
+                ComisionABM formComision = new ComisionABM();
                 formComision.Modo = ApplicationForm.ModoForm.Baja;
                 formComision.ComisionActual = ((Comision)this.dgvComisiones.SelectedRows[0].DataBoundItem);
                 formComision.ShowDialog();
