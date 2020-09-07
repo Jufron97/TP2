@@ -123,7 +123,6 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                 {
                     MessageBox.Show("El alumno ya se encuentra inscripto en el curso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                new PlanLogic().GetOne(UsuarioActual.Persona.IDPlan);
             }
         }
 
