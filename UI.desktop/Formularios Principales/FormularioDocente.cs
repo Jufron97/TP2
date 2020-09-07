@@ -30,14 +30,24 @@ namespace Academia.UI.Desktop
             lblLegajo.Text = UsuarioActual.Persona.Legajo.ToString();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        private void btnRegistroNotas_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+        }
+
+        private void btnReportePlanes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReporteCursos_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

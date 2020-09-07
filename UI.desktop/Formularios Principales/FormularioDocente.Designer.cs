@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioDocente));
             this.btnRegistroNotas = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnReporteCursos = new System.Windows.Forms.Button();
+            this.btnReportePlanes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNombreyApellido = new System.Windows.Forms.Label();
@@ -51,24 +51,27 @@
             this.btnRegistroNotas.TabIndex = 2;
             this.btnRegistroNotas.Text = "Registro de Notas";
             this.btnRegistroNotas.UseVisualStyleBackColor = true;
+            this.btnRegistroNotas.Click += new System.EventHandler(this.btnRegistroNotas_Click);
             // 
-            // button2
+            // btnReporteCursos
             // 
-            this.button2.Location = new System.Drawing.Point(302, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(237, 33);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Reporte de Cursos";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnReporteCursos.Location = new System.Drawing.Point(302, 161);
+            this.btnReporteCursos.Name = "btnReporteCursos";
+            this.btnReporteCursos.Size = new System.Drawing.Size(237, 33);
+            this.btnReporteCursos.TabIndex = 3;
+            this.btnReporteCursos.Text = "Reporte de Cursos";
+            this.btnReporteCursos.UseVisualStyleBackColor = true;
+            this.btnReporteCursos.Click += new System.EventHandler(this.btnReporteCursos_Click);
             // 
-            // button4
+            // btnReportePlanes
             // 
-            this.button4.Location = new System.Drawing.Point(302, 228);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(237, 33);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Reporte de Planes";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnReportePlanes.Location = new System.Drawing.Point(302, 228);
+            this.btnReportePlanes.Name = "btnReportePlanes";
+            this.btnReportePlanes.Size = new System.Drawing.Size(237, 33);
+            this.btnReportePlanes.TabIndex = 5;
+            this.btnReportePlanes.Text = "Reporte de Planes";
+            this.btnReportePlanes.UseVisualStyleBackColor = true;
+            this.btnReportePlanes.Click += new System.EventHandler(this.btnReportePlanes_Click);
             // 
             // panel1
             // 
@@ -141,8 +144,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 364);
             this.Controls.Add(this.pnlAlumno);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnReportePlanes);
+            this.Controls.Add(this.btnReporteCursos);
             this.Controls.Add(this.btnRegistroNotas);
             this.Name = "FormularioDocente";
             this.Text = "FormularioDocente";
@@ -156,8 +159,8 @@
 
         #endregion
         private System.Windows.Forms.Button btnRegistroNotas;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnReporteCursos;
+        private System.Windows.Forms.Button btnReportePlanes;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNombreyApellido;
