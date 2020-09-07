@@ -64,7 +64,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
         public void CastearDatosEspecialidad()
         {
             this.EspecialidadActual = new Especialidad();
-            this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text);
             this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
         }
 
@@ -83,6 +82,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                 }
                 else
                 {
+                    this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.EspecialidadActual.State = BusinessEntity.States.Modified;
                 }
             }

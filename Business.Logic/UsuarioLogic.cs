@@ -95,5 +95,10 @@ namespace Academia.Business.Logic
             UsuarioData.Save(usuario);
         }
 
+        public void validarDatos(Usuario usu)
+        {
+            
+        }
+
     }
 }

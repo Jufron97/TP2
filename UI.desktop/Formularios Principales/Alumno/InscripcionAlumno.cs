@@ -68,6 +68,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                 }
                 else 
                 {
+                    this.btnSeleccionar.Visible = false;
                     //Dado que tengo que se muestra otra propiedad, hay que cambiarle eel DataPropertyName
                     this.Materia.DataPropertyName = "DescCursoMateria";
                     this.Comision.DataPropertyName = "DescCursoComision";
@@ -110,7 +111,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                 AlumnoInscripcion insAlumno = new AlumnoInscripcion();
                 AlumnoInscripcionLogic insAlLogic = new AlumnoInscripcionLogic();
                 //Se pasarian los objetos correspondientes a la inscripcion
-                insAlumno.Alumno = UsuarioActual;
+                insAlumno.Alumno = UsuarioActual.Persona;
                 insAlumno.Curso = ((Curso)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem);
                 insAlumno.Condicion = "En Cursado";
                 insAlumno.State = BusinessEntity.States.New;   
@@ -120,12 +121,13 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                     //Como segunda validacion que el curso al cual se quiera inscribir tenga cupo disponible
                     if(insAlumno.Curso.Cupo > 0)
                     {
+                        new CursoLogic().Update(insAlumno.Curso);
                         new AlumnoInscripcionLogic().Save(insAlumno);
                         MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("El curso ingresado no tiene cupos", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El curso ingresado no tiene cupos", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }                                 
                 }
                 else

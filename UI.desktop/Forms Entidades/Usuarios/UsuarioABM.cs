@@ -149,8 +149,8 @@ namespace Academia.UI.Desktop
         {
             if ( this.txtUsuario.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
             {
-            Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);         
-            return false;
+                Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
             }
             else
             { 

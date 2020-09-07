@@ -78,7 +78,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         public void CastearDatosCurso()
         {
             this.CursoActual = new Curso();
-            this.CursoActual.ID = Convert.ToInt32(this.txtID.Text);
             this.CursoActual.AnioCalendario = Convert.ToInt32(this.txtAñoCalendario.Text);
             this.CursoActual.Comision.ID = Convert.ToInt32(this.txtIDComision.Text);
             this.CursoActual.Materia.ID = Convert.ToInt32(this.txtIDMateria.Text);
@@ -100,6 +99,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
                 }
                 else
                 {
+                    this.CursoActual.ID = Convert.ToInt32(this.txtID.Text);
                     CursoActual.State = BusinessEntity.States.Modified;
                 }
             }

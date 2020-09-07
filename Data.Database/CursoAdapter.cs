@@ -102,6 +102,28 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
+
+        public void modificoCupoCurso(Curso curso)
+        {
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET cupo=@cupo-1 WHERE id_curso=@idCurso", sqlConn);
+                cmdSave.Parameters.Add("@idCurso", SqlDbType.Int).Value = curso.ID;
+                cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al modificar datos del curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         public void Delete(int ID)
         {
             try

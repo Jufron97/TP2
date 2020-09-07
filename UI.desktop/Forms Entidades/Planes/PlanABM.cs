@@ -71,7 +71,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         public void CastearDatosPlan()
         {
             this.PlanActual = new Plan();
-            this.PlanActual.ID = Convert.ToInt32(this.txtID.Text);
             this.PlanActual.Descripcion = this.txtDescripcion.Text;
             this.PlanActual.Especialidad.ID = Convert.ToInt32(this.txtIDEspecialidad.Text);
         }
@@ -91,6 +90,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
                 }
                 else
                 {
+                    PlanActual.ID = Convert.ToInt32(this.txtID.Text);
                     PlanActual.State = BusinessEntity.States.Modified;
                 }
             }

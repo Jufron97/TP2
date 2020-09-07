@@ -61,7 +61,7 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdAlumnoInscripcion = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlumno", sqlConn);
-                cmdAlumnoInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = usuario.ID;
+                cmdAlumnoInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = usuario.Persona.ID;
                 SqlDataReader drInscripciones = cmdAlumnoInscripcion.ExecuteReader();
                 while (drInscripciones.Read())
                 {

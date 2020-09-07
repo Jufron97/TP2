@@ -42,7 +42,9 @@ namespace Academia.Business.Logic
             CursoData.Save(curso);
         }
 
-
-
+        public void Update(Curso curso)
+        {
+            CursoData.modificoCupoCurso(curso);
+        }
     }
 }

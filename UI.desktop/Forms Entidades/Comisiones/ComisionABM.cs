@@ -73,7 +73,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
         public void CastearDatosComision()
         {
             this.ComisionActual = new Comision();
-            this.ComisionActual.ID = Convert.ToInt32(this.txtID.Text);
             this.ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAnioEspecialidad.Text);
             this.ComisionActual.Descripcion = this.txtDescripcion.Text;
             this.ComisionActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
@@ -94,6 +93,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
                 }
                 else
                 {
+                    this.ComisionActual.ID = Convert.ToInt32(this.txtID.Text);
                     ComisionActual.State = BusinessEntity.States.Modified;
                 }
             }

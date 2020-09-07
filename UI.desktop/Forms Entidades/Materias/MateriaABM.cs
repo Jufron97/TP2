@@ -70,7 +70,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         public void CastearDatosMateria()
         {
             this.MateriaActual = new Materia();
-            this.MateriaActual.ID = Convert.ToInt32(this.txtID.Text);
             this.MateriaActual.Descripcion = this.txtDescripcion.Text;
             this.MateriaActual.HsSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
             this.MateriaActual.HsTotales = Convert.ToInt32(this.txtHorasTotales.Text);
@@ -97,6 +96,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 }
                 else
                 {
+                    this.MateriaActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.MateriaActual.State = Usuario.States.Modified;
                 }
             }
