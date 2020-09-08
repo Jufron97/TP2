@@ -88,7 +88,7 @@ namespace Academia.UI.Desktop
         /// <summary>
         /// Metodo Utilizado para modificar los datos del usuario seleccionado o para dar de alta uno nuevo
         /// </summary>
-        public void CastearDatosUsurio()
+        public void CastearDatosUsuario()
         {
             UsuarioActual = new Usuario();
             this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
@@ -122,7 +122,7 @@ namespace Academia.UI.Desktop
             }
             else
             {
-                CastearDatosUsurio();
+                CastearDatosUsuario();
                 //Se asigna el tipo de operacion al usuarios para posteriormente poder dejarlo en la BD
                 if (this.Modo == ApplicationForm.ModoForm.Alta)
                 {
@@ -149,8 +149,8 @@ namespace Academia.UI.Desktop
         {
             if ( this.txtUsuario.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
             {
-                Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return false;
+            Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            return false;
             }
             else
             { 
