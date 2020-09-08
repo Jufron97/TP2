@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
@@ -46,12 +47,15 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtConfirmarClave = new System.Windows.Forms.TextBox();
             this.gpbUsuario = new System.Windows.Forms.GroupBox();
+            this.cbPlanes = new System.Windows.Forms.ComboBox();
             this.rdbDocente = new System.Windows.Forms.RadioButton();
             this.rdbAlumno = new System.Windows.Forms.RadioButton();
             this.lblFechaNacimiento = new System.Windows.Forms.Label();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.gpbTipoPersona = new System.Windows.Forms.GroupBox();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtID
@@ -219,6 +223,7 @@
             // 
             // gpbUsuario
             // 
+            this.gpbUsuario.Controls.Add(this.cbPlanes);
             this.gpbUsuario.Controls.Add(this.rdbDocente);
             this.gpbUsuario.Controls.Add(this.rdbAlumno);
             this.gpbUsuario.Controls.Add(this.lblFechaNacimiento);
@@ -240,6 +245,14 @@
             this.gpbUsuario.TabIndex = 35;
             this.gpbUsuario.TabStop = false;
             this.gpbUsuario.Text = "Usuario";
+            // 
+            // cbPlanes
+            // 
+            this.cbPlanes.FormattingEnabled = true;
+            this.cbPlanes.Location = new System.Drawing.Point(52, 112);
+            this.cbPlanes.Name = "cbPlanes";
+            this.cbPlanes.Size = new System.Drawing.Size(109, 21);
+            this.cbPlanes.TabIndex = 36;
             // 
             // rdbDocente
             // 
@@ -290,6 +303,10 @@
             this.gpbTipoPersona.TabStop = false;
             this.gpbTipoPersona.Text = "Tipo de Persona";
             // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
             // UsuarioABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +325,7 @@
             this.Shown += new System.EventHandler(this.UsuarioDesktop_Shown);
             this.gpbUsuario.ResumeLayout(false);
             this.gpbUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +356,7 @@
         private System.Windows.Forms.GroupBox gpbTipoPersona;
         private System.Windows.Forms.RadioButton rdbDocente;
         private System.Windows.Forms.RadioButton rdbAlumno;
+        private System.Windows.Forms.ComboBox cbPlanes;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

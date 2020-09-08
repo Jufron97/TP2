@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop
 {
@@ -40,6 +41,11 @@ namespace Academia.UI.Desktop
         /// </summary>
         public void IniciarFormulario()
         {
+            //Quiero probar si puedo trabajar co nesto
+            cbPlanes.DataSource = new PlanLogic().GetAll();
+            cbPlanes.ValueMember = "ID";
+            cbPlanes.DisplayMember = "Descripcion";
+            //
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -69,17 +75,19 @@ namespace Academia.UI.Desktop
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             //Persona 
             this.txtIDPlan.Text = Convert.ToString(this.UsuarioActual.Persona.IDPlan);
-            this.txtNombre.Text = this.UsuarioActual.Persona.Nombre ;
+            this.txtNombre.Text = this.UsuarioActual.Persona.Nombre;
             this.txtApellido.Text = this.UsuarioActual.Persona.Apellido;
             if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
             {
                 this.rdbAlumno.Checked = true;
             }
-            else if(this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
+            else if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
             {
                 this.rdbDocente.Checked = true;
             }
-            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;            
+            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;
+            //
+            this.cbPlanes.SelectedValue = this.UsuarioActual.Persona.IDPlan;
             /*
              * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
              */
@@ -91,7 +99,6 @@ namespace Academia.UI.Desktop
         public void CastearDatosUsuario()
         {
             UsuarioActual = new Usuario();
-            this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
             this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
             this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
             this.UsuarioActual.Clave = this.txtClave.Text;
@@ -99,6 +106,7 @@ namespace Academia.UI.Desktop
             this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
             this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
             this.UsuarioActual.Persona.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
+            this.UsuarioActual.Persona.Plan = (Plan)this.cbPlanes.SelectedItem;
             //Se verifica el tipo de persona seleccionada
             if (rdbAlumno.Checked)
             {
@@ -130,6 +138,7 @@ namespace Academia.UI.Desktop
                 }
                 else
                 {
+                    this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.UsuarioActual.State = Usuario.States.Modified;
                 }
             }
@@ -147,29 +156,84 @@ namespace Academia.UI.Desktop
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if ( this.txtUsuario.TextLength==0 || this.txtClave.TextLength==0 || this.txtConfirmarClave.TextLength==0)
+            if (existenCamposVacios())
             {
-            Notificar("Algun Campo ingresado estaba vacio",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            return false;
-            }
-            else
-            { 
-                if (this.txtClave.Text != this.txtConfirmarClave.Text)
+                if (verificoCampos())
                 {
-                    Notificar("Las claves no coinciden",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                else 
-                if(this.txtClave.TextLength < 8)
-                {
-                    Notificar("Clave menor a 8 caracteres",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    return true;
                 }
                 else
-                    return true;
+                {
+                    return false;
+                }
             }
+            else 
+                return false;
+          
         }
 
+        public bool existenCamposVacios()
+        {
+            bool validador = true;
+            if(String.IsNullOrEmpty(txtNombre.Text))
+            {
+                errProvider.SetError(txtNombre, "El campo no puede estar vacio!");
+                validador = false;
+            }
+            if (String.IsNullOrEmpty(txtApellido.Text))
+            {
+                errProvider.SetError(txtApellido, "El campo no puede estar vacio!");
+                validador = false;
+            }
+            if (String.IsNullOrEmpty(txtClave.Text))
+            {
+                errProvider.SetError(txtClave, "El campo no puede estar vacio!");
+                validador = false;
+            }
+            if (String.IsNullOrEmpty(txtConfirmarClave.Text))
+            {
+                errProvider.SetError(txtClave, "El campo no puede estar vacio!");
+                validador = false;
+            }
+            if (String.IsNullOrEmpty(txtUsuario.Text))
+            {
+                errProvider.SetError(txtUsuario, "El campo no puede estar vacio!");
+                validador = false;
+            }
+            if(!rdbAlumno.Checked && !rdbDocente.Checked)
+            {
+                errProvider.SetError(gpbTipoPersona, "Seleccione un tipo");
+                validador = false;
+            }
+            return validador;
+        }
+
+        public bool verificoCampos()
+        {
+            bool validador = true;
+            string mensaje = null;
+            if(txtClave.TextLength <8)
+            {
+                mensaje += "La contraseña debe ser mayor a 8 caracteres\n";               
+                validador = false;
+            }
+            if(txtClave.Text != txtConfirmarClave.Text)
+            {
+                mensaje += "Las claves no coiciden\n";
+                validador = false;
+            }/*
+            if(!Validaciones.emailBienEscrito(txtEmail.Text))
+            {
+                mensaje += "El mail ingresado no es valido\n";
+                validador = false;
+            }*/
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                Notificar(mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return validador;
+
+        }
         new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
