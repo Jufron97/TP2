@@ -22,8 +22,9 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPersonas = new SqlCommand("ListadoGeneralUsuarios", sqlConn);
-                cmdPersonas.CommandType = CommandType.StoredProcedure;
+                
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas", sqlConn);
+                //cmdPersonas.CommandType = CommandType.StoredProcedure;
                 SqlDataReader drUsuarios = cmdPersonas.ExecuteReader();
                 while (drUsuarios.Read())
                 {
@@ -33,7 +34,7 @@ namespace Academia.Data.Database
                     per.Apellido = (string)drUsuarios["apellido"];
                     per.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
                     per.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
-                    per.Plan = new PlanAdapter().GetOne((int)drUsuarios["id_plan"]);
+                    per.Plan= new PlanAdapter().GetOne((int)drUsuarios["id_plan"]);
                     //Asi se verifica si son nulos o no los datos
                     if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
                     {
@@ -109,6 +110,7 @@ namespace Academia.Data.Database
                     per.Apellido = (string)drUsuarios["apellido"];
                     per.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
                     per.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
+                    per.Plan = new PlanAdapter().GetOne((int)drUsuarios["id_plan"]);
                     //Asi se verifica si son nulos o no los datos
                     if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
                     {
