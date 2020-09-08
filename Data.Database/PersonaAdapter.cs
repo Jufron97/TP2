@@ -33,6 +33,7 @@ namespace Academia.Data.Database
                     per.Apellido = (string)drUsuarios["apellido"];
                     per.FechaNacimiento = (DateTime)drUsuarios["fecha_nac"];
                     per.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
+                    per.Plan = new PlanAdapter().GetOne((int)drUsuarios["id_plan"]);
                     //Asi se verifica si son nulos o no los datos
                     if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
                     {
