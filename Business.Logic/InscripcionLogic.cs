@@ -8,7 +8,7 @@ using Academia.Data.Database;
 
 namespace Academia.Business.Logic
 {
-    public class AlumnoInscripcionLogic:BusinessLogic
+    public class InscripcionLogic:BusinessLogic
     {
         private AlumnoInscripcionAdapter m_inscripcionData;
 
@@ -18,32 +18,32 @@ namespace Academia.Business.Logic
             set => m_inscripcionData = value;
         }
 
-        public AlumnoInscripcionLogic()
+        public InscripcionLogic()
         {
             InscripcionData = new AlumnoInscripcionAdapter();
         }
 
-        public List<AlumnoInscripcion> GetAll()
+        public List<Inscripcion> GetAll()
         {
             return InscripcionData.GetAll();
         }
 
-        public List<AlumnoInscripcion> GetAll(Usuario usuario)
+        public List<Inscripcion> GetAll(Usuario usuario)
         {
             return InscripcionData.GetAll(usuario);
         }
 
-        public AlumnoInscripcion GetOne(int id)
+        public Inscripcion GetOne(int id)
         {
             return InscripcionData.GetOne(id);
         }
 
-        public void Delete(AlumnoInscripcion InscripAlumno)
+        public void Delete(Inscripcion InscripAlumno)
         {
             InscripcionData.Delete(InscripAlumno);
         }
 
-        public void Save(AlumnoInscripcion InscripAlumno)
+        public void Save(Inscripcion InscripAlumno)
         {
             InscripcionData.Save(InscripAlumno);
         }
@@ -53,7 +53,7 @@ namespace Academia.Business.Logic
         /// </summary>
         /// <param name="InscripAlumno"></param>
         /// <returns></returns>
-        public bool validarInscripcion(AlumnoInscripcion InscripAlumno)
+        public bool validarInscripcion(Inscripcion InscripAlumno)
         {
             return InscripcionData.GetOne(InscripAlumno);
         }

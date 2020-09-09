@@ -12,9 +12,9 @@ namespace Academia.Data.Database
     public class AlumnoInscripcionAdapter : Adapter
     { 
 
-    public List<AlumnoInscripcion> GetAll()
+    public List<Inscripcion> GetAll()
     {
-        List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>();
+        List<Inscripcion> Inscripciones = new List<Inscripcion>();
         try
         {
             OpenConnection();
@@ -22,12 +22,12 @@ namespace Academia.Data.Database
             SqlDataReader drInscripciones = cmdAlumnoInscripcion.ExecuteReader();
             while (drInscripciones.Read())
             {
-                AlumnoInscripcion AlIns = new AlumnoInscripcion();
+                Inscripcion AlIns = new Inscripcion();
                 AlIns.ID = (int)drInscripciones["id_inscripcion"];
                 //Objeto Alumno
-                AlIns.Alumno.ID = (int)drInscripciones["id_alumno"];
+                AlIns.Alumno = new PersonaAdapter().GetOne((int)drInscripciones["id_alumno"]);
                 //Objeto Curso
-                AlIns.Curso.ID = (int)drInscripciones["id_curso"];
+                AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
                 AlIns.Condicion = (string)drInscripciones["condicion"];
                 //Por si las notas no fueron cargadas
                 if (String.IsNullOrEmpty(drInscripciones["nota"].ToString()))
@@ -54,9 +54,9 @@ namespace Academia.Data.Database
         return Inscripciones;
     }
 
-    public List<AlumnoInscripcion> GetAll(Usuario usuario)
+    public List<Inscripcion> GetAll(Usuario usuario)
         {
-            List<AlumnoInscripcion> Inscripciones = new List<AlumnoInscripcion>();
+            List<Inscripcion> Inscripciones = new List<Inscripcion>();
             try
             {
                 OpenConnection();
@@ -65,7 +65,7 @@ namespace Academia.Data.Database
                 SqlDataReader drInscripciones = cmdAlumnoInscripcion.ExecuteReader();
                 while (drInscripciones.Read())
                 {
-                    AlumnoInscripcion AlIns = new AlumnoInscripcion();
+                    Inscripcion AlIns = new Inscripcion();
                     AlIns.ID = (int)drInscripciones["id_inscripcion"];
                     //Objeto Curso
                     AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
@@ -96,9 +96,9 @@ namespace Academia.Data.Database
         }
 
 
-        public AlumnoInscripcion GetOne(int ID)
+        public Inscripcion GetOne(int ID)
     {    
-        AlumnoInscripcion AlIns = new AlumnoInscripcion();   
+        Inscripcion AlIns = new Inscripcion();   
         try
         {
             OpenConnection();
@@ -138,9 +138,9 @@ namespace Academia.Data.Database
         return AlIns;
     }
 
-    public bool GetOne(AlumnoInscripcion insAlumno)
+    public bool GetOne(Inscripcion insAlumno)
     {    
-        AlumnoInscripcion AlIns = new AlumnoInscripcion();   
+        Inscripcion AlIns = new Inscripcion();   
         try
         {
             OpenConnection();
@@ -169,7 +169,7 @@ namespace Academia.Data.Database
         }
     }
 
-    public void Update(AlumnoInscripcion alumnoInscripcion)
+    public void Update(Inscripcion alumnoInscripcion)
     {
         try
         {
@@ -189,7 +189,7 @@ namespace Academia.Data.Database
             CloseConnection();
         }
     }
-    public void Delete(AlumnoInscripcion alumnoInscripcion)
+    public void Delete(Inscripcion alumnoInscripcion)
     {
         try
         {
@@ -209,7 +209,7 @@ namespace Academia.Data.Database
         }
     }
 
-    public void Insert(AlumnoInscripcion alumnoInscripcion)
+    public void Insert(Inscripcion alumnoInscripcion)
     {
         try
         {
@@ -233,7 +233,7 @@ namespace Academia.Data.Database
         }
     }
 
-    public void Save(AlumnoInscripcion alumnoInscripcion)
+    public void Save(Inscripcion alumnoInscripcion)
     {
         if (alumnoInscripcion.State == BusinessEntity.States.New)
         {

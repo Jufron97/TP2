@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Logic;
 
-namespace Academia.UI.Desktop.Formularios_Principales.Alumno
+namespace Academia.UI.Desktop
 {
     public partial class InscripcionAlumno : Form
     {
@@ -72,7 +72,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
                     //Dado que tengo que se muestra otra propiedad, hay que cambiarle eel DataPropertyName
                     this.Materia.DataPropertyName = "DescCursoMateria";
                     this.Comision.DataPropertyName = "DescCursoComision";
-                    AlumnoInscripcionLogic alInsLogic = new AlumnoInscripcionLogic();
+                    InscripcionLogic alInsLogic = new InscripcionLogic();
                     dgvInscripcionAlumno.DataSource = alInsLogic.GetAll(UsuarioActual);                 
                 }
             }
@@ -108,32 +108,14 @@ namespace Academia.UI.Desktop.Formularios_Principales.Alumno
         {
             if (itemSeleccionado())
             {
-                AlumnoInscripcion insAlumno = new AlumnoInscripcion();
-                AlumnoInscripcionLogic insAlLogic = new AlumnoInscripcionLogic();
+                Inscripcion inscripcion = new Inscripcion();
+                InscripcionLogic insLogic = new InscripcionLogic();
                 //Se pasarian los objetos correspondientes a la inscripcion
-                insAlumno.Alumno = UsuarioActual.Persona;
-                insAlumno.Curso = ((Curso)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem);
-                insAlumno.Condicion = "En Cursado";
-                insAlumno.State = BusinessEntity.States.New;   
-                //En primera parte se valida que el usuario no este inscripto
-                if (!insAlLogic.validarInscripcion(insAlumno))               
-                {
-                    //Como segunda validacion que el curso al cual se quiera inscribir tenga cupo disponible
-                    if(insAlumno.Curso.Cupo > 0)
-                    {
-                        new CursoLogic().Update(insAlumno.Curso);
-                        new AlumnoInscripcionLogic().Save(insAlumno);
-                        MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("El curso ingresado no tiene cupos", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                                 
-                }
-                else
-                {
-                    MessageBox.Show("El alumno ya se encuentra inscripto en el curso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                inscripcion.Alumno = ((Inscripcion)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem).Alumno;
+                inscripcion.Curso = ((Inscripcion)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem).Curso;
+                inscripcion.Condicion = "Corregido";
+                inscripcion.State = BusinessEntity.States.Modified;
+                insLogic.Save(inscripcion);
             }
             else
             {

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.UI.Desktop;
 
 namespace Academia.UI.Desktop
 {
@@ -37,7 +38,10 @@ namespace Academia.UI.Desktop
 
         private void btnRegistroNotas_Click(object sender, EventArgs e)
         {
-
+            //Aca se mostraria los cursos a los cuales se inscribio el alumno
+            formCursosDocente formInscripcion = new formCursosDocente(UsuarioActual);
+            formInscripcion.TipoOperacion = formCursosDocente.Operacion.RegistroNotas;
+            formInscripcion.ShowDialog();
         }
 
         private void btnReportePlanes_Click(object sender, EventArgs e)

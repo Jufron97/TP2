@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Academia.Business.Entities
 {
-    public class AlumnoInscripcion:BusinessEntity
+    public class Inscripcion:BusinessEntity
     {
         #region Atributos
 
@@ -19,7 +19,7 @@ namespace Academia.Business.Entities
 
         #region Constructores
 
-        public AlumnoInscripcion()
+        public Inscripcion()
         {
             Alumno = new Persona();
             Curso = new Curso();
@@ -50,6 +50,16 @@ namespace Academia.Business.Entities
         public int IDAlumno
         {
             get => Alumno.ID;
+        }
+
+        public string NombreAlumno
+        {
+            get => Alumno.Nombre;
+        }
+
+        public string ApellidoAlumno
+        {
+            get => Alumno.Apellido;
         }
 
         public Curso Curso

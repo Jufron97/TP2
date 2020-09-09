@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
-using Academia.UI.Desktop.Forms_Entidades.Cursos;
-using Academia.UI.Desktop.Formularios_Principales.Alumno;
 
 namespace Academia.UI.Desktop
 {
