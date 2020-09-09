@@ -86,7 +86,7 @@ namespace Academia.Data.Database
                 SqlCommand cmdSave = new SqlCommand("ActualizarPlan", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = plan.ID;
-                cmdSave.Parameters.Add("@DescPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
+                cmdSave.Parameters.Add("@DescPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;    
                 cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
                 cmdSave.ExecuteNonQuery();
             }
@@ -141,6 +141,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
                 //Hay que ver si se nos solicita el ID del plan que se crea
                 //plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {

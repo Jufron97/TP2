@@ -36,16 +36,19 @@ namespace Academia.UI.Desktop
 
         #region Metodos
 
+        public void cargoComboBox()
+        {
+            cbPlanes.DataSource = new PlanLogic().GetAll();
+            cbPlanes.ValueMember = "ID";
+            cbPlanes.DisplayMember = "Descripcion";           
+        }
+
         /// <summary>
         /// Crea el formulario especificado segun el tipo de Operacion a realizar
         /// </summary>
         public void IniciarFormulario()
         {
-            //Quiero probar si puedo trabajar co nesto
-            cbPlanes.DataSource = new PlanLogic().GetAll();
-            cbPlanes.ValueMember = "ID";
-            cbPlanes.DisplayMember = "Descripcion";
-            //
+            cargoComboBox();
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -54,6 +57,7 @@ namespace Academia.UI.Desktop
             {
                 this.lblConfirmarClave.Visible = false;
                 this.txtConfirmarClave.Visible = false;
+                this.cbPlanes.Enabled = false;
                 this.btnAceptar.Text = "Eliminar";
                 MapearDeDatos();
             }
@@ -74,20 +78,22 @@ namespace Academia.UI.Desktop
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             //Persona 
-            this.txtIDPlan.Text = Convert.ToString(this.UsuarioActual.Persona.IDPlan);
             this.txtNombre.Text = this.UsuarioActual.Persona.Nombre;
             this.txtApellido.Text = this.UsuarioActual.Persona.Apellido;
+            //Asi se identifica el plan seleccionado pero el ID que este tenga, no hay otra forma de hacerlo si no
+            this.cbPlanes.SelectedValue = this.UsuarioActual.Persona.IDPlan;
+            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;
+
             if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Alumno)
             {
                 this.rdbAlumno.Checked = true;
             }
             else if (this.UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Docente)
-            {
-                this.rdbDocente.Checked = true;
-            }
-            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;
-            //
-            this.cbPlanes.SelectedValue = this.UsuarioActual.Persona.IDPlan;
+                {
+                    this.rdbDocente.Checked = true;
+                }
+                   
+            
             /*
              * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
              */
@@ -105,7 +111,8 @@ namespace Academia.UI.Desktop
             this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
             this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
             this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-            this.UsuarioActual.Persona.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
+            //this.UsuarioActual.Persona.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
+            //Se castea a el objeto Plan que se selecciono, ya que el DataSource del ComboBox son objetos
             this.UsuarioActual.Persona.Plan = (Plan)this.cbPlanes.SelectedItem;
             //Se verifica el tipo de persona seleccionada
             if (rdbAlumno.Checked)
@@ -138,6 +145,8 @@ namespace Academia.UI.Desktop
                 }
                 else
                 {
+                    //Esto no se puede hacer en el metodo de castear usuario, ya que cuando se quiere crear un nuevo usuario
+                    //El txtID esta en nulo
                     this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.UsuarioActual.State = Usuario.States.Modified;
                 }
@@ -167,9 +176,11 @@ namespace Academia.UI.Desktop
                     return false;
                 }
             }
-            else 
+            else
+            {
+                Notificar("Existen campos vacios, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-          
+            }         
         }
 
         public bool existenCamposVacios()
@@ -219,7 +230,7 @@ namespace Academia.UI.Desktop
             }
             if(txtClave.Text != txtConfirmarClave.Text)
             {
-                mensaje += "Las claves no coiciden\n";
+                mensaje += "Las claves no coinciden\n";
                 validador = false;
             }/*
             if(!Validaciones.emailBienEscrito(txtEmail.Text))
@@ -254,7 +265,7 @@ namespace Academia.UI.Desktop
             }
             else
             {
-                if (MessageBox.Show("Seguro que desea eliminar el curso seleccionado?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Seguro que desea eliminar el usuario seleccionado?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     GuardarCambios();
                     this.Close();
@@ -288,7 +299,7 @@ namespace Academia.UI.Desktop
                 this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
                 this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 //Se verifica el tipo de persona seleccionada
                 if (rdbAlumno.Checked)
                 {
@@ -308,7 +319,7 @@ namespace Academia.UI.Desktop
                 this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
                 this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
-                this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.UsuarioActual.Persona.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 //Se verifica el tipo de persona seleccionada
                 if (rdbAlumno.Checked)
                 {

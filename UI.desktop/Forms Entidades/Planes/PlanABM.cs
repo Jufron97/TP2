@@ -33,12 +33,20 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         #endregion
 
+        public void cargoComboBox()
+        {
+            this.cbEspecialidad.DataSource = new EspecialidadLogic().GetAll();
+            this.cbEspecialidad.ValueMember = "ID";
+            this.cbEspecialidad.DisplayMember = "Descripcion";
+        }
+
         #region Metodos
         /// <summary>
         /// Crea el formulario especifico segun el tipo especificado
         /// </summary>
         public void IniciarFormulario()
         {
+            cargoComboBox();
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -46,6 +54,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             else if (Modo == ApplicationForm.ModoForm.Baja)
                 {
                     this.btnAceptar.Text = "Eliminar";
+                    this.cbEspecialidad.Enabled = false;
                     MapearDeDatos();
                 }
                 else
@@ -62,7 +71,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         {
             this.txtID.Text = this.PlanActual.ID.ToString();
             this.txtDescripcion.Text = this.PlanActual.Descripcion.ToString();
-            this.txtIDEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();          
+            this.cbEspecialidad.SelectedValue = this.PlanActual.IDEspecialidad;
+            //this.txtIDEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();          
         }
 
         /// <summary>
@@ -72,7 +82,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         {
             this.PlanActual = new Plan();
             this.PlanActual.Descripcion = this.txtDescripcion.Text;
-            this.PlanActual.Especialidad.ID = Convert.ToInt32(this.txtIDEspecialidad.Text);
+            this.PlanActual.Especialidad = (Especialidad)cbEspecialidad.SelectedItem;
+            //this.PlanActual.Especialidad.ID = Convert.ToInt32(this.txtIDEspecialidad.Text);
         }
 
         public void MapearADatos2()
@@ -102,26 +113,33 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             new PlanLogic().Save(PlanActual);
         }
 
+        public bool verificoCamposNulos()
+        {
+            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /// <summary>
         /// Metodo utilizado para validar los datos ingresados al formulario 
         /// </summary>
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (this.txtDescripcion.TextLength == 0 || this.txtIDEspecialidad.TextLength == 0)
+            if (verificoCamposNulos())
             {
-                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                return true;
             }
             else
             {
-                if (Int32.TryParse(txtIDEspecialidad.Text,out int valor) == false)
-                {
-                    Notificar("ID ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }              
-                else
-                    return true;
+                Notificar("Existen campos vacios, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
@@ -198,13 +216,13 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             {
                 PlanActual = new Plan();
                 this.PlanActual.Descripcion = this.txtDescripcion.Text;
-                this.PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
+                //this.PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
                 PlanActual.State = Especialidad.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 PlanActual.Descripcion = this.txtDescripcion.Text;
-                PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
+                //PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
                 PlanActual.State = Usuario.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
@@ -214,5 +232,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         }
 
         #endregion
+
     }
 }

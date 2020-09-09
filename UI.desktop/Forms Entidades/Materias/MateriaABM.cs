@@ -37,8 +37,15 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
 
         #region Metodos
 
+        public void cargoComboBox()
+        {
+            cbPlan.DataSource = new PlanLogic().GetAll();
+            cbPlan.ValueMember = "ID";
+            cbPlan.DisplayMember = "Descripcion";
+        }
         public void IniciarFormulario()
         {
+            cargoComboBox();
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -46,6 +53,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             else if (Modo == ApplicationForm.ModoForm.Baja)
                 {
                     this.btnAceptar.Text = "Eliminar";
+                    cbPlan.Enabled = false;
                     MapearDeDatos();
                 }
                 else
@@ -61,7 +69,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             this.txtDescripcion.Text = this.MateriaActual.Descripcion.ToString();
             this.txtHsSemanales.Text = this.MateriaActual.HsSemanales.ToString();
             this.txtHorasTotales.Text = this.MateriaActual.HsTotales.ToString();
-            this.txtIDPlan.Text = this.MateriaActual.IdPlan.ToString();
+            this.cbPlan.SelectedValue = this.MateriaActual.IdPlan;
+            //this.txtIDPlan.Text = this.MateriaActual.IdPlan.ToString();
         }
 
         /// <summary>
@@ -73,7 +82,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             this.MateriaActual.Descripcion = this.txtDescripcion.Text;
             this.MateriaActual.HsSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
             this.MateriaActual.HsTotales = Convert.ToInt32(this.txtHorasTotales.Text);
-            this.MateriaActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
+            this.MateriaActual.Plan = (Plan)cbPlan.SelectedItem;
+            //this.MateriaActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
         }
 
         /// <summary>
@@ -101,32 +111,66 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 }
             }
         }
+
+        public bool verificoCamposNulos()
+        {
+            bool validador = true;
+            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
+            }
+            if (String.IsNullOrEmpty(txtHorasTotales.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtHorasTotales, "Este campo no puede estar vacio!");
+            }
+            if (String.IsNullOrEmpty(txtHsSemanales.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtHsSemanales, "Este campo no puede estar vacio!");
+            }
+            return validador;
+        }
+
+        public bool verificoValores()
+        {
+            bool validador = true;
+            string mensaje = null;
+            if (Int32.TryParse(txtHsSemanales.Text, out int valor) == false)
+            {
+                mensaje+="HsSemanales ingresadas no validas\n";
+                validador = false;
+            }
+            if (Int32.TryParse(txtHorasTotales.Text, out int valor1) == false)
+            {
+                mensaje += "HsTotales ingresadas no validas\n";
+                validador = false;
+            }
+            if(!String.IsNullOrEmpty(mensaje))
+            {
+                Notificar(mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return validador;
+        }
         
         new public virtual bool Validar()
         {
-            if (this.txtDescripcion.TextLength == 0 || this.txtHsSemanales.TextLength == 0 || this.txtHorasTotales.TextLength == 0 || this.txtIDPlan.TextLength == 0)
+            if (verificoCamposNulos())
             {
-                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if(verificoValores())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                if (Int32.TryParse(txtHsSemanales.Text, out int valor) == false)
-                {
-                    Notificar("HsSemanales ingresadas no validas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                else if(Int32.TryParse(txtHorasTotales.Text, out int valor1) == false)
-                    {
-                        Notificar("HsTotales ingresadas no validas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                    else if(Int32.TryParse(txtIDPlan.Text, out int valor2) == false)
-                    {
-                        Notificar("ID Plan ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-            return true;  
+                Notificar("Existen campos vacios, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;               
             }
         }
 
@@ -187,7 +231,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                 this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
                 this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 MateriaActual.State = BusinessEntity.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
@@ -196,7 +240,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                 this.MateriaActual.HsSemanales = Int32.Parse(this.txtHsSemanales.Text);
                 this.MateriaActual.HsTotales = Int32.Parse(this.txtHorasTotales.Text);
-                this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.MateriaActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 MateriaActual.State = BusinessEntity.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)

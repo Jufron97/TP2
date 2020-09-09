@@ -197,28 +197,33 @@ namespace Academia.Data.Database
 
         public void Update(Usuario usuario)
         {
-            OpenConnection();
-            SqlTransaction sqlTran = sqlConn.BeginTransaction();
+            
             try
             {
+                OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("ActualizarUsuario",sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;
+                //Usuario
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;               
                 cmdSave.Parameters.Add("@idUsu", SqlDbType.Int).Value = usuario.ID;
-                //Aca queda pendiente con respecto a los datos de la persona, hay que discutirlo
-                cmdSave.Transaction = sqlTran;
+                //Persona
+                cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
+                cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
+                cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
+                cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
+                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
+                //cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
+                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
+                //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
+                //
                 cmdSave.ExecuteNonQuery();
-                sqlTran.Commit();
             }
             catch (Exception Ex)
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                //En caso de que no se ejecute correctamente las transaccion, se volvera aplicara el rollback
-                //Para volve a tener la base en un estado consistente
-                sqlTran.Rollback();
                 Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario", Ex);
                 throw ExcepcionManejada;
             }
@@ -253,15 +258,13 @@ namespace Academia.Data.Database
         }
 
         public void Insert(Usuario usuario)
-        {
-            OpenConnection();
-            //Se inicializa la transaccion 
-            SqlTransaction sqlTran = sqlConn.BeginTransaction();
+        {           
             try
             {
+                OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;
-                //Datos del objeto persona
+                //Persona
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
                 //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
@@ -270,26 +273,17 @@ namespace Academia.Data.Database
                 //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
-                //Datos del objeto usuario
-                /*
-                 * Se podria hacer dos storeProcedure
-                cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
-                
-                */
+                //Usuario
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdSave.Transaction = sqlTran;
-                cmdSave.ExecuteNonQuery();
-                sqlTran.Commit();
             }
             catch (Exception Ex)
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                sqlTran.Rollback();
                 Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
-                throw Ex;
+                throw ExcepcionManejada;
             }
             finally
             {

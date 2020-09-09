@@ -32,7 +32,6 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
-            this.txtIDPlan = new System.Windows.Forms.TextBox();
             this.chkHabilitado = new System.Windows.Forms.CheckBox();
             this.lblID = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -85,21 +84,13 @@
             this.txtClave.Size = new System.Drawing.Size(108, 20);
             this.txtClave.TabIndex = 30;
             // 
-            // txtIDPlan
-            // 
-            this.txtIDPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtIDPlan.Location = new System.Drawing.Point(52, 85);
-            this.txtIDPlan.Name = "txtIDPlan";
-            this.txtIDPlan.Size = new System.Drawing.Size(108, 20);
-            this.txtIDPlan.TabIndex = 26;
-            // 
             // chkHabilitado
             // 
             this.chkHabilitado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chkHabilitado.AutoSize = true;
-            this.chkHabilitado.Location = new System.Drawing.Point(189, 23);
+            this.chkHabilitado.Location = new System.Drawing.Point(211, 23);
             this.chkHabilitado.Name = "chkHabilitado";
             this.chkHabilitado.Size = new System.Drawing.Size(73, 17);
             this.chkHabilitado.TabIndex = 20;
@@ -127,11 +118,11 @@
             // lblIdPlan
             // 
             this.lblIdPlan.AutoSize = true;
-            this.lblIdPlan.Location = new System.Drawing.Point(-3, 82);
+            this.lblIdPlan.Location = new System.Drawing.Point(3, 85);
             this.lblIdPlan.Name = "lblIdPlan";
-            this.lblIdPlan.Size = new System.Drawing.Size(40, 13);
+            this.lblIdPlan.Size = new System.Drawing.Size(28, 13);
             this.lblIdPlan.TabIndex = 25;
-            this.lblIdPlan.Text = "Id Plan";
+            this.lblIdPlan.Text = "Plan";
             // 
             // lblClave
             // 
@@ -145,7 +136,7 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(179, 50);
+            this.lblApellido.Location = new System.Drawing.Point(201, 50);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(44, 13);
             this.lblApellido.TabIndex = 23;
@@ -163,11 +154,11 @@
             // lblConfirmarClave
             // 
             this.lblConfirmarClave.AutoSize = true;
-            this.lblConfirmarClave.Location = new System.Drawing.Point(173, 150);
+            this.lblConfirmarClave.Location = new System.Drawing.Point(201, 147);
             this.lblConfirmarClave.Name = "lblConfirmarClave";
-            this.lblConfirmarClave.Size = new System.Drawing.Size(81, 13);
+            this.lblConfirmarClave.Size = new System.Drawing.Size(54, 26);
             this.lblConfirmarClave.TabIndex = 31;
-            this.lblConfirmarClave.Text = "Confirmar Clave";
+            this.lblConfirmarClave.Text = "Confirmar \r\nClave";
             // 
             // btnAceptar
             // 
@@ -196,7 +187,7 @@
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApellido.Location = new System.Drawing.Point(245, 53);
+            this.txtApellido.Location = new System.Drawing.Point(267, 53);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(109, 20);
             this.txtApellido.TabIndex = 24;
@@ -216,7 +207,7 @@
             this.txtConfirmarClave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmarClave.Location = new System.Drawing.Point(263, 153);
+            this.txtConfirmarClave.Location = new System.Drawing.Point(267, 147);
             this.txtConfirmarClave.Name = "txtConfirmarClave";
             this.txtConfirmarClave.Size = new System.Drawing.Size(109, 20);
             this.txtConfirmarClave.TabIndex = 32;
@@ -225,16 +216,17 @@
             // 
             this.gpbUsuario.Controls.Add(this.cbPlanes);
             this.gpbUsuario.Controls.Add(this.rdbDocente);
+            this.gpbUsuario.Controls.Add(this.lblConfirmarClave);
             this.gpbUsuario.Controls.Add(this.rdbAlumno);
             this.gpbUsuario.Controls.Add(this.lblFechaNacimiento);
             this.gpbUsuario.Controls.Add(this.dtpFechaNac);
+            this.gpbUsuario.Controls.Add(this.txtConfirmarClave);
             this.gpbUsuario.Controls.Add(this.txtClave);
             this.gpbUsuario.Controls.Add(this.txtID);
             this.gpbUsuario.Controls.Add(this.txtApellido);
             this.gpbUsuario.Controls.Add(this.txtNombre);
             this.gpbUsuario.Controls.Add(this.lblApellido);
             this.gpbUsuario.Controls.Add(this.lblIdPlan);
-            this.gpbUsuario.Controls.Add(this.txtIDPlan);
             this.gpbUsuario.Controls.Add(this.lblNombre);
             this.gpbUsuario.Controls.Add(this.chkHabilitado);
             this.gpbUsuario.Controls.Add(this.lblID);
@@ -249,7 +241,7 @@
             // cbPlanes
             // 
             this.cbPlanes.FormattingEnabled = true;
-            this.cbPlanes.Location = new System.Drawing.Point(52, 112);
+            this.cbPlanes.Location = new System.Drawing.Point(51, 88);
             this.cbPlanes.Name = "cbPlanes";
             this.cbPlanes.Size = new System.Drawing.Size(109, 21);
             this.cbPlanes.TabIndex = 36;
@@ -257,7 +249,7 @@
             // rdbDocente
             // 
             this.rdbDocente.AutoSize = true;
-            this.rdbDocente.Location = new System.Drawing.Point(288, 202);
+            this.rdbDocente.Location = new System.Drawing.Point(327, 199);
             this.rdbDocente.Name = "rdbDocente";
             this.rdbDocente.Size = new System.Drawing.Size(66, 17);
             this.rdbDocente.TabIndex = 34;
@@ -268,7 +260,7 @@
             // rdbAlumno
             // 
             this.rdbAlumno.AutoSize = true;
-            this.rdbAlumno.Location = new System.Drawing.Point(213, 201);
+            this.rdbAlumno.Location = new System.Drawing.Point(252, 198);
             this.rdbAlumno.Name = "rdbAlumno";
             this.rdbAlumno.Size = new System.Drawing.Size(60, 17);
             this.rdbAlumno.TabIndex = 33;
@@ -279,7 +271,7 @@
             // lblFechaNacimiento
             // 
             this.lblFechaNacimiento.AutoSize = true;
-            this.lblFechaNacimiento.Location = new System.Drawing.Point(179, 79);
+            this.lblFechaNacimiento.Location = new System.Drawing.Point(201, 79);
             this.lblFechaNacimiento.Name = "lblFechaNacimiento";
             this.lblFechaNacimiento.Size = new System.Drawing.Size(60, 26);
             this.lblFechaNacimiento.TabIndex = 32;
@@ -289,14 +281,14 @@
             // 
             this.dtpFechaNac.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaNac.Location = new System.Drawing.Point(245, 85);
+            this.dtpFechaNac.Location = new System.Drawing.Point(267, 85);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(109, 20);
             this.dtpFechaNac.TabIndex = 31;
             // 
             // gpbTipoPersona
             // 
-            this.gpbTipoPersona.Location = new System.Drawing.Point(202, 182);
+            this.gpbTipoPersona.Location = new System.Drawing.Point(241, 179);
             this.gpbTipoPersona.Name = "gpbTipoPersona";
             this.gpbTipoPersona.Size = new System.Drawing.Size(164, 54);
             this.gpbTipoPersona.TabIndex = 35;
@@ -314,11 +306,9 @@
             this.ClientSize = new System.Drawing.Size(486, 300);
             this.Controls.Add(this.lblClave);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.lblConfirmarClave);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.txtConfirmarClave);
             this.Controls.Add(this.gpbUsuario);
             this.Name = "UsuarioABM";
             this.Text = "Usuario";
@@ -336,7 +326,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtClave;
-        private System.Windows.Forms.TextBox txtIDPlan;
         private System.Windows.Forms.CheckBox chkHabilitado;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblNombre;
