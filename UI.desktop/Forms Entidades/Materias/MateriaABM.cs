@@ -204,8 +204,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             }
             else
             {
-                GuardarCambios();
-                this.Close();
+                if (MessageBox.Show("Seguro que desea eliminar la materia seleccionada?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
             }
         }
 

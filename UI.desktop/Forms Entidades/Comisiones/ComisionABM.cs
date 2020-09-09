@@ -35,25 +35,34 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         #region Metodos
 
+        public void cargoComboBox()
+        {
+            cbPlan.DataSource = new PlanLogic().GetAll();
+            cbPlan.ValueMember = "ID";
+            cbPlan.DisplayMember = "Descripcion";
+        }
+
         /// <summary>
         /// Crea el formulario especifico segun el tipo especificado
         /// </summary>
         public void IniciarFormulario()
         {
+            cargoComboBox();
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
             }
             else if (Modo == ApplicationForm.ModoForm.Baja)
-            {
-                this.btnAceptar.Text = "Eliminar";
-                MapearDeDatos();
-            }
-            else
-            {
-                this.btnAceptar.Text = "Guardar";
-                MapearDeDatos();
-            }
+                {
+                    this.btnAceptar.Text = "Eliminar";
+                    cbPlan.Enabled = false;
+                    MapearDeDatos();
+                }
+                else
+                {
+                    this.btnAceptar.Text = "Guardar";
+                    MapearDeDatos();
+                }
         }
 
         /// <summary>
@@ -64,7 +73,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.txtID.Text = this.ComisionActual.ID.ToString();
             this.txtAnioEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
             this.txtDescripcion.Text = this.ComisionActual.Descripcion;
-            this.txtIDPlan.Text = this.ComisionActual.IDPlan.ToString();
+            this.cbPlan.SelectedValue = this.ComisionActual.IDPlan;
+            //this.txtIDPlan.Text = this.ComisionActual.IDPlan.ToString();
         }
 
         /// <summary>
@@ -75,7 +85,8 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.ComisionActual = new Comision();
             this.ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAnioEspecialidad.Text);
             this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-            this.ComisionActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
+            this.ComisionActual.Plan = (Plan)cbPlan.SelectedItem;
+            //this.ComisionActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
         }
 
         public void MapearADatos2()
@@ -101,31 +112,63 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos();
+            MapearADatos2();
             new ComisionLogic().Save(ComisionActual);
+        }
+
+        /// <summary>
+        /// Se verifica si existen campos nulos
+        /// </summary>
+        /// <returns></returns>
+        public bool verificoCamposNulos()
+        {
+            bool validador = true;
+            if(String.IsNullOrEmpty(txtAnioEspecialidad.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtAnioEspecialidad, "Este campo no puede estar vacio!");
+            }
+            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
+            }
+            return validador;
+        }
+
+        /// <summary>
+        /// Se verifica que los campos ingresados correspondan a los valores predeterminados
+        /// </summary>
+        /// <returns></returns>
+        public bool verificoValores()
+        {
+            bool validador = true;
+            string mensaje = null;
+            if (Int32.TryParse(this.txtAnioEspecialidad.Text, out int valor) == false)
+            {
+                mensaje += "El año ingresado no es valido";
+                validador = false;
+            }
+            return validador;
         }
 
         new public virtual bool Validar()
         {
-            if (this.txtAnioEspecialidad.TextLength == 0 || this.txtDescripcion.TextLength == 0 || this.txtIDPlan.TextLength == 0)
+            if (verificoCamposNulos())
             {
-                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error); //concatenar mensajes y llamar a notificar una sola vez al final
-                return false;
+                if(verificoValores())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                if (Int32.TryParse(this.txtAnioEspecialidad.Text,out int valor) == false)
-                {
-                    Notificar("El año ingresado no es valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                else if (Int32.TryParse(this.txtIDPlan.Text, out int valor1) == false)
-                {
-                    Notificar("El ID de plan ingresado no es valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                else
-                    return true;
+                Notificar("Existen campos vacios, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error); //concatenar mensajes y llamar a notificar una sola vez al final
+                return false;               
             }
         }
 
@@ -156,8 +199,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             }
             else
             {
-                GuardarCambios();
-                this.Close();
+                if (MessageBox.Show("Seguro que desea eliminar la comision seleccionada?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
             }
         }
 
@@ -178,19 +224,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
                 ComisionActual = new Comision();
                 this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
                 this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 ComisionActual.State = Comision.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
                 this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
+                //this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
                 ComisionActual.State = Comision.States.Modified;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
             {
-                new ComisionLogic().Delete(Int32.Parse(this.txtID.Text));
+                ComisionActual.State = Comision.States.Deleted;               
             }
         }
 

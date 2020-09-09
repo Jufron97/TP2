@@ -39,25 +39,40 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 
         #region Metodos
 
+        public void cargoComboBox()
+        {
+            //ComboBox Comision
+            cbComision.DataSource = new ComisionLogic().GetAll();
+            cbComision.DisplayMember = "Descripcion";
+            cbComision.ValueMember = "ID";
+            //ComboBox Materia
+            cbMateria.DataSource = new MateriaLogic().GetAll();
+            cbMateria.DisplayMember = "Descripcion";
+            cbMateria.ValueMember = "ID";
+        }
+
         /// <summary>
         /// Crea el formulario especifico segun el tipo especificado
         /// </summary>
         public void IniciarFormulario()
         {
+            cargoComboBox();
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 this.btnAceptar.Text = "Guardar";
             }
             else if (Modo == ApplicationForm.ModoForm.Baja)
-            {
-                this.btnAceptar.Text = "Eliminar";
+                {
+                    this.btnAceptar.Text = "Eliminar";
+                    cbMateria.Enabled = false;
+                    cbComision.Enabled = false;
+                    MapearDeDatos();
+                }
+                else
+                {
+                    this.btnAceptar.Text = "Guardar";
                 MapearDeDatos();
-            }
-            else
-            {
-                this.btnAceptar.Text = "Guardar";
-                MapearDeDatos();
-            }
+                }
         }
 
         /// <summary>
@@ -66,8 +81,10 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         new public virtual void MapearDeDatos()
         {
             this.txtID.Text = this.CursoActual.ID.ToString();
-            this.txtIDMateria.Text = this.CursoActual.IDMateria.ToString();
-            this.txtIDComision.Text = this.CursoActual.IDComision.ToString();
+            this.cbMateria.SelectedValue = this.CursoActual.IDMateria;
+            this.cbComision.SelectedValue = this.CursoActual.IDComision;
+            //this.txtIDMateria.Text = this.CursoActual.IDMateria.ToString();
+            //this.txtIDComision.Text = this.CursoActual.IDComision.ToString();
             this.txtAñoCalendario.Text = this.CursoActual.AnioCalendario.ToString();
             this.txtCupo.Text = this.CursoActual.Cupo.ToString();
         }
@@ -79,8 +96,10 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         {
             this.CursoActual = new Curso();
             this.CursoActual.AnioCalendario = Convert.ToInt32(this.txtAñoCalendario.Text);
-            this.CursoActual.Comision.ID = Convert.ToInt32(this.txtIDComision.Text);
-            this.CursoActual.Materia.ID = Convert.ToInt32(this.txtIDMateria.Text);
+            this.CursoActual.Materia = (Materia)cbMateria.SelectedItem;
+            this.CursoActual.Comision = (Comision)cbComision.SelectedItem;          
+            //this.CursoActual.Comision.ID = Convert.ToInt32(this.txtIDComision.Text);
+            //this.CursoActual.Materia.ID = Convert.ToInt32(this.txtIDMateria.Text);
             this.CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
         }
 
@@ -105,46 +124,67 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             }
         }
 
+
+        public bool validoCamposNulos()
+        {
+            bool validador = true;
+            if(String.IsNullOrEmpty(txtAñoCalendario.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtAñoCalendario, "Este campo no puede estar vacio!");
+            }
+            if(String.IsNullOrEmpty(txtCupo.Text))
+            {
+                validador = false;
+                errorProv.SetError(txtCupo, "Este campo no puede estar vacio!");
+            }
+            return validador;
+        }
+
+        public bool validoValores()
+        {
+            bool validador = true;
+            string mensaje = null;
+            if(Int32.TryParse(txtAñoCalendario.Text, out int valor2) == false)
+            {
+                mensaje += "Año Calendario ingresado no valido\n";
+                validador = false;
+            }           
+            if (Int32.TryParse(txtCupo.Text, out int valor3) == false)
+            {
+                mensaje += "Cupo ingresado no valido\n";
+                validador = false;
+            }
+            return validador;
+        }
         /// <summary>
         /// Metodo utilizado para validar los datos ingresados al formulario 
         /// </summary>
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (this.txtIDMateria.TextLength == 0 || this.txtIDComision.TextLength == 0 || this.txtAñoCalendario.TextLength == 0 || this.txtCupo.TextLength == 0)
+            if (validoCamposNulos())
             {
-                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if(validoValores())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             else
             {
-                if (Int32.TryParse(txtIDMateria.Text, out int valor) == false)
-                {
-                  Notificar("ID Materia ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
-                }
-                else if (Int32.TryParse(txtIDComision.Text, out int valor1) == false)
-                {
-                  Notificar("ID Comision ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
-                }
-                else if (Int32.TryParse(txtAñoCalendario.Text, out int valor2) == false)
-                {
-                  Notificar("Año Calendario ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
-                }
-                else if (Int32.TryParse(txtCupo.Text, out int valor3) == false)
-                {
-                  Notificar("Cupo ingresado no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                  return false;
-                }
-            return true;
+                Notificar("Algun Campo ingresado estaba vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos();
+            MapearADatos2();
             new CursoLogic().Save(CursoActual);
         }
 
@@ -221,16 +261,16 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             if (this.Modo == ApplicationForm.ModoForm.Alta)
             {
                 CursoActual = new Curso();
-                this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
-                this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
+                //this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
+                //this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
                 this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
                 this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
                 CursoActual.State = BusinessEntity.States.New;
             }
             else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
-                this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
-                this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
+                //this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
+                //this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
                 this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
                 this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
                 CursoActual.State = BusinessEntity.States.Modified;

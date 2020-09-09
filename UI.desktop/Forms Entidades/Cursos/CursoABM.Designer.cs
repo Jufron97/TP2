@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblID = new System.Windows.Forms.Label();
             this.lblIDMateria = new System.Windows.Forms.Label();
@@ -35,13 +36,15 @@
             this.lblAñoCalendario = new System.Windows.Forms.Label();
             this.lblCupo = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.txtIDMateria = new System.Windows.Forms.TextBox();
-            this.txtIDComision = new System.Windows.Forms.TextBox();
             this.txtAñoCalendario = new System.Windows.Forms.TextBox();
             this.txtCupo = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbMateria = new System.Windows.Forms.ComboBox();
+            this.cbComision = new System.Windows.Forms.ComboBox();
+            this.errorProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -50,19 +53,19 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDMateria, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblIDComision, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblAñoCalendario, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblCupo, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtIDMateria, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtIDComision, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtAñoCalendario, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtCupo, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cbMateria, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cbComision, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -90,21 +93,21 @@
             // 
             this.lblIDMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDMateria.AutoSize = true;
-            this.lblIDMateria.Location = new System.Drawing.Point(33, 48);
+            this.lblIDMateria.Location = new System.Drawing.Point(40, 48);
             this.lblIDMateria.Name = "lblIDMateria";
-            this.lblIDMateria.Size = new System.Drawing.Size(56, 13);
+            this.lblIDMateria.Size = new System.Drawing.Size(42, 13);
             this.lblIDMateria.TabIndex = 1;
-            this.lblIDMateria.Text = "ID Materia";
+            this.lblIDMateria.Text = "Materia";
             // 
             // lblIDComision
             // 
             this.lblIDComision.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDComision.AutoSize = true;
-            this.lblIDComision.Location = new System.Drawing.Point(30, 87);
+            this.lblIDComision.Location = new System.Drawing.Point(37, 87);
             this.lblIDComision.Name = "lblIDComision";
-            this.lblIDComision.Size = new System.Drawing.Size(63, 13);
+            this.lblIDComision.Size = new System.Drawing.Size(49, 13);
             this.lblIDComision.TabIndex = 2;
-            this.lblIDComision.Text = "ID Comision";
+            this.lblIDComision.Text = "Comision";
             // 
             // lblAñoCalendario
             // 
@@ -135,22 +138,6 @@
             this.txtID.Size = new System.Drawing.Size(52, 20);
             this.txtID.TabIndex = 5;
             // 
-            // txtIDMateria
-            // 
-            this.txtIDMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIDMateria.Location = new System.Drawing.Point(126, 45);
-            this.txtIDMateria.Name = "txtIDMateria";
-            this.txtIDMateria.Size = new System.Drawing.Size(52, 20);
-            this.txtIDMateria.TabIndex = 6;
-            // 
-            // txtIDComision
-            // 
-            this.txtIDComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIDComision.Location = new System.Drawing.Point(126, 83);
-            this.txtIDComision.Name = "txtIDComision";
-            this.txtIDComision.Size = new System.Drawing.Size(52, 20);
-            this.txtIDComision.TabIndex = 7;
-            // 
             // txtAñoCalendario
             // 
             this.txtAñoCalendario.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -170,7 +157,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(289, 224);
+            this.btnAceptar.Location = new System.Drawing.Point(288, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -189,6 +176,28 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
+            // cbMateria
+            // 
+            this.cbMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbMateria.FormattingEnabled = true;
+            this.cbMateria.Location = new System.Drawing.Point(126, 44);
+            this.cbMateria.Name = "cbMateria";
+            this.cbMateria.Size = new System.Drawing.Size(137, 21);
+            this.cbMateria.TabIndex = 12;
+            // 
+            // cbComision
+            // 
+            this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbComision.FormattingEnabled = true;
+            this.cbComision.Location = new System.Drawing.Point(126, 83);
+            this.cbComision.Name = "cbComision";
+            this.cbComision.Size = new System.Drawing.Size(100, 21);
+            this.cbComision.TabIndex = 13;
+            // 
+            // errorProv
+            // 
+            this.errorProv.ContainerControl = this;
+            // 
             // CursoABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +209,7 @@
             this.Shown += new System.EventHandler(this.CursoDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,11 +223,12 @@
         private System.Windows.Forms.Label lblAñoCalendario;
         private System.Windows.Forms.Label lblCupo;
         private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtIDMateria;
-        private System.Windows.Forms.TextBox txtIDComision;
         private System.Windows.Forms.TextBox txtAñoCalendario;
         private System.Windows.Forms.TextBox txtCupo;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cbMateria;
+        private System.Windows.Forms.ComboBox cbComision;
+        private System.Windows.Forms.ErrorProvider errorProv;
     }
 }

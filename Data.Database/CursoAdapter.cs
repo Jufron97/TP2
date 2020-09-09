@@ -150,17 +150,18 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("insert into cursos (id_comision,cupo,anio_calendario,id_materia) " +
-                "values (@idComision,@cupo,@anioCalendario,@idMateria) " + "select @@identity", sqlConn);
+                "values (@idComision,@cupo,@anioCalendario,@idMateria)", sqlConn);
                 cmdSave.Parameters.Add("@idComision", SqlDbType.Int).Value = curso.IDComision;
                 cmdSave.Parameters.Add("@cupo", SqlDbType.Int).Value = curso.Cupo;
                 cmdSave.Parameters.Add("@anioCalendario", SqlDbType.Int).Value = curso.AnioCalendario;
                 cmdSave.Parameters.Add("@idMateria", SqlDbType.Int).Value = curso.IDMateria;
-                curso.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                //curso.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al crear el curso", Ex);
-                throw ExcepcionManejada;
+                throw Ex;
             }
             finally
             {

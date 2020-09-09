@@ -152,8 +152,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             }
             else
             {
-                GuardarCambios();
-                this.Close();
+                if (MessageBox.Show("Seguro que desea eliminar la especialidad seleccionada?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
             }
         }
 

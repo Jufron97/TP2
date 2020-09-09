@@ -169,8 +169,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             }
             else
             {
-                GuardarCambios();
-                this.Close();
+                if (MessageBox.Show("Seguro que desea eliminar el plan seleccionado?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GuardarCambios();
+                    this.Close();
+                }
             }
         }
 

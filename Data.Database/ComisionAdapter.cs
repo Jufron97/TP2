@@ -122,12 +122,12 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("insert into comisiones (desc_comision,id_plan,anio_especialidad)" +
-                "values (@desc_comision,@id_plan,@anio_especialidad)" +
-                "select @@identity", sqlConn);
+                "values (@desc_comision,@id_plan,@anio_especialidad)", sqlConn);
                 cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comision.Descripcion;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comision.IDPlan;
                 cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
-                comision.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                //comision.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
