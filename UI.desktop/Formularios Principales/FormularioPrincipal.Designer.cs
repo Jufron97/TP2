@@ -44,7 +44,7 @@
             this.materiasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cursosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textoFormularioPrincipal = new System.Windows.Forms.Label();
+            this.lblFormularioPrincipal = new System.Windows.Forms.Label();
             this.imgNet = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgNet)).BeginInit();
@@ -132,57 +132,57 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItem3.Text = "Usuarios";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // especialidadesToolStripMenuItem1
             // 
             this.especialidadesToolStripMenuItem1.Name = "especialidadesToolStripMenuItem1";
-            this.especialidadesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.especialidadesToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.especialidadesToolStripMenuItem1.Text = "Especialidades";
             this.especialidadesToolStripMenuItem1.Click += new System.EventHandler(this.especialidadesToolStripMenuItem1_Click);
             // 
             // planesToolStripMenuItem1
             // 
             this.planesToolStripMenuItem1.Name = "planesToolStripMenuItem1";
-            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.planesToolStripMenuItem1.Text = "Planes";
             this.planesToolStripMenuItem1.Click += new System.EventHandler(this.planesToolStripMenuItem1_Click);
             // 
             // materiasToolStripMenuItem1
             // 
             this.materiasToolStripMenuItem1.Name = "materiasToolStripMenuItem1";
-            this.materiasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.materiasToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.materiasToolStripMenuItem1.Text = "Materias";
             this.materiasToolStripMenuItem1.Click += new System.EventHandler(this.materiasToolStripMenuItem1_Click);
             // 
             // comisionesToolStripMenuItem1
             // 
             this.comisionesToolStripMenuItem1.Name = "comisionesToolStripMenuItem1";
-            this.comisionesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.comisionesToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.comisionesToolStripMenuItem1.Text = "Comisiones";
             this.comisionesToolStripMenuItem1.Click += new System.EventHandler(this.comisionesToolStripMenuItem1_Click);
             // 
             // cursosToolStripMenuItem1
             // 
             this.cursosToolStripMenuItem1.Name = "cursosToolStripMenuItem1";
-            this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.cursosToolStripMenuItem1.Text = "Cursos";
             this.cursosToolStripMenuItem1.Click += new System.EventHandler(this.cursosToolStripMenuItem1_Click);
             // 
-            // textoFormularioPrincipal
+            // lblFormularioPrincipal
             // 
-            this.textoFormularioPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblFormularioPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textoFormularioPrincipal.AutoSize = true;
-            this.textoFormularioPrincipal.Location = new System.Drawing.Point(103, 52);
-            this.textoFormularioPrincipal.Name = "textoFormularioPrincipal";
-            this.textoFormularioPrincipal.Size = new System.Drawing.Size(206, 52);
-            this.textoFormularioPrincipal.TabIndex = 1;
-            this.textoFormularioPrincipal.Text = "               ¡Bienvenido al Sistema!\r\nUsted esta navegando en la App. del TP2\r\n" +
-    "\r\n\r\n";
+            this.lblFormularioPrincipal.AutoSize = true;
+            this.lblFormularioPrincipal.Location = new System.Drawing.Point(76, 52);
+            this.lblFormularioPrincipal.Name = "lblFormularioPrincipal";
+            this.lblFormularioPrincipal.Size = new System.Drawing.Size(264, 65);
+            this.lblFormularioPrincipal.TabIndex = 1;
+            this.lblFormularioPrincipal.Text = "                           ¡Bienvenido al Sistema!\r\nUsted esta navegando como adm" +
+    "insitrador del sistema\r\n\r\n\r\n\r\n";
             // 
             // imgNet
             // 
@@ -201,7 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 260);
             this.Controls.Add(this.imgNet);
-            this.Controls.Add(this.textoFormularioPrincipal);
+            this.Controls.Add(this.lblFormularioPrincipal);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormularioPrincipal";
@@ -217,7 +217,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label textoFormularioPrincipal;
+        private System.Windows.Forms.Label lblFormularioPrincipal;
         private System.Windows.Forms.PictureBox imgNet;
         private System.Windows.Forms.ToolStripMenuItem tstripListado;
         private System.Windows.Forms.ToolStripMenuItem tstripAltas;
