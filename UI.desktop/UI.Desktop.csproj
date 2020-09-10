@@ -130,6 +130,12 @@
     <Compile Include="Formularios Principales\Alumno\InscripcionAlumno.Designer.cs">
       <DependentUpon>InscripcionAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios Principales\Docente\formIngresoNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Principales\Docente\formIngresoNota.Designer.cs">
+      <DependentUpon>formIngresoNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios Principales\Docente\formCursosDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios Principales\Alumno\InscripcionAlumno.resx">
       <DependentUpon>InscripcionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Principales\Docente\formIngresoNota.resx">
+      <DependentUpon>formIngresoNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios Principales\Docente\formCursosDocente.resx">
       <DependentUpon>formCursosDocente.cs</DependentUpon>

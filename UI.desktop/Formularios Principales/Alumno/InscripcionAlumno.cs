@@ -108,14 +108,32 @@ namespace Academia.UI.Desktop
         {
             if (itemSeleccionado())
             {
-                Inscripcion inscripcion = new Inscripcion();
-                InscripcionLogic insLogic = new InscripcionLogic();
+                Inscripcion insAlumno = new Inscripcion();
+                InscripcionLogic insAlLogic = new InscripcionLogic();
                 //Se pasarian los objetos correspondientes a la inscripcion
-                inscripcion.Alumno = ((Inscripcion)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem).Alumno;
-                inscripcion.Curso = ((Inscripcion)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem).Curso;
-                inscripcion.Condicion = "Corregido";
-                inscripcion.State = BusinessEntity.States.Modified;
-                insLogic.Save(inscripcion);
+                insAlumno.Alumno = UsuarioActual.Persona;
+                insAlumno.Curso = ((Curso)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem);
+                insAlumno.Condicion = "En Cursado";
+                insAlumno.State = BusinessEntity.States.New;   
+                //En primera parte se valida que el usuario no este inscripto
+                if (!insAlLogic.validarInscripcion(insAlumno))               
+                {
+                    //Como segunda validacion que el curso al cual se quiera inscribir tenga cupo disponible
+                    if(insAlumno.Curso.Cupo > 0)
+                    {
+                        new CursoLogic().Update(insAlumno.Curso);
+                        new InscripcionLogic().Save(insAlumno);
+                        MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El curso ingresado no tiene cupos", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                                 
+                }
+                else
+                {
+                    MessageBox.Show("El alumno ya se encuentra inscripto en el curso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

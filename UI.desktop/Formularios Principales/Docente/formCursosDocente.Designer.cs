@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnosCursos = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -78,6 +75,7 @@
             this.dgvAlumnosCursos.Name = "dgvAlumnosCursos";
             this.dgvAlumnosCursos.ReadOnly = true;
             this.dgvAlumnosCursos.RowHeadersVisible = false;
+            this.dgvAlumnosCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumnosCursos.Size = new System.Drawing.Size(543, 255);
             this.dgvAlumnosCursos.TabIndex = 0;
             // 
@@ -107,8 +105,6 @@
             // 
             this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.DataPropertyName = "NombreAlumno";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Nombre.DefaultCellStyle = dataGridViewCellStyle7;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
@@ -117,8 +113,6 @@
             // 
             this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Apellido.DataPropertyName = "ApellidoAlumno";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Apellido.DefaultCellStyle = dataGridViewCellStyle8;
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
@@ -127,8 +121,6 @@
             // 
             this.Condicion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Condicion.DataPropertyName = "Condicion";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Condicion.DefaultCellStyle = dataGridViewCellStyle9;
             this.Condicion.HeaderText = "Condicion";
             this.Condicion.Name = "Condicion";
             this.Condicion.ReadOnly = true;

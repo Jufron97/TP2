@@ -10,9 +10,9 @@ namespace Academia.Business.Logic
 {
     public class InscripcionLogic:BusinessLogic
     {
-        private AlumnoInscripcionAdapter m_inscripcionData;
+        private InscripcionAdapter m_inscripcionData;
 
-        public AlumnoInscripcionAdapter InscripcionData
+        public InscripcionAdapter InscripcionData
         {
             get => m_inscripcionData;
             set => m_inscripcionData = value;
@@ -20,7 +20,7 @@ namespace Academia.Business.Logic
 
         public InscripcionLogic()
         {
-            InscripcionData = new AlumnoInscripcionAdapter();
+            InscripcionData = new InscripcionAdapter();
         }
 
         public List<Inscripcion> GetAll()

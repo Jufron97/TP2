@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Academia.Data.Database
 {
-    public class AlumnoInscripcionAdapter : Adapter
+    public class InscripcionAdapter : Adapter
     { 
 
     public List<Inscripcion> GetAll()
@@ -174,15 +174,16 @@ namespace Academia.Data.Database
         try
         {
             OpenConnection();
-            SqlCommand cmdSave = new SqlCommand("UPDATE comisiones SET nota = @notaAlumno where id_alumno=@idAlumno", sqlConn);
+            SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripciones SET nota = @notaAlumno,condicion=@condicion where id_alumno=@idAlumno", sqlConn);
             cmdSave.Parameters.Add("@notaAlumno", SqlDbType.Int).Value = alumnoInscripcion.Nota;
             cmdSave.Parameters.Add("@idAlumno", SqlDbType.VarChar, 50).Value = alumnoInscripcion.IDAlumno;
+            cmdSave.Parameters.Add("@condicion",SqlDbType.VarChar, 50).Value = alumnoInscripcion.Condicion;
             cmdSave.ExecuteNonQuery();
         }
         catch (Exception Ex)
         {
             Exception ExcepcionManejada = new Exception("Error al modificar datos de la inscripcion", Ex);
-            throw ExcepcionManejada;
+                throw ExcepcionManejada;
         }
         finally
         {
@@ -219,8 +220,9 @@ namespace Academia.Data.Database
             cmdSave.Parameters.Add("@idAlumno", SqlDbType.Int).Value = alumnoInscripcion.Alumno.ID;
             cmdSave.Parameters.Add("@idCurso", SqlDbType.Int).Value = alumnoInscripcion.Curso.ID;
             cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar,50).Value = alumnoInscripcion.Condicion;
-            cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = alumnoInscripcion.Nota; 
-            alumnoInscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+            cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = alumnoInscripcion.Nota;
+                //alumnoInscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+            cmdSave.ExecuteNonQuery();
         }
         catch (Exception Ex)
         {
