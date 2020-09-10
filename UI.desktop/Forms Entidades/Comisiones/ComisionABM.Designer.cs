@@ -51,7 +51,7 @@
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.55556F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.44444F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tlpComision.Controls.Add(this.lblID, 0, 0);
             this.tlpComision.Controls.Add(this.lblDescripcion, 0, 1);
             this.tlpComision.Controls.Add(this.lblAnio_Especialidad, 0, 2);
@@ -78,7 +78,7 @@
             // 
             this.lblID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(49, 21);
+            this.lblID.Location = new System.Drawing.Point(48, 21);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 1;
@@ -108,7 +108,7 @@
             // 
             this.lblIDPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDPlan.AutoSize = true;
-            this.lblIDPlan.Location = new System.Drawing.Point(44, 192);
+            this.lblIDPlan.Location = new System.Drawing.Point(43, 192);
             this.lblIDPlan.Name = "lblIDPlan";
             this.lblIDPlan.Size = new System.Drawing.Size(28, 13);
             this.lblIDPlan.TabIndex = 4;
@@ -117,7 +117,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtID.Location = new System.Drawing.Point(119, 18);
+            this.txtID.Location = new System.Drawing.Point(118, 18);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(83, 20);
@@ -126,7 +126,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtDescripcion.Location = new System.Drawing.Point(119, 74);
+            this.txtDescripcion.Location = new System.Drawing.Point(118, 74);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(184, 20);
             this.txtDescripcion.TabIndex = 8;
@@ -134,7 +134,7 @@
             // txtAnioEspecialidad
             // 
             this.txtAnioEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAnioEspecialidad.Location = new System.Drawing.Point(119, 131);
+            this.txtAnioEspecialidad.Location = new System.Drawing.Point(118, 131);
             this.txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             this.txtAnioEspecialidad.Size = new System.Drawing.Size(83, 20);
             this.txtAnioEspecialidad.TabIndex = 9;
@@ -155,7 +155,7 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(349, 229);
+            this.btnAceptar.Location = new System.Drawing.Point(348, 229);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 5;
@@ -167,7 +167,7 @@
             // 
             this.cbPlan.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbPlan.FormattingEnabled = true;
-            this.cbPlan.Location = new System.Drawing.Point(119, 188);
+            this.cbPlan.Location = new System.Drawing.Point(118, 188);
             this.cbPlan.Name = "cbPlan";
             this.cbPlan.Size = new System.Drawing.Size(83, 21);
             this.cbPlan.TabIndex = 10;
@@ -183,6 +183,7 @@
             this.ClientSize = new System.Drawing.Size(513, 255);
             this.Controls.Add(this.tlpComision);
             this.Name = "ComisionABM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comision";
             this.Shown += new System.EventHandler(this.ComisionDesktop_Shown);
             this.tlpComision.ResumeLayout(false);

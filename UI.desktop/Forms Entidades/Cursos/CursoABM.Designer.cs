@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDMateria, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblIDComision, 0, 2);
@@ -103,7 +103,7 @@
             // 
             this.lblIDComision.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDComision.AutoSize = true;
-            this.lblIDComision.Location = new System.Drawing.Point(37, 87);
+            this.lblIDComision.Location = new System.Drawing.Point(36, 87);
             this.lblIDComision.Name = "lblIDComision";
             this.lblIDComision.Size = new System.Drawing.Size(49, 13);
             this.lblIDComision.TabIndex = 2;
@@ -113,7 +113,7 @@
             // 
             this.lblAñoCalendario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAñoCalendario.AutoSize = true;
-            this.lblAñoCalendario.Location = new System.Drawing.Point(22, 126);
+            this.lblAñoCalendario.Location = new System.Drawing.Point(21, 126);
             this.lblAñoCalendario.Name = "lblAñoCalendario";
             this.lblAñoCalendario.Size = new System.Drawing.Size(79, 13);
             this.lblAñoCalendario.TabIndex = 3;
@@ -132,7 +132,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtID.Location = new System.Drawing.Point(126, 7);
+            this.txtID.Location = new System.Drawing.Point(125, 7);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(52, 20);
@@ -141,7 +141,7 @@
             // txtAñoCalendario
             // 
             this.txtAñoCalendario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAñoCalendario.Location = new System.Drawing.Point(126, 123);
+            this.txtAñoCalendario.Location = new System.Drawing.Point(125, 123);
             this.txtAñoCalendario.Name = "txtAñoCalendario";
             this.txtAñoCalendario.Size = new System.Drawing.Size(100, 20);
             this.txtAñoCalendario.TabIndex = 8;
@@ -149,7 +149,7 @@
             // txtCupo
             // 
             this.txtCupo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCupo.Location = new System.Drawing.Point(126, 177);
+            this.txtCupo.Location = new System.Drawing.Point(125, 177);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(100, 20);
             this.txtCupo.TabIndex = 9;
@@ -157,7 +157,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(288, 224);
+            this.btnAceptar.Location = new System.Drawing.Point(287, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -180,7 +180,7 @@
             // 
             this.cbMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbMateria.FormattingEnabled = true;
-            this.cbMateria.Location = new System.Drawing.Point(126, 44);
+            this.cbMateria.Location = new System.Drawing.Point(125, 44);
             this.cbMateria.Name = "cbMateria";
             this.cbMateria.Size = new System.Drawing.Size(137, 21);
             this.cbMateria.TabIndex = 12;
@@ -189,7 +189,7 @@
             // 
             this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbComision.FormattingEnabled = true;
-            this.cbComision.Location = new System.Drawing.Point(126, 83);
+            this.cbComision.Location = new System.Drawing.Point(125, 83);
             this.cbComision.Name = "cbComision";
             this.cbComision.Size = new System.Drawing.Size(100, 21);
             this.cbComision.TabIndex = 13;
@@ -205,6 +205,7 @@
             this.ClientSize = new System.Drawing.Size(446, 261);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CursoABM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Curso";
             this.Shown += new System.EventHandler(this.CursoDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);

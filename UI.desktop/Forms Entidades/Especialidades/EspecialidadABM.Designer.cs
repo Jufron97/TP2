@@ -125,6 +125,7 @@
             this.ClientSize = new System.Drawing.Size(316, 122);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EspecialidadABM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Especialidad";
             this.Shown += new System.EventHandler(this.EspecialidadDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);

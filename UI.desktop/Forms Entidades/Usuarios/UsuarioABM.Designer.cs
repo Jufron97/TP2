@@ -311,6 +311,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.gpbUsuario);
             this.Name = "UsuarioABM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
             this.Shown += new System.EventHandler(this.UsuarioDesktop_Shown);
             this.gpbUsuario.ResumeLayout(false);

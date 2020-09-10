@@ -174,8 +174,9 @@ namespace Academia.Data.Database
         try
         {
             OpenConnection();
-            SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripciones SET nota = @notaAlumno,condicion=@condicion where id_alumno=@idAlumno", sqlConn);
+            SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripciones SET nota = @notaAlumno,condicion=@condicion where id_alumno=@idAlumno and id_inscripcion=@idInscripcion", sqlConn);
             cmdSave.Parameters.Add("@notaAlumno", SqlDbType.Int).Value = alumnoInscripcion.Nota;
+            cmdSave.Parameters.Add("@idInscripcion", SqlDbType.Int).Value = alumnoInscripcion.ID;
             cmdSave.Parameters.Add("@idAlumno", SqlDbType.VarChar, 50).Value = alumnoInscripcion.IDAlumno;
             cmdSave.Parameters.Add("@condicion",SqlDbType.VarChar, 50).Value = alumnoInscripcion.Condicion;
             cmdSave.ExecuteNonQuery();

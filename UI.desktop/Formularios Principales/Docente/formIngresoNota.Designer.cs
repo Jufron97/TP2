@@ -48,7 +48,7 @@
             this.tblFormIngresoNota.ColumnCount = 3;
             this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.36424F));
             this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.63576F));
-            this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
+            this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tblFormIngresoNota.Controls.Add(this.lblAlumno, 0, 0);
             this.tblFormIngresoNota.Controls.Add(this.lblCondicion, 0, 1);
             this.tblFormIngresoNota.Controls.Add(this.txtAlumno, 1, 0);
@@ -94,7 +94,7 @@
             this.txtAlumno.Location = new System.Drawing.Point(139, 16);
             this.txtAlumno.Name = "txtAlumno";
             this.txtAlumno.ReadOnly = true;
-            this.txtAlumno.Size = new System.Drawing.Size(158, 20);
+            this.txtAlumno.Size = new System.Drawing.Size(157, 20);
             this.txtAlumno.TabIndex = 2;
             // 
             // txtCondicion
@@ -127,7 +127,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Location = new System.Drawing.Point(222, 236);
+            this.btnGuardar.Location = new System.Drawing.Point(221, 236);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 6;
@@ -138,7 +138,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelar.Location = new System.Drawing.Point(303, 236);
+            this.btnCancelar.Location = new System.Drawing.Point(302, 236);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -156,6 +156,7 @@
             this.ClientSize = new System.Drawing.Size(473, 262);
             this.Controls.Add(this.tblFormIngresoNota);
             this.Name = "formIngresoNota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IngresoNotas";
             this.Shown += new System.EventHandler(this.formIngresoNota_Shown);
             this.tblFormIngresoNota.ResumeLayout(false);

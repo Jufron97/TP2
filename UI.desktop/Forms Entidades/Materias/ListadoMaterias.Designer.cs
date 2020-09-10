@@ -32,17 +32,17 @@
             this.tcMaterias = new System.Windows.Forms.ToolStripContainer();
             this.tlMaterias = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tscMaterias = new System.Windows.Forms.ToolStrip();
             this.tsNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsEliminar = new System.Windows.Forms.ToolStripButton();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorasSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorasTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcMaterias.ContentPanel.SuspendLayout();
             this.tcMaterias.TopToolStripPanel.SuspendLayout();
             this.tcMaterias.SuspendLayout();
@@ -108,6 +108,50 @@
             this.dgvMaterias.Size = new System.Drawing.Size(475, 232);
             this.dgvMaterias.TabIndex = 0;
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID.DataPropertyName = "ID";
+            this.ID.FillWeight = 70F;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.FillWeight = 120F;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // HorasSemanales
+            // 
+            this.HorasSemanales.DataPropertyName = "HsSemanales";
+            this.HorasSemanales.FillWeight = 70F;
+            this.HorasSemanales.HeaderText = "Horas Semanales";
+            this.HorasSemanales.Name = "HorasSemanales";
+            this.HorasSemanales.ReadOnly = true;
+            // 
+            // HorasTotales
+            // 
+            this.HorasTotales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HorasTotales.DataPropertyName = "HsTotales";
+            this.HorasTotales.FillWeight = 70F;
+            this.HorasTotales.HeaderText = "Horas Totales";
+            this.HorasTotales.Name = "HorasTotales";
+            this.HorasTotales.ReadOnly = true;
+            // 
+            // Plan
+            // 
+            this.Plan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Plan.DataPropertyName = "DescripcionPlan";
+            this.Plan.FillWeight = 70F;
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
+            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -171,57 +215,14 @@
             this.tsEliminar.Text = "Eliminar";
             this.tsEliminar.Click += new System.EventHandler(this.tsEliminar_Click);
             // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.DataPropertyName = "ID";
-            this.ID.FillWeight = 70F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.FillWeight = 120F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // HorasSemanales
-            // 
-            this.HorasSemanales.DataPropertyName = "HsSemanales";
-            this.HorasSemanales.FillWeight = 70F;
-            this.HorasSemanales.HeaderText = "Horas Semanales";
-            this.HorasSemanales.Name = "HorasSemanales";
-            this.HorasSemanales.ReadOnly = true;
-            // 
-            // HorasTotales
-            // 
-            this.HorasTotales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HorasTotales.DataPropertyName = "HsTotales";
-            this.HorasTotales.FillWeight = 70F;
-            this.HorasTotales.HeaderText = "Horas Totales";
-            this.HorasTotales.Name = "HorasTotales";
-            this.HorasTotales.ReadOnly = true;
-            // 
-            // Plan
-            // 
-            this.Plan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Plan.DataPropertyName = "DescripcionPlan";
-            this.Plan.FillWeight = 70F;
-            this.Plan.HeaderText = "Plan";
-            this.Plan.Name = "Plan";
-            this.Plan.ReadOnly = true;
-            // 
-            // Materias
+            // ListadoMaterias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 292);
             this.Controls.Add(this.tcMaterias);
-            this.Name = "Materias";
+            this.Name = "ListadoMaterias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);
             this.tcMaterias.ContentPanel.ResumeLayout(false);

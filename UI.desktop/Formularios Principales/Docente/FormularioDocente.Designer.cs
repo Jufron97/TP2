@@ -148,6 +148,7 @@
             this.Controls.Add(this.btnReporteCursos);
             this.Controls.Add(this.btnRegistroNotas);
             this.Name = "FormularioDocente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioDocente";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

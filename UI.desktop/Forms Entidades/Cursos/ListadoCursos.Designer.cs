@@ -32,17 +32,17 @@
             this.tsCursos = new System.Windows.Forms.ToolStripContainer();
             this.tbpCursos = new System.Windows.Forms.TableLayoutPanel();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AñoCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsEliminar = new System.Windows.Forms.ToolStripButton();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AñoCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsCursos.ContentPanel.SuspendLayout();
             this.tsCursos.TopToolStripPanel.SuspendLayout();
             this.tsCursos.SuspendLayout();
@@ -106,6 +106,46 @@
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(542, 199);
             this.dgvCursos.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            this.Materia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Materia.DataPropertyName = "DescMateria";
+            this.Materia.HeaderText = "Materia";
+            this.Materia.Name = "Materia";
+            this.Materia.ReadOnly = true;
+            // 
+            // Comision
+            // 
+            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Comision.DataPropertyName = "DescComision";
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            // 
+            // AñoCalendario
+            // 
+            this.AñoCalendario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AñoCalendario.DataPropertyName = "AnioCalendario";
+            this.AñoCalendario.HeaderText = "Año Calendario";
+            this.AñoCalendario.Name = "AñoCalendario";
+            this.AñoCalendario.ReadOnly = true;
+            // 
+            // Cupo
+            // 
+            this.Cupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cupo.DataPropertyName = "Cupo";
+            this.Cupo.HeaderText = "Cupo";
+            this.Cupo.Name = "Cupo";
+            this.Cupo.ReadOnly = true;
             // 
             // btnActualizar
             // 
@@ -171,53 +211,14 @@
             this.tsEliminar.Text = "Eliminar";
             this.tsEliminar.Click += new System.EventHandler(this.tsEliminar_Click);
             // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Materia
-            // 
-            this.Materia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Materia.DataPropertyName = "DescMateria";
-            this.Materia.HeaderText = "Materia";
-            this.Materia.Name = "Materia";
-            this.Materia.ReadOnly = true;
-            // 
-            // Comision
-            // 
-            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Comision.DataPropertyName = "DescComision";
-            this.Comision.HeaderText = "Comision";
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
-            // 
-            // AñoCalendario
-            // 
-            this.AñoCalendario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AñoCalendario.DataPropertyName = "AnioCalendario";
-            this.AñoCalendario.HeaderText = "Año Calendario";
-            this.AñoCalendario.Name = "AñoCalendario";
-            this.AñoCalendario.ReadOnly = true;
-            // 
-            // Cupo
-            // 
-            this.Cupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cupo.DataPropertyName = "Cupo";
-            this.Cupo.HeaderText = "Cupo";
-            this.Cupo.Name = "Cupo";
-            this.Cupo.ReadOnly = true;
-            // 
-            // Cursos
+            // ListadoCursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 259);
             this.Controls.Add(this.tsCursos);
-            this.Name = "Cursos";
+            this.Name = "ListadoCursos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cursos";
             this.Load += new System.EventHandler(this.Cursos_Load);
             this.tsCursos.ContentPanel.ResumeLayout(false);
