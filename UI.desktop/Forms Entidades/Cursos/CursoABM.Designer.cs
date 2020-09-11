@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDMateria, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblIDComision, 0, 2);
@@ -83,7 +83,7 @@
             // 
             this.lblID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(52, 11);
+            this.lblID.Location = new System.Drawing.Point(51, 11);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 0;
@@ -93,7 +93,7 @@
             // 
             this.lblIDMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblIDMateria.AutoSize = true;
-            this.lblIDMateria.Location = new System.Drawing.Point(40, 48);
+            this.lblIDMateria.Location = new System.Drawing.Point(39, 48);
             this.lblIDMateria.Name = "lblIDMateria";
             this.lblIDMateria.Size = new System.Drawing.Size(42, 13);
             this.lblIDMateria.TabIndex = 1;
@@ -123,7 +123,7 @@
             // 
             this.lblCupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCupo.AutoSize = true;
-            this.lblCupo.Location = new System.Drawing.Point(45, 181);
+            this.lblCupo.Location = new System.Drawing.Point(44, 181);
             this.lblCupo.Name = "lblCupo";
             this.lblCupo.Size = new System.Drawing.Size(32, 13);
             this.lblCupo.TabIndex = 4;
@@ -132,32 +132,35 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtID.Location = new System.Drawing.Point(125, 7);
+            this.txtID.Location = new System.Drawing.Point(124, 7);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(52, 20);
             this.txtID.TabIndex = 5;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAñoCalendario
             // 
             this.txtAñoCalendario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAñoCalendario.Location = new System.Drawing.Point(125, 123);
+            this.txtAñoCalendario.Location = new System.Drawing.Point(124, 123);
             this.txtAñoCalendario.Name = "txtAñoCalendario";
             this.txtAñoCalendario.Size = new System.Drawing.Size(100, 20);
             this.txtAñoCalendario.TabIndex = 8;
+            this.txtAñoCalendario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCupo
             // 
             this.txtCupo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCupo.Location = new System.Drawing.Point(125, 177);
+            this.txtCupo.Location = new System.Drawing.Point(124, 177);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(100, 20);
             this.txtCupo.TabIndex = 9;
+            this.txtCupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(287, 224);
+            this.btnAceptar.Location = new System.Drawing.Point(285, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -179,17 +182,19 @@
             // cbMateria
             // 
             this.cbMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMateria.FormattingEnabled = true;
-            this.cbMateria.Location = new System.Drawing.Point(125, 44);
+            this.cbMateria.Location = new System.Drawing.Point(124, 44);
             this.cbMateria.Name = "cbMateria";
-            this.cbMateria.Size = new System.Drawing.Size(137, 21);
+            this.cbMateria.Size = new System.Drawing.Size(136, 21);
             this.cbMateria.TabIndex = 12;
             // 
             // cbComision
             // 
             this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbComision.FormattingEnabled = true;
-            this.cbComision.Location = new System.Drawing.Point(125, 83);
+            this.cbComision.Location = new System.Drawing.Point(124, 83);
             this.cbComision.Name = "cbComision";
             this.cbComision.Size = new System.Drawing.Size(100, 21);
             this.cbComision.TabIndex = 13;

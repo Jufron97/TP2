@@ -10,6 +10,9 @@ namespace Academia.Business.Entities
     {
         private string m_descripcion;
 
+        /// <summary>
+        /// Devuelve/setea la descripcion de la especialidad
+        /// </summary>
         public string Descripcion
         {
             get => m_descripcion;

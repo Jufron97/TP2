@@ -56,7 +56,6 @@ namespace Academia.UI.Desktop
                 InsActual.State = BusinessEntity.States.Modified;
                 new InscripcionLogic().Save(InsActual);
                 MessageBox.Show("Nota ingresada con exito", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             this.Close();
         }

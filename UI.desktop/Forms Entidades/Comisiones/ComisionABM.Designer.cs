@@ -51,7 +51,7 @@
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.55556F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.44444F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tlpComision.Controls.Add(this.lblID, 0, 0);
             this.tlpComision.Controls.Add(this.lblDescripcion, 0, 1);
             this.tlpComision.Controls.Add(this.lblAnio_Especialidad, 0, 2);
@@ -122,6 +122,7 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(83, 20);
             this.txtID.TabIndex = 7;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDescripcion
             // 
@@ -130,6 +131,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(184, 20);
             this.txtDescripcion.TabIndex = 8;
+            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAnioEspecialidad
             // 
@@ -138,6 +140,7 @@
             this.txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             this.txtAnioEspecialidad.Size = new System.Drawing.Size(83, 20);
             this.txtAnioEspecialidad.TabIndex = 9;
+            this.txtAnioEspecialidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnCancelar
             // 
@@ -155,7 +158,7 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(348, 229);
+            this.btnAceptar.Location = new System.Drawing.Point(346, 229);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 5;
@@ -166,6 +169,7 @@
             // cbPlan
             // 
             this.cbPlan.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlan.FormattingEnabled = true;
             this.cbPlan.Location = new System.Drawing.Point(118, 188);
             this.cbPlan.Name = "cbPlan";

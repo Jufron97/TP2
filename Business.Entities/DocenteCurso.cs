@@ -24,31 +24,47 @@ namespace Academia.Business.Entities
         }
 
         #endregion
+
         #region Propiedades  
 
+        /// <summary>
+        /// Devuelve/setea el cargo del Docente
+        /// </summary>
         public TiposCargos Cargo
         {
             get => m_cargo;
             set => m_cargo = value;
-        }     
+        }
 
+        /// <summary>
+        /// Devuelve/setea el Curso al cual hace referencia
+        /// </summary>
         public Curso Curso
         {
             get => m_curso;
             set => m_curso = value;
         }
 
+        /// <summary>
+        /// Devuelve el ID del Curso
+        /// </summary>
         public int IDCurso
         {
             get => Curso.ID;
         }
 
+        /// <summary>
+        /// Devuelve/setea el Docente al cual hace referencia
+        /// </summary>
         public Persona Docente
         {
             get => m_docente;
             set => m_docente = value;
         }
 
+        /// <summary>
+        /// Devuelve el ID del Docente 
+        /// </summary>
         public int IDDocente
         {
             get => Docente.ID;

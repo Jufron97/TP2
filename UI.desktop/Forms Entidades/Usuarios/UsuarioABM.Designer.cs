@@ -65,6 +65,7 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(108, 20);
             this.txtID.TabIndex = 19;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNombre
             // 
@@ -73,6 +74,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(108, 20);
             this.txtNombre.TabIndex = 22;
+            this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtClave
             // 
@@ -83,6 +85,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(108, 20);
             this.txtClave.TabIndex = 30;
+            this.txtClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chkHabilitado
             // 
@@ -191,6 +194,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(109, 20);
             this.txtApellido.TabIndex = 24;
+            this.txtApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtUsuario
             // 
@@ -201,6 +205,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(109, 20);
             this.txtUsuario.TabIndex = 28;
+            this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtConfirmarClave
             // 
@@ -211,6 +216,7 @@
             this.txtConfirmarClave.Name = "txtConfirmarClave";
             this.txtConfirmarClave.Size = new System.Drawing.Size(109, 20);
             this.txtConfirmarClave.TabIndex = 32;
+            this.txtConfirmarClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gpbUsuario
             // 
@@ -240,6 +246,7 @@
             // 
             // cbPlanes
             // 
+            this.cbPlanes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanes.FormattingEnabled = true;
             this.cbPlanes.Location = new System.Drawing.Point(51, 88);
             this.cbPlanes.Name = "cbPlanes";

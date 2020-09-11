@@ -90,7 +90,15 @@ namespace Academia.UI.Desktop
             if(itemSeleccionado())
             {
                 //Se crea el formulario con la inscripcion seleccionada
-                new formIngresoNota((Inscripcion)this.dgvAlumnosCursos.SelectedRows[0].DataBoundItem).ShowDialog();      
+                Inscripcion InsSeleccionada = (Inscripcion)this.dgvAlumnosCursos.SelectedRows[0].DataBoundItem;
+                if (InsSeleccionada.Condicion!="Corregido")
+                {
+                    new formIngresoNota(InsSeleccionada).ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("La inscripcion seleccionada ya se encuentra coregida", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }                
             }
             Listar();
         }
@@ -101,5 +109,6 @@ namespace Academia.UI.Desktop
         }
 
         #endregion
+
     }
 }

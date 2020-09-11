@@ -78,6 +78,7 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(58, 20);
             this.txtID.TabIndex = 2;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDescripcion
             // 
@@ -86,6 +87,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(235, 20);
             this.txtDescripcion.TabIndex = 3;
+            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDescripcion
             // 

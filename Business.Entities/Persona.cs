@@ -33,59 +33,72 @@ namespace Academia.Business.Entities
 
         #region Propiedades
 
+        /// <summary>
+        /// Devuelve/Setea el apellido de la Persona
+        /// </summary>
         public string Apellido
         {
             get => m_apellido;
             set => m_apellido = value;
         }
-       
+
+        /// <summary>
+        /// Devuelve/Setea el nombre de la Persona
+        /// </summary>
         public string Nombre
         {
             get => m_nombre;
             set => m_nombre = value;
         }
-       
+
+        /// <summary>
+        /// Devuelve/Setea el telefono de la Persona
+        /// </summary>
         public string Telefono
         {
             get => m_telefono;
             set => m_telefono = value;
         }
-        
+
+        /// <summary>
+        /// Devuelve/Setea la direccion de la Persona
+        /// </summary>
         public string Direccion
         {
             get => m_direccion;
             set => m_direccion = value;
         }
-      
+
+        /// <summary>
+        /// Devuelve/Setea el email de la Persona
+        /// </summary>
         public string Email
         {
             get => m_email;
             set => m_email = value;
         }
-        
+
+        /// <summary>
+        /// Devuelve/Setea la fecha de nacimiento de la Persona
+        /// </summary>
         public DateTime FechaNacimiento
         {
             get => m_fechaNacimiento;
             set => m_fechaNacimiento = value;
         }
-       
-        public Plan Plan
-        {
-            get => m_plan;
-            set => m_plan = value;
-        }
 
-        public int IDPlan
-        {
-            get =>Plan.ID;
-        }
-
+        /// <summary>
+        /// Devuelve/Setea el legajo de la Persona
+        /// </summary>
         public int Legajo
         {
             get => m_legajo;
             set => m_legajo = value;
         }
-     
+
+        /// <summary>
+        /// Devuelve/Setea el rol de la Persona
+        /// </summary>
         public TiposPersonas TipoPersona 
         {
             get => m_tipoPersona;
@@ -98,6 +111,24 @@ namespace Academia.Business.Entities
             Alumno,
             Docente       
         }
+
+        /// <summary>
+        /// Devuelve/Setea el Plan al cual hace referencia la Persona
+        /// </summary>
+        public Plan Plan
+        {
+            get => m_plan;
+            set => m_plan = value;
+        }
+
+        /// <summary>
+        /// Devuelve el ID del Plan al cual hace referencia
+        /// </summary>
+        public int IDPlan
+        {
+            get => Plan.ID;
+        }
+
         #endregion
     }
 }

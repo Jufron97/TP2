@@ -48,7 +48,7 @@
             this.tblFormIngresoNota.ColumnCount = 3;
             this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.36424F));
             this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.63576F));
-            this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tblFormIngresoNota.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
             this.tblFormIngresoNota.Controls.Add(this.lblAlumno, 0, 0);
             this.tblFormIngresoNota.Controls.Add(this.lblCondicion, 0, 1);
             this.tblFormIngresoNota.Controls.Add(this.txtAlumno, 1, 0);
@@ -72,7 +72,7 @@
             // 
             this.lblAlumno.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAlumno.AutoSize = true;
-            this.lblAlumno.Location = new System.Drawing.Point(47, 19);
+            this.lblAlumno.Location = new System.Drawing.Point(46, 19);
             this.lblAlumno.Name = "lblAlumno";
             this.lblAlumno.Size = new System.Drawing.Size(42, 13);
             this.lblAlumno.TabIndex = 0;
@@ -82,7 +82,7 @@
             // 
             this.lblCondicion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCondicion.AutoSize = true;
-            this.lblCondicion.Location = new System.Drawing.Point(41, 74);
+            this.lblCondicion.Location = new System.Drawing.Point(40, 74);
             this.lblCondicion.Name = "lblCondicion";
             this.lblCondicion.Size = new System.Drawing.Size(54, 13);
             this.lblCondicion.TabIndex = 1;
@@ -91,26 +91,28 @@
             // txtAlumno
             // 
             this.txtAlumno.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAlumno.Location = new System.Drawing.Point(139, 16);
+            this.txtAlumno.Location = new System.Drawing.Point(138, 16);
             this.txtAlumno.Name = "txtAlumno";
             this.txtAlumno.ReadOnly = true;
             this.txtAlumno.Size = new System.Drawing.Size(157, 20);
             this.txtAlumno.TabIndex = 2;
+            this.txtAlumno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCondicion
             // 
             this.txtCondicion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCondicion.Location = new System.Drawing.Point(139, 71);
+            this.txtCondicion.Location = new System.Drawing.Point(138, 71);
             this.txtCondicion.Name = "txtCondicion";
             this.txtCondicion.ReadOnly = true;
             this.txtCondicion.Size = new System.Drawing.Size(100, 20);
             this.txtCondicion.TabIndex = 3;
+            this.txtCondicion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblNota
             // 
             this.lblNota.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNota.AutoSize = true;
-            this.lblNota.Location = new System.Drawing.Point(53, 129);
+            this.lblNota.Location = new System.Drawing.Point(52, 129);
             this.lblNota.Name = "lblNota";
             this.lblNota.Size = new System.Drawing.Size(30, 13);
             this.lblNota.TabIndex = 4;
@@ -119,7 +121,7 @@
             // txtNota
             // 
             this.txtNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtNota.Location = new System.Drawing.Point(139, 126);
+            this.txtNota.Location = new System.Drawing.Point(138, 126);
             this.txtNota.Name = "txtNota";
             this.txtNota.Size = new System.Drawing.Size(100, 20);
             this.txtNota.TabIndex = 5;
@@ -127,7 +129,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Location = new System.Drawing.Point(221, 236);
+            this.btnGuardar.Location = new System.Drawing.Point(220, 236);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 6;
@@ -138,7 +140,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelar.Location = new System.Drawing.Point(302, 236);
+            this.btnCancelar.Location = new System.Drawing.Point(301, 236);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;

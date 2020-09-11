@@ -26,23 +26,35 @@ namespace Academia.Business.Entities
 
         #region Propiedades
 
+        /// <summary>
+        /// Devuelve/Setea la descripcion del Plan
+        /// </summary>
         public string Descripcion
         {
             get => m_descripcion;
             set => m_descripcion = value;
         }
-        
+
+        /// <summary>
+        /// Devuelve/Setea la especialidad al cual hace referencia el Plan
+        /// </summary>
         public Especialidad Especialidad
         {
             get => m_especialdidad;
             set => m_especialdidad = value;
         }
 
+        /// <summary>
+        /// Devuelve el ID de la especialidad al cual hace referencia el Plan
+        /// </summary>
         public int IDEspecialidad
         {
             get => Especialidad.ID;
         }
 
+        /// <summary>
+        /// Devuelve la descripcion de la especialidad al cual hace referencia el Plan
+        /// </summary>
         public string DescEspecialidad
         {
             get => Especialidad.Descripcion;
