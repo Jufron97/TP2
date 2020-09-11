@@ -28,6 +28,9 @@ namespace Academia.Business.Entities
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// 
+        /// </summary>
         public int AnioCalendario
         {
             get => m_anioCalendario;

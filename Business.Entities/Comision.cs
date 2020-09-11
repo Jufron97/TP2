@@ -26,12 +26,19 @@ namespace Academia.Business.Entities
         #endregion
 
         #region Propiedades
+
+        /// <summary>
+        /// Devuelve/Setea el año de la especialidad
+        /// </summary>
         public int AnioEspecialidad
         {
             get => m_anioEspecialidad;
             set => m_anioEspecialidad = value;
         }
-      
+
+        /// <summary>
+        /// Devuelve/Setea la descripcion inscripcion de la especialidad
+        /// </summary>
         public string Descripcion
         {
             get => m_descripcion;
@@ -44,11 +51,17 @@ namespace Academia.Business.Entities
             set => m_Plan = value;
         }
 
+        /// <summary>
+        /// Devuelve el ID del plan al que hace referencia la especialidad
+        /// </summary>
         public int IDPlan
         {
             get => Plan.ID;
         }
 
+        /// <summary>
+        /// Devuelve la descripcion del plan al que hace referencia la especialidad
+        /// </summary>
         public string DescPlan
         {
             get => Plan.Descripcion;
