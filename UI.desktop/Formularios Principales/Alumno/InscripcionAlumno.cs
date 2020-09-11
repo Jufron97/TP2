@@ -69,9 +69,6 @@ namespace Academia.UI.Desktop
                 else 
                 {
                     this.btnSeleccionar.Visible = false;
-                    //Dado que tengo que se muestra otra propiedad, hay que cambiarle eel DataPropertyName
-                    this.Materia.DataPropertyName = "DescCursoMateria";
-                    this.Comision.DataPropertyName = "DescCursoComision";
                     InscripcionLogic alInsLogic = new InscripcionLogic();
                     dgvInscripcionAlumno.DataSource = alInsLogic.GetAll(UsuarioActual);                 
                 }

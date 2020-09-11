@@ -73,14 +73,14 @@ namespace Academia.Business.Entities
             get => Curso.ID;
         }
 
-        public string DescCursoMateria
+        public string DescMateria
         {
-            get => Curso.Materia.Descripcion;
+            get => Curso.DescMateria;
         }
 
-        public string DescCursoComision
+        public string DescComision
         {
-            get => Curso.Comision.Descripcion;
+            get => Curso.DescComision;
         }
 
 
