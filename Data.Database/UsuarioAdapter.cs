@@ -261,15 +261,16 @@ namespace Academia.Data.Database
         {           
             try
             {
-                OpenConnection();
+                OpenConnection();/*
                 SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
-                cmdSave.CommandType = CommandType.StoredProcedure;
+                cmdSave.CommandType = CommandType.StoredProcedure;*/
+                SqlCommand cmdSave = new SqlCommand("Insert into usuarios (nombre_usuario,clave,habilitado) values(@nombUsu,@claveUsu,@habilitadoUsu)", sqlConn);
                 //Persona
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
                 //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
                 //cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
-                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = /*usuario.Persona.FechaNacimiento*/ DateTime.Now;
                 //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
@@ -277,6 +278,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
