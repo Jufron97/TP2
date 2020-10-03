@@ -75,8 +75,7 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("ListadoGeneralUsuarios", sqlConn);
-                cmdUsuarios.CommandType=CommandType.StoredProcedure;
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios", sqlConn);
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {

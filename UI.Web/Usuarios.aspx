@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Usuarios" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">   
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="false" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
@@ -11,6 +11,9 @@
                 <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
+            <FooterStyle CssClass="MasterStyle.css" />
+            <HeaderStyle CssClass="MasterStyle.css" />
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionPanel" runat="server">
             <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnEditar_Click">Editar</asp:LinkButton>

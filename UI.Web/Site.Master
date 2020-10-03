@@ -3,13 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>Academia</title>
+        <link rel="stylesheet" href="App_Themes\MasterStyle.css">
     </head>
     <body>
         <form id="bodyForm" runat="server">
             <asp:Menu ID="menu" DataSourceID="SiteMapDataSource" runat="server" Height="40px" Orientation="Horizontal"  BorderColor="Black" Width="20px">
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>  
-            <div>
+            <div class="center">
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
