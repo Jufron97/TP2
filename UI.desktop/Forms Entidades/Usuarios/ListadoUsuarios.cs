@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
-using Academia.UI.Desktop;
 
 namespace Academia.UI.Desktop
 {
@@ -29,7 +21,7 @@ namespace Academia.UI.Desktop
             }
             catch (Exception Ex)
             {
-                MessageBox.Show(Ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
         }
@@ -72,7 +64,7 @@ namespace Academia.UI.Desktop
                 formUsuario.Modo = ApplicationForm.ModoForm.Modificacion;
                 //Se selecciona al usuario
                 //AACA IRIA FORMULARIO Y DESPUES LA CONSULTA A BD              
-                formUsuario.UsuarioActual=((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
+                formUsuario.UsuarioActual = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem);
                 //Se muestra al usuario en el formulario con los datos cargados
                 formUsuario.ShowDialog();
                 Listar();
@@ -89,7 +81,7 @@ namespace Academia.UI.Desktop
             int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
             UsuarioDesktop formUsuario = new UsuarioDesktop(ID,ApplicationForm.ModoForm.Baja);
             */
-            if(itemSeleccionado())
+            if (itemSeleccionado())
             {
                 UsuarioABM formUsuario = new UsuarioABM();
                 formUsuario.Modo = ApplicationForm.ModoForm.Baja;
