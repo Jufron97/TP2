@@ -1,13 +1,46 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
-body {
+.header {
+    box-sizing: border-box;
+    font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
-    background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
-    color: white;
+    position:absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    margin-top: 0%;
+    overflow: hidden;
+    background: black;
+    z-index:2;
 }
 
-.center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+    .header button {
+        -webkit-appearance: button;
+        outline: 0;
+        background-color: black;
+        border: 0;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 0px;
+        width: 25%;
+        height: 100%;
+        cursor: pointer;
+        font-size: 20px;
+        transition-duration: 0.25s;
+    }
+    .header button:hover{
+        color:black;
+    }
+.footer {
+    box-sizing: border-box;
+    font-weight: 300;
+    font-family: 'Source Sans Pro', sans-serif;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    overflow: hidden;
+    background: black;
 }

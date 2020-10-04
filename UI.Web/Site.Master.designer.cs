@@ -24,13 +24,31 @@ namespace UI.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm bodyForm;
 
         /// <summary>
-        /// Control menu.
+        /// Control HomeButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menu;
+        protected global::System.Web.UI.HtmlControls.HtmlButton HomeButton;
+
+        /// <summary>
+        /// Control LoginButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton LoginButton;
+
+        /// <summary>
+        /// Control LogoutButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton LogoutButton;
 
         /// <summary>
         /// Control SiteMapDataSource.
@@ -42,6 +60,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource;
 
         /// <summary>
+        /// Control menu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu menu;
+
+        /// <summary>
         /// Control bodyContentPlaceHolder.
         /// </summary>
         /// <remarks>
@@ -49,5 +76,14 @@ namespace UI.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyContentPlaceHolder;
+
+        /// <summary>
+        /// Control loginContentPlaceholder.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder loginContentPlaceholder;
     }
 }

@@ -11,7 +11,27 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LoginButton.ServerClick += new System.EventHandler(this.LoginButton_Click);
+            HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
+            LogoutButton.ServerClick += new System.EventHandler(this.LogoutButton_Click);
         }
+
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+
     }
 }

@@ -41,8 +41,6 @@ body {
 }
 
 
-
-
 .wrapper {
     background: #50a3a2;
     background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
@@ -66,8 +64,6 @@ body {
     transform: translateY(10%);
 }
 
-
-    
 
 .container {
     max-width: 600px;
