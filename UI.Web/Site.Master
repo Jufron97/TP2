@@ -1,22 +1,18 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UI.Web.Site" %>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>Academia</title>
-        <link rel="stylesheet" href="App_Themes\MasterStyle.css">
-        <link rel="stylesheet" href="App_Themes\LoginStyle.css">
+        <!--<link rel="stylesheet" href="App_Themes\MasterStyle.css">
+        <link rel="stylesheet" href="App_Themes\LoginStyle.css">-->
     </head>
     <body>
-        <form id="bodyForm" class="header" runat="server">
+        <form id="bodyForm" runat="server">
             <div>
                 <button type="submit" id="HomeButton" runat="server">Home</button>
                 <button type="submit" id="LoginButton" runat="server">Login</button>
-                <button type="submit" id="LogoutButton" runat="server">Log out</button>
+                <button type="submit" id="UsuariosButton" runat="server">Usuarios</button>
             </div>
-            <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server"/>
-            <asp:Menu ID="menu" DataSourceID="SiteMapDataSource" runat="server" Height="40px" Orientation="Horizontal"  BorderColor="Black" Width="20px">
-            </asp:Menu>
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
@@ -26,7 +22,6 @@
                 <asp:ContentPlaceHolder ID="loginContentPlaceholder" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-        
     </body>
 </html>
 <footer>

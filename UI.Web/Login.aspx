@@ -4,7 +4,7 @@
     <div class="wrapper">
 	<div class="container">
 		<h1>Bienvenido</h1>
-		<form class="form">
+		<form id="loginForm" class="form">
 			<input id="txtUsuario" type="text" placeholder="Usuario" runat="server"/>
 			<input id="txtContraseña" type="password" placeholder="Contraseña" runat="server"/>
 			<button type="submit" id="IngresarButton" runat="server">Ingresar</button>

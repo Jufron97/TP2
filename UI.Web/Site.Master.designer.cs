@@ -42,31 +42,13 @@ namespace UI.Web
         protected global::System.Web.UI.HtmlControls.HtmlButton LoginButton;
 
         /// <summary>
-        /// Control LogoutButton.
+        /// Control UsuariosButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton LogoutButton;
-
-        /// <summary>
-        /// Control SiteMapDataSource.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource;
-
-        /// <summary>
-        /// Control menu.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menu;
+        protected global::System.Web.UI.HtmlControls.HtmlButton UsuariosButton;
 
         /// <summary>
         /// Control bodyContentPlaceHolder.

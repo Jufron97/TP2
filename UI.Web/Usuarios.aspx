@@ -11,8 +11,6 @@
                 <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
-            <FooterStyle CssClass="MasterStyle.css" />
-            <HeaderStyle CssClass="MasterStyle.css" />
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
         <asp:Panel ID="gridActionPanel" runat="server">
