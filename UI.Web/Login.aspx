@@ -3,14 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="loginContentPlaceholder" runat="server">
     <div class="wrapper">
 	<div class="container">
-		<h1>Bienvenido</h1>
+		<h1 style="margin-left: 320px">Bienvenido</h1>
 		<form id="loginForm" class="form">
 			<input id="txtUsuario" type="text" placeholder="Usuario" runat="server"/>
 			<input id="txtContraseña" type="password" placeholder="Contraseña" runat="server"/>
 			<button type="submit" id="IngresarButton" runat="server">Ingresar</button>
 			</form>
-	</div>
-	
+	</div>	
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>
@@ -25,7 +24,4 @@
 	</ul>
 </div>
 	<script src="Scripts/LoginJs.js"></script>
-
-
-
-     </asp:Content>
+</asp:Content>
