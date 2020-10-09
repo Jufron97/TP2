@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>Academia</title>
-        <link rel="stylesheet" href="App_Themes\MasterStyle.css">
-        <link rel="stylesheet" href="App_Themes\LoginStyle.css">
+        <!--<link rel="stylesheet" href="App_Themes\MasterStyle.css">
+        <link rel="stylesheet" href="App_Themes\LoginStyle.css">-->
     </head>
     <body>
-        <form id="bodyForm" runat="server" class="header">
+        <form id="bodyForm" runat="server">
             <div>
                 <button type="submit" id="HomeButton" runat="server">Home</button>
                 <button type="submit" id="LoginButton" runat="server">Login</button>
@@ -15,16 +15,13 @@
             </div>
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
+
                 </asp:ContentPlaceHolder>
             </div>
             </form>
-        <div>
-            <asp:ContentPlaceHolder ID="loginContentPlaceholder" runat="server">
-                </asp:ContentPlaceHolder>
-        </div>
     </body>
 </html>
+
 <footer>
-    <div class="footer">
-    </div>
+
 </footer>
