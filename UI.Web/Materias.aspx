@@ -8,7 +8,7 @@
                 <asp:BoundField DataField="HsSemanales" HeaderText="Horas Semanales" />
                 <asp:BoundField DataField="HsTotales" HeaderText="Horas Totales" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-                <asp:BoundField DataField="IdPlan" HeaderText="IdPlan" />
+                <asp:BoundField DataField="IdPlan" HeaderText="ID Plan" />
                 <asp:BoundField DataField="DescripcionPlan" HeaderText="Descripcion Plan" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
@@ -25,11 +25,11 @@
         <asp:TextBox ID="txtHsSemanales" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblHsTotales" runat="server" Text="Apellido: "></asp:Label>
+        <asp:Label ID="lblHsTotales" runat="server" Text="Horas Totales: "></asp:Label>
         <asp:TextBox ID="txtHsTotales" runat="server"> </asp:TextBox>
         <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblDescripcion" runat="server" Text="Nombre Usuario: "></asp:Label>
+        <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion: "></asp:Label>
         <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" ForeColor="Red" />
         <br />
