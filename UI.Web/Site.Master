@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>Academia</title>
-        <!--<link rel="stylesheet" href="App_Themes\MasterStyle.css">
-        <link rel="stylesheet" href="App_Themes\LoginStyle.css">-->
+        <link rel="stylesheet" href="App_Themes\MasterStyle.css">
+        <link rel="stylesheet" href="App_Themes\LoginStyle.css">
     </head>
     <body>
-        <form id="bodyForm" runat="server">
+        <form id="bodyForm" runat="server" class="header">
             <div>
                 <button type="submit" id="HomeButton" runat="server">Home</button>
                 <button type="submit" id="LoginButton" runat="server">Login</button>
@@ -19,9 +19,9 @@
             </div>
             </form>
         <div>
-                <asp:ContentPlaceHolder ID="loginContentPlaceholder" runat="server">
+            <asp:ContentPlaceHolder ID="loginContentPlaceholder" runat="server">
                 </asp:ContentPlaceHolder>
-            </div>
+        </div>
     </body>
 </html>
 <footer>
