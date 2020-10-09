@@ -68,7 +68,7 @@ namespace UI.Web
 
         public FormModes FormMode
         {
-            get => (FormModes)ViewState["FormMode"];
+            get => (FormModes) ViewState["FormMode"];
             set => ViewState["FormMode"] = value;
         }
         public enum FormModes
@@ -85,53 +85,30 @@ namespace UI.Web
 
         public void LoadEntity(Especialidad especialidad)
         {
-            usuario.Nombre = txtNombre.Text;
-            usuario.NombreUsuario = txtNombreUsuario.Text;
-            usuario.Apellido = txtApellido.Text;
-            usuario.Habilitado = checkHabilitado.Checked;
-            usuario.Clave = txtClave.Text;
-            usuario.Email = txtEmail.Text;
+            especialidad.Descripcion = txtDescripcion.Text;
         }
 
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
-            txtNombre.Text = Entity.Nombre;
-            txtApellido.Text = Entity.Apellido;
-            txtNombreUsuario.Text = Entity.NombreUsuario;
-            //txtEmail.Text = Entity.Email;
-            checkHabilitado.Checked = Entity.Habilitado;
+            txtDescripcion.Text = Entity.Descripcion;
         }
 
         private void EnableForm(bool enable)
         {
-            txtNombre.Enabled = enable;
-            txtApellido.Enabled = enable;
-            txtNombreUsuario.Enabled = enable;
-            txtEmail.Enabled = enable;
-            checkHabilitado.Enabled = enable;
-            txtClave.Enabled = enable;
-            txtRepetirClave.Enabled = enable;
-            lblRepetirClave.Enabled = enable;
-            desabilitoValidaciones(false);
+            txtDescripcion.Enabled = enable;
         }
 
-        public void SaveEntity(Usuario usuario)
+        public void SaveEntity(Especialidad especialidad)
         {
-            Logic.Save(usuario);
+            Logic.Save(especialidad);
         }
-
+     
         public void desabilitoValidaciones(bool enable)
         {
-            reqNombUsuario.Enabled = enable;
-            reqApellido.Enabled = enable;
-            reqNombre.Enabled = enable;
-            reqClave.Enabled = enable;
-            reqRepetirClave.Enabled = enable;
-            reqEmail.Enabled = enable;
+            reqDescripcion.Enabled = enable;
         }
-
-
+      
         private void DeleteEntity(int ID)
         {
             Logic.Delete(ID);
@@ -140,16 +117,8 @@ namespace UI.Web
 
         private void ClearForm()
         {
-            txtNombre.Text = String.Empty;
-            txtApellido.Text = String.Empty;
-            txtNombreUsuario.Text = String.Empty;
-            txtEmail.Text = String.Empty;
-            checkHabilitado.Checked = false;
-            txtClave.Text = String.Empty;
-            txtRepetirClave.Text = String.Empty;
+            txtDescripcion.Text = String.Empty;
         }
-
-
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -200,7 +169,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Usuario();
+                        Entity = new Especialidad();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -208,7 +177,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Usuario();
+                        Entity = new Especialidad();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
