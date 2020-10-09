@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Logic;
 using Academia.Business.Entities;
+using Academia.Business.Logic;
 
-namespace UI.Web
+namespace UI.Web.Formularios
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Cursos : System.Web.UI.Page
     {
-        private PlanLogic _logic;
+        private CursoLogic _logic;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,13 +21,13 @@ namespace UI.Web
             }
         }
 
-        public PlanLogic Logic
+        public CursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new PlanLogic();
+                    this._logic = new CursoLogic();
                 }
                 return _logic;
             }
@@ -40,9 +40,12 @@ namespace UI.Web
         }
         public void cargoDropDownList()
         {
-            dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
-            dwEspecialidades.DataValueField = "Descripcion";
-            dwEspecialidades.DataBind();
+            dwComision.DataSource = new ComisionLogic().GetAll();
+            dwComision.DataValueField = "Descripcion";
+            dwComision.DataBind();
+            dwMateria.DataSource = new MateriaLogic().GetAll();
+            dwMateria.DataValueField = "Descripcion";
+            dwMateria.DataBind();
         }
 
         private bool isEntititySelected
@@ -50,7 +53,7 @@ namespace UI.Web
             get => selectID != 0;
         }
 
-        private Plan Entity
+        private Curso Entity
         {
             get;
             set;
@@ -90,44 +93,46 @@ namespace UI.Web
             selectID = (int)GridView.SelectedValue;
         }
 
-        public void LoadEntity(Plan plan)
+        public void LoadEntity(Curso curso)
         {
-            plan.Descripcion = txtDescripcion.Text;
+            
         }
 
         public void LoadForm(int id)
         {
-            Entity = this.Logic.GetOne(id);
-            txtDescripcion.Text = Entity.Descripcion;
+            Entity = this.Logic.GetOne(id);            
             cargoDropDownList();
             /* ACA IRIA EL OBJETO EN EL DROPDOWN
-             * 
-            */
+            * 
+           */
         }
 
         private void EnableForm(bool enable)
         {
-            txtDescripcion.Enabled = enable;
+            dwMateria.Enabled = enable;
+            dwComision.Enabled = enable;
+            txtAño.Enabled = enable;
+            txtCupo.Enabled = enable;
         }
 
-        public void SaveEntity(Plan plan)
+        public void SaveEntity(Curso curso)
         {
-            Logic.Save(plan);
+            Logic.Save(curso);
         }
 
         public void desabilitoValidaciones(bool enable)
         {
         }
 
-        private void DeleteEntity(Plan plan)
+        private void DeleteEntity(Curso curso)
         {
-            Logic.Delete(plan);
+            Logic.Delete(curso.ID);
         }
-
 
         private void ClearForm()
         {
-            txtDescripcion.Text = String.Empty;
+            txtAño.Text = String.Empty;
+            txtCupo.Text = String.Empty;           
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -166,7 +171,6 @@ namespace UI.Web
             }
         }
 
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             desabilitoValidaciones(true);
@@ -175,12 +179,12 @@ namespace UI.Web
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        Entity = new PlanLogic().GetOne(selectID);                       
+                        Entity = new CursoLogic().GetOne(selectID);
                         DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Plan();
+                        Entity = new Curso();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -188,7 +192,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Plan();
+                        Entity = new Curso();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
