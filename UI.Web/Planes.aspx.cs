@@ -9,10 +9,9 @@ using Academia.Business.Entities;
 
 namespace UI.Web
 {
-    public partial class Especialidades : System.Web.UI.Page
+    public partial class Planes : System.Web.UI.Page
     {
-
-        private EspecialidadLogic _logic;
+        private PlanLogic _logic;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,13 +21,13 @@ namespace UI.Web
             }
         }
 
-        public EspecialidadLogic Logic 
+        public PlanLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new EspecialidadLogic();
+                    this._logic = new PlanLogic();
                 }
                 return _logic;
             }
@@ -39,12 +38,19 @@ namespace UI.Web
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
+        public void cargoDropDownList()
+        {
+            dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
+            dwEspecialidades.DataValueField = "Descripcion";
+            dwEspecialidades.DataBind();
+        }
 
         private bool isEntititySelected
         {
             get => selectID != 0;
         }
-        private Especialidad Entity
+
+        private Plan Entity
         {
             get;
             set;
@@ -68,9 +74,10 @@ namespace UI.Web
 
         public FormModes FormMode
         {
-            get => (FormModes) ViewState["FormMode"];
+            get => (FormModes)ViewState["FormMode"];
             set => ViewState["FormMode"] = value;
         }
+
         public enum FormModes
         {
             Alta,
@@ -83,15 +90,16 @@ namespace UI.Web
             selectID = (int)GridView.SelectedValue;
         }
 
-        public void LoadEntity(Especialidad especialidad)
+        public void LoadEntity(Plan plan)
         {
-            especialidad.Descripcion = txtDescripcion.Text;
+            plan.Descripcion = txtDescripcion.Text;
         }
 
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
+            cargoDropDownList();
         }
 
         private void EnableForm(bool enable)
@@ -99,19 +107,18 @@ namespace UI.Web
             txtDescripcion.Enabled = enable;
         }
 
-        public void SaveEntity(Especialidad especialidad)
+        public void SaveEntity(Plan plan)
         {
-            Logic.Save(especialidad);
+            Logic.Save(plan);
         }
-     
+
         public void desabilitoValidaciones(bool enable)
         {
-            reqDescripcion.Enabled = enable;
         }
-      
-        private void DeleteEntity(int ID)
+
+        private void DeleteEntity(Plan plan)
         {
-            Logic.Delete(ID);
+            Logic.Delete(plan);
         }
 
 
@@ -165,11 +172,12 @@ namespace UI.Web
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        Entity = new PlanLogic().GetOne(selectID);                       
+                        DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Especialidad();
+                        Entity = new Plan();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -177,7 +185,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Especialidad();
+                        Entity = new Plan();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();

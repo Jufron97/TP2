@@ -44,7 +44,7 @@ namespace UI.Web
             set;
         }
 
-        private  int selectID
+        private int selectID
         {
             get
             {
@@ -74,6 +74,7 @@ namespace UI.Web
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -141,7 +142,6 @@ namespace UI.Web
             Logic.Delete(ID);
         }
 
-
         private void ClearForm()
         {
             txtNombre.Text = String.Empty;
@@ -152,8 +152,6 @@ namespace UI.Web
             txtClave.Text = String.Empty;
             txtRepetirClave.Text = String.Empty;
         }
-
-
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {

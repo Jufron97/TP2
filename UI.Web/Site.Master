@@ -15,16 +15,13 @@
             </div>
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
+
                 </asp:ContentPlaceHolder>
             </div>
             </form>
-        <div>
-                <asp:ContentPlaceHolder ID="loginContentPlaceholder" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
     </body>
 </html>
+
 <footer>
-    <div class="footer">
-    </div>
+
 </footer>
