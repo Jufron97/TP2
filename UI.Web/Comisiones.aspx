@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Materias.aspx.cs" Inherits="UI.Web.Materias" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Comisiones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:Panel ID="gralpanel" CssClass="panel" runat="server">
+    
      <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="HsSemanales" HeaderText="Horas Semanales" />
-                <asp:BoundField DataField="HsTotales" HeaderText="Horas Totales" />
+                <asp:BoundField DataField="AnioEspecialidad" HeaderText="Año Especialidad" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                 <asp:BoundField DataField="IdPlan" HeaderText="ID Plan" />
-                <asp:BoundField DataField="DescripcionPlan" HeaderText="Descripcion Plan" />
+                <asp:BoundField DataField="DescPlan" HeaderText="Descripcion Plan" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -21,13 +20,9 @@
         </asp:Panel>
     </asp:Panel>
     <asp:Panel ID="formPanel" runat="server" Visible="false">
-        <asp:Label ID="lblHsSemanales" runat="server" Text="Horas Semanales:"></asp:Label>
-        <asp:TextBox ID="txtHsSemanales" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="*" ForeColor="Red" />
-        <br />
-        <asp:Label ID="lblHsTotales" runat="server" Text="Horas Totales: "></asp:Label>
-        <asp:TextBox ID="txtHsTotales" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="*" ForeColor="Red" />
+        <asp:Label ID="lblAnioEspecialidad" runat="server" Text="Año Especialidad:"></asp:Label>
+        <asp:TextBox ID="txtAnioEspecialidad" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator runat="server" id="reqAnioEspecialidad" controltovalidate="txtAnioEspecialidad" errormessage="*" ForeColor="Red" />
         <br />
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion: "></asp:Label>
         <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
@@ -41,5 +36,5 @@
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
         <br />
     </asp:Panel>
-    </asp:Panel>
+    
      </asp:Content>

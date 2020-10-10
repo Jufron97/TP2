@@ -127,7 +127,7 @@ form button {
     font-size: 18px;
     transition-duration: 0.25s;
 }
-button:hover
+form button:hover
 {
     background-color: rgb(245, 247, 249);
 }

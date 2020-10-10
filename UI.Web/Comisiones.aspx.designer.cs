@@ -11,17 +11,8 @@ namespace UI.Web
 {
 
 
-    public partial class Materias
+    public partial class Comisiones
     {
-
-        /// <summary>
-        /// Control gralpanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gralpanel;
 
         /// <summary>
         /// Control gridPanel.
@@ -87,58 +78,31 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// Control lblHsSemanales.
+        /// Control lblAnioEspecialidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHsSemanales;
+        protected global::System.Web.UI.WebControls.Label lblAnioEspecialidad;
 
         /// <summary>
-        /// Control txtHsSemanales.
+        /// Control txtAnioEspecialidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHsSemanales;
+        protected global::System.Web.UI.WebControls.TextBox txtAnioEspecialidad;
 
         /// <summary>
-        /// Control reqHsSemanales.
+        /// Control reqAnioEspecialidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqHsSemanales;
-
-        /// <summary>
-        /// Control lblHsTotales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHsTotales;
-
-        /// <summary>
-        /// Control txtHsTotales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHsTotales;
-
-        /// <summary>
-        /// Control reqHsTotales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqHsTotales;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqAnioEspecialidad;
 
         /// <summary>
         /// Control lblDescripcion.

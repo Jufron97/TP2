@@ -1,27 +1,27 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UI.Web.Site" %>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head runat="server">
-        <title>Academia</title>
-        <!--<link rel="stylesheet" href="App_Themes\MasterStyle.css">
-        <link rel="stylesheet" href="App_Themes\LoginStyle.css">-->
-    </head>
-    <body>
-        <form id="bodyForm" runat="server">
-            <div>
+<header class="header">
+            <div class="btndiv">
                 <button type="submit" id="HomeButton" runat="server">Home</button>
                 <button type="submit" id="LoginButton" runat="server">Login</button>
                 <button type="submit" id="UsuariosButton" runat="server">Usuarios</button>
             </div>
+</header>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Academia</title>
+        <link rel="stylesheet" href="App_Themes\MasterStyle.css">
+    </head>
+    <body>
+        <form id="bodyForm" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
-
                 </asp:ContentPlaceHolder>
             </div>
             </form>
+        <asp:ContentPlaceHolder ID="loginContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
     </body>
 </html>
 
-<footer>
-
+<footer class="footer">
 </footer>

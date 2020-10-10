@@ -14,24 +14,30 @@
     background: black;
     z-index:2;
 }
+    .header .btndiv {
 
-    .header button {
-        -webkit-appearance: button;
-        outline: 0;
-        background-color: black;
-        border: 0;
-        padding: 10px 15px;
-        color: white;
-        border-radius: 0px;
-        width: 25%;
-        height: 100%;
-        cursor: pointer;
-        font-size: 20px;
-        transition-duration: 0.25s;
+       margin-top:20px;
+        
     }
-    .header button:hover{
-        color:black;
-    }
+.btndiv button {
+    -webkit-appearance: button;
+    position:relative;
+    outline: 0;
+    border: 0;
+    background-color: black;
+    padding: 10px 15px;
+    color: white;
+    height: 50%;
+    border-radius: 3px;
+    width: 25%;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+}
+        .header button:hover {
+            color: black;
+            background-color: white;
+        }
 .footer {
     box-sizing: border-box;
     font-weight: 300;
@@ -46,15 +52,15 @@
 }
 
 
-.grid {
-    box-sizing: border-box;
-    font-weight: 300;
-    font-family: 'Source Sans Pro', sans-serif;
+.panel {
+    position: absolute;
+    align-content:center;
+    align-self:center;
     top: 30%;
-    left: 0;
-    width: 100%;
+    left: 30%;
+    width: 50%;
     height: 80%;
-    margin-top: -10%;
     overflow: hidden;
-    color: black;
 }
+
+
