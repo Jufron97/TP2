@@ -2,19 +2,19 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel runat="server">
-        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+        <asp:GridView ID="GridView" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
         </asp:GridView>
     </asp:Panel>
-    <asp:Panel ID="gridActionPanel" runat="server">
+    <asp:Panel ID="gridActionPanel" HorizontalAlign="Center" runat="server">
             <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnEditar_Click">Editar</asp:LinkButton>
             <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="btnNuevo" runat="server" OnClick="btnNuevo_Click">Nuevo</asp:LinkButton>
     </asp:Panel>
-    <asp:Panel ID="formPanel" runat="server" Visible="false">
+    <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
         <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" ForeColor="Red" />
