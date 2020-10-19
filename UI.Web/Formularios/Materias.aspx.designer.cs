@@ -78,94 +78,103 @@ namespace UI.Web.Formularios
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// Control lblNombre.
+        /// Control lblDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombre;
+        protected global::System.Web.UI.WebControls.Label lblDescripcion;
 
         /// <summary>
-        /// Control txtNombre.
+        /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// Control reqNombre.
+        /// Control reqDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNombre;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDescripcion;
 
         /// <summary>
-        /// Control lblApellido.
+        /// Control lblHsSemanales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApellido;
+        protected global::System.Web.UI.WebControls.Label lblHsSemanales;
 
         /// <summary>
-        /// Control txtApellido.
+        /// Control txtHsSemanales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.TextBox txtHsSemanales;
 
         /// <summary>
-        /// Control reqApellido.
+        /// Control reqHsSemanales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqApellido;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqHsSemanales;
 
         /// <summary>
-        /// Control lblHabilitado.
+        /// Control lblHsTotales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHabilitado;
+        protected global::System.Web.UI.WebControls.Label lblHsTotales;
 
         /// <summary>
-        /// Control checkHabilitado.
+        /// Control txtHsTotales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkHabilitado;
+        protected global::System.Web.UI.WebControls.TextBox txtHsTotales;
 
         /// <summary>
-        /// Control lblNombreUsuario.
+        /// Control reqHsTotales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreUsuario;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqHsTotales;
 
         /// <summary>
-        /// Control txtNombreUsuario.
+        /// Control lblPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreUsuario;
+        protected global::System.Web.UI.WebControls.Label lblPlan;
+
+        /// <summary>
+        /// Control dwPlanes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dwPlanes;
 
         /// <summary>
         /// Control reqNombUsuario.
@@ -175,87 +184,6 @@ namespace UI.Web.Formularios
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNombUsuario;
-
-        /// <summary>
-        /// Control lblEmail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
-
-        /// <summary>
-        /// Control txtEmail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-
-        /// <summary>
-        /// Control reqEmail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqEmail;
-
-        /// <summary>
-        /// Control lblClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblClave;
-
-        /// <summary>
-        /// Control txtClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClave;
-
-        /// <summary>
-        /// Control reqClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqClave;
-
-        /// <summary>
-        /// Control lblRepetirClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRepetirClave;
-
-        /// <summary>
-        /// Control txtRepetirClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRepetirClave;
-
-        /// <summary>
-        /// Control reqRepetirClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqRepetirClave;
 
         /// <summary>
         /// Control btnAceptar.

@@ -104,7 +104,7 @@ namespace UI.Web
             txtNombre.Text = Entity.Nombre;
             txtApellido.Text = Entity.Apellido;
             txtNombreUsuario.Text = Entity.NombreUsuario;
-            //txtEmail.Text = Entity.Email;
+            txtEmail.Text = Entity.Email;
             checkHabilitado.Checked = Entity.Habilitado;
         }
 

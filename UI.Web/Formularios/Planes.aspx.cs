@@ -38,10 +38,12 @@ namespace UI.Web
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
+
         public void cargoDropDownList()
         {
             dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
-            dwEspecialidades.DataValueField = "Descripcion";
+            dwEspecialidades.DataTextField = "Descripcion";
+            dwEspecialidades.DataValueField = "ID";
             dwEspecialidades.DataBind();
         }
 
@@ -100,9 +102,7 @@ namespace UI.Web
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
             cargoDropDownList();
-            /* ACA IRIA EL OBJETO EN EL DROPDOWN
-             * 
-            */
+            dwEspecialidades.SelectedValue = Entity.ID.ToString();
         }
 
         private void EnableForm(bool enable)
@@ -117,6 +117,7 @@ namespace UI.Web
 
         public void desabilitoValidaciones(bool enable)
         {
+
         }
 
         private void DeleteEntity(Plan plan)

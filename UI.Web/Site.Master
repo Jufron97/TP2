@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="App_Themes\LoginStyle.css">-->
     </head>
     <body>
-        <form id="bodyForm" runat="server">
+        <form id="bodyForm"  runat="server">
             <div>
-                <button type="submit" id="HomeButton" runat="server">Home</button>
-                <button type="submit" id="LoginButton" runat="server">Login</button>
-                <button type="submit" id="UsuariosButton" runat="server">Usuarios</button>
+                <asp:Panel runat="server" HorizontalAlign="Left">
+                    <button type="submit" id="HomeButton" runat="server">Home</button>
+                    <button type="submit" id="LoginButton" runat="server">Login</button>
+                    <button type="submit" id="UsuariosButton" runat="server">Usuarios</button>
+                </asp:Panel>
             </div>
             <div>
                 <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
@@ -23,5 +25,5 @@
 </html>
 
 <footer>
-
+    
 </footer>

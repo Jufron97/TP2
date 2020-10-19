@@ -1,13 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Materias.aspx.cs" Inherits="UI.Web.Formularios.Materias" %>
-<asp:Content ID="MateriasForm" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+<asp:Content ID="formMaterias" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
         <asp:Panel ID="gridPanel" HorizontalAlign="Center" runat="server">
         <asp:GridView ID="GridView" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-                <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
-                <asp:BoundField DataField="Habilitado" HeaderText="Habilitado" />
+                <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
+                <asp:BoundField DataField="HsSemanales" HeaderText="Horas Semanales" />
+                <asp:BoundField DataField="HsTotales" HeaderText="Horas Totales" />
+                <asp:BoundField DataField="DescPlan" HeaderText="Plan" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -19,32 +18,22 @@
         </asp:Panel>
     </asp:Panel>
     <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
-        <asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label>
-        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="*" ForeColor="Red" />
+        <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
+        <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblApellido" runat="server" Text="Apellido: "></asp:Label>
-        <asp:TextBox ID="txtApellido" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqApellido" controltovalidate="txtApellido" errormessage="*" ForeColor="Red" />
+        <asp:Label ID="lblHsSemanales" runat="server" Text="Horas Semanales: "></asp:Label>
+        <asp:TextBox ID="txtHsSemanales" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado"></asp:Label>
-        <asp:CheckBox ID="checkHabilitado" runat="server"/>
+        <asp:Label ID="lblHsTotales" runat="server" Text="Horas Totales: "></asp:Label>
+        <asp:TextBox ID="txtHsTotales" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre Usuario: "></asp:Label>
-        <asp:TextBox ID="txtNombreUsuario" runat="server"></asp:TextBox>
+        <asp:Label ID="lblPlan" runat="server" Text="Plan : "></asp:Label>
+        <asp:DropDownList ID="dwPlanes" runat="server"> </asp:DropDownList>
         <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="*" ForeColor="Red" />
         <br />
-        <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
-        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqEmail" controltovalidate="txtEmail" errormessage="*" ForeColor="Red" />
-        <br />
-        <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
-        <asp:TextBox ID="txtClave" runat="server" TextMode="Password"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" ForeColor="Red" />
-        <br />
-        <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
-        <asp:TextBox ID="txtRepetirClave" runat="server" TextMode="Password"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" ForeColor="Red" />
         <asp:Panel runat="server">
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
             <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
