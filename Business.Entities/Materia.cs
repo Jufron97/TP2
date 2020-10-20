@@ -76,7 +76,7 @@ namespace Academia.Business.Entities
         /// <summary>
         /// Devuevle la descripcion del cual hace referencia la Materia
         /// </summary>
-        public string DesPlan
+        public string DescPlan
         {
             get => Plan.Descripcion;
         }

@@ -9,7 +9,7 @@ using Academia.Business.Logic;
 
 namespace UI.Web.Formularios
 {
-    public partial class Cursos : System.Web.UI.Page
+    public partial class Cursos : ApplicationForm
     {
         private CursoLogic _logic;
 
@@ -47,19 +47,16 @@ namespace UI.Web.Formularios
         /// </summary>
         public void cargoDropDownList()
         {
+            //DropDown con las comisiones
             dwComision.DataSource = new ComisionLogic().GetAll();
             dwComision.DataValueField = "ID";
             dwComision.DataValueField = "Descripcion";
             dwComision.DataBind();
+            //DropDown con las materias
             dwMateria.DataSource = new MateriaLogic().GetAll();
             dwMateria.DataValueField = "ID";
             dwMateria.DataTextField = "Descripcion";
             dwMateria.DataBind();
-        }
-
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
         }
 
         private Curso Entity
@@ -68,34 +65,6 @@ namespace UI.Web.Formularios
             set;
         }
 
-        private int selectID
-        {
-            get
-            {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set => ViewState["SelectedID"] = value;
-        }
-
-        public FormModes FormMode
-        {
-            get => (FormModes)ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -9,7 +9,7 @@ using Academia.Business.Logic;
 
 namespace UI.Web.Formularios
 {
-    public partial class Materias : System.Web.UI.Page
+    public partial class Materias : ApplicationForm
     {
         private MateriaLogic _logic;
 
@@ -39,44 +39,10 @@ namespace UI.Web.Formularios
             this.GridView.DataBind();
         }
 
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
-        }
-
         private Materia Entity
         {
             get;
             set;
-        }
-
-        private int selectID
-        {
-            get
-            {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set => ViewState["SelectedID"] = value;
-        }
-
-        public FormModes FormMode
-        {
-            get => (FormModes)ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,5 +157,4 @@ namespace UI.Web.Formularios
             }
         }
     }
-}
 }

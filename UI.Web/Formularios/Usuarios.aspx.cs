@@ -6,10 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using UI.Web.Formularios;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : ApplicationForm
     {
         private UsuarioLogic _logic;
 
@@ -25,44 +26,10 @@ namespace UI.Web
             }
         }
 
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-
-        public FormModes FormMode
-        {
-            get => (FormModes)ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-
         private Usuario Entity
         {
             get;
             set;
-        }
-
-        private int selectID
-        {
-            get
-            {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set => ViewState["SelectedID"] = value;
-        }
-
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
         }
 
 

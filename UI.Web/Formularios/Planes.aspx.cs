@@ -6,10 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Logic;
 using Academia.Business.Entities;
+using UI.Web.Formularios;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Planes : ApplicationForm
     {
         private PlanLogic _logic;
 
@@ -47,45 +48,12 @@ namespace UI.Web
             dwEspecialidades.DataBind();
         }
 
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
-        }
-
         private Plan Entity
         {
             get;
             set;
         }
 
-        private int selectID
-        {
-            get
-            {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set => ViewState["SelectedID"] = value;
-        }
-
-        public FormModes FormMode
-        {
-            get => (FormModes)ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {

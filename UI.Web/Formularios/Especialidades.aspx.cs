@@ -6,23 +6,22 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Logic;
 using Academia.Business.Entities;
+using UI.Web.Formularios;
 
 namespace UI.Web
 {
-    public partial class Especialidades : System.Web.UI.Page
+    public partial class Especialidades : ApplicationForm
     {
+
+        #region Atributos
 
         private EspecialidadLogic _logic;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
-            {
-                LoadGrid();
-            }
-        }
+        #endregion
 
-        public EspecialidadLogic Logic 
+        #region Propiedades
+
+        public EspecialidadLogic Logic
         {
             get
             {
@@ -34,48 +33,31 @@ namespace UI.Web
             }
         }
 
-        private void LoadGrid()
-        {
-            this.GridView.DataSource = Logic.GetAll();
-            this.GridView.DataBind();
-        }
-
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
-        }
         private Especialidad Entity
         {
             get;
             set;
         }
 
-        private int selectID
+        #endregion
+
+        #region Metodos
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            get
+            if (!Page.IsPostBack)
             {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
+                LoadGrid();
             }
-            set => ViewState["SelectedID"] = value;
         }
 
-        public FormModes FormMode
+        /// <summary>
+        /// Se carga la grilla con todas las especialidades
+        /// </summary>
+        private void LoadGrid()
         {
-            get => (FormModes) ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
+            this.GridView.DataSource = Logic.GetAll();
+            this.GridView.DataBind();
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +102,10 @@ namespace UI.Web
             txtDescripcion.Text = String.Empty;
         }
 
+        #endregion
+
+        #region Eventosormulario
+
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
@@ -130,6 +116,7 @@ namespace UI.Web
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -189,4 +176,5 @@ namespace UI.Web
             }
         }
     }
+    #endregion
 }
