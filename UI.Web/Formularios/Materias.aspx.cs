@@ -53,6 +53,9 @@ namespace UI.Web.Formularios
         public void LoadEntity(Materia materia)
         {
             materia.Descripcion = txtDescripcion.Text;
+            materia.HsSemanales = Int32.Parse(txtHsSemanales.Text);
+            materia.HsTotales = Int32.Parse(txtHsTotales.Text);
+            materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
         }
 
         public void LoadForm(int id)

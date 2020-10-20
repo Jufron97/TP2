@@ -73,7 +73,10 @@ namespace UI.Web.Formularios
 
         public void LoadEntity(Curso curso)
         {
-            
+            curso.AnioCalendario = Int32.Parse(txtAño.Text);
+            curso.Comision = new ComisionLogic().GetOne(Int32.Parse(dwComision.SelectedValue));
+            curso.Materia = new MateriaLogic().GetOne(Int32.Parse(dwMateria.SelectedValue));
+            curso.Cupo = Int32.Parse(txtCupo.Text);
         }
 
         /// <summary>
@@ -113,6 +116,7 @@ namespace UI.Web.Formularios
 
         public void desabilitoValidaciones(bool enable)
         {
+
         }
 
         /// <summary>

@@ -125,13 +125,7 @@ namespace UI.Web
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
+
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -174,6 +168,14 @@ namespace UI.Web
                 }
                 formPanel.Visible = false;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
         }
     }
     #endregion

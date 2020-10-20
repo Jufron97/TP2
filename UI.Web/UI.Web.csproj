@@ -116,6 +116,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Formularios\ApplicationForm.aspx" />
+    <Content Include="Formularios\Comisiones.aspx" />
     <Content Include="Formularios\Cursos.aspx" />
     <Content Include="Formularios\Especialidades.aspx" />
     <Content Include="favicon.ico" />
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Formularios\ApplicationForm.aspx.designer.cs">
       <DependentUpon>ApplicationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Comisiones.aspx.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Comisiones.aspx.designer.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
