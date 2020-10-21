@@ -14,10 +14,9 @@ namespace UI.Web
             
         }
 
-
-        public void asd()
+        protected void loginPrueba_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            
+            //Esto se genera automaticamente con el ASP login
         }
 
     }
