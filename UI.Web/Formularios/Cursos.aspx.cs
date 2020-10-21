@@ -11,15 +11,13 @@ namespace UI.Web.Formularios
 {
     public partial class Cursos : ApplicationForm
     {
+        #region Atributos
+
         private CursoLogic _logic;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
-            {
-                LoadGrid();
-            }
-        }
+        #endregion
+
+        #region Propiedades
 
         public CursoLogic Logic
         {
@@ -33,6 +31,24 @@ namespace UI.Web.Formularios
             }
         }
 
+        private Curso Entity
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Metodos
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                LoadGrid();
+            }
+        }       
+
         /// <summary>
         /// Se carga la grilla con todos los Cursos
         /// </summary>
@@ -43,14 +59,14 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Se cargan los DropDownList con los datos correspondientes datos en la BD
+        /// Se cargan los DropDownList con los datos correspondientes de todas las materias y comisiones en la BD
         /// </summary>
         public void cargoDropDownList()
         {
             //DropDown con las comisiones
             dwComision.DataSource = new ComisionLogic().GetAll();
             dwComision.DataValueField = "ID";
-            dwComision.DataValueField = "Descripcion";
+            dwComision.DataTextField = "Descripcion";
             dwComision.DataBind();
             //DropDown con las materias
             dwMateria.DataSource = new MateriaLogic().GetAll();
@@ -58,19 +74,17 @@ namespace UI.Web.Formularios
             dwMateria.DataTextField = "Descripcion";
             dwMateria.DataBind();
         }
-
-        private Curso Entity
-        {
-            get;
-            set;
-        }
-
+    
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectID = (int)GridView.SelectedValue;
         }
 
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="curso"></param>
         public void LoadEntity(Curso curso)
         {
             curso.AnioCalendario = Int32.Parse(txtAño.Text);
@@ -80,7 +94,7 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Se carga el formulario con el respectivo Curso seleccionado
+        /// Se carga el formulario con los datos de la entidad seleccionada
         /// </summary>
         /// <param name="id"></param>
         public void LoadForm(int id)
@@ -94,7 +108,7 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Metodo que deshabilita/habilita los controles del formulario
+        /// Se habilitda/deshabilita el formulario ABM
         /// </summary>
         /// <param name="enable"></param>
         private void EnableForm(bool enable)
@@ -106,7 +120,7 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Metodo 
+        /// Se invoca para guardar a la entidad
         /// </summary>
         /// <param name="curso"></param>
         public void SaveEntity(Curso curso)
@@ -120,7 +134,7 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Metodo que sirve para eliminar la entidad
+        /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="curso"></param>
         private void DeleteEntity(Curso curso)
@@ -129,13 +143,17 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Metodo que sirve para limpiar el formulario
+        /// Se limpia el formulario ABM
         /// </summary>
         private void ClearForm()
         {
             txtAño.Text = String.Empty;
             txtCupo.Text = String.Empty;           
         }
+
+        #endregion
+
+        #region EventosFormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -147,6 +165,7 @@ namespace UI.Web.Formularios
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -206,4 +225,6 @@ namespace UI.Web.Formularios
             }
         }
     }
+
+    #endregion
 }

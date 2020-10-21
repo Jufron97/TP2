@@ -51,7 +51,7 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Se carga la grilla con todas las especialidades
+        /// Se carga la grilla con todas las comisiones
         /// </summary>
         private void LoadGrid()
         {
@@ -64,6 +64,10 @@ namespace UI.Web.Formularios
             selectID = (int)GridView.SelectedValue;
         }
 
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="comision"></param>
         public void LoadEntity(Comision comision)
         {
             comision.Descripcion = txtDescripcion.Text;
@@ -71,6 +75,10 @@ namespace UI.Web.Formularios
             comision.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlan.SelectedValue));
         }
 
+        /// <summary>
+        /// Se carga el formulario con los datos de la entidad seleccionada
+        /// </summary>
+        /// <param name="id"></param>
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
@@ -79,11 +87,19 @@ namespace UI.Web.Formularios
             dwPlan.SelectedValue = Entity.ID.ToString();
         }
 
+        /// <summary>
+        /// Se habilitda/deshabilita el formulario ABM
+        /// </summary>
+        /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
         }
 
+        /// <summary>
+        /// Se invoca para guardar a la entidad
+        /// </summary>
+        /// <param name="comision"></param>
         public void SaveEntity(Comision comision)
         {
             Logic.Save(comision);
@@ -94,12 +110,18 @@ namespace UI.Web.Formularios
             
         }
 
+        /// <summary>
+        /// Se invoca para eliminar a la entidad por el ID enviado
+        /// </summary>
+        /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
             Logic.Delete(ID);
         }
 
-
+        /// <summary>
+        /// Se limpia el formulario ABM
+        /// </summary>
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;

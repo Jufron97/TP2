@@ -12,15 +12,13 @@ namespace UI.Web
 {
     public partial class Planes : ApplicationForm
     {
+        #region Atributos
+
         private PlanLogic _logic;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
-            {
-                LoadGrid();
-            }
-        }
+        #endregion
+
+        #region Propiedades
 
         public PlanLogic Logic
         {
@@ -34,24 +32,41 @@ namespace UI.Web
             }
         }
 
+        private Plan Entity
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Metodos
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                LoadGrid();
+            }
+        }
+
+        /// <summary>
+        /// Se carga la grilla con todos los Planes
+        /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
 
+        /// <summary>
+        /// Se carga el DropDownList con los datos correspondientes de todas las especialidades en la BD
+        /// </summary>
         public void cargoDropDownList()
         {
             dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
-            dwEspecialidades.DataTextField = "Descripcion";
             dwEspecialidades.DataValueField = "ID";
+            dwEspecialidades.DataTextField = "Descripcion";            
             dwEspecialidades.DataBind();
-        }
-
-        private Plan Entity
-        {
-            get;
-            set;
         }
 
 
@@ -60,12 +75,20 @@ namespace UI.Web
             selectID = (int)GridView.SelectedValue;
         }
 
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="plan"></param>
         public void LoadEntity(Plan plan)
         {
             plan.Descripcion = txtDescripcion.Text;
             plan.Especialidad = new EspecialidadLogic().GetOne(Int32.Parse(dwEspecialidades.SelectedValue));
         }
 
+        /// <summary>
+        /// Se carga el formulario con los datos de la entidad seleccionada
+        /// </summary>
+        /// <param name="id"></param>
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
@@ -74,11 +97,19 @@ namespace UI.Web
             dwEspecialidades.SelectedValue = Entity.ID.ToString();
         }
 
+        /// <summary>
+        /// Se habilitda/deshabilita el formulario ABM
+        /// </summary>
+        /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
         }
 
+        /// <summary>
+        /// Se invoca para guardar a la entidad
+        /// </summary>
+        /// <param name="plan"></param>
         public void SaveEntity(Plan plan)
         {
             Logic.Save(plan);
@@ -89,16 +120,26 @@ namespace UI.Web
 
         }
 
+        /// <summary>
+        /// Se invoca para eliminar a la entidad por el ID enviado
+        /// </summary>
+        /// <param name="plan"></param>
         private void DeleteEntity(Plan plan)
         {
             Logic.Delete(plan);
         }
 
-
+        /// <summary>
+        /// Se limpia el formulario ABM
+        /// </summary>
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;
         }
+
+        #endregion
+
+        #region EventosFormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -170,4 +211,6 @@ namespace UI.Web
             }
         }
     }
+
+    #endregion
 }

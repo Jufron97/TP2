@@ -115,6 +115,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Formularios\Alumno\AlumnoInscripcion.aspx" />
     <Content Include="Formularios\ApplicationForm.aspx" />
     <Content Include="Formularios\Comisiones.aspx" />
     <Content Include="Formularios\Cursos.aspx" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Alumno\AlumnoInscripcion.aspx.cs">
+      <DependentUpon>AlumnoInscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Alumno\AlumnoInscripcion.aspx.designer.cs">
+      <DependentUpon>AlumnoInscripcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ApplicationForm.aspx.cs">
       <DependentUpon>ApplicationForm.aspx</DependentUpon>

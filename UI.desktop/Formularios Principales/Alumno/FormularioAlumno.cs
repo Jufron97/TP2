@@ -38,7 +38,6 @@ namespace Academia.UI.Desktop
 
         #endregion
 
-
         #region EventosFormulario
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -46,8 +45,7 @@ namespace Academia.UI.Desktop
             this.Close();
         }
 
-        #endregion
-
+       
         private void btnVisualizarCursos_Click(object sender, EventArgs e)
         {
             //Aca se mostraria los cursos a los cuales se inscribio el alumno
@@ -63,5 +61,7 @@ namespace Academia.UI.Desktop
             formInscripcion.TipoOperacion = InscripcionAlumno.Operacion.InscripcionCurso;
             formInscripcion.ShowDialog();
         }
+
+        #endregion
     }
 }

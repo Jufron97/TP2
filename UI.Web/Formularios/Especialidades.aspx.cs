@@ -65,22 +65,38 @@ namespace UI.Web
             selectID = (int)GridView.SelectedValue;
         }
 
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="especialidad"></param>
         public void LoadEntity(Especialidad especialidad)
         {
             especialidad.Descripcion = txtDescripcion.Text;
         }
 
+        /// <summary>
+        /// Se carga el formulario con los datos de la entidad seleccionada
+        /// </summary>
+        /// <param name="id"></param>
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
         }
 
+        /// <summary>
+        /// Se habilitda/deshabilita el formulario ABM
+        /// </summary>
+        /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
         }
 
+        /// <summary>
+        /// Se invoca para guardar a la entidad
+        /// </summary>
+        /// <param name="especialidad"></param>
         public void SaveEntity(Especialidad especialidad)
         {
             Logic.Save(especialidad);
@@ -90,13 +106,19 @@ namespace UI.Web
         {
             reqDescripcion.Enabled = enable;
         }
-      
+
+        /// <summary>
+        /// Se invoca para eliminar a la entidad por el ID enviado
+        /// </summary>
+        /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
             Logic.Delete(ID);
         }
 
-
+        /// <summary>
+        /// Se limpia el formulario ABM
+        /// </summary>
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;

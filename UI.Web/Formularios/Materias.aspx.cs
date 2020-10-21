@@ -11,15 +11,13 @@ namespace UI.Web.Formularios
 {
     public partial class Materias : ApplicationForm
     {
+        #region Atributos
+
         private MateriaLogic _logic;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
-            {
-                LoadGrid();
-            }
-        }
+        #endregion
+
+        #region Propiedades
 
         public MateriaLogic Logic
         {
@@ -33,23 +31,42 @@ namespace UI.Web.Formularios
             }
         }
 
-        private void LoadGrid()
-        {
-            this.GridView.DataSource = Logic.GetAll();
-            this.GridView.DataBind();
-        }
-
         private Materia Entity
         {
             get;
             set;
         }
 
+        #endregion
+
+        #region Metodos
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                LoadGrid();
+            }
+        }
+
+        /// <summary>
+        /// Se carga la grilla con todos los Cursos
+        /// </summary>
+        private void LoadGrid()
+        {
+            this.GridView.DataSource = Logic.GetAll();
+            this.GridView.DataBind();
+        }
+     
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectID = (int)GridView.SelectedValue;
         }
 
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="materia"></param>
         public void LoadEntity(Materia materia)
         {
             materia.Descripcion = txtDescripcion.Text;
@@ -58,17 +75,29 @@ namespace UI.Web.Formularios
             materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
         }
 
+        /// <summary>
+        /// Se carga el formulario con los datos de la entidad seleccionada
+        /// </summary>
+        /// <param name="id"></param>
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
         }
 
+        /// <summary>
+        /// Se habilitda/deshabilita el formulario ABM
+        /// </summary>
+        /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
         }
 
+        /// <summary>
+        /// Se invoca para guardar a la entidad
+        /// </summary>
+        /// <param name="materia"></param>
         public void SaveEntity(Materia materia)
         {
             Logic.Save(materia);
@@ -79,17 +108,27 @@ namespace UI.Web.Formularios
 
         }
 
+        /// <summary>
+        /// Se invoca para eliminar a la entidad por el ID enviado
+        /// </summary>
+        /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
             Entity = Logic.GetOne(ID);
             Logic.Delete(Entity);
         }
 
-
+        /// <summary>
+        /// Se limpia el formulario ABM
+        /// </summary>
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;
         }
+
+        #endregion
+
+        #region EventosFormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -160,4 +199,6 @@ namespace UI.Web.Formularios
             }
         }
     }
+
+    #endregion
 }
