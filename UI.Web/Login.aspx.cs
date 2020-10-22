@@ -21,10 +21,12 @@ namespace UI.Web
         private UsuarioLogic _logic;
 
         public UsuarioLogic Usuariologic
-            {
-            get => _logic;set => _logic = value;
-            }
-        protected void IngresarButton_Click(object sender, EventArgs e) 
+        {
+            get => _logic;
+            set => _logic = value;
+        }
+
+        protected void IngresarButton_Click(object sender, EventArgs e)
         {
             UsuarioLogic Usuariologic = new UsuarioLogic();
 
@@ -46,17 +48,11 @@ namespace UI.Web
                 }
                 HttpContext.Current.Session["usuario"] = usu;
             }
-            else 
+            else
             {
-                MessageBox.Show("Soy Juan Frontons y la tengo re clara");
+                Response.Write("<script>window.open('DetalleSolicitud.aspx','popup','width=800,height=500') </script>")
+                //MessageBox.Show("Soy Juan Frontons y la tengo re clara");
             }
-
-            
-
         }
-
-
-
-
     }
 }

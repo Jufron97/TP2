@@ -81,12 +81,12 @@ body {
 
 
 
-form {
+.form {
     padding: 20px 0;
     position: relative;
     z-index: 2;
 }
-    form input {
+    .form input {
         display: block;
         -webkit-appearance: textfield;
         outline: 0;
@@ -114,7 +114,7 @@ input:focus {
     color: #53e3a6;
 }
 
-form button {
+.form button {
     -webkit-appearance: button;
     outline: 0;
     background-color: white;
@@ -127,7 +127,7 @@ form button {
     font-size: 18px;
     transition-duration: 0.25s;
 }
-form button:hover
+.form button:hover
 {
     background-color: rgb(245, 247, 249);
 }
