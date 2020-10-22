@@ -11,52 +11,61 @@ namespace UI.Web
 {
 
 
-    public partial class Site
+    public partial class HomeAdmin
     {
 
         /// <summary>
-        /// Control HomeButton.
+        /// Control buttonPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton HomeButton;
+        protected global::System.Web.UI.WebControls.Panel buttonPanel;
 
         /// <summary>
-        /// Control LoginButton.
+        /// Control Button4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton LoginButton;
+        protected global::System.Web.UI.WebControls.Button Button4;
 
         /// <summary>
-        /// Control bodyForm.
+        /// Control Button5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm bodyForm;
+        protected global::System.Web.UI.WebControls.Button Button5;
 
         /// <summary>
-        /// Control bodyContentPlaceHolder.
+        /// Control Button6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
-        /// Control loginContentPlaceHolder.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder loginContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// Control Button2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

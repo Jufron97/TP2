@@ -13,7 +13,6 @@ namespace UI.Web
         {
             LoginButton.ServerClick += new System.EventHandler(this.LoginButton_Click);
             HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
-            UsuariosButton.ServerClick += new System.EventHandler(this.UsuariosButton_Click);
         }
 
         protected void HomeButton_Click(object sender, EventArgs e)
@@ -26,9 +25,6 @@ namespace UI.Web
             Response.Redirect("~/Login.aspx");
         }
 
-        protected void UsuariosButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Formularios/Usuarios.aspx");
-        }
+      
     }
 }

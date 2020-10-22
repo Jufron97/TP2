@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Academia.Business.Entities;
+using Academia.Business.Logic;
+using System.Windows.Forms;
 
 namespace UI.Web
 {
@@ -11,13 +15,44 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            IngresarButton.ServerClick += new System.EventHandler(this.IngresarButton_Click);
         }
 
-        protected void loginPrueba_Authenticate(object sender, AuthenticateEventArgs e)
+        private UsuarioLogic _logic;
+
+        public UsuarioLogic Usuariologic
+            {
+            get => _logic;set => _logic = value;
+                }
+        protected void IngresarButton_Click(object sender, EventArgs e) 
         {
-            //Esto se genera automaticamente con el ASP login
+            UsuarioLogic Usuariologic = new UsuarioLogic();
+
+            if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
+            {
+                Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
+                switch (usu.Persona.TipoPersona)
+                {
+                    case Persona.TiposPersonas.Admin:
+                        Response.Redirect("~/HomeAdmin");
+                        break;
+                    case Persona.TiposPersonas.Alumno:
+                        Response.Redirect("~/HomeAlumno");
+                        break;
+                    case Persona.TiposPersonas.Docente:
+                        Response.Redirect("~/HomeDocente");
+                        break;
+                }
+
+            }
+            else 
+            {
+                MessageBox.Show("Soy Juan Frontons y le tengo re clara");
+            }
+
         }
+
+
 
     }
 }

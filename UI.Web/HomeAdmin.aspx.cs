@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace UI.Web
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class HomeAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             
         }
-
-
-       
     }
 }
