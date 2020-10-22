@@ -28,30 +28,29 @@ namespace UI.Web
 
         protected void IngresarButton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("ENTRE LA CONCHA DE TU MADRE"+Request.Form["txtUsuario"]);
             UsuarioLogic Usuariologic = new UsuarioLogic();
 
-            if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
+            if (Usuariologic.verificoLogin("Zalo","zalito123"))
             {
-                Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
-
+                Usuario usu = Usuariologic.GetOne("Zalo", "zalito123");
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
-                        Response.Redirect("~/Formularios/HomeAdmin");
+                        Response.Redirect("~/HomeAdmin.aspx");
                         break;
                     case Persona.TiposPersonas.Alumno:
-                        Response.Redirect("~/Formularios/HomeAlumno");
+                        Response.Redirect("~/Formularios/Alumno/HomeAlumno.aspx");
                         break;
                     case Persona.TiposPersonas.Docente:
-                        Response.Redirect("~/Formularios/HomeDocente");
+                        Response.Redirect("~/Formularios/Docente/HomeDocente.aspx");
                         break;
                 }
                 HttpContext.Current.Session["usuario"] = usu;
             }
             else
             {
-                Response.Write("<script>window.open('DetalleSolicitud.aspx','popup','width=800,height=500') </script>")
-                //MessageBox.Show("Soy Juan Frontons y la tengo re clara");
+                Response.Write("<script>window.open('Mensaje.aspx','popup','width=800,height=500') </script>");
             }
         }
     }
