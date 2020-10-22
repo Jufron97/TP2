@@ -50,7 +50,7 @@ namespace UI.Web
             }
             else
             {
-                Response.Write("<script>window.open('DetalleSolicitud.aspx','popup','width=800,height=500') </script>")
+                Response.Write("<script>window.open('DetalleSolicitud.aspx','popup','width=800,height=500') </script>");
                 //MessageBox.Show("Soy Juan Frontons y la tengo re clara");
             }
         }
