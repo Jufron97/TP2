@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlumnoInscripcion.aspx.cs" Inherits="UI.Web.Formularios.Alumno.AlumnoInscripcion" %>
-<asp:Content ID="formAlumnoInscripcion" ContentPlaceHolderID="bodyContentPlaceHolder"  runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HomeAlumno.aspx.cs" Inherits="UI.Web.Formularios.Alumno.FormularioAlumno" %>
+<asp:Content ID="HomeAlumno" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
      <asp:Panel ID="buttonPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
 
     <asp:Button ID="Button4" runat="server" Text="Button" />

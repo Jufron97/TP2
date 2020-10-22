@@ -23,7 +23,7 @@ namespace UI.Web
         public UsuarioLogic Usuariologic
             {
             get => _logic;set => _logic = value;
-                }
+            }
         protected void IngresarButton_Click(object sender, EventArgs e) 
         {
             UsuarioLogic Usuariologic = new UsuarioLogic();
@@ -31,6 +31,7 @@ namespace UI.Web
             if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
             {
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
+
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
@@ -47,10 +48,11 @@ namespace UI.Web
             }
             else 
             {
-                MessageBox.Show("Soy Juan Frontons y le tengo re clara");
+                MessageBox.Show("Soy Juan Frontons y la tengo re clara");
             }
 
         }
+
 
 
 

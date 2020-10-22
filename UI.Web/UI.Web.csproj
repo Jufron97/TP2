@@ -117,11 +117,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Formularios\Alumno\AlumnoInscripcion.aspx" />
-    <Content Include="Formularios\Alumno\FormularioAlumno.aspx" />
+    <Content Include="Formularios\Alumno\HomeAlumno.aspx" />
     <Content Include="Formularios\ApplicationForm.aspx" />
     <Content Include="Formularios\Comisiones.aspx" />
     <Content Include="Formularios\Cursos.aspx" />
-    <Content Include="Formularios\Docente\FormularioDocente.aspx" />
+    <Content Include="Formularios\Docente\HomeDocente.aspx" />
     <Content Include="Formularios\Especialidades.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -206,12 +206,12 @@
     <Compile Include="Formularios\Alumno\AlumnoInscripcion.aspx.designer.cs">
       <DependentUpon>AlumnoInscripcion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Alumno\FormularioAlumno.aspx.cs">
-      <DependentUpon>FormularioAlumno.aspx</DependentUpon>
+    <Compile Include="Formularios\Alumno\HomeAlumno.aspx.cs">
+      <DependentUpon>HomeAlumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Alumno\FormularioAlumno.aspx.designer.cs">
-      <DependentUpon>FormularioAlumno.aspx</DependentUpon>
+    <Compile Include="Formularios\Alumno\HomeAlumno.aspx.designer.cs">
+      <DependentUpon>HomeAlumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ApplicationForm.aspx.cs">
       <DependentUpon>ApplicationForm.aspx</DependentUpon>
@@ -234,12 +234,12 @@
     <Compile Include="Formularios\Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Docente\FormularioDocente.aspx.cs">
-      <DependentUpon>FormularioDocente.aspx</DependentUpon>
+    <Compile Include="Formularios\Docente\HomeDocente.aspx.cs">
+      <DependentUpon>HomeDocente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Docente\FormularioDocente.aspx.designer.cs">
-      <DependentUpon>FormularioDocente.aspx</DependentUpon>
+    <Compile Include="Formularios\Docente\HomeDocente.aspx.designer.cs">
+      <DependentUpon>HomeDocente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
