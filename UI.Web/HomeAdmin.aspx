@@ -6,6 +6,11 @@
         <asp:Menu ID="Menu" runat="server">
         <Items>
             <asp:MenuItem NavigateUrl="~/Formularios/Usuarios.aspx" Text="Usuarios" Value="Usuarios"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Formularios/Especialidades.aspx" Text="Especialidades" Value="Especialidades"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Formularios/Planes.aspx" Text="Planes" Value="Planes"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Formularios/Materias.aspx" Text="Materias" Value="Materias"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Formularios/Cursos.aspx" Text="Cursos" Value="Nuevo elemento"></asp:MenuItem>
+            <asp:MenuItem NavigateUrl="~/Formularios/Comisiones.aspx" Text="Comisiones" Value="Comisiones"></asp:MenuItem>
         </Items>
     </asp:Menu>
     

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="UI.Web.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="loginContentPlaceholder" runat="server">
-	<link rel="stylesheet" href="App_Themes\LoginStyle.css"/>
+    <link rel="stylesheet" href="App_Themes\LoginStyle.css"/>
     <div class="wrapper">
 	<div class="container">
 		<h1>Bienvenido</h1>
