@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Academia.Business.Entities;
 
 namespace UI.Web
 {
@@ -17,8 +18,30 @@ namespace UI.Web
 
         protected void HomeButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
-        }
+            if ((Usuario)Session["usuario"] != null)
+            {
+                Usuario usu = (Usuario)Session["usuario"];
+
+
+                switch (usu.Persona.TipoPersona)
+                {
+                    case Persona.TiposPersonas.Admin:
+                        Response.Redirect("~/Formularios/HomeAdmin");
+                        break;
+                    case Persona.TiposPersonas.Alumno:
+                        Response.Redirect("~/Formularios/HomeAlumno");
+                        break;
+                    case Persona.TiposPersonas.Docente:
+                        Response.Redirect("~/Formularios/HomeDocente");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            else { Response.Redirect("~/Login.aspx"); }
+
+            }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {

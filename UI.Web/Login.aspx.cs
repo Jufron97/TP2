@@ -35,21 +35,23 @@ namespace UI.Web
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
-                        Response.Redirect("~/HomeAdmin");
+                        Response.Redirect("~/Formularios/HomeAdmin");
                         break;
                     case Persona.TiposPersonas.Alumno:
-                        Response.Redirect("~/HomeAlumno");
+                        Response.Redirect("~/Formularios/HomeAlumno");
                         break;
                     case Persona.TiposPersonas.Docente:
-                        Response.Redirect("~/HomeDocente");
+                        Response.Redirect("~/Formularios/HomeDocente");
                         break;
                 }
-
+                HttpContext.Current.Session["usuario"] = usu;
             }
             else 
             {
                 MessageBox.Show("Soy Juan Frontons y la tengo re clara");
             }
+
+            
 
         }
 
