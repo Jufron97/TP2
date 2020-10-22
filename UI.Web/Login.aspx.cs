@@ -11,11 +11,13 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //txtContraseña.Value;
+            
         }
 
-
-
+        protected void loginPrueba_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+            //Esto se genera automaticamente con el ASP login
+        }
 
     }
 }

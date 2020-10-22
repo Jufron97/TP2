@@ -15,6 +15,15 @@ namespace UI.Web
     {
 
         /// <summary>
+        /// Control loginPrueba.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Login loginPrueba;
+
+        /// <summary>
         /// Control txtUsuario.
         /// </summary>
         /// <remarks>

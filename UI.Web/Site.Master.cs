@@ -28,10 +28,7 @@ namespace UI.Web
 
         protected void UsuariosButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Usuarios.aspx");
+            Response.Redirect("~/Formularios/Usuarios.aspx");
         }
-
-
-
     }
 }

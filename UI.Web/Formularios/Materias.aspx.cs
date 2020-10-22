@@ -4,15 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Logic;
 using Academia.Business.Entities;
+using Academia.Business.Logic;
 
-namespace UI.Web
+namespace UI.Web.Formularios
 {
-    public partial class Especialidades : System.Web.UI.Page
+    public partial class Materias : ApplicationForm
     {
+        #region Atributos
 
-        private EspecialidadLogic _logic;
+        private MateriaLogic _logic;
+
+        #endregion
+
+        #region Propiedades
+
+        public MateriaLogic Logic
+        {
+            get
+            {
+                if (_logic == null)
+                {
+                    this._logic = new MateriaLogic();
+                }
+                return _logic;
+            }
+        }
+
+        private Materia Entity
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Metodos
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,103 +49,86 @@ namespace UI.Web
             }
         }
 
-        public EspecialidadLogic Logic 
-        {
-            get
-            {
-                if (_logic == null)
-                {
-                    this._logic = new EspecialidadLogic();
-                }
-                return _logic;
-            }
-        }
-
+        /// <summary>
+        /// Se carga la grilla con todos los Cursos
+        /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
-
-        private bool isEntititySelected
-        {
-            get => selectID != 0;
-        }
-        private Especialidad Entity
-        {
-            get;
-            set;
-        }
-
-        private int selectID
-        {
-            get
-            {
-                if (ViewState["SelectedID"] != null)
-                {
-                    return (int)ViewState["SelectedID"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            set => ViewState["SelectedID"] = value;
-        }
-
-        public FormModes FormMode
-        {
-            get => (FormModes) ViewState["FormMode"];
-            set => ViewState["FormMode"] = value;
-        }
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-
+     
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectID = (int)GridView.SelectedValue;
         }
 
-        public void LoadEntity(Especialidad especialidad)
+        /// <summary>
+        /// Se carga a la entidad con los datos seleccionados en el formulario
+        /// </summary>
+        /// <param name="materia"></param>
+        public void LoadEntity(Materia materia)
         {
-            especialidad.Descripcion = txtDescripcion.Text;
+            materia.Descripcion = txtDescripcion.Text;
+            materia.HsSemanales = Int32.Parse(txtHsSemanales.Text);
+            materia.HsTotales = Int32.Parse(txtHsTotales.Text);
+            materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
         }
 
+        /// <summary>
+        /// Se carga el formulario con los datos de la entidad seleccionada
+        /// </summary>
+        /// <param name="id"></param>
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
         }
 
+        /// <summary>
+        /// Se habilitda/deshabilita el formulario ABM
+        /// </summary>
+        /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
         }
 
-        public void SaveEntity(Especialidad especialidad)
+        /// <summary>
+        /// Se invoca para guardar a la entidad
+        /// </summary>
+        /// <param name="materia"></param>
+        public void SaveEntity(Materia materia)
         {
-            Logic.Save(especialidad);
+            Logic.Save(materia);
         }
-     
+
         public void desabilitoValidaciones(bool enable)
         {
-            reqDescripcion.Enabled = enable;
+
         }
-      
+
+        /// <summary>
+        /// Se invoca para eliminar a la entidad por el ID enviado
+        /// </summary>
+        /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
-            Logic.Delete(ID);
+            Entity = Logic.GetOne(ID);
+            Logic.Delete(Entity);
         }
 
-
+        /// <summary>
+        /// Se limpia el formulario ABM
+        /// </summary>
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;
         }
+
+        #endregion
+
+        #region EventosFormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -169,7 +179,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Especialidad();
+                        Entity = new Materia();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -177,7 +187,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Especialidad();
+                        Entity = new Materia();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -189,4 +199,6 @@ namespace UI.Web
             }
         }
     }
+
+    #endregion
 }

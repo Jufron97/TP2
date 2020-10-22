@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Usuarios" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+<asp:Content ID="formUsuario" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+    <asp:Panel ID="gridPanel" HorizontalAlign="Center" runat="server">
+        <asp:GridView ID="GridView" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
@@ -13,13 +13,13 @@
             </Columns>
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
         </asp:GridView>
-        <asp:Panel ID="gridActionPanel" runat="server">
+        <asp:Panel ID="gridActionPanel" HorizontalAlign="Center" runat="server">
             <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnEditar_Click">Editar</asp:LinkButton>
             <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="btnNuevo" runat="server" OnClick="btnNuevo_Click">Nuevo</asp:LinkButton>
         </asp:Panel>
     </asp:Panel>
-    <asp:Panel ID="formPanel" runat="server" Visible="false">
+    <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
         <asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label>
         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="*" ForeColor="Red" />
@@ -53,4 +53,4 @@
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
         <br />
     </asp:Panel>
-    </asp:Content>
+</asp:Content>
