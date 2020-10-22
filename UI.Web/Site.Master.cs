@@ -30,8 +30,5 @@ namespace UI.Web
         {
             Response.Redirect("~/Formularios/Usuarios.aspx");
         }
-
-
-
     }
 }

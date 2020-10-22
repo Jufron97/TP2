@@ -9,7 +9,7 @@
     <body>
         <form id="bodyForm"  runat="server">
             <div>
-                <asp:Panel runat="server" HorizontalAlign="Left">
+                <asp:Panel runat="server" HorizontalAlign="Right">
                     <button type="submit" id="HomeButton" runat="server">Home</button>
                     <button type="submit" id="LoginButton" runat="server">Login</button>
                     <button type="submit" id="UsuariosButton" runat="server">Usuarios</button>
@@ -20,10 +20,10 @@
 
                 </asp:ContentPlaceHolder>
             </div>
-            </form>
+       </form>
     </body>
 </html>
 
 <footer>
-    
+    Quienes somos? Los dueños de la pista bb
 </footer>
