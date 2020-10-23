@@ -117,8 +117,12 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
+                /*
                 SqlCommand cmdUsuarios = new SqlCommand("BuscarUsuarioID", sqlConn);
-                cmdUsuarios.CommandType = CommandType.StoredProcedure;
+                cmdUsuarios.CommandType = CommandType.StoredProcedure;*/            
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios usu"+
+                "inner join personas per on per.id_persona = usu.id_persona"+
+                "where usu.id_usuario = @idUsuario", sqlConn);
                 cmdUsuarios.Parameters.Add("@idUsuario", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
@@ -158,8 +162,13 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
+                /*
                 SqlCommand cmdUsuarios = new SqlCommand("BuscarUsuario", sqlConn);
                 cmdUsuarios.CommandType = CommandType.StoredProcedure;
+                */
+                SqlCommand cmdUsuarios = new SqlCommand("select usu.id_usuario,usu.habilitado,usu.nombre_usuario,usu.id_persona from usuarios usu"+
+                "left join personas per on per.id_persona = usu.id_persona"+
+                "where usu.nombre_usuario = @nombUsu and usu.clave = @claveUsu", sqlConn);
                 cmdUsuarios.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = nomUsu;
                 cmdUsuarios.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = claveUsu;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
@@ -200,14 +209,20 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
+                /*
                 SqlCommand cmdSave = new SqlCommand("ActualizarUsuario",sqlConn);
-                cmdSave.CommandType = CommandType.StoredProcedure;
+                cmdSave.CommandType = CommandType.StoredProcedure;*/
+                SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario = @nombUsu, clave = @claveUsu, habilitado = @habilitadoUsu"+
+                "WHERE id_usuario = @idUsu;"+             
+                "Update personas set nombre = @nombrePer, apellido = @apellidoPer, tipo_persona = @tipoPersona, fecha_nac = @fechaNac, id_plan = @idPlan"+
+                "where id_persona = @idPer", sqlConn);
                 //Usuario
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;               
                 cmdSave.Parameters.Add("@idUsu", SqlDbType.Int).Value = usuario.ID;
                 //Persona
+                cmdSave.Parameters.Add("@idPer", SqlDbType.Int).Value = usuario.Persona.ID;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
@@ -238,8 +253,10 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
+                /*
                 SqlCommand cmdDelete = new SqlCommand("EliminarUsuario", sqlConn);
-                cmdDelete.CommandType = CommandType.StoredProcedure;
+                cmdDelete.CommandType = CommandType.StoredProcedure;*/              
+                SqlCommand cmdDelete = new SqlCommand("delete from usuarios where id_usuario = @idUsuario", sqlConn);
                 cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = usu.ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -263,7 +280,11 @@ namespace Academia.Data.Database
                 OpenConnection();/*
                 SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
-                SqlCommand cmdSave = new SqlCommand("Insert into usuarios (nombre_usuario,clave,habilitado) values(@nombUsu,@claveUsu,@habilitadoUsu)", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,fecha_nac,tipo_persona,id_plan)"+
+                "values(@nombrePer, @apellidoPer, @fechaNac, @tipoPersona, @idPlan)"+
+                "declare @idPersona int = @@identity"+
+                "insert into usuarios(nombre_usuario, clave, habilitado, id_persona)"+
+                "values(@nombUsu, @claveUsu, @habilitadoUsu, @idPersona);", sqlConn);
                 //Persona
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
