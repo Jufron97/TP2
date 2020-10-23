@@ -6,8 +6,8 @@
 	<div class="container">
 		<h1>Bienvenido</h1>
         <div class="form">
-            <input id="txtUsuario" type="text" placeholder="Usuario" runat="server" />
-            <input id="txtContraseña" type="password" placeholder="Contraseña" runat="server" />
+            <input id="txtUsuario" name="txtUsu" type="text" placeholder="Usuario" runat="server" value="" />
+            <input id="txtContraseña" name="txtcont" type="password" placeholder="Contraseña" runat="server" value="" />
             <button type="submit" id="IngresarButton" runat="server">Ingresar</button>
         </div>
 	</div>

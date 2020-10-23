@@ -28,7 +28,7 @@ namespace UI.Web
 
         protected void IngresarButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ENTRE LA CONCHA DE TU MADRE"+Request.Form["txtUsuario"]);
+            MessageBox.Show("ENTRE LA CONCHA DE TU MADRE"+ String.Format("{0}", Request.Form["txtUsu"]));
             UsuarioLogic Usuariologic = new UsuarioLogic();
 
             if (Usuariologic.verificoLogin("Zalo","zalito123"))
