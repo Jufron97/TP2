@@ -173,7 +173,7 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("Update personas set nombre=@nombrePer,apellido=@apellidoPer,email=@email,"+
-                    "telefono=@telefono,fecha_nac=@fehcaNac,legajo=@legajo,tipo_persona=@tipoPersona,id_plan=@idPlan",sqlConn);
+                "telefono=@telefono,fecha_nac=@fehcaNac,legajo=@legajo,tipo_persona=@tipoPersona,id_plan=@idPlan ",sqlConn);
                 /*
                 SqlCommand cmdSave = new SqlCommand("ActualizarPersona", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
@@ -214,7 +214,7 @@ namespace Academia.Data.Database
                 /*
                 SqlCommand cmdDelete = new SqlCommand("EliminarUsuario", sqlConn);
                 cmdDelete.CommandType = CommandType.StoredProcedure;*/
-                SqlCommand cmdDelete = new SqlCommand("delete from usuarios where id_usuario=@idUsuario", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete from usuarios where id_usuario=@idUsuario ", sqlConn);
                 cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = persona.ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -241,7 +241,7 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan)"+
+                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan) "+
                 "values (@nombrePer,apellidoPer,@direccion,@email,@telefono,@fechaNac,@legajo,@tipoPersona,@idPlan)",sqlConn);
                 /*
                 SqlCommand cmdSave = new SqlCommand("InsertarPersona", sqlConn);

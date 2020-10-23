@@ -86,8 +86,8 @@ namespace Academia.Data.Database
                 /*
                 SqlCommand cmdSave = new SqlCommand("ActualizarPlan", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
-                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan = @descPlan, id_especialidad = @idEspecialidad"+
-                "WHERE id_plan = @idPlan", sqlConn) ;
+                SqlCommand cmdSave = new SqlCommand("UPDATE planes SET desc_plan = @descPlan, id_especialidad = @idEspecialidad "+
+                "WHERE id_plan = @idPlan ", sqlConn) ;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = plan.ID;
                 cmdSave.Parameters.Add("@DescPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;    
                 cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
@@ -144,7 +144,7 @@ namespace Academia.Data.Database
                 SqlCommand cmdSave = new SqlCommand("InsertarPlan", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
                 
-                SqlCommand cmdSave = new SqlCommand("insert into planes(desc_plan, id_especialidad)"+
+                SqlCommand cmdSave = new SqlCommand("insert into planes(desc_plan, id_especialidad) "+
                 "values(@descPlan, @idEspecialidad)", sqlConn);
                 cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
                 cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
