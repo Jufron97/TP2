@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" %>
 
 <asp:Content ID="formEspecialidades" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+    <form runat="server">
     <asp:Panel runat="server" HorizontalAlign="Center">
         <h1> Especialidades</h1>
         <asp:GridView ID="GridView"  HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
@@ -27,5 +28,6 @@
         </asp:Panel>      
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
         <br/>
-    </asp:Panel>     
+    </asp:Panel>   
+        </form>
 </asp:Content>

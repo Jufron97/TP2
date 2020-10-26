@@ -28,12 +28,11 @@ namespace UI.Web
 
         protected void IngresarButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ENTRE"+ String.Format("{0}", Request.Form["txtUsu"]));
             UsuarioLogic Usuariologic = new UsuarioLogic();
 
-            if (Usuariologic.verificoLogin("Zalo","zalito123"))
+            if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
             {
-                Usuario usu = Usuariologic.GetOne("Zalo", "zalito123");
+                Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
@@ -44,6 +43,9 @@ namespace UI.Web
                         break;
                     case Persona.TiposPersonas.Docente:
                         Response.Redirect("~/Formularios/Docente/HomeDocente.aspx");
+                        break;
+
+                    default: Response.Redirect("~/Login.aspx");
                         break;
                 }
                 HttpContext.Current.Session["usuario"] = usu;
