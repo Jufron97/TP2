@@ -1,6 +1,6 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
- .header{
+ header{
     box-sizing: border-box;
     font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
@@ -14,7 +14,7 @@
     background: black;
     z-index:2;
 }
-    .header .btndiv {
+    header .btndiv {
 
        margin-top:20px;
         
