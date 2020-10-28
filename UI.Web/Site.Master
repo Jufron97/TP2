@@ -2,7 +2,7 @@
 <header class="header">
             <div class="btndiv">
                 <button type="submit" id="HomeButton" runat="server">Home</button>
-                <button type="submit" id="LoginButton" runat="server">Login</button>
+                
             </div>
 </header>
 <html xmlns="http://www.w3.org/1999/xhtml">

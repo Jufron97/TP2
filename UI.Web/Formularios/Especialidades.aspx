@@ -2,7 +2,7 @@
 
 <asp:Content ID="formEspecialidades" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <form runat="server">
-    <asp:Panel runat="server" HorizontalAlign="Center">
+    <asp:Panel runat="server" CssClass="panel" HorizontalAlign="Center">
         <h1> Especialidades</h1>
         <asp:GridView ID="GridView"  HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
