@@ -33,7 +33,6 @@
         <br />
         <asp:Label ID="lblPlan" runat="server" Text="Plan : "></asp:Label>
         <asp:DropDownList ID="dwPlanes" runat="server"> </asp:DropDownList>
-        <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="*" ForeColor="Red" />
         <br />
         <asp:Panel runat="server">
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  

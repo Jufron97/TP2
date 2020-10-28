@@ -57,7 +57,19 @@ namespace UI.Web.Formularios
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
-     
+
+        /// <summary>
+        /// Se cargan los DropDownList con los datos correspondientes de todas los planes en la BD
+        /// </summary>
+        public void cargoDropDownList()
+        {
+            //DropDown con las comisiones
+            dwPlanes.DataSource = new PlanLogic().GetAll();
+            dwPlanes.DataValueField = "ID";
+            dwPlanes.DataTextField = "Descripcion";
+            dwPlanes.DataBind();
+        }
+
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectID = (int)GridView.SelectedValue;
