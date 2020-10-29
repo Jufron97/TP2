@@ -5,7 +5,7 @@
     <asp:Panel runat="server">
         <asp:GridView ID="GridView" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Desccripcion" HeaderText="Descripcion" />
+                <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                 <asp:BoundField DataField="AnioEspecialidad" HeaderText="Año" />
                 <asp:BoundField DataField="DescPlan" HeaderText="Plan" />
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />

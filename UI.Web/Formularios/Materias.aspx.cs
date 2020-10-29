@@ -95,6 +95,9 @@ namespace UI.Web.Formularios
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
+            cargoDropDownList();
+            //Dependiendo del curso seleccionado se mostrara los valores del plan al cual hace referencia
+            dwPlanes.SelectedValue = Entity.IdPlan.ToString();
         }
 
         /// <summary>
