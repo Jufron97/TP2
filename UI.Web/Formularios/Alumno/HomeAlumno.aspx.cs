@@ -10,14 +10,15 @@ namespace UI.Web.Formularios.Alumno
 {
     public partial class FormularioAlumno : System.Web.UI.Page
     {
+
+        Usuario Usu { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                Usuario usu = (Usuario)Session["usuario"];
-                lblNombreUsuario.Text = usu.NombreUsuario;
-                lblLegajo.Text = usu.Legajo.ToString();
-            }
+            
+                Usu = (Usuario)Session["usuario"];
+                lblNombreUsuario.Text = Usu.NombreUsuario;
+                lblLegajo.Text = Usu.Legajo.ToString();
             
         }
     }

@@ -32,28 +32,32 @@ namespace UI.Web
 
             if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
             {
+                
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
+                HttpContext.Current.Session["usuario"] = usu;
+
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
-                        Response.Redirect("~/HomeAdmin.aspx");
+                        Response.Redirect("~/HomeAdmin.aspx",false);
                         break;
                     case Persona.TiposPersonas.Alumno:
-                        Response.Redirect("~/Formularios/Alumno/HomeAlumno.aspx");
+                        Response.Redirect("~/Formularios/Alumno/HomeAlumno.aspx",false);
                         break;
                     case Persona.TiposPersonas.Docente:
-                        Response.Redirect("~/Formularios/Docente/HomeDocente.aspx");
+                        Response.Redirect("~/Formularios/Docente/HomeDocente.aspx",false);
                         break;
 
-                    default: Response.Redirect("~/Login.aspx");
+                    default: Response.Redirect("~/Login.aspx",false);
                         break;
                 }
-                Session["usuario"] = usu;
+                
             }
             else
             {
                 Response.Write("<script>window.open('Mensaje.aspx','popup','width=800,height=500') </script>");
             }
+            return;
         }
     }
 }

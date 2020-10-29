@@ -41,6 +41,7 @@ namespace UI.Web.Formularios.Alumno
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Entity = (Usuario)Session["usuario"];
 
             if (!Page.IsPostBack)
             {
@@ -48,8 +49,6 @@ namespace UI.Web.Formularios.Alumno
                 LoadGrid();
                 
             }
-            
-            Entity = (Usuario)HttpContext.Current.Session["usuario"];
 
         }
 
