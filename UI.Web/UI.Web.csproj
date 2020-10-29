@@ -123,6 +123,9 @@
     <Content Include="Formularios\Comisiones.aspx" />
     <Content Include="Formularios\Cursos.aspx" />
     <Content Include="Formularios\Docente\HomeDocente.aspx" />
+    <Content Include="Formularios\Docente\RegistroNotas.aspx" />
+    <Content Include="Formularios\Docente\ReporteCursos.aspx" />
+    <Content Include="Formularios\Docente\ReportePlanes.aspx" />
     <Content Include="Formularios\Especialidades.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -242,6 +245,27 @@
     </Compile>
     <Compile Include="Formularios\Docente\HomeDocente.aspx.designer.cs">
       <DependentUpon>HomeDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Docente\RegistroNotas.aspx.cs">
+      <DependentUpon>RegistroNotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Docente\RegistroNotas.aspx.designer.cs">
+      <DependentUpon>RegistroNotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Docente\ReporteCursos.aspx.cs">
+      <DependentUpon>ReporteCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Docente\ReporteCursos.aspx.designer.cs">
+      <DependentUpon>ReporteCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Docente\ReportePlanes.aspx.cs">
+      <DependentUpon>ReportePlanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Docente\ReportePlanes.aspx.designer.cs">
+      <DependentUpon>ReportePlanes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>

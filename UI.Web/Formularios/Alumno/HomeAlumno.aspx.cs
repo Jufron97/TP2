@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Academia.Business.Entities;
 
 namespace UI.Web.Formularios.Alumno
 {
@@ -11,7 +12,13 @@ namespace UI.Web.Formularios.Alumno
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack)
+            {
+                Usuario usu = (Usuario)HttpContext.Current.Session["usuario"];
+                lblNombreUsuario.Text = usu.NombreUsuario;
+                lblLegajo.Text = usu.Legajo.ToString();
+            }
+            
         }
     }
 }

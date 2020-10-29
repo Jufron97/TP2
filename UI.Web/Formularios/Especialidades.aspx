@@ -2,7 +2,8 @@
 
 <asp:Content ID="formEspecialidades" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <form runat="server">
-    <asp:Panel runat="server" CssClass="panel" HorizontalAlign="Center">
+        <asp:Panel CssClass="panel" runat="server">
+    <asp:Panel runat="server" HorizontalAlign="Center">
         <h1> Especialidades</h1>
         <asp:GridView ID="GridView"  HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
@@ -28,6 +29,7 @@
         </asp:Panel>      
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
         <br/>
-    </asp:Panel>   
+    </asp:Panel>
+            </asp:Panel>
         </form>
 </asp:Content>

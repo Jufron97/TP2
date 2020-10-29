@@ -1,18 +1,32 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlumnoInscripcion.aspx.cs" Inherits="UI.Web.Formularios.Alumno.AlumnoInscripcion" %>
-<asp:Content ID="formAlumnoInscripcion" ContentPlaceHolderID="bodyContentPlaceHolder"  runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlumnoInscripcion.aspx.cs" Inherits="UI.Web.Formularios.Alumno.CursosAlumno" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <form runat="server">
-     <asp:Panel ID="buttonPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
 
-    <asp:Button ID="Button4" runat="server" Text="Button" />
-        <br />
-    <asp:Button ID="Button5" runat="server" Text="Button" />
-        <br />
-    <asp:Button ID="Button6" runat="server" Text="Button" />
-        <br />
-    <asp:Button ID="Button1" runat="server" Text="Button" />
-        <br />
-    <asp:Button ID="Button2" runat="server" Text="Button" />
 
+        <asp:Panel ID="Panel1" runat="server">
         </asp:Panel>
-        </form>
+        <asp:GridView ID="GridViewInsc" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="DescMateria" HeaderText="Materia" />
+                <asp:BoundField DataField="DescComision" HeaderText="Comision" />
+                <asp:BoundField DataField="Nota" HeaderText="Nota" />
+                <asp:BoundField DataField="Condicion" HeaderText="Condicion" />
+                <asp:ButtonField CommandName="Select" Text="Seleccionar" />
+            </Columns>
+        </asp:GridView>
+        <asp:GridView ID="GridViewCurso" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="DescMateria" HeaderText="Materia" />
+                <asp:BoundField DataField="DescComision" HeaderText="Comision" />
+                <asp:ButtonField CommandName="Select" Text="Seleccionar" />
+            </Columns>
+        </asp:GridView>
+        <br />
+        <asp:Button ID="btnInscribir" runat="server" Text="Inscribirse" OnClick="btnInscribir_Click" />
+
+
+
+
+
+    </form>
 </asp:Content>

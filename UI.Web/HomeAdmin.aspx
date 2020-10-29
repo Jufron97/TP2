@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <form runat="server">
-    <asp:Panel ID="buttonPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
+    <asp:Panel ID="MenuPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
 
         <asp:Menu ID="Menu" runat="server">
         <Items>
