@@ -24,15 +24,6 @@ namespace UI.Web.Formularios.Alumno
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// Control GridViewInsc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewInsc;
-
-        /// <summary>
         /// Control GridViewCurso.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace UI.Web.Formularios.Alumno
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewCurso;
+
+        /// <summary>
+        /// Control GridViewInsc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewInsc;
 
         /// <summary>
         /// Control btnInscribir.

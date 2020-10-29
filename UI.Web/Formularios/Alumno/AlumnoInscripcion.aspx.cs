@@ -58,10 +58,6 @@ namespace UI.Web.Formularios.Alumno
             set;
         }
 
-        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectID = (int)GridViewCurso.SelectedValue;
-        }
 
         private void LoadGrid()
         {
@@ -120,6 +116,11 @@ namespace UI.Web.Formularios.Alumno
 
             this.LoadGrid();
             
+        }
+
+        protected void GridViewInsc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectID = (int)GridViewInsc.SelectedValue;
         }
     }
 }

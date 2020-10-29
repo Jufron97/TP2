@@ -25,19 +25,19 @@ namespace UI.Web
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
-                        Response.Redirect("~/HomeAdmin");
+                        Response.Redirect("~/HomeAdmin",false);
                         break;
                     case Persona.TiposPersonas.Alumno:
-                        Response.Redirect("~/HomeAlumno");
+                        Response.Redirect("~/Formularios/Alumno/HomeAlumno", false);
                         break;
                     case Persona.TiposPersonas.Docente:
-                        Response.Redirect("~/HomeDocente");
+                        Response.Redirect("~/Formularios/Docente/HomeDocente", false);
                         break;
                     default:
                         break;
                 }
             }
-            else { Response.Redirect("~/Login.aspx"); }
+            else { Response.Redirect("~/Login.aspx",false); }
         }
 
       
