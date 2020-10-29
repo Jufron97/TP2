@@ -14,7 +14,7 @@ namespace UI.Web.Formularios.Alumno
         {
             if (Page.IsPostBack)
             {
-                Usuario usu = (Usuario)HttpContext.Current.Session["usuario"];
+                Usuario usu = (Usuario)Session["usuario"];
                 lblNombreUsuario.Text = usu.NombreUsuario;
                 lblLegajo.Text = usu.Legajo.ToString();
             }

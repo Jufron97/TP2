@@ -48,7 +48,7 @@ namespace UI.Web
                     default: Response.Redirect("~/Login.aspx");
                         break;
                 }
-                HttpContext.Current.Session["usuario"] = usu;
+                Session["usuario"] = usu;
             }
             else
             {
