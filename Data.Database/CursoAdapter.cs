@@ -124,13 +124,13 @@ namespace Academia.Data.Database
             }
         }
 
-        public void Delete(int ID)
+        public void Delete(Curso curso)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from cursos where id_curso=@idCurso", sqlConn);
-                cmdDelete.Parameters.Add("@idCurso", SqlDbType.Int).Value = ID;
+                cmdDelete.Parameters.Add("@idCurso", SqlDbType.Int).Value = curso.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -170,22 +170,21 @@ namespace Academia.Data.Database
         }
         public void Save(Curso curso)
         {
-            if (curso.State == BusinessEntity.States.New)
+            switch (curso.State)
             {
-                Insert(curso);
+                case BusinessEntity.States.New:
+                    Insert(curso);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(curso);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(curso);
+                    break;
+                default:
+                    curso.State = BusinessEntity.States.Unmodified;
+                    break;
             }
-            else if (curso.State == BusinessEntity.States.Deleted)
-            {
-                Delete(curso.ID);
-            }
-            else if (curso.State == BusinessEntity.States.Modified)
-            {
-                Update(curso);
-            }
-            curso.State = BusinessEntity.States.Unmodified;
         }
-
-
-
     }
 }

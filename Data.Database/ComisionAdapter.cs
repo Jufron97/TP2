@@ -96,13 +96,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(int ID)
+        public void Delete(Comision comision)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from comisiones where id_comision=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -142,19 +142,21 @@ namespace Academia.Data.Database
 
         public void Save(Comision comision)
         {
-            if (comision.State == BusinessEntity.States.New)
+            switch (comision.State)
             {
-                Insert(comision);
+                case BusinessEntity.States.New:
+                    Insert(comision);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(comision);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(comision);
+                    break;
+                default:
+                    comision.State = BusinessEntity.States.Unmodified;
+                    break;
             }
-            if (comision.State == BusinessEntity.States.Deleted)
-            {
-                Delete(comision.ID);
-            }
-            if (comision.State == BusinessEntity.States.Modified)
-            {
-                Update(comision);
-            }
-            comision.State = BusinessEntity.States.Unmodified;
         }
 
     }

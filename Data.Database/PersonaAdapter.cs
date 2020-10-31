@@ -275,19 +275,21 @@ namespace Academia.Data.Database
         /// <param name="persona"></param>
         public void Save(Persona persona)
         {
-            if (persona.State == BusinessEntity.States.New)
+            switch (persona.State)
             {
-                Insert(persona);
+                case BusinessEntity.States.New:
+                    Insert(persona);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(persona);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(persona);
+                    break;
+                default:
+                    persona.State = BusinessEntity.States.Unmodified;
+                    break;
             }
-            else if (persona.State == BusinessEntity.States.Deleted)
-            {
-                Delete(persona);
-            }
-            if (persona.State == BusinessEntity.States.Modified)
-            {
-                Update(persona);
-            }
-            persona.State = BusinessEntity.States.Unmodified;
         }
     }
 }

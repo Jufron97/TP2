@@ -277,24 +277,26 @@ namespace Academia.Data.Database
         }
     }
 
-    public void Save(Inscripcion alumnoInscripcion)
-    {
-        if (alumnoInscripcion.State == BusinessEntity.States.New)
+        public void Save(Inscripcion inscripcion)
         {
-            Insert(alumnoInscripcion);
+            switch (inscripcion.State)
+            {
+                case BusinessEntity.States.New:
+                    Insert(inscripcion);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(inscripcion);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(inscripcion);
+                    break;
+                default:
+                    inscripcion.State = BusinessEntity.States.Unmodified;
+                    break;
+            }
         }
-        if (alumnoInscripcion.State == BusinessEntity.States.Deleted)
-        {
-            Delete(alumnoInscripcion);
-        }
-        if (alumnoInscripcion.State == BusinessEntity.States.Modified)
-        {
-            Update(alumnoInscripcion);
-        }
-        alumnoInscripcion.State = BusinessEntity.States.Unmodified;
+
+
+
     }
-
-
-
-}
 }

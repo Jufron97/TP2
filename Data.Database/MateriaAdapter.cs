@@ -145,19 +145,21 @@ namespace Academia.Data.Database
         }
         public void Save(Materia materia)
         {
-            if (materia.State == BusinessEntity.States.New)
+            switch (materia.State)
             {
-                Insert(materia);
-            }
-            else if (materia.State == BusinessEntity.States.Deleted)
-                {
-                    Delete(materia);
-                }
-                else
-                {
+                case BusinessEntity.States.New:
+                    Insert(materia);
+                    break;
+                case BusinessEntity.States.Modified:
                     Update(materia);
-                }               
-            materia.State = BusinessEntity.States.Unmodified;
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(materia);
+                    break;
+                default:
+                    materia.State = BusinessEntity.States.Unmodified;
+                    break;
+            }
         }
     }
 }

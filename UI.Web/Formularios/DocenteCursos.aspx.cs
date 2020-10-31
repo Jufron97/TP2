@@ -13,19 +13,19 @@ namespace UI.Web.Formularios
     {
         #region Atributos
 
-        private DocenteCursosLogic _logic;
+        private DocenteCursoLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public DocenteCursosLogic Logic
+        public DocenteCursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new DocenteCursosLogic();
+                    this._logic = new DocenteCursoLogic();
                 }
                 return _logic;
             }
@@ -38,8 +38,6 @@ namespace UI.Web.Formularios
         }
 
         #endregion
-
-        #region Metodos
 
         #region Metodos
 
@@ -65,16 +63,18 @@ namespace UI.Web.Formularios
         /// </summary>
         public void cargoDropDownList()
         {
-            //DropDown con las comisiones
-            dwDocente.DataSource = new ComisionLogic().GetAll();
-            dwComision.DataValueField = "ID";
-            dwComision.DataTextField = "Descripcion";
-            dwComision.DataBind();
-            //DropDown con las materias
-            dwMateria.DataSource = new MateriaLogic().GetAll();
-            dwMateria.DataValueField = "ID";
-            dwMateria.DataTextField = "Descripcion";
-            dwMateria.DataBind();
+            //DropDown con las Curso
+            dwCurso.DataSource = new CursoLogic().GetAll();
+            dwCurso.DataValueField = "ID";
+            dwCurso.DataTextField = "DescCursoMateria";
+            dwCurso.DataBind();
+            //DropDown con las Docentes
+            dwDocente.DataSource = new DocenteCursoLogic().GetAll(Persona.TiposPersonas.Docente);
+            dwDocente.DataValueField = "ID";
+            dwDocente.DataTextField = "Nombre";
+            dwDocente.DataBind();
+            //DropDown con las Cargos           
+            dwCargo.DataSource = Persona.DameTusTipos();                
         }
 
 
@@ -87,12 +87,11 @@ namespace UI.Web.Formularios
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
         /// <param name="curso"></param>
-        public void LoadEntity(Curso curso)
+        public void LoadEntity(DocenteCurso docCurso)
         {
-            curso.AnioCalendario = Int32.Parse(txtAño.Text);
-            curso.Comision = new ComisionLogic().GetOne(Int32.Parse(dwComision.SelectedValue));
-            curso.Materia = new MateriaLogic().GetOne(Int32.Parse(dwMateria.SelectedValue));
-            curso.Cupo = Int32.Parse(txtCupo.Text);
+            docCurso.Curso = new CursoLogic().GetOne(Int32.Parse(dwCurso.SelectedValue));
+            docCurso.Docente = new PersonaLogic().GetOne(Int32.Parse(dwDocente.SelectedValue));
+            docCurso.Cargo = (DocenteCurso.TiposCargos)(Int32.Parse(dwCargo.SelectedValue));
         }
 
         /// <summary>
@@ -105,8 +104,10 @@ namespace UI.Web.Formularios
             //Se cargan los dropDownList 
             cargoDropDownList();
             //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
-            dwComision.SelectedValue = Entity.IDComision.ToString();
-            dwMateria.SelectedValue = Entity.IDMateria.ToString();
+            dwCurso.SelectedValue = Entity.IDCurso.ToString();
+            dwDocente.SelectedValue = Entity.IDDocente.ToString();
+            //ACA FALTA LO DEL CARGO NO LO PENSE
+            //dwCargo.SelectedValue = Entity.Docente
         }
 
         /// <summary>
@@ -115,19 +116,18 @@ namespace UI.Web.Formularios
         /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
-            dwMateria.Enabled = enable;
-            dwComision.Enabled = enable;
-            txtAño.Enabled = enable;
-            txtCupo.Enabled = enable;
+            dwCurso.Enabled = enable;
+            dwDocente.Enabled = enable;
+            dwCargo.Enabled = enable;
         }
 
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
         /// <param name="curso"></param>
-        public void SaveEntity(Curso curso)
+        public void SaveEntity(DocenteCurso docCurso)
         {
-            Logic.Save(curso);
+            Logic.Save(docCurso);
         }
 
         public void desabilitoValidaciones(bool enable)
@@ -139,18 +139,18 @@ namespace UI.Web.Formularios
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="curso"></param>
-        private void DeleteEntity(Curso curso)
+        private void DeleteEntity(DocenteCurso docCurso)
         {
-            Logic.Delete(curso.ID);
+            Logic.Delete(docCurso);
         }
 
         /// <summary>
         /// Se limpia el formulario ABM
         /// </summary>
         private void ClearForm()
-        {
+        {/*
             txtAño.Text = String.Empty;
-            txtCupo.Text = String.Empty;
+            txtCupo.Text = String.Empty;*/
         }
 
 #endregion
@@ -195,12 +195,12 @@ namespace UI.Web.Formularios
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        Entity = new CursoLogic().GetOne(selectID);
+                        Entity = Logic.GetOne(selectID);
                         DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Curso();
+                        Entity = new DocenteCurso();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -208,7 +208,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Curso();
+                        Entity = new DocenteCurso();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -230,5 +230,4 @@ namespace UI.Web.Formularios
     }
 
     #endregion
-}
 }

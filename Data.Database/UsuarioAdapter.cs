@@ -314,19 +314,21 @@ namespace Academia.Data.Database
         }
         public void Save(Usuario usuario)
         {
-            if (usuario.State == BusinessEntity.States.New)
+            switch (usuario.State)
             {
-                Insert(usuario);
-            }
-            else if (usuario.State == BusinessEntity.States.Deleted)
-                {
+                case BusinessEntity.States.New:
+                    Insert(usuario);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(usuario);
+                    break;
+                case BusinessEntity.States.Deleted:
                     Delete(usuario);
-                }
-                if (usuario.State == BusinessEntity.States.Modified)
-                    {
-                        Update(usuario);
-                    }
-            usuario.State = BusinessEntity.States.Unmodified;            
+                    break;
+                default:
+                    usuario.State = BusinessEntity.States.Unmodified;
+                    break;
+            }
         }
 
         #region Codigo viejo

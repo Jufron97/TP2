@@ -165,19 +165,21 @@ namespace Academia.Data.Database
 
         public void Save(Plan plan)
         {
-            if (plan.State == BusinessEntity.States.New)
+            switch (plan.State)
             {
-                Insert(plan);
+                case BusinessEntity.States.New:
+                    Insert(plan);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(plan);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(plan);
+                    break;
+                default:
+                    plan.State = BusinessEntity.States.Unmodified;
+                    break;
             }
-            if (plan.State == BusinessEntity.States.Deleted)
-            {
-                Delete(plan);
-            }
-            if (plan.State == BusinessEntity.States.Modified)
-            {
-                Update(plan);
-            }
-            plan.State = BusinessEntity.States.Unmodified;
         }
     }
 }

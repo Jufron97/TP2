@@ -193,7 +193,7 @@ namespace UI.Web.Formularios
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        Entity = new CursoLogic().GetOne(selectID);
+                        Entity = Logic.GetOne(selectID);
                         DeleteEntity(Entity);
                         LoadGrid();
                         break;

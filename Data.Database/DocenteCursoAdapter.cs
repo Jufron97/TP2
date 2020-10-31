@@ -23,7 +23,9 @@ namespace Academia.Data.Database
                 {
                     DocenteCurso docCurso = new DocenteCurso();
                     docCurso.ID = (int)drComisiones["id_dictado"];
+                    //Se busca el objeto Curso
                     docCurso.Curso = new CursoAdapter().GetOne((int)drComisiones["id_curso"]);
+                    //Se busca el objeto Persona
                     docCurso.Docente = new PersonaAdapter().GetOne((int)drComisiones["id_persona"]);
                     docCurso.Cargo = (DocenteCurso.TiposCargos)drComisiones["cargo"];
                     DocentesCursos.Add(docCurso);
@@ -42,19 +44,21 @@ namespace Academia.Data.Database
             return DocentesCursos;
         }
 
-        public DocenteCurso GetOne(Persona persona)
+        public DocenteCurso GetOne(int id)
         {
             DocenteCurso docCurso = new DocenteCurso();
             try
             {
                 OpenConnection();
                 SqlCommand cmdComisiones = new SqlCommand("select * from docentes_curso where id_docente=@idDocente", sqlConn);
-                cmdComisiones.Parameters.Add("@idDocente", SqlDbType.Int).Value = persona.ID;
+                cmdComisiones.Parameters.Add("@idDocente", SqlDbType.Int).Value = id;
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
                 while (drComisiones.Read())
                 {
                     docCurso.ID = (int)drComisiones["id_dictado"];
+                    //Se busca el objeto Curso
                     docCurso.Curso = new CursoAdapter().GetOne((int)drComisiones["id_curso"]);
+                    //Se busca el objeto Persona
                     docCurso.Docente = new PersonaAdapter().GetOne((int)drComisiones["id_persona"]);
                     docCurso.Cargo = (DocenteCurso.TiposCargos)drComisiones["cargo"];
                 }
@@ -72,17 +76,17 @@ namespace Academia.Data.Database
             return docCurso;
         }
 
-        public void Update(Comision comision)
+        public void Update(DocenteCurso docCurso)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE comisiones SET desc_comision=@desc_comision,id_plan=@id_plan,anio_especialidad=@anio_especialidad " +
-                "WHERE id_comision=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
-                cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comision.Descripcion;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comision.IDPlan;
-                cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
+                SqlCommand cmdSave = new SqlCommand("UPDATE docentes_cursos SET id_curso=@idCurso,id_docente=@idDocente,cargo=@cargo" +
+                "WHERE id_dictado=@id", sqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = docCurso.ID;
+                cmdSave.Parameters.Add("@idCurso", SqlDbType.Int).Value = docCurso.Curso.ID;
+                cmdSave.Parameters.Add("@idDocente", SqlDbType.Int).Value = docCurso.Docente.ID;
+                cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = docCurso.Cargo;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -95,13 +99,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(int ID)
+        public void Delete(DocenteCurso docCurso)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete from comisiones where id_comision=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlCommand cmdDelete = new SqlCommand("delete from docentes_cursos where id_dictado=@id", sqlConn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = docCurso.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -115,16 +119,16 @@ namespace Academia.Data.Database
             }
         }
 
-        public void Insert(Comision comision)
+        public void Insert(DocenteCurso docCurso)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("insert into comisiones (desc_comision,id_plan,anio_especialidad)" +
-                "values (@desc_comision,@id_plan,@anio_especialidad)", sqlConn);
-                cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comision.Descripcion;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comision.IDPlan;
-                cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
+                SqlCommand cmdSave = new SqlCommand("insert into docentes_cursos (id_curso,id_docente,cargo)" +
+                "values (@idCurso,@idDocente,@cargo)", sqlConn);
+                cmdSave.Parameters.Add("@idCurso", SqlDbType.Int).Value = docCurso.Curso.ID;
+                cmdSave.Parameters.Add("@idDocente", SqlDbType.Int).Value = docCurso.Docente.ID;
+                cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = docCurso.Cargo;
                 //comision.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 cmdSave.ExecuteNonQuery();
             }
@@ -139,23 +143,24 @@ namespace Academia.Data.Database
             }
         }
 
-        public void Save(Comision comision)
+        public void Save(DocenteCurso docente)
         {
-            if (comision.State == BusinessEntity.States.New)
+            switch (docente.State)
             {
-                Insert(comision);
+                case BusinessEntity.States.New:
+                    Insert(docente);
+                    break;
+                case BusinessEntity.States.Modified:
+                    Update(docente);
+                    break;
+                case BusinessEntity.States.Deleted:
+                    Delete(docente);
+                    break;
+                default:
+                    docente.State = BusinessEntity.States.Unmodified;
+                    break;
             }
-            if (comision.State == BusinessEntity.States.Deleted)
-            {
-                Delete(comision.ID);
-            }
-            if (comision.State == BusinessEntity.States.Modified)
-            {
-                Update(comision);
-            }
-            comision.State = BusinessEntity.States.Unmodified;
         }
-
     }
 
 }

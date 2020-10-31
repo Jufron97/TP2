@@ -130,5 +130,14 @@ namespace Academia.Business.Entities
         }
 
         #endregion
+
+        public static List<TiposPersonas> DameTusTipos()
+        {
+            List<TiposPersonas> tiposPersonas = new List<TiposPersonas>();
+            tiposPersonas.Add(TiposPersonas.Docente);
+            tiposPersonas.Add(TiposPersonas.Alumno);
+            tiposPersonas.Add(TiposPersonas.Admin);
+            return tiposPersonas;
+        }
     }
 }
