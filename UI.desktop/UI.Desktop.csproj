@@ -39,6 +39,30 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.1\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -148,11 +172,17 @@
     <Compile Include="Formularios Principales\Docente\FormularioDocente.Designer.cs">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios Principales\Docente\ReporteAlumno.cs">
+    <Compile Include="Formularios Principales\Docente\ReporteAlumnoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios Principales\Docente\ReporteAlumno.Designer.cs">
-      <DependentUpon>ReporteAlumno.cs</DependentUpon>
+    <Compile Include="Formularios Principales\Docente\ReporteAlumnoForm.Designer.cs">
+      <DependentUpon>ReporteAlumnoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Principales\Docente\ReportePlanesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Principales\Docente\ReportePlanesForm.Designer.cs">
+      <DependentUpon>ReportePlanesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
@@ -180,6 +210,7 @@
       <DependentUpon>ListadoUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms Entidades\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,8 +259,13 @@
     <EmbeddedResource Include="Formularios Principales\Docente\FormularioDocente.resx">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumno.resx">
-      <DependentUpon>ReporteAlumno.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumnoForm.resx">
+      <DependentUpon>ReporteAlumnoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumnos.rdlc" />
+    <EmbeddedResource Include="Formularios Principales\Docente\ReportePlanes.rdlc" />
+    <EmbeddedResource Include="Formularios Principales\Docente\ReportePlanesForm.resx">
+      <DependentUpon>ReportePlanesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
@@ -253,6 +289,10 @@
     <EmbeddedResource Include="Forms Entidades\Usuarios\ListadoUsuarios.resx">
       <DependentUpon>ListadoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Academia.Business.Entities.Inscripcion.datasource" />
+    <None Include="Properties\DataSources\Academia.Business.Entities.Plan.datasource" />
+    <None Include="Properties\DataSources\Academia.Business.Logic.InscripcionLogic.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -283,6 +323,24 @@
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
+      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x86\msvcr100.dll">
+      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

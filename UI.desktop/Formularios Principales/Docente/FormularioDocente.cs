@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
 using Academia.UI.Desktop;
+using Academia.UI.Desktop.Formularios_Principales.Docente;
 
 namespace Academia.UI.Desktop
 {
@@ -46,12 +47,12 @@ namespace Academia.UI.Desktop
 
         private void btnReportePlanes_Click(object sender, EventArgs e)
         {
-
+            new ReportePlanesForm().ShowDialog();
         }
 
         private void btnReporteCursos_Click(object sender, EventArgs e)
         {
-
+            new ReporteAlumnoForm(UsuarioActual).ShowDialog();
         }
     }
 }
