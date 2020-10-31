@@ -9,29 +9,29 @@ using Academia.Business.Logic;
 
 namespace UI.Web.Formularios
 {
-    public partial class Cursos : ApplicationForm
+    public partial class DocenteCursos : ApplicationForm
     {
         #region Atributos
 
-        private CursoLogic _logic;
+        private DocenteCursosLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public CursoLogic Logic
+        public DocenteCursosLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new CursoLogic();
+                    this._logic = new DocenteCursosLogic();
                 }
                 return _logic;
             }
         }
 
-        private Curso Entity
+        private DocenteCurso Entity
         {
             get;
             set;
@@ -41,13 +41,15 @@ namespace UI.Web.Formularios
 
         #region Metodos
 
+        #region Metodos
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 LoadGrid();
             }
-        }       
+        }
 
         /// <summary>
         /// Se carga la grilla con todos los Cursos
@@ -64,7 +66,7 @@ namespace UI.Web.Formularios
         public void cargoDropDownList()
         {
             //DropDown con las comisiones
-            dwComision.DataSource = new ComisionLogic().GetAll();
+            dwDocente.DataSource = new ComisionLogic().GetAll();
             dwComision.DataValueField = "ID";
             dwComision.DataTextField = "Descripcion";
             dwComision.DataBind();
@@ -74,7 +76,7 @@ namespace UI.Web.Formularios
             dwMateria.DataTextField = "Descripcion";
             dwMateria.DataBind();
         }
-    
+
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -99,7 +101,7 @@ namespace UI.Web.Formularios
         /// <param name="id"></param>
         public void LoadForm(int id)
         {
-            Entity = this.Logic.GetOne(id); 
+            Entity = this.Logic.GetOne(id);
             //Se cargan los dropDownList 
             cargoDropDownList();
             //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
@@ -148,10 +150,10 @@ namespace UI.Web.Formularios
         private void ClearForm()
         {
             txtAño.Text = String.Empty;
-            txtCupo.Text = String.Empty;           
+            txtCupo.Text = String.Empty;
         }
 
-        #endregion
+#endregion
 
         #region EventosFormulario
 
@@ -228,4 +230,5 @@ namespace UI.Web.Formularios
     }
 
     #endregion
+}
 }

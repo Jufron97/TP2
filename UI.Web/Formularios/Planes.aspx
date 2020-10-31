@@ -17,6 +17,7 @@
             <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="btnNuevo" runat="server" OnClick="btnNuevo_Click">Nuevo</asp:LinkButton>
     </asp:Panel>
+    <br />
     <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:">
 
