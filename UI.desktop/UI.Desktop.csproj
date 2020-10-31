@@ -148,6 +148,12 @@
     <Compile Include="Formularios Principales\Docente\FormularioDocente.Designer.cs">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios Principales\Docente\ReporteAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Principales\Docente\ReporteAlumno.Designer.cs">
+      <DependentUpon>ReporteAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios Principales\Docente\FormularioDocente.resx">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumno.resx">
+      <DependentUpon>ReporteAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
