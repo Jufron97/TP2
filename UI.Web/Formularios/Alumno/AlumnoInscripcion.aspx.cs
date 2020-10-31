@@ -63,18 +63,20 @@ namespace UI.Web.Formularios.Alumno
         {
             string operacion = Request.QueryString["op"].ToString();
 
-            if (operacion == "Curso")
+            if (operacion == "VisualizarCursos")
             {
                 this.GridViewInsc.Visible = false;
                 this.btnInscribir.Visible = false;
                 this.btnInscribir.Enabled = false;
-                this.GridViewCurso.DataSource = CurLog.GetAll();
+                //Se necesita encontrar las inscripciones del alumno a esos cursos
+                this.GridViewCurso.DataSource = InsLog.GetAll(Entity);
                 this.GridViewCurso.DataBind();
             }
-            else if (operacion == "Inscripcion") 
+            else if (operacion == "InscripcionCurso") 
             {
                 this.GridViewCurso.Visible = false;
-                this.GridViewInsc.DataSource = InsLog.GetAll(Entity);
+                //Se cargan todos los cursos posibles a inscribir
+                this.GridViewInsc.DataSource = CurLog.GetAll();
                 this.GridViewInsc.DataBind();
             }
         }

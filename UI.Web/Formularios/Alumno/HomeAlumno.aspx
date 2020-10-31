@@ -9,8 +9,8 @@
             <br />
             <asp:Menu ID="Menu" runat="server">
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Formularios/Alumno/AlumnoInscripcion.aspx?op=Curso" Text="Visualizar Cursos" Value="Visualizar Cursos"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Formularios/Alumno/AlumnoInscripcion.aspx?op=Inscripcion" Text="Inscripción a cursos" Value="Inscripción a cursos"></asp:MenuItem>          
+                    <asp:MenuItem NavigateUrl="~/Formularios/Alumno/AlumnoInscripcion.aspx?op=VisualizarCursos" Text="Visualizar Cursos" Value="Visualizar Cursos"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Formularios/Alumno/AlumnoInscripcion.aspx?op=InscripcionCurso" Text="Inscripción a cursos" Value="Inscripción a cursos"></asp:MenuItem>          
                 </Items>
             </asp:Menu>
 
