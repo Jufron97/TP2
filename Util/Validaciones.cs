@@ -10,39 +10,54 @@ namespace Academia.Util
 {
     public class Validaciones
     {
-        public static Boolean emailBienEscrito(String email)
+        public static Boolean emailBienEscrito(string email)
         {
             String expresion;
             expresion = @"\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+            return Regex.IsMatch(email, expresion);
         }
 
-        public static Boolean usuarioLogeado(Usuario usu)
+        public static bool EsUsuarioValido(string usu)
         {
-            if (usu.NombreUsuario!=null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }            
+            string patron = "[^ \\w_.-]";
+            string espaciosBlancos = "[ \\s]";
+            return !(Regex.IsMatch(usu, patron) || Regex.IsMatch(usu, espaciosBlancos));
         }
 
+        public static bool ValidarLongitudClave(string clave)
+        {
+            return clave.Length < 8;
+        }
+
+        public static bool EsNombreValido(string nombre)
+        {
+            string patron = "[^ a-zA-Z]";
+            return Regex.IsMatch(nombre, patron);
+        }
+
+        public static bool EsDescripcionValida(string descripcion)
+        {
+            string patron = "[\\w]";
+            return Regex.IsMatch(descripcion, patron);
+        }
+
+        public static bool EsLegajoValido(string legajo)
+        {
+            string patron = @"(\d){5}";
+            return Regex.IsMatch(legajo, patron);
+        }
+
+        public static bool EsTelefonoValido(string telefono)
+        {
+            string patron = @"(\d){7,}";
+            return Regex.IsMatch(telefono, patron);
+        }
+
+        public static bool EsDireccionValida(string direccion)
+        {
+            string patron = @"(\w|\s)+ \d{1,5} ((b|B)(i|I)(s|S))?";
+            return Regex.IsMatch(direccion, patron);
+        }
 
     }
 }

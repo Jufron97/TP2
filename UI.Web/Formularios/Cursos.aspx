@@ -40,7 +40,7 @@
         <asp:TextBox ID="txtCupo" runat="server"></asp:TextBox>       
         <asp:Panel runat="server">
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
-            <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
+            <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
         </asp:Panel>      
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
         <br/>

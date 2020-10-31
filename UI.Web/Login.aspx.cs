@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
 using System.Windows.Forms;
+using Academia.Util;
 
 namespace UI.Web
 {
@@ -28,14 +29,12 @@ namespace UI.Web
 
         protected void IngresarButton_Click(object sender, EventArgs e)
         {
-            UsuarioLogic Usuariologic = new UsuarioLogic();
-
             if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
             {
-                
+                this.cvContraseña.IsValid = true;             
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
-                HttpContext.Current.Session["usuario"] = usu;
-
+                //Se asgina el usuario a la sesion para no perderlo
+                Session["usuario"] = usu;
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
@@ -55,6 +54,7 @@ namespace UI.Web
             }
             else
             {
+                this.cvContraseña.IsValid = false;
                 Response.Write("<script>window.open('Mensaje.aspx','popup','width=800,height=500') </script>");
             }
             return;

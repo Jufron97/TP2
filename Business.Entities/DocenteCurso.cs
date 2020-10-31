@@ -46,6 +46,22 @@ namespace Academia.Business.Entities
         }
 
         /// <summary>
+        /// Devuevle la descripcion de la comision a la cual hace referencia el curso
+        /// </summary>
+        public string DescComisionCurso
+        {
+            get => Curso.DescComision;
+        }
+
+        /// <summary>
+        /// Devuevle la descripcion de la materia a la cual hace referencia el curso
+        /// </summary>
+        public string DescMateriaCurso
+        {
+            get => Curso.DescMateria;
+        }
+
+        /// <summary>
         /// Devuelve el ID del Curso
         /// </summary>
         public int IDCurso
