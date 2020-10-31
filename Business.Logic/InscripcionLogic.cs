@@ -30,7 +30,24 @@ namespace Academia.Business.Logic
 
         public List<Inscripcion> GetAll(Usuario usuario)
         {
-            return InscripcionData.GetAll(usuario);
+            try
+            {   //Se devuelven las inscripciones dependiendo el tipo persona
+                switch (usuario.Persona.TipoPersona)
+                {
+                    case Persona.TiposPersonas.Alumno:
+                        return InscripcionData.GetInscripcionesAlumno(usuario);
+
+                    case Persona.TiposPersonas.Docente:
+                        return InscripcionData.GetInscripcionesDocente(usuario);
+
+                    default: return null;
+                }
+            }
+            catch(Exception Ex)
+            {
+                throw Ex;
+            }
+            
         }
 
         public Inscripcion GetOne(int id)
@@ -57,6 +74,8 @@ namespace Academia.Business.Logic
         {
             return InscripcionData.GetOne(InscripAlumno);
         }
+
+       
 
     }
 }

@@ -54,7 +54,7 @@ namespace Academia.Data.Database
         return Inscripciones;
     }
 
-    public List<Inscripcion> GetAll(Usuario usuario)
+    public List<Inscripcion> GetInscripcionesAlumno(Usuario usuario)
         {
             List<Inscripcion> Inscripciones = new List<Inscripcion>();
             try
@@ -63,6 +63,47 @@ namespace Academia.Data.Database
                 SqlCommand cmdAlumnoInscripcion = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlumno", sqlConn);
                 cmdAlumnoInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = usuario.Persona.ID;
                 SqlDataReader drInscripciones = cmdAlumnoInscripcion.ExecuteReader();
+                while (drInscripciones.Read())
+                {
+                    Inscripcion AlIns = new Inscripcion();
+                    AlIns.ID = (int)drInscripciones["id_inscripcion"];
+                    //Objeto Curso
+                    AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
+                    AlIns.Condicion = (string)drInscripciones["condicion"];
+                    //Por si las notas no fueron cargadas
+                    if (String.IsNullOrEmpty(drInscripciones["nota"].ToString()))
+                    {
+                        AlIns.Nota = 0;
+                    }
+                    else
+                    {
+                        AlIns.Nota = (int)drInscripciones["nota"];
+                    }
+                    Inscripciones.Add(AlIns);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return Inscripciones;
+        }
+
+        public List<Inscripcion> GetInscripcionesDocente(Usuario usuario)
+        {
+            List<Inscripcion> Inscripciones = new List<Inscripcion>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdDocenteInscripcion = new SqlCommand("select * from docentes_cursos dc inner join alumnos_inscripciones ai on ai.id_curso=dc.id_curso where dc.id_docente=@idDocente", sqlConn);
+                cmdDocenteInscripcion.Parameters.Add("@idDocente", SqlDbType.Int).Value = usuario.Persona.ID;
+                SqlDataReader drInscripciones = cmdDocenteInscripcion.ExecuteReader();
                 while (drInscripciones.Read())
                 {
                     Inscripcion AlIns = new Inscripcion();
@@ -252,6 +293,8 @@ namespace Academia.Data.Database
         }
         alumnoInscripcion.State = BusinessEntity.States.Unmodified;
     }
+
+
 
 }
 }

@@ -62,7 +62,7 @@ namespace Academia.UI.Desktop
             {
                 InscripcionLogic inscripciones = new InscripcionLogic();
                 //Aca voy a tener que crear otro metodo para traer las inscripciones del docente curso
-                dgvAlumnosCursos.DataSource = inscripciones.GetAll();
+                dgvAlumnosCursos.DataSource = inscripciones.GetAll(Docente);
             }
             catch (Exception Ex)
             {
