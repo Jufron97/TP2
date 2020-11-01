@@ -38,6 +38,21 @@
             color: black;
             background-color: white;
         }
+
+body {
+    position: absolute;
+    align-content: center;
+    align-self: center;
+    top: 10%;
+    left: 10%;
+    right: 0%;
+    bottom: 10%;
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+}
+
+
 .footer {
     box-sizing: border-box;
     font-weight: 300;
@@ -62,5 +77,3 @@
     height: 80%;
     overflow: hidden;
 }
-
-
