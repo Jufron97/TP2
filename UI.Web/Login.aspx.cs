@@ -23,8 +23,14 @@ namespace UI.Web
 
         public UsuarioLogic Usuariologic
         {
-            get => _logic;
-            set => _logic = value;
+            get
+            {
+                if (_logic == null)
+                {
+                    _logic = new UsuarioLogic();
+                }
+                return _logic;
+            }
         }
 
         protected void IngresarButton_Click(object sender, EventArgs e)

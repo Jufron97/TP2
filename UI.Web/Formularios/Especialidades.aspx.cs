@@ -111,9 +111,9 @@ namespace UI.Web
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="ID"></param>
-        private void DeleteEntity(int ID)
+        private void DeleteEntity(Especialidad especialidad)
         {
-            Logic.Delete(new EspecialidadLogic().GetOne(ID));
+            Logic.Delete(especialidad);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace UI.Web
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:

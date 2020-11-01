@@ -75,7 +75,6 @@ namespace Academia.Business.Logic
             return InscripcionData.GetOne(InscripAlumno);
         }
 
-       
-
+      
     }
 }
