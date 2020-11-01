@@ -48,21 +48,21 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
         public void IniciarFormulario()
         {
             cargoComboBox();
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            switch(this.Modo)
             {
-                this.btnAceptar.Text = "Guardar";
-            }
-            else if (Modo == ApplicationForm.ModoForm.Baja)
-                {
+                case ApplicationForm.ModoForm.Alta:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ApplicationForm.ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     cbPlan.Enabled = false;
                     MapearDeDatos();
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
                     MapearDeDatos();
-                }
+                    break;
+            }
         }
 
         /// <summary>
@@ -74,7 +74,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.txtAnioEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
             this.txtDescripcion.Text = this.ComisionActual.Descripcion;
             this.cbPlan.SelectedValue = this.ComisionActual.IDPlan;
-            //this.txtIDPlan.Text = this.ComisionActual.IDPlan.ToString();
         }
 
         /// <summary>
@@ -86,27 +85,24 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAnioEspecialidad.Text);
             this.ComisionActual.Descripcion = this.txtDescripcion.Text;
             this.ComisionActual.Plan = (Plan)cbPlan.SelectedItem;
-            //this.ComisionActual.Plan.ID = Convert.ToInt32(this.txtIDPlan.Text);
         }
 
         public void MapearADatos2()
         {
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            switch(this.Modo)
             {
-                this.ComisionActual.State = BusinessEntity.States.Deleted;
-            }
-            else
-            {
-                CastearDatosComision();
-                if (this.Modo == ApplicationForm.ModoForm.Alta)
-                {
+                case ApplicationForm.ModoForm.Baja:
+                    this.ComisionActual.State = BusinessEntity.States.Deleted;
+                    break;
+                case ApplicationForm.ModoForm.Alta:
+                    CastearDatosComision();
                     ComisionActual.State = BusinessEntity.States.New;
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
+                    CastearDatosComision();
                     this.ComisionActual.ID = Convert.ToInt32(this.txtID.Text);
                     ComisionActual.State = BusinessEntity.States.Modified;
-                }
+                    break;
             }
         }
 
@@ -212,59 +208,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.Close();
         }
 
-        #endregion
-
-        #region CodigoViejo
-
-
-        new public virtual void MapearADatos()
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                ComisionActual = new Comision();
-                this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
-                this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                //this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
-                ComisionActual.State = Comision.States.New;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspecialidad.Text);
-                this.ComisionActual.Descripcion = this.txtDescripcion.Text;
-                //this.ComisionActual.Plan.ID = Int32.Parse(this.txtIDPlan.Text);
-                ComisionActual.State = Comision.States.Modified;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                ComisionActual.State = Comision.States.Deleted;               
-            }
-        }
-
-        public ComisionABM(ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            this.btnAceptar.Text = "Guardar";
-        }
-
-        public ComisionABM(int ID, ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-
-                ComisionActual = new ComisionLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                ComisionActual = new ComisionLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-        }
-
-
-        #endregion
-
-
+        #endregion       
     }
 }

@@ -46,12 +46,11 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtConfirmarClave = new System.Windows.Forms.TextBox();
             this.gpbUsuario = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbTiposPersonas = new System.Windows.Forms.ComboBox();
             this.cbPlanes = new System.Windows.Forms.ComboBox();
-            this.rdbDocente = new System.Windows.Forms.RadioButton();
-            this.rdbAlumno = new System.Windows.Forms.RadioButton();
             this.lblFechaNacimiento = new System.Windows.Forms.Label();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.gpbTipoPersona = new System.Windows.Forms.GroupBox();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
@@ -220,10 +219,10 @@
             // 
             // gpbUsuario
             // 
+            this.gpbUsuario.Controls.Add(this.label1);
+            this.gpbUsuario.Controls.Add(this.cbTiposPersonas);
             this.gpbUsuario.Controls.Add(this.cbPlanes);
-            this.gpbUsuario.Controls.Add(this.rdbDocente);
             this.gpbUsuario.Controls.Add(this.lblConfirmarClave);
-            this.gpbUsuario.Controls.Add(this.rdbAlumno);
             this.gpbUsuario.Controls.Add(this.lblFechaNacimiento);
             this.gpbUsuario.Controls.Add(this.dtpFechaNac);
             this.gpbUsuario.Controls.Add(this.txtConfirmarClave);
@@ -236,13 +235,30 @@
             this.gpbUsuario.Controls.Add(this.lblNombre);
             this.gpbUsuario.Controls.Add(this.chkHabilitado);
             this.gpbUsuario.Controls.Add(this.lblID);
-            this.gpbUsuario.Controls.Add(this.gpbTipoPersona);
             this.gpbUsuario.Location = new System.Drawing.Point(6, 3);
             this.gpbUsuario.Name = "gpbUsuario";
             this.gpbUsuario.Size = new System.Drawing.Size(474, 251);
             this.gpbUsuario.TabIndex = 35;
             this.gpbUsuario.TabStop = false;
             this.gpbUsuario.Text = "Usuario";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(191, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Tipo Persona";
+            // 
+            // cbTiposPersonas
+            // 
+            this.cbTiposPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTiposPersonas.FormattingEnabled = true;
+            this.cbTiposPersonas.Location = new System.Drawing.Point(267, 182);
+            this.cbTiposPersonas.Name = "cbTiposPersonas";
+            this.cbTiposPersonas.Size = new System.Drawing.Size(109, 21);
+            this.cbTiposPersonas.TabIndex = 37;
             // 
             // cbPlanes
             // 
@@ -252,28 +268,6 @@
             this.cbPlanes.Name = "cbPlanes";
             this.cbPlanes.Size = new System.Drawing.Size(109, 21);
             this.cbPlanes.TabIndex = 36;
-            // 
-            // rdbDocente
-            // 
-            this.rdbDocente.AutoSize = true;
-            this.rdbDocente.Location = new System.Drawing.Point(327, 199);
-            this.rdbDocente.Name = "rdbDocente";
-            this.rdbDocente.Size = new System.Drawing.Size(66, 17);
-            this.rdbDocente.TabIndex = 34;
-            this.rdbDocente.TabStop = true;
-            this.rdbDocente.Text = "Docente";
-            this.rdbDocente.UseVisualStyleBackColor = true;
-            // 
-            // rdbAlumno
-            // 
-            this.rdbAlumno.AutoSize = true;
-            this.rdbAlumno.Location = new System.Drawing.Point(252, 198);
-            this.rdbAlumno.Name = "rdbAlumno";
-            this.rdbAlumno.Size = new System.Drawing.Size(60, 17);
-            this.rdbAlumno.TabIndex = 33;
-            this.rdbAlumno.TabStop = true;
-            this.rdbAlumno.Text = "Alumno";
-            this.rdbAlumno.UseVisualStyleBackColor = true;
             // 
             // lblFechaNacimiento
             // 
@@ -292,15 +286,6 @@
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(109, 20);
             this.dtpFechaNac.TabIndex = 31;
-            // 
-            // gpbTipoPersona
-            // 
-            this.gpbTipoPersona.Location = new System.Drawing.Point(241, 179);
-            this.gpbTipoPersona.Name = "gpbTipoPersona";
-            this.gpbTipoPersona.Size = new System.Drawing.Size(164, 54);
-            this.gpbTipoPersona.TabIndex = 35;
-            this.gpbTipoPersona.TabStop = false;
-            this.gpbTipoPersona.Text = "Tipo de Persona";
             // 
             // errProvider
             // 
@@ -350,10 +335,9 @@
         private System.Windows.Forms.GroupBox gpbUsuario;
         private System.Windows.Forms.Label lblFechaNacimiento;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
-        private System.Windows.Forms.GroupBox gpbTipoPersona;
-        private System.Windows.Forms.RadioButton rdbDocente;
-        private System.Windows.Forms.RadioButton rdbAlumno;
         private System.Windows.Forms.ComboBox cbPlanes;
         private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbTiposPersonas;
     }
 }

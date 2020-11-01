@@ -47,21 +47,21 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         public void IniciarFormulario()
         {
             cargoComboBox();
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            switch (this.Modo)
             {
-                this.btnAceptar.Text = "Guardar";
-            }
-            else if (Modo == ApplicationForm.ModoForm.Baja)
-                {
+                case ApplicationForm.ModoForm.Alta:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ApplicationForm.ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     this.cbEspecialidad.Enabled = false;
                     MapearDeDatos();
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
                     MapearDeDatos();
-                }
+                    break;
+            }
         }
 
         /// <summary>
@@ -83,27 +83,24 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             this.PlanActual = new Plan();
             this.PlanActual.Descripcion = this.txtDescripcion.Text;
             this.PlanActual.Especialidad = (Especialidad)cbEspecialidad.SelectedItem;
-            //this.PlanActual.Especialidad.ID = Convert.ToInt32(this.txtIDEspecialidad.Text);
         }
 
         public void MapearADatos2()
         {
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            switch (this.Modo)
             {
-                this.PlanActual.State = BusinessEntity.States.Deleted;
-            }
-            else
-            {
-                CastearDatosPlan();
-                if (this.Modo==ApplicationForm.ModoForm.Alta)
-                {
+                case ApplicationForm.ModoForm.Baja:
+                    this.PlanActual.State = BusinessEntity.States.Deleted;
+                    break;
+                case ApplicationForm.ModoForm.Alta:
+                    CastearDatosPlan();
                     PlanActual.State = BusinessEntity.States.New;
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
+                    CastearDatosPlan();
                     PlanActual.ID = Convert.ToInt32(this.txtID.Text);
                     PlanActual.State = BusinessEntity.States.Modified;
-                }
+                    break;
             }
         }
 
@@ -189,52 +186,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         }
 
         #endregion
-
-        #region CodigoViejo
-
-        public PlanABM(ModoForm modo) : this()
-        {
-            Modo = modo;
-            btnAceptar.Text = "Guardar";
-        }
-
-        public PlanABM(int ID, ModoForm modo) : this()
-        {
-            Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                PlanActual = new PlanLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                PlanActual = new PlanLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-        }
-
-        new public virtual void MapearADatos()
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                PlanActual = new Plan();
-                this.PlanActual.Descripcion = this.txtDescripcion.Text;
-                //this.PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
-                PlanActual.State = Especialidad.States.New;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                PlanActual.Descripcion = this.txtDescripcion.Text;
-                //PlanActual.Especialidad.ID = Int32.Parse(this.txtIDEspecialidad.Text);
-                PlanActual.State = Usuario.States.Modified;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                //new PlanLogic().Delete(Int32.Parse(this.txtID.Text));
-            }
-        }
-
-        #endregion
-
+     
     }
 }

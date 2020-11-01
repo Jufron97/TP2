@@ -57,22 +57,22 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         public void IniciarFormulario()
         {
             cargoComboBox();
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            switch(this.Modo)
             {
-                this.btnAceptar.Text = "Guardar";
-            }
-            else if (Modo == ApplicationForm.ModoForm.Baja)
-                {
+                case ApplicationForm.ModoForm.Alta:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ApplicationForm.ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     cbMateria.Enabled = false;
                     cbComision.Enabled = false;
                     MapearDeDatos();
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
                     this.btnAceptar.Text = "Guardar";
-                MapearDeDatos();
-                }
+                    MapearDeDatos();
+                    break;
+            }
         }
 
         /// <summary>
@@ -83,8 +83,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             this.txtID.Text = this.CursoActual.ID.ToString();
             this.cbMateria.SelectedValue = this.CursoActual.IDMateria;
             this.cbComision.SelectedValue = this.CursoActual.IDComision;
-            //this.txtIDMateria.Text = this.CursoActual.IDMateria.ToString();
-            //this.txtIDComision.Text = this.CursoActual.IDComision.ToString();
             this.txtAñoCalendario.Text = this.CursoActual.AnioCalendario.ToString();
             this.txtCupo.Text = this.CursoActual.Cupo.ToString();
         }
@@ -98,29 +96,25 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             this.CursoActual.AnioCalendario = Convert.ToInt32(this.txtAñoCalendario.Text);
             this.CursoActual.Materia = (Materia)cbMateria.SelectedItem;
             this.CursoActual.Comision = (Comision)cbComision.SelectedItem;          
-            //this.CursoActual.Comision.ID = Convert.ToInt32(this.txtIDComision.Text);
-            //this.CursoActual.Materia.ID = Convert.ToInt32(this.txtIDMateria.Text);
             this.CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
         }
 
         public void MapearADatos2()
         {
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            switch(this.Modo)
             {
-                this.CursoActual.State = BusinessEntity.States.Deleted;
-            }
-            else
-            {
-                CastearDatosCurso();
-                if (this.Modo == ApplicationForm.ModoForm.Alta)
-                {
+                case ApplicationForm.ModoForm.Baja:
+                    this.CursoActual.State = BusinessEntity.States.Deleted;
+                    break;
+                case ApplicationForm.ModoForm.Alta:
+                    CastearDatosCurso();
                     CursoActual.State = BusinessEntity.States.New;
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
+                    CastearDatosCurso();
                     this.CursoActual.ID = Convert.ToInt32(this.txtID.Text);
                     CursoActual.State = BusinessEntity.States.Modified;
-                }
+                    break;
             }
         }
 

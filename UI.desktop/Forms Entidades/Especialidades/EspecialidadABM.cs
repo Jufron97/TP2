@@ -42,19 +42,19 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
         /// </summary>
         public void IniciarFormulario()
         {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
+            switch (this.Modo)
             {
-                this.btnAceptar.Text = "Guardar";
-            }
-            else if (Modo == ApplicationForm.ModoForm.Baja)
-            {
-                this.btnAceptar.Text = "Eliminar";
-                MapearDeDatos();
-            }
-            else
-            {
-                this.btnAceptar.Text = "Guardar";
-                MapearDeDatos();
+                case ApplicationForm.ModoForm.Alta:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ApplicationForm.ModoForm.Baja:
+                    this.btnAceptar.Text = "Eliminar";
+                    MapearDeDatos();
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
+                    this.btnAceptar.Text = "Guardar";
+                    MapearDeDatos();
+                    break;
             }
         }
 
@@ -69,22 +69,21 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         public void MapearADatos2()
         {
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
+            switch(this.Modo)
             {
-                this.EspecialidadActual.State = BusinessEntity.States.Deleted;
-            }
-            else
-            {
-                CastearDatosEspecialidad();
-                if (this.Modo == ApplicationForm.ModoForm.Alta)
-                {
+                case ApplicationForm.ModoForm.Baja:
+                    this.EspecialidadActual.State = BusinessEntity.States.Deleted;
+                    break;
+                case ApplicationForm.ModoForm.Alta:
+                    CastearDatosEspecialidad();
                     this.EspecialidadActual.State = BusinessEntity.States.New;
-                }
-                else
-                {
+                    break;
+                case ApplicationForm.ModoForm.Modificacion:
+                    CastearDatosEspecialidad();
                     this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.EspecialidadActual.State = BusinessEntity.States.Modified;
-                }
+                    break;
+
             }
         }
 
@@ -167,49 +166,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 
         #endregion
 
-        #region CodigoViejo
-
-        public EspecialidadABM(ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            this.btnAceptar.Text = "Guardar";
-        }
-
-        public EspecialidadABM(int ID, ModoForm modo) : this()
-        {
-            Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                EspecialidadActual = new EspecialidadLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                EspecialidadActual = new EspecialidadLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-        }
-
-        new public virtual void MapearADatos()
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                EspecialidadActual = new Especialidad();
-                this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
-                EspecialidadActual.State = BusinessEntity.States.New;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                EspecialidadActual.Descripcion = this.txtDescripcion.Text;
-                EspecialidadActual.State = BusinessEntity.States.Modified;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                //new EspecialidadLogic().Delete(Int32.Parse(this.txtID.Text));
-            }
-        }
-
-        #endregion
+        
 
     }
 }
