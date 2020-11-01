@@ -110,7 +110,7 @@ namespace Academia.UI.Consola
                 Console.Clear();
                 Console.WriteLine("Ingrese ID de la especialidad a eliminar");
                 int ID = int.Parse(Console.ReadLine());
-                EspecialidadNegocio.Delete(ID);
+                //EspecialidadNegocio.Delete(ID);
             }
             catch (FormatException fe)
             {
