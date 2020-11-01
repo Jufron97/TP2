@@ -52,7 +52,9 @@ namespace UI.Web
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
+            LoadForm(this.selectID);
         }
 
         public void LoadEntity(Usuario usuario)
@@ -143,7 +145,7 @@ namespace UI.Web
                 ClearForm();
                 EnableForm(false);
                 formPanel.Visible = false;
-                LoadGrid();          
+                LoadGrid(); 
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)

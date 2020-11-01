@@ -13,6 +13,7 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
+
         }
 
         protected void HomeButton_Click(object sender, EventArgs e)

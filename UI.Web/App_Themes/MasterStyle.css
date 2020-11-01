@@ -39,19 +39,6 @@
             background-color: white;
         }
 
-body {
-    position: absolute;
-    align-content: center;
-    align-self: center;
-    top: 10%;
-    left: 10%;
-    right: 0%;
-    bottom: 10%;
-    width: 80%;
-    height: 80%;
-    overflow: hidden;
-}
-
 
 .footer {
     box-sizing: border-box;
@@ -68,12 +55,12 @@ body {
 
 
 .panel {
-    position: absolute;
+    position: relative;
     align-content:center;
     align-self:center;
-    top: 30%;
-    left: 30%;
-    width: 50%;
-    height: 80%;
+    margin-top: 0%;
+    left: 0%;
+    width: 80%;
+    height: 50%;
     overflow: hidden;
 }

@@ -62,7 +62,9 @@ namespace UI.Web
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
+            LoadForm(this.selectID);
         }
 
         /// <summary>
