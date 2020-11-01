@@ -23,7 +23,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>8.26982cm</Height>
+              <Height>8.99584cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -178,7 +178,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>8.26982cm</Height>
+              <Height>8.99584cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -354,8 +354,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsInscripciones</DataSetName>
-        <Top>1.45203cm</Top>
-        <Height>16.53963cm</Height>
+        <Height>17.99167cm</Height>
         <Width>24.63146cm</Width>
         <Style>
           <Border>

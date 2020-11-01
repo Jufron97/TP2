@@ -262,7 +262,10 @@
     <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumnoForm.resx">
       <DependentUpon>ReporteAlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumnos.rdlc" />
+    <EmbeddedResource Include="Formularios Principales\Docente\ReporteAlumnos.rdlc">
+      <CustomToolNamespace>Academia.UI.Desktop</CustomToolNamespace>
+      <Generator>ReportViewer</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios Principales\Docente\ReportePlanes.rdlc" />
     <EmbeddedResource Include="Formularios Principales\Docente\ReportePlanesForm.resx">
       <DependentUpon>ReportePlanesForm.cs</DependentUpon>

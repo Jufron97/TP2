@@ -113,7 +113,7 @@ namespace UI.Web
         /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
-            Logic.Delete(ID);
+            Logic.Delete(new EspecialidadLogic().GetOne(ID));
         }
 
         /// <summary>

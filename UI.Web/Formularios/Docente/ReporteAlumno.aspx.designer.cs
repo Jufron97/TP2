@@ -11,7 +11,7 @@ namespace UI.Web.Formularios.Docente
 {
 
 
-    public partial class ReportePlanes
+    public partial class ReporteAlumno
     {
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace UI.Web.Formularios.Docente
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Control RvPlanes.
+        /// Control RvInscripciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer RvPlanes;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer RvInscripciones;
     }
 }

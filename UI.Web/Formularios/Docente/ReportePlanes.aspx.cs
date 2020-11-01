@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Reporting.WebForms;
+using Academia.Business.Entities;
+using Academia.Business.Logic;
 
 namespace UI.Web.Formularios.Docente
 {
@@ -11,7 +14,25 @@ namespace UI.Web.Formularios.Docente
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                LoadReport();
+            }
+        }
+
+        public void LoadReport()
+        {
+            RvPlanes.ProcessingMode = ProcessingMode.Local;
+            RvPlanes.LocalReport.ReportPath = @"A:\Juan\Facu\NET\Unidad 5\Lab5.6\TP2L05\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";
+
+            ReportDataSource reportDataSource = new ReportDataSource("DsPlanes", new PlanLogic().GetAll());
+
+            RvPlanes.LocalReport.DataSources.Add(reportDataSource);
+
+            RvPlanes.LocalReport.Refresh();
 
         }
+
+
     }
 }

@@ -142,7 +142,7 @@ namespace UI.Web.Formularios.Docente
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        DeleteEntity(new InscripcionLogic().GetOne(selectID));
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:

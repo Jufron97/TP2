@@ -32,9 +32,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.InscripcionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RvInscripciones = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // InscripcionBindingSource
@@ -43,34 +41,26 @@
             // 
             // RvInscripciones
             // 
+            this.RvInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DsInscripciones";
             reportDataSource1.Value = this.InscripcionBindingSource;
             this.RvInscripciones.LocalReport.DataSources.Add(reportDataSource1);
             this.RvInscripciones.LocalReport.ReportEmbeddedResource = "Academia.UI.Desktop.Formularios Principales.Docente.ReporteAlumnos.rdlc";
-            this.RvInscripciones.Location = new System.Drawing.Point(3, 3);
+            this.RvInscripciones.Location = new System.Drawing.Point(0, 0);
             this.RvInscripciones.Name = "RvInscripciones";
-            this.RvInscripciones.Size = new System.Drawing.Size(797, 447);
+            this.RvInscripciones.Size = new System.Drawing.Size(1029, 631);
             this.RvInscripciones.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.RvInscripciones);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 450);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // ReporteAlumnoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1029, 631);
+            this.Controls.Add(this.RvInscripciones);
             this.Name = "ReporteAlumnoForm";
             this.Text = "ReporteAlumnoForm";
+            this.Load += new System.EventHandler(this.ReporteAlumnoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -78,6 +68,5 @@
         #endregion
         private System.Windows.Forms.BindingSource InscripcionBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer RvInscripciones;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -30,10 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.RvPlanes = new Microsoft.Reporting.WinForms.ReportViewer();
             this.PlanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RvPlanes = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.PlanBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PlanBindingSource
+            // 
+            this.PlanBindingSource.DataSource = typeof(Academia.Business.Entities.Plan);
             // 
             // RvPlanes
             // 
@@ -44,18 +48,14 @@
             this.RvPlanes.LocalReport.ReportEmbeddedResource = "Academia.UI.Desktop.Formularios Principales.Docente.ReportePlanes.rdlc";
             this.RvPlanes.Location = new System.Drawing.Point(0, 0);
             this.RvPlanes.Name = "RvPlanes";
-            this.RvPlanes.Size = new System.Drawing.Size(800, 450);
+            this.RvPlanes.Size = new System.Drawing.Size(1044, 615);
             this.RvPlanes.TabIndex = 0;
-            // 
-            // PlanBindingSource
-            // 
-            this.PlanBindingSource.DataSource = typeof(Academia.Business.Entities.Plan);
             // 
             // ReportePlanesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1044, 615);
             this.Controls.Add(this.RvPlanes);
             this.Name = "ReportePlanesForm";
             this.Text = "ReportePlanesForm";
