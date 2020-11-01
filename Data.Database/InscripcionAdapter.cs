@@ -66,6 +66,7 @@ namespace Academia.Data.Database
                 while (drInscripciones.Read())
                 {
                     Inscripcion AlIns = new Inscripcion();
+                    AlIns.Alumno = new PersonaAdapter().GetOne((int)drInscripciones["id_alumno"]);
                     AlIns.ID = (int)drInscripciones["id_inscripcion"];
                     //Objeto Curso
                     AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
@@ -107,6 +108,7 @@ namespace Academia.Data.Database
                 while (drInscripciones.Read())
                 {
                     Inscripcion AlIns = new Inscripcion();
+                    AlIns.Alumno = new PersonaAdapter().GetOne((int)drInscripciones["id_alumno"]);
                     AlIns.ID = (int)drInscripciones["id_inscripcion"];
                     //Objeto Curso
                     AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
