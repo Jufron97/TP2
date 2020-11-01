@@ -68,6 +68,7 @@ namespace UI.Web.Formularios
             dwCurso.DataValueField = "ID";
             dwCurso.DataTextField = "MateriaComisionCurso";
             dwCurso.DataBind();
+            //Curso cursoSeleccionado= dwCurso.SelectedValue
             //DropDown con las Docentes
             dwDocente.DataSource = new DocenteCursoLogic().GetAll(Entity.Curso);
             dwDocente.DataValueField = "ID";

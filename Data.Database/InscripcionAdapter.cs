@@ -151,9 +151,9 @@ namespace Academia.Data.Database
             {
                 AlIns.ID = (int)drInscripciones["id_inscripcion"];
                 //Objeto Alumno
-                AlIns.Alumno.ID = (int)drInscripciones["id_alumno"];
+                AlIns.Alumno = new PersonaAdapter().GetOne((int)drInscripciones["id_alumno"]);
                 //Objeto Curso
-                AlIns.Curso.ID = (int)drInscripciones["id_curso"];
+                AlIns.Curso = new CursoAdapter().GetOne((int)drInscripciones["id_curso"]);
                 AlIns.Condicion = (string)drInscripciones["condicion"];
                 //Por si las notas no fueron cargadas
                 if (String.IsNullOrEmpty(drInscripciones["nota"].ToString()))

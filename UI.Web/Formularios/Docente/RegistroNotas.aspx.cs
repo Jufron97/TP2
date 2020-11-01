@@ -14,6 +14,7 @@ namespace UI.Web.Formularios.Docente
         #region Atributos
 
         private InscripcionLogic _logic;
+        private Usuario m_docente;
 
         #endregion
 
@@ -31,7 +32,13 @@ namespace UI.Web.Formularios.Docente
             }
         }
 
-        private Inscripcion Entity
+        private Usuario EntityDoc
+        {
+            get => m_docente;
+            set => m_docente = value;
+        }
+
+        private Inscripcion EntityIns
         {
             get;
             set;
@@ -43,6 +50,7 @@ namespace UI.Web.Formularios.Docente
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            EntityDoc = (Usuario)Session["usuario"];
             if (!Page.IsPostBack)
             {
                 LoadGrid();
@@ -54,7 +62,7 @@ namespace UI.Web.Formularios.Docente
         /// </summary>
         private void LoadGrid()
         {
-            this.GridView.DataSource = Logic.GetAll();
+            this.GridView.DataSource = Logic.GetAll(EntityDoc);
             this.GridView.DataBind();
         }
 
@@ -69,8 +77,8 @@ namespace UI.Web.Formularios.Docente
         /// <param name="inscripcion"></param>
         public void LoadEntity(Inscripcion inscripcion)
         {
-            inscripcion.Alumno = Entity.Alumno;
-            inscripcion.Curso = Entity.Curso;
+            inscripcion.Alumno = EntityIns.Alumno;
+            inscripcion.Curso = EntityIns.Curso;
             inscripcion.Condicion = "Corregido";
             inscripcion.Nota = Int32.Parse(txtNota.Text);
         }
@@ -81,9 +89,9 @@ namespace UI.Web.Formularios.Docente
         /// <param name="id"></param>
         public void LoadForm(int id)
         {
-            Entity = this.Logic.GetOne(id);
-            txtNombre.Text = Entity.NombreAlumno;
-            txtApellido.Text = Entity.ApellidoAlumno;           
+            EntityIns = this.Logic.GetOne(id);
+            txtNombre.Text = EntityIns.NombreAlumno;
+            txtApellido.Text = EntityIns.ApellidoAlumno;           
         }
 
         /// <summary>
@@ -142,21 +150,21 @@ namespace UI.Web.Formularios.Docente
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        DeleteEntity(EntityIns);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Inscripcion();
-                        Entity.ID = selectID;
-                        Entity.State = BusinessEntity.States.Modified;
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
+                        EntityIns = new Inscripcion();
+                        EntityIns.ID = selectID;
+                        EntityIns.State = BusinessEntity.States.Modified;
+                        LoadEntity(EntityIns);
+                        SaveEntity(EntityIns);
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Inscripcion();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
+                        EntityIns = new Inscripcion();
+                        LoadEntity(EntityIns);
+                        SaveEntity(EntityIns);
                         LoadGrid();
                         break;
                     default:
@@ -172,6 +180,26 @@ namespace UI.Web.Formularios.Docente
             EnableForm(false);
             formPanel.Visible = false;
             LoadGrid();
+        }
+
+        protected void btnCorregir_Click(object sender, EventArgs e)
+        {
+            if (isEntititySelected)
+            {
+                formPanel.Visible = true;
+                LoadForm(selectID);
+            }
+            
+        }
+
+        protected void btnAceptar_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelar_Click1(object sender, EventArgs e)
+        {
+
         }
     }
     #endregion

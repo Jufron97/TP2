@@ -277,7 +277,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             }
             else if (this.Modo == ApplicationForm.ModoForm.Baja)
             {
-                new CursoLogic().Delete(Int32.Parse(this.txtID.Text));
+                //new CursoLogic().Delete(Int32.Parse(this.txtID.Text));
 
             }
         }
