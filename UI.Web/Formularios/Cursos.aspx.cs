@@ -139,7 +139,7 @@ namespace UI.Web.Formularios
         /// <param name="curso"></param>
         private void DeleteEntity(Curso curso)
         {
-            Logic.Delete(curso.ID);
+            Logic.Delete(curso);
         }
 
         /// <summary>

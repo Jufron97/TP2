@@ -32,9 +32,9 @@ namespace Academia.Business.Logic
             return ComisionData.GetOne(id);
         }
 
-        public void Delete(Comision comision)
+        public void Delete(int ID)
         {
-            ComisionData.Delete(comision);
+            ComisionData.Delete(ID);
         }
 
         public void Save(Comision comision)

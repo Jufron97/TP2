@@ -7,6 +7,7 @@ using Academia.Business.Entities;
 using System.Data.SqlClient;
 using System.Data;
 
+
 namespace Academia.Data.Database
 {
     public class DocenteCursoAdapter:Adapter
@@ -17,20 +18,20 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdComisiones = new SqlCommand("select * from docentes_curso", sqlConn);
-                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
-                while (drComisiones.Read())
+                SqlCommand cmdDocCurso = new SqlCommand("select * from docentes_curso", sqlConn);
+                SqlDataReader drDocCurso = cmdDocCurso.ExecuteReader();
+                while (drDocCurso.Read())
                 {
                     DocenteCurso docCurso = new DocenteCurso();
-                    docCurso.ID = (int)drComisiones["id_dictado"];
+                    docCurso.ID = (int)drDocCurso["id_dictado"];
                     //Se busca el objeto Curso
-                    docCurso.Curso = new CursoAdapter().GetOne((int)drComisiones["id_curso"]);
+                    docCurso.Curso = new CursoAdapter().GetOne((int)drDocCurso["id_curso"]);
                     //Se busca el objeto Persona
-                    docCurso.Docente = new PersonaAdapter().GetOne((int)drComisiones["id_persona"]);
-                    docCurso.Cargo = (DocenteCurso.TiposCargos)drComisiones["cargo"];
+                    docCurso.Docente = new PersonaAdapter().GetOne((int)drDocCurso["id_persona"]);
+                    docCurso.Cargo = (DocenteCurso.TiposCargos)drDocCurso["cargo"];
                     DocentesCursos.Add(docCurso);
                 }
-                drComisiones.Close();
+                drDocCurso.Close();
             }
             catch (Exception Ex)
             {
@@ -42,6 +43,40 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
             return DocentesCursos;
+        }
+
+        /// <summary>
+        /// Devuelve los docentes respectivamente por curso
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public List<Persona> GetAll(Curso curso)
+        {
+            List<Persona> DocentesCurso = new List<Persona>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdDocCurso = new SqlCommand("select id_docente from docentes_curso where id_curso=@idCurso", sqlConn);
+                
+                SqlDataReader drDocCurso = cmdDocCurso.ExecuteReader();
+                while (drDocCurso.Read())
+                {
+                    Persona docente = new Persona();
+                    docente = new PersonaAdapter().GetOne((int)drDocCurso["id_docente"]);
+                    DocentesCurso.Add(docente);
+                }
+                drDocCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Cursos-Docente", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return DocentesCurso;
         }
 
         public DocenteCurso GetOne(int id)

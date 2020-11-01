@@ -17,14 +17,27 @@ namespace Academia.Business.Logic
             get => m_cursoDocenteAdapter;
             set => m_cursoDocenteAdapter = value;
         }
+
         public DocenteCursoLogic()
         {
             CursoDocenteData = new DocenteCursoAdapter();
         }
 
+        /// <summary>
+        /// Devuelve todos los cursos y sus docentes 
+        /// <returns></returns>
         public List<DocenteCurso> GetAll()
         {
             return CursoDocenteData.GetAll();
+        }
+
+        /// <summary>
+        /// Devuelve 
+        /// </summary>
+        /// <returns></returns>
+        public List<Persona> GetAll(Curso curso)
+        {
+            return CursoDocenteData.GetAll(curso);
         }
 
         public DocenteCurso GetOne(int id)

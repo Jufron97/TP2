@@ -168,6 +168,7 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
+
         public void Save(Curso curso)
         {
             switch (curso.State)

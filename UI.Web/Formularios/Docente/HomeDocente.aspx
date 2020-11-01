@@ -14,7 +14,7 @@
 
         <asp:Panel ID="MenuPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
 
-        <asp:Menu ID="Menu" runat="server">
+        <asp:Menu ID="Menu" runat="server" OnMenuItemClick="Menu_MenuItemClick">
         <Items>
 
             <asp:MenuItem NavigateUrl="~/Formularios/Docente/RegistroNotas.aspx" Text="Registro de Notas" Value="Usuarios"></asp:MenuItem>

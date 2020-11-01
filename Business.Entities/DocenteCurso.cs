@@ -70,6 +70,14 @@ namespace Academia.Business.Entities
         }
 
         /// <summary>
+        /// Concatena la materia y la comision para mostrar por el DropDown
+        /// </summary>
+        public string MateriaComisionCurso
+        {
+            get => Curso.DescMateria + "-" + Curso.DescComision;
+        }
+
+        /// <summary>
         /// Devuelve/setea el Docente al cual hace referencia
         /// </summary>
         public Persona Docente
@@ -86,6 +94,13 @@ namespace Academia.Business.Entities
             get => Docente.ID;
         }
 
+        /// <summary>
+        /// Concatena el nombre y la Apellido para mostrar por el DropDown
+        /// </summary>
+        public string NombreApellDocente
+        {
+            get => Docente.Apellido+", "+Docente.Nombre;
+        }
         #endregion
 
         public enum TiposCargos

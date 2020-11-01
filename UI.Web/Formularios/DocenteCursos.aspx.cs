@@ -66,12 +66,12 @@ namespace UI.Web.Formularios
             //DropDown con las Curso
             dwCurso.DataSource = new CursoLogic().GetAll();
             dwCurso.DataValueField = "ID";
-            dwCurso.DataTextField = "DescCursoMateria";
+            dwCurso.DataTextField = "MateriaComisionCurso";
             dwCurso.DataBind();
             //DropDown con las Docentes
-            dwDocente.DataSource = new DocenteCursoLogic().GetAll(Persona.TiposPersonas.Docente);
+            dwDocente.DataSource = new DocenteCursoLogic().GetAll(Entity.Curso);
             dwDocente.DataValueField = "ID";
-            dwDocente.DataTextField = "Nombre";
+            dwDocente.DataTextField = "NombreApellDocente";
             dwDocente.DataBind();
             //DropDown con las Cargos           
             dwCargo.DataSource = Persona.DameTusTipos();                
@@ -106,8 +106,7 @@ namespace UI.Web.Formularios
             //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
             dwCurso.SelectedValue = Entity.IDCurso.ToString();
             dwDocente.SelectedValue = Entity.IDDocente.ToString();
-            //ACA FALTA LO DEL CARGO NO LO PENSE
-            //dwCargo.SelectedValue = Entity.Docente
+            dwCargo.SelectedValue = Entity.Docente.TipoPersona.ToString();
         }
 
         /// <summary>

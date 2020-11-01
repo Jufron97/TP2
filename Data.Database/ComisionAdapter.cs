@@ -96,13 +96,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(Comision comision)
+        public void Delete(int ID)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from comisiones where id_comision=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -151,7 +151,7 @@ namespace Academia.Data.Database
                     Update(comision);
                     break;
                 case BusinessEntity.States.Deleted:
-                    Delete(comision);
+                    Delete(comision.ID);
                     break;
                 default:
                     comision.State = BusinessEntity.States.Unmodified;
