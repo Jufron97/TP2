@@ -4,34 +4,36 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Business.Entities;
+using UI.Web.Formularios;
 
-namespace UI.Web.Formularios
+namespace UI.Web
 {
-    public partial class Materias : ApplicationForm
+    public partial class Especialidades : ApplicationForm
     {
+
         #region Atributos
 
-        private MateriaLogic _logic;
+        private EspecialidadLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public MateriaLogic Logic
+        public EspecialidadLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new MateriaLogic();
+                    this._logic = new EspecialidadLogic();
                 }
                 return _logic;
             }
         }
 
-        private Materia Entity
+        private Especialidad Entity
         {
             get;
             set;
@@ -46,28 +48,17 @@ namespace UI.Web.Formularios
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
         /// <summary>
-        /// Se carga la grilla con todos los Cursos
+        /// Se carga la grilla con todas las especialidades
         /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
-        }
-
-        /// <summary>
-        /// Se cargan los DropDownList con los datos correspondientes de todas los planes en la BD
-        /// </summary>
-        public void cargoDropDownList()
-        {
-            //DropDown con las comisiones
-            dwPlanes.DataSource = new PlanLogic().GetAll();
-            dwPlanes.DataValueField = "ID";
-            dwPlanes.DataTextField = "Descripcion";
-            dwPlanes.DataBind();
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,13 +71,10 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="materia"></param>
-        public void LoadEntity(Materia materia)
+        /// <param name="especialidad"></param>
+        public void LoadEntity(Especialidad especialidad)
         {
-            materia.Descripcion = txtDescripcion.Text;
-            materia.HsSemanales = Int32.Parse(txtHsSemanales.Text);
-            materia.HsTotales = Int32.Parse(txtHsTotales.Text);
-            materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
+            especialidad.Descripcion = txtDescripcion.Text;
         }
 
         /// <summary>
@@ -97,9 +85,6 @@ namespace UI.Web.Formularios
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
-            cargoDropDownList();
-            //Dependiendo del curso seleccionado se mostrara los valores del plan al cual hace referencia
-            dwPlanes.SelectedValue = Entity.IdPlan.ToString();
         }
 
         /// <summary>
@@ -114,25 +99,24 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="materia"></param>
-        public void SaveEntity(Materia materia)
+        /// <param name="especialidad"></param>
+        public void SaveEntity(Especialidad especialidad)
         {
-            Logic.Save(materia);
+            Logic.Save(especialidad);
         }
-
+     
         public void desabilitoValidaciones(bool enable)
         {
-
+            reqDescripcion.Enabled = enable;
         }
 
         /// <summary>
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="ID"></param>
-        private void DeleteEntity(int ID)
+        private void DeleteEntity(Especialidad especialidad)
         {
-            Entity = Logic.GetOne(ID);
-            Logic.Delete(Entity);
+            Logic.Delete(especialidad);
         }
 
         /// <summary>
@@ -145,7 +129,7 @@ namespace UI.Web.Formularios
 
         #endregion
 
-        #region EventosFormulario
+        #region Eventosormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -157,6 +141,7 @@ namespace UI.Web.Formularios
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -165,13 +150,7 @@ namespace UI.Web.Formularios
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
+
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -192,11 +171,11 @@ namespace UI.Web.Formularios
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Materia();
+                        Entity = new Especialidad();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -204,7 +183,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Materia();
+                        Entity = new Especialidad();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -215,7 +194,14 @@ namespace UI.Web.Formularios
                 formPanel.Visible = false;
             }
         }
-    }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
+    }
     #endregion
 }

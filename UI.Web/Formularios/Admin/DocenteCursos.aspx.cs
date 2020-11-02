@@ -4,36 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Logic;
 using Academia.Business.Entities;
-using UI.Web.Formularios;
+using Academia.Business.Logic;
 
-namespace UI.Web
+namespace UI.Web.Formularios
 {
-    public partial class Especialidades : ApplicationForm
+    public partial class DocenteCursos : ApplicationForm
     {
-
         #region Atributos
 
-        private EspecialidadLogic _logic;
+        private DocenteCursoLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public EspecialidadLogic Logic
+        public DocenteCursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new EspecialidadLogic();
+                    this._logic = new DocenteCursoLogic();
                 }
                 return _logic;
             }
         }
 
-        private Especialidad Entity
+        private DocenteCurso Entity
         {
             get;
             set;
@@ -48,17 +46,39 @@ namespace UI.Web
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
         /// <summary>
-        /// Se carga la grilla con todas las especialidades
+        /// Se carga la grilla con todos los Cursos
         /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
+
+        /// <summary>
+        /// Se cargan los DropDownList con los datos correspondientes de todas las materias y comisiones en la BD
+        /// </summary>
+        public void cargoDropDownList()
+        {
+            //DropDown con las Curso
+            dwCurso.DataSource = new CursoLogic().GetAll();
+            dwCurso.DataValueField = "ID";
+            dwCurso.DataTextField = "MateriaComisionCurso";
+            dwCurso.DataBind();
+            //Curso cursoSeleccionado= dwCurso.SelectedValue
+            //DropDown con las Docentes
+            dwDocente.DataSource = new DocenteCursoLogic().GetAll(Entity.Curso);
+            dwDocente.DataValueField = "ID";
+            dwDocente.DataTextField = "NombreApellDocente";
+            dwDocente.DataBind();
+            //DropDown con las Cargos           
+            dwCargo.DataSource = Persona.DameTusTipos();                
+        }
+
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -70,10 +90,12 @@ namespace UI.Web
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="especialidad"></param>
-        public void LoadEntity(Especialidad especialidad)
+        /// <param name="curso"></param>
+        public void LoadEntity(DocenteCurso docCurso)
         {
-            especialidad.Descripcion = txtDescripcion.Text;
+            docCurso.Curso = new CursoLogic().GetOne(Int32.Parse(dwCurso.SelectedValue));
+            docCurso.Docente = new PersonaLogic().GetOne(Int32.Parse(dwDocente.SelectedValue));
+            docCurso.Cargo = (DocenteCurso.TiposCargos)(Int32.Parse(dwCargo.SelectedValue));
         }
 
         /// <summary>
@@ -83,7 +105,12 @@ namespace UI.Web
         public void LoadForm(int id)
         {
             Entity = this.Logic.GetOne(id);
-            txtDescripcion.Text = Entity.Descripcion;
+            //Se cargan los dropDownList 
+            cargoDropDownList();
+            //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
+            dwCurso.SelectedValue = Entity.IDCurso.ToString();
+            dwDocente.SelectedValue = Entity.IDDocente.ToString();
+            dwCargo.SelectedValue = Entity.Docente.TipoPersona.ToString();
         }
 
         /// <summary>
@@ -92,43 +119,46 @@ namespace UI.Web
         /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
-            txtDescripcion.Enabled = enable;
+            dwCurso.Enabled = enable;
+            dwDocente.Enabled = enable;
+            dwCargo.Enabled = enable;
         }
 
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="especialidad"></param>
-        public void SaveEntity(Especialidad especialidad)
+        /// <param name="curso"></param>
+        public void SaveEntity(DocenteCurso docCurso)
         {
-            Logic.Save(especialidad);
+            Logic.Save(docCurso);
         }
-     
+
         public void desabilitoValidaciones(bool enable)
         {
-            reqDescripcion.Enabled = enable;
+
         }
 
         /// <summary>
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
-        /// <param name="ID"></param>
-        private void DeleteEntity(Especialidad especialidad)
+        /// <param name="curso"></param>
+        private void DeleteEntity(DocenteCurso docCurso)
         {
-            Logic.Delete(especialidad);
+            Logic.Delete(docCurso);
         }
 
         /// <summary>
         /// Se limpia el formulario ABM
         /// </summary>
         private void ClearForm()
-        {
-            txtDescripcion.Text = String.Empty;
+        {/*
+            txtAño.Text = String.Empty;
+            txtCupo.Text = String.Empty;*/
         }
 
-        #endregion
+#endregion
 
-        #region Eventosormulario
+        #region EventosFormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -150,7 +180,6 @@ namespace UI.Web
         }
 
 
-
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
@@ -161,7 +190,6 @@ namespace UI.Web
             }
         }
 
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             desabilitoValidaciones(true);
@@ -170,11 +198,12 @@ namespace UI.Web
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
+                        Entity = Logic.GetOne(selectID);
                         DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Especialidad();
+                        Entity = new DocenteCurso();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -182,7 +211,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Especialidad();
+                        Entity = new DocenteCurso();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -202,5 +231,6 @@ namespace UI.Web
             LoadGrid();
         }
     }
+
     #endregion
 }

@@ -11,17 +11,8 @@ namespace UI.Web.Formularios
 {
 
 
-    public partial class DocenteCursos
+    public partial class Comisiones
     {
-
-        /// <summary>
-        /// Control gridPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridPanel;
 
         /// <summary>
         /// Control GridView.
@@ -78,58 +69,58 @@ namespace UI.Web.Formularios
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// Control lblDocente.
+        /// Control lblDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDocente;
+        protected global::System.Web.UI.WebControls.Label lblDescripcion;
 
         /// <summary>
-        /// Control dwDocente.
+        /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dwDocente;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// Control lblCurso.
+        /// Control lblAño.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCurso;
+        protected global::System.Web.UI.WebControls.Label lblAño;
 
         /// <summary>
-        /// Control dwCurso.
+        /// Control txtAño.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dwCurso;
+        protected global::System.Web.UI.WebControls.TextBox txtAño;
 
         /// <summary>
-        /// Control lblCargo.
+        /// Control lblPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCargo;
+        protected global::System.Web.UI.WebControls.Label lblPlan;
 
         /// <summary>
-        /// Control dwCargo.
+        /// Control dwPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dwCargo;
+        protected global::System.Web.UI.WebControls.DropDownList dwPlan;
 
         /// <summary>
         /// Control btnAceptar.
@@ -157,5 +148,19 @@ namespace UI.Web.Formularios
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new UI.Web.Site Master
+        {
+            get
+            {
+                return ((UI.Web.Site)(base.Master));
+            }
+        }
     }
 }

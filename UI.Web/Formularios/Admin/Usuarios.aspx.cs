@@ -47,6 +47,8 @@ namespace UI.Web
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
+
             }
         }
 
@@ -65,6 +67,7 @@ namespace UI.Web
             usuario.Habilitado = checkHabilitado.Checked;
             usuario.Clave = txtClave.Text;
             usuario.Email = txtEmail.Text;
+            usuario.Persona.FechaNacimiento = DateTime.Now;
         }
 
         public void LoadForm(int id)

@@ -9,29 +9,29 @@ using Academia.Business.Logic;
 
 namespace UI.Web.Formularios
 {
-    public partial class Cursos : ApplicationForm
+    public partial class Materias : ApplicationForm
     {
         #region Atributos
 
-        private CursoLogic _logic;
+        private MateriaLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public CursoLogic Logic
+        public MateriaLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new CursoLogic();
+                    this._logic = new MateriaLogic();
                 }
                 return _logic;
             }
         }
 
-        private Curso Entity
+        private Materia Entity
         {
             get;
             set;
@@ -46,8 +46,9 @@ namespace UI.Web.Formularios
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
-        }       
+        }
 
         /// <summary>
         /// Se carga la grilla con todos los Cursos
@@ -59,22 +60,16 @@ namespace UI.Web.Formularios
         }
 
         /// <summary>
-        /// Se cargan los DropDownList con los datos correspondientes de todas las materias y comisiones en la BD
+        /// Se cargan los DropDownList con los datos correspondientes de todas los planes en la BD
         /// </summary>
         public void cargoDropDownList()
         {
             //DropDown con las comisiones
-            dwComision.DataSource = new ComisionLogic().GetAll();
-            dwComision.DataValueField = "ID";
-            dwComision.DataTextField = "Descripcion";
-            dwComision.DataBind();
-            //DropDown con las materias
-            dwMateria.DataSource = new MateriaLogic().GetAll();
-            dwMateria.DataValueField = "ID";
-            dwMateria.DataTextField = "Descripcion";
-            dwMateria.DataBind();
+            dwPlanes.DataSource = new PlanLogic().GetAll();
+            dwPlanes.DataValueField = "ID";
+            dwPlanes.DataTextField = "Descripcion";
+            dwPlanes.DataBind();
         }
-    
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -86,13 +81,13 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="curso"></param>
-        public void LoadEntity(Curso curso)
+        /// <param name="materia"></param>
+        public void LoadEntity(Materia materia)
         {
-            curso.AnioCalendario = Int32.Parse(txtAño.Text);
-            curso.Comision = new ComisionLogic().GetOne(Int32.Parse(dwComision.SelectedValue));
-            curso.Materia = new MateriaLogic().GetOne(Int32.Parse(dwMateria.SelectedValue));
-            curso.Cupo = Int32.Parse(txtCupo.Text);
+            materia.Descripcion = txtDescripcion.Text;
+            materia.HsSemanales = Int32.Parse(txtHsSemanales.Text);
+            materia.HsTotales = Int32.Parse(txtHsTotales.Text);
+            materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
         }
 
         /// <summary>
@@ -101,12 +96,11 @@ namespace UI.Web.Formularios
         /// <param name="id"></param>
         public void LoadForm(int id)
         {
-            Entity = this.Logic.GetOne(id); 
-            //Se cargan los dropDownList 
+            Entity = this.Logic.GetOne(id);
+            txtDescripcion.Text = Entity.Descripcion;
             cargoDropDownList();
-            //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
-            dwComision.SelectedValue = Entity.IDComision.ToString();
-            dwMateria.SelectedValue = Entity.IDMateria.ToString();
+            //Dependiendo del curso seleccionado se mostrara los valores del plan al cual hace referencia
+            dwPlanes.SelectedValue = Entity.IdPlan.ToString();
         }
 
         /// <summary>
@@ -115,19 +109,16 @@ namespace UI.Web.Formularios
         /// <param name="enable"></param>
         private void EnableForm(bool enable)
         {
-            dwMateria.Enabled = enable;
-            dwComision.Enabled = enable;
-            txtAño.Enabled = enable;
-            txtCupo.Enabled = enable;
+            txtDescripcion.Enabled = enable;
         }
 
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="curso"></param>
-        public void SaveEntity(Curso curso)
+        /// <param name="materia"></param>
+        public void SaveEntity(Materia materia)
         {
-            Logic.Save(curso);
+            Logic.Save(materia);
         }
 
         public void desabilitoValidaciones(bool enable)
@@ -138,10 +129,11 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
-        /// <param name="curso"></param>
-        private void DeleteEntity(Curso curso)
+        /// <param name="ID"></param>
+        private void DeleteEntity(int ID)
         {
-            Logic.Delete(curso);
+            Entity = Logic.GetOne(ID);
+            Logic.Delete(Entity);
         }
 
         /// <summary>
@@ -149,8 +141,7 @@ namespace UI.Web.Formularios
         /// </summary>
         private void ClearForm()
         {
-            txtAño.Text = String.Empty;
-            txtCupo.Text = String.Empty;           
+            txtDescripcion.Text = String.Empty;
         }
 
         #endregion
@@ -167,7 +158,6 @@ namespace UI.Web.Formularios
                 LoadForm(selectID);
             }
         }
-
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -176,6 +166,13 @@ namespace UI.Web.Formularios
             EnableForm(true);
         }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -187,6 +184,7 @@ namespace UI.Web.Formularios
             }
         }
 
+
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             desabilitoValidaciones(true);
@@ -195,12 +193,11 @@ namespace UI.Web.Formularios
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        Entity = Logic.GetOne(selectID);
-                        DeleteEntity(Entity);
+                        DeleteEntity(selectID);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Curso();
+                        Entity = new Materia();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -208,7 +205,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Curso();
+                        Entity = new Materia();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -218,14 +215,6 @@ namespace UI.Web.Formularios
                 }
                 formPanel.Visible = false;
             }
-        }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
         }
     }
 

@@ -11,7 +11,7 @@ namespace UI.Web.Formularios
 {
 
 
-    public partial class Comisiones
+    public partial class Cursos
     {
 
         /// <summary>
@@ -69,22 +69,40 @@ namespace UI.Web.Formularios
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// Control lblDescripcion.
+        /// Control lblMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcion;
+        protected global::System.Web.UI.WebControls.Label lblMateria;
 
         /// <summary>
-        /// Control txtDescripcion.
+        /// Control dwMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.DropDownList dwMateria;
+
+        /// <summary>
+        /// Control lblComision.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblComision;
+
+        /// <summary>
+        /// Control dwComision.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dwComision;
 
         /// <summary>
         /// Control lblAño.
@@ -105,22 +123,22 @@ namespace UI.Web.Formularios
         protected global::System.Web.UI.WebControls.TextBox txtAño;
 
         /// <summary>
-        /// Control lblPlan.
+        /// Control lblCupo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPlan;
+        protected global::System.Web.UI.WebControls.Label lblCupo;
 
         /// <summary>
-        /// Control dwPlan.
+        /// Control txtCupo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dwPlan;
+        protected global::System.Web.UI.WebControls.TextBox txtCupo;
 
         /// <summary>
         /// Control btnAceptar.
@@ -148,5 +166,19 @@ namespace UI.Web.Formularios
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new UI.Web.Site Master
+        {
+            get
+            {
+                return ((UI.Web.Site)(base.Master));
+            }
+        }
     }
 }

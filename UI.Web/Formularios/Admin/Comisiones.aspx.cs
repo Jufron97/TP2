@@ -1,38 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Logic;
 using Academia.Business.Entities;
-using UI.Web.Formularios;
+using Academia.Business.Logic;
 
-namespace UI.Web
+namespace UI.Web.Formularios
 {
-    public partial class Planes : ApplicationForm
+    public partial class Comisiones : ApplicationForm
     {
         #region Atributos
 
-        private PlanLogic _logic;
+        private ComisionLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public PlanLogic Logic
+        public ComisionLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new PlanLogic();
+                    this._logic = new ComisionLogic();
                 }
                 return _logic;
             }
         }
 
-        private Plan Entity
+        private Comision Entity
         {
             get;
             set;
@@ -41,34 +41,24 @@ namespace UI.Web
         #endregion
 
         #region Metodos
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
         /// <summary>
-        /// Se carga la grilla con todos los Planes
+        /// Se carga la grilla con todas las comisiones
         /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
-
-        /// <summary>
-        /// Se carga el DropDownList con los datos correspondientes de todas las especialidades en la BD
-        /// </summary>
-        public void cargoDropDownList()
-        {
-            dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
-            dwEspecialidades.DataValueField = "ID";
-            dwEspecialidades.DataTextField = "Descripcion";            
-            dwEspecialidades.DataBind();
-        }
-
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -80,11 +70,12 @@ namespace UI.Web
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="plan"></param>
-        public void LoadEntity(Plan plan)
+        /// <param name="comision"></param>
+        public void LoadEntity(Comision comision)
         {
-            plan.Descripcion = txtDescripcion.Text;
-            plan.Especialidad = new EspecialidadLogic().GetOne(Int32.Parse(dwEspecialidades.SelectedValue));
+            comision.Descripcion = txtDescripcion.Text;
+            comision.AnioEspecialidad = Int32.Parse(txtAño.Text);
+            comision.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlan.SelectedValue));
         }
 
         /// <summary>
@@ -95,8 +86,8 @@ namespace UI.Web
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
-            cargoDropDownList();
-            dwEspecialidades.SelectedValue = Entity.ID.ToString();
+            txtAño.Text = Entity.AnioEspecialidad.ToString();
+            dwPlan.SelectedValue = Entity.ID.ToString();
         }
 
         /// <summary>
@@ -111,24 +102,24 @@ namespace UI.Web
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="plan"></param>
-        public void SaveEntity(Plan plan)
+        /// <param name="comision"></param>
+        public void SaveEntity(Comision comision)
         {
-            Logic.Save(plan);
+            Logic.Save(comision);
         }
 
         public void desabilitoValidaciones(bool enable)
         {
-
+            
         }
 
         /// <summary>
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
-        /// <param name="plan"></param>
-        private void DeleteEntity(Plan plan)
+        /// <param name="ID"></param>
+        private void DeleteEntity(int ID)
         {
-            Logic.Delete(plan);
+            Logic.Delete(ID);
         }
 
         /// <summary>
@@ -141,7 +132,7 @@ namespace UI.Web
 
         #endregion
 
-        #region EventosFormulario
+        #region Eventosormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -153,6 +144,7 @@ namespace UI.Web
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -161,13 +153,6 @@ namespace UI.Web
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -188,12 +173,11 @@ namespace UI.Web
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        Entity = new PlanLogic().GetOne(selectID);                       
-                        DeleteEntity(Entity);
+                        DeleteEntity(selectID);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Plan();
+                        Entity = new Comision();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -201,7 +185,7 @@ namespace UI.Web
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Plan();
+                        Entity = new Comision();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -212,7 +196,14 @@ namespace UI.Web
                 formPanel.Visible = false;
             }
         }
-    }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
+    }
     #endregion
 }

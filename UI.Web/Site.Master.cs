@@ -42,7 +42,7 @@ namespace UI.Web
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
-                        Response.Redirect("~/HomeAdmin",false);
+                        Response.Redirect("~/Formularios/Admin/HomeAdmin.aspx", false);
                         break;
                     case Persona.TiposPersonas.Alumno:
                         Response.Redirect("~/Formularios/Alumno/HomeAlumno", false);

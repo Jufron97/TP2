@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Materias.aspx.cs" Inherits="UI.Web.Formularios.Materias" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
 <asp:Content ID="formMaterias" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel runat="server" style="border: 1px solid #000; width: 100%; height:80%; left:0%;position:relative;">
     <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
