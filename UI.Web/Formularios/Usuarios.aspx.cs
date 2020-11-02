@@ -151,7 +151,7 @@ namespace UI.Web
         {
             if (isEntititySelected)
             {
-                EnableForm(true);
+                
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -187,7 +187,8 @@ namespace UI.Web
                 default:
                     break;
                 }
-            formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Usuarios.aspx");
+
             }          
         }
     }

@@ -43,11 +43,15 @@
         <div class="form-group">
         <asp:Label ID="lblAño" runat="server" Text="Año:"></asp:Label>
         <asp:TextBox ID="txtAño" CssClass="form-control" runat="server"></asp:TextBox>   
+            <asp:RequiredFieldValidator runat="server" id="reqAño" controltovalidate="txtAño" errormessage="*" Enabled="false" ForeColor="Red" />
+            
             </div>
         <br />
         <div class="form-group">
         <asp:Label ID="lblCupo" runat="server" Text="Cupo:"></asp:Label>
-        <asp:TextBox ID="txtCupo" CssClass="form-control" runat="server"></asp:TextBox>   
+        <asp:TextBox ID="txtCupo" CssClass="form-control" runat="server"></asp:TextBox> 
+            <asp:RequiredFieldValidator runat="server" id="reqCupo" controltovalidate="txtCupo" errormessage="*" Enabled="false" ForeColor="Red" />
+            
             </div>
         <asp:Panel runat="server">
             <div class="form-group">

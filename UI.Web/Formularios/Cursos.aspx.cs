@@ -130,9 +130,10 @@ namespace UI.Web.Formularios
             Logic.Save(curso);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
-
+            reqAño.Enabled = enable;
+            reqCupo.Enabled = enable;
         }
 
         /// <summary>
@@ -189,7 +190,7 @@ namespace UI.Web.Formularios
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
                 switch (this.FormMode)
@@ -216,7 +217,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Cursos.aspx");
             }
         }
 

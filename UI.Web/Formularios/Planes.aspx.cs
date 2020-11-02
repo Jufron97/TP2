@@ -117,9 +117,9 @@ namespace UI.Web
             Logic.Save(plan);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
-
+            ReqDescripcion.Enabled = enable;
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace UI.Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
                 switch (this.FormMode)
@@ -209,7 +209,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-                formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Planes.aspx");
             }
         }
     }

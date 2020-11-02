@@ -23,7 +23,7 @@
         <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
         <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" ForeColor="Red" />
+        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" Enabled="false" ForeColor="Red" />
             </div>
         <asp:Panel runat="server">
             <div class="form-group">

@@ -25,19 +25,19 @@
         <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
         <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" ForeColor="Red" />
+        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" Enabled="false" ForeColor="Red" />
             </div>
         <br />
         <div class="form-group">
         <asp:Label ID="lblHsSemanales" runat="server" Text="Horas Semanales: "></asp:Label>
         <asp:TextBox ID="txtHsSemanales" CssClass="form-control" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="*" ForeColor="Red" />
+        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="*" Enabled="false" ForeColor="Red" />
             </div>
             <br />
         <div class="form-group">
         <asp:Label ID="lblHsTotales" runat="server" Text="Horas Totales: "></asp:Label>
         <asp:TextBox ID="txtHsTotales" CssClass="form-control" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="*" ForeColor="Red" />
+        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="*" Enabled="false" ForeColor="Red" />
             </div>
         <br />
         <div class="form-group">
@@ -50,7 +50,7 @@
         <asp:Panel runat="server">
             <div class="form-group">
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
-            <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
+            <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
                 </div>
         </asp:Panel>     
         <div class="form-group">

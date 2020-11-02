@@ -107,9 +107,10 @@ namespace UI.Web.Formularios
             Logic.Save(comision);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
-            
+            reqAño.Enabled = enable;
+            reqDescripcion.Enabled = enable;
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace UI.Web.Formularios
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
                 switch (this.FormMode)
@@ -192,7 +193,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Comisiones.aspx");
             }
         }
 

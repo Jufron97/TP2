@@ -43,11 +43,11 @@
             <asp:DropDownList ID="dwCargo" CssClass="btn btn-primary dropdown-toggle" runat="server"></asp:DropDownList> 
                     </div>
                 </div>
-            <br />
+            <br/>
             <asp:Panel runat="server">
                 <div class="form-group">
                 <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
-                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
+                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
                     </div>
             </asp:Panel>      
             <div class="form-group">

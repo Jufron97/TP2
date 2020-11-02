@@ -22,11 +22,11 @@
     <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
         <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:">
-
         </asp:Label>
-        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server">
+        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
 
-        </asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" id="ReqDescripcion" controltovalidate="txtDescripcion" errormessage="*" Enabled="false" ForeColor="Red" />
+       
             </div>
         <br />
         <div class="form-group">

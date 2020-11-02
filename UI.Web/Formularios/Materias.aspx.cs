@@ -120,9 +120,11 @@ namespace UI.Web.Formularios
             Logic.Save(materia);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
-
+            reqDescripcion.Enabled = enable;
+            reqHsSemanales.Enabled = enable;
+            reqHsTotales.Enabled = enable;
         }
 
         /// <summary>
@@ -165,7 +167,7 @@ namespace UI.Web.Formularios
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             ClearForm();
             EnableForm(false);
@@ -186,7 +188,7 @@ namespace UI.Web.Formularios
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
                 switch (this.FormMode)
@@ -212,7 +214,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Materias.aspx");
             }
         }
     }

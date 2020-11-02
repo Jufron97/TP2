@@ -68,7 +68,9 @@ namespace UI.Web.Formularios.Docente
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
+            LoadForm(this.selectID);
         }
 
         /// <summary>
@@ -114,9 +116,9 @@ namespace UI.Web.Formularios.Docente
             Logic.Save(inscripcion);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
-
+            reqNota.Enabled = enable;
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace UI.Web.Formularios.Docente
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
                 switch (this.FormMode)
@@ -170,7 +172,7 @@ namespace UI.Web.Formularios.Docente
                     default:
                         break;
                 }
-                formPanel.Visible = false;
+                Response.Redirect("~/Formularios/Docente/RegistroNotas.aspx");
             }
         }
 
@@ -190,16 +192,7 @@ namespace UI.Web.Formularios.Docente
                 LoadForm(selectID);
             }          
         }
-
-        protected void btnAceptar_Click1(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnCancelar_Click1(object sender, EventArgs e)
-        {
-
-        }
+        
     }
     #endregion
 }
