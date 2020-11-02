@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlumnoInscripcion.aspx.cs" Inherits="UI.Web.Formularios.Alumno.CursosAlumno" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:Panel runat="server" style="border: 1px solid #000; width: 90%; height:80%; margin-top:5%; left:10%;position:relative;">
-    <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">   
+    <div runat="server" >   
         <asp:GridView ID="GridViewCurso" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="DescMateria" HeaderText="Materia" />
@@ -22,6 +21,4 @@
         <br />
         <asp:Button ID="btnInscribir" runat="server" Text="Inscribirse" OnClick="btnInscribir_Click" />
         </div>
-    </asp:Panel>
-
 </asp:Content>

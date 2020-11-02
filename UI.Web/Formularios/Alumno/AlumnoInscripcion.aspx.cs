@@ -43,8 +43,7 @@ namespace UI.Web.Formularios.Alumno
         {
             Entity = (Usuario)Session["usuario"];
             if (!Page.IsPostBack)
-            {
-             
+            {            
                 LoadGrid();
                 Master.MuestroMenu();              
             }
