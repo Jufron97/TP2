@@ -184,7 +184,7 @@
     <Content Include="HomeAdmin.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Formularios\Planes.aspx" />
-    <Content Include="Mensaje.aspx" />
+    <Content Include="Modal.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -192,6 +192,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\LoginJs.js" />
+    <Content Include="Scripts\ModalScript.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -353,13 +354,6 @@
     </Compile>
     <Compile Include="Formularios\Planes.aspx.designer.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mensaje.aspx.cs">
-      <DependentUpon>Mensaje.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mensaje.aspx.designer.cs">
-      <DependentUpon>Mensaje.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

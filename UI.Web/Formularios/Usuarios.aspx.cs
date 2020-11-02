@@ -87,7 +87,6 @@ namespace UI.Web
             txtClave.Enabled = enable;
             txtRepetirClave.Enabled = enable;
             lblRepetirClave.Enabled = enable;
-            desabilitoValidaciones(false);
         }
 
         public void SaveEntity(Usuario usuario)
@@ -95,7 +94,7 @@ namespace UI.Web
             Logic.Save(usuario);
         }
 
-        public void desabilitoValidaciones(bool enable)
+        public void HabilitoValidaciones(bool enable)
         {
             reqNombUsuario.Enabled = enable;
             reqApellido.Enabled = enable;
@@ -140,18 +139,19 @@ namespace UI.Web
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
                 ClearForm();
                 EnableForm(false);
                 formPanel.Visible = false;
-                LoadGrid(); 
+                LoadGrid();
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
             {
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -161,7 +161,7 @@ namespace UI.Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            desabilitoValidaciones(true);
+            HabilitoValidaciones(true);
             if (Page.IsValid)
             {
             switch (this.FormMode)

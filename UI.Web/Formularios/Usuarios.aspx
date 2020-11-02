@@ -27,13 +27,13 @@
             <div class="form-group">
             <asp:Label ID="lblNombre" runat="server" Text="Nombre: "></asp:Label>
             <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="*" Enabled="false" ForeColor="Red" />
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblApellido" runat="server" Text="Apellido: "></asp:Label>
             <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"> </asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqApellido" controltovalidate="txtApellido" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqApellido" controltovalidate="txtApellido" errormessage="*" Enabled="false" ForeColor="Red" />
                 </div>
             <br />
             <div class="form-group">
@@ -44,30 +44,30 @@
             <div class="form-group">
             <asp:Label ID="lblNombreUsuario" runat="server" Text="Usuario: "></asp:Label>
             <asp:TextBox ID="txtNombreUsuario" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="*" Enabled="false" ForeColor="Red" />
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
             <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqEmail" controltovalidate="txtEmail" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqEmail" controltovalidate="txtEmail" errormessage="*" Enabled="false" ForeColor="Red" />
                  </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
             <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" Enabled="false" ForeColor="Red" />
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
             <asp:TextBox ID="txtRepetirClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" Enabled="false" ForeColor="Red" />
                 </div>
             <asp:Panel runat="server">
                 <div class="form-group">
                 <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
-                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
+                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
                     </div>
             </asp:Panel>   
             <div class="form-group">

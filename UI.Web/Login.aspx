@@ -15,7 +15,7 @@
 			<asp:RequiredFieldValidator ID="reqContraseña" runat="server" ControlToValidate="txtContraseña" ErrorMessage="Clave Requerida" style="color: #FF0000" ValidationGroup="1">*</asp:RequiredFieldValidator>			
 			-->
 			<asp:ValidationSummary ID="ValidationSummary1" runat="server" style="color: #FF0000" ValidationGroup="1" /> 
-			<asp:CustomValidator ID="cvContraseña" runat="server" ControlToValidate="txtContraseña" ErrorMessage="Clave o Usuario incorrectos" ValidationGroup="1" style="color: #FF0000">*</asp:CustomValidator>    			
+			<asp:CustomValidator ID="cvContraseña" runat="server" ControlToValidate="txtContraseña" ErrorMessage="Clave o Usuario incorrectos" ValidationGroup="1" style="color: #FF0000">*</asp:CustomValidator>  	
 			 </form>
 	</div>
 	<ul class="bg-bubbles">

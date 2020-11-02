@@ -39,7 +39,7 @@ namespace UI.Web
             {
                 this.cvContraseña.IsValid = true;             
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
-                //Se asgina el usuario a la sesion para no perderlo
+                //Se asigna el usuario a la sesion para no perderlo
                 Session["usuario"] = usu;
                 switch (usu.Persona.TipoPersona)
                 {
@@ -61,7 +61,7 @@ namespace UI.Web
             else
             {
                 this.cvContraseña.IsValid = false;
-                Response.Write("<script>window.open('Mensaje.aspx','popup','width=800,height=500') </script>");
+                MessageBox.Show("Usuario o Contraseña incorrectos");
             }
             return;
         }

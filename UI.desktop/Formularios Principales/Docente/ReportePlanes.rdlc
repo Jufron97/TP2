@@ -17,7 +17,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>4.96094cm</Height>
+              <Height>0.62177cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -112,7 +112,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>4.96094cm</Height>
+              <Height>0.88636cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -226,7 +226,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsPlanes</DataSetName>
-        <Height>9.92188cm</Height>
+        <Height>1.50813cm</Height>
         <Width>20.31999cm</Width>
         <Style>
           <Border>
