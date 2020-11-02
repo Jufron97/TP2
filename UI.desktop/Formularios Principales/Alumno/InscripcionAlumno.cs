@@ -16,6 +16,8 @@ namespace Academia.UI.Desktop
     {
         private Usuario m_usuario;
         private Operacion m_operacion;
+        private InscripcionLogic m_insAlLogic;
+
 
         public enum Operacion
         {
@@ -31,6 +33,12 @@ namespace Academia.UI.Desktop
             set => m_usuario = value;
         }
 
+        public InscripcionLogic InsAlLogic
+        {
+            get => m_insAlLogic;
+            set => m_insAlLogic = value;
+        }
+
         public Operacion TipoOperacion
         {
             get => m_operacion;
@@ -44,6 +52,7 @@ namespace Academia.UI.Desktop
         public InscripcionAlumno(Usuario usuario)
         {
             UsuarioActual = usuario;
+            InsAlLogic = new InscripcionLogic();
             InitializeComponent();
             this.dgvInscripcionAlumno.AutoGenerateColumns = false;
         }
@@ -59,18 +68,19 @@ namespace Academia.UI.Desktop
         {
             try
             {
-                if (this.TipoOperacion == InscripcionAlumno.Operacion.InscripcionCurso)
+                switch(this.TipoOperacion)
                 {
-                    this.Nota.Visible = false;
-                    this.Condicion.Visible = false;
-                    CursoLogic curLogic = new CursoLogic();
-                    dgvInscripcionAlumno.DataSource = curLogic.GetAll();
-                }
-                else 
-                {
-                    this.btnSeleccionar.Visible = false;
-                    InscripcionLogic alInsLogic = new InscripcionLogic();
-                    dgvInscripcionAlumno.DataSource = alInsLogic.GetAll(UsuarioActual);                 
+                    case InscripcionAlumno.Operacion.InscripcionCurso:
+                        this.Nota.Visible = false;
+                        this.Condicion.Visible = false;
+                        //Se cargan todos los cursos
+                        CursoLogic curLogic = new CursoLogic();
+                        dgvInscripcionAlumno.DataSource = curLogic.GetAll();
+                        break;
+                    case InscripcionAlumno.Operacion.VisualizarCursos:
+                        this.btnSeleccionar.Visible = false;
+                        dgvInscripcionAlumno.DataSource = InsAlLogic.GetAll(UsuarioActual);
+                        break;
                 }
             }
             catch (Exception Ex)
@@ -105,21 +115,20 @@ namespace Academia.UI.Desktop
         {
             if (itemSeleccionado())
             {
-                Inscripcion insAlumno = new Inscripcion();
-                InscripcionLogic insAlLogic = new InscripcionLogic();
+                Inscripcion insAlumno = new Inscripcion();               
                 //Se pasarian los objetos correspondientes a la inscripcion
                 insAlumno.Alumno = UsuarioActual.Persona;
                 insAlumno.Curso = ((Curso)this.dgvInscripcionAlumno.SelectedRows[0].DataBoundItem);
                 insAlumno.Condicion = "En Cursado";
                 insAlumno.State = BusinessEntity.States.New;   
                 //En primera parte se valida que el usuario no este inscripto
-                if (!insAlLogic.validarInscripcion(insAlumno))               
+                if (!InsAlLogic.validarInscripcion(insAlumno))               
                 {
                     //Como segunda validacion que el curso al cual se quiera inscribir tenga cupo disponible
                     if(insAlumno.Curso.Cupo > 0)
                     {
                         new CursoLogic().Update(insAlumno.Curso);
-                        new InscripcionLogic().Save(insAlumno);
+                        InsAlLogic.Save(insAlumno);
                         MessageBox.Show("Inscripcion exitosa", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
