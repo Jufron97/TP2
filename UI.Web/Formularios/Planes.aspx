@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
 
 <asp:Content ID="formPlanes" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <asp:Panel runat="server" style="border: 1px solid #000; width: 90%; height:80%; margin-top:5%; left:10%;position:relative;">
+    <asp:Panel runat="server" style="border: 1px solid #000; width: 100%; height:80%; left:0%;position:relative;">
     <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
         <asp:Panel runat="server">
      <asp:Panel HorizontalAlign="Center" runat="server">
