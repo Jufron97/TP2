@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Formularios.Comisiones" %>
 <asp:Content ID="formCursos" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 <asp:Panel runat="server" style="border: 1px solid #000; width: 90%; height:80%; margin-top:5%; left:10%;position:relative;">
-    <form runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
+    <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
   <asp:Panel runat="server">
     <asp:Panel runat="server">
         <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
@@ -48,6 +48,6 @@
         <br/>
     </asp:Panel> 
    </asp:Panel>
-</form>
+</div>
     </asp:Panel>
 </asp:Content>

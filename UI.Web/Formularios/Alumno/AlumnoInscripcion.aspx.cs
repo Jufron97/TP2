@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace UI.Web.Formularios.Alumno
 {
-    public partial class CursosAlumno : ApplicationForm
+    public partial class AlumnoInscripcion : ApplicationForm
     {
         private CursoLogic _curlogic;
         private CursoLogic CurLog

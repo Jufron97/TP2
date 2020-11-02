@@ -24,6 +24,15 @@ namespace UI.Web.Formularios.Docente
         protected global::System.Web.UI.WebControls.Label lblNombreUsuario;
 
         /// <summary>
+        /// Control lblLegajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLegajo;
+
+        /// <summary>
         /// Control Menu.
         /// </summary>
         /// <remarks>

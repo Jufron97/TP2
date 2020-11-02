@@ -11,7 +11,7 @@ namespace UI.Web.Formularios.Alumno
 {
 
 
-    public partial class FormularioAlumno
+    public partial class HomeAlumno
     {
 
         /// <summary>

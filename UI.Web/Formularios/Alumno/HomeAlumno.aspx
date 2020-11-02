@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HomeAlumno.aspx.cs" Inherits="UI.Web.Formularios.Alumno.FormularioAlumno" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HomeAlumno.aspx.cs" Inherits="UI.Web.Formularios.Alumno.HomeAlumno" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
 <asp:Content ID="HomeAlumno" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-        <asp:Panel runat="server" CssClass="panel">
+        <asp:Panel runat="server">
             <asp:Label ID="lblNombreUsuario" runat="server" Text=""></asp:Label>
-            <asp:Label ID="lblLegajo" runat="server" Text=""></asp:Label>
             <br />
             <br />
             <br />

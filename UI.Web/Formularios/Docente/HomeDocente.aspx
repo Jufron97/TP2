@@ -8,7 +8,7 @@
 
         </asp:Panel>
         <br />
-        <asp:Panel ID="MenuPanel" CssClass="panel" HorizontalAlign="Center" runat="server">
+        
             <!--
             <asp:Menu ID="Menu" runat="server">
             <Items>
@@ -17,5 +17,5 @@
                 <asp:MenuItem NavigateUrl="~/Formularios/Docente/ReportePlanes.aspx" Text="Reporte de Planes" Value="Planes"></asp:MenuItem>
             </Items>
             </asp:Menu>-->
-        </asp:Panel>
+        
 </asp:Content>

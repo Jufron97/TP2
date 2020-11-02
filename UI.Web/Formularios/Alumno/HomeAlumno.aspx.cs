@@ -8,7 +8,7 @@ using Academia.Business.Entities;
 
 namespace UI.Web.Formularios.Alumno
 {
-    public partial class FormularioAlumno : System.Web.UI.Page
+    public partial class HomeAlumno : System.Web.UI.Page
     {
 
         Usuario Usu { get; set; }
@@ -18,7 +18,7 @@ namespace UI.Web.Formularios.Alumno
             
                 Usu = (Usuario)Session["usuario"];
                 lblNombreUsuario.Text = Usu.NombreUsuario;
-                Master.MuestroMenu();           
+                Master.MuestroMenu();        
         }
     }
 }
