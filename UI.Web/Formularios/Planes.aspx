@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Planes.aspx.cs" Inherits="UI.Web.Planes" %>
 
 <asp:Content ID="formPlanes" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <form runat="server">
-        <asp:Panel CssClass="panel" runat="server">
+    <asp:Panel runat="server" style="border: 1px solid #000; width: 90%; height:80%; margin-top:5%; left:10%;position:relative;">
+    <form runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
+        <asp:Panel runat="server">
      <asp:Panel HorizontalAlign="Center" runat="server">
-        <asp:GridView ID="GridView" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+        <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion Plan" />
                 <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
@@ -19,26 +20,38 @@
     </asp:Panel>
     <br />
     <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
+        <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:">
 
         </asp:Label>
-        <asp:TextBox ID="txtDescripcion" runat="server">
+        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server">
 
         </asp:TextBox>
+            </div>
         <br />
+        <div class="form-group">
+            
         <asp:Label ID="lblEspecialidad" runat="server" Text="Especialidad:">
 
         </asp:Label>
-        <asp:DropDownList ID="dwEspecialidades" runat="server">
-        </asp:DropDownList>     
+                <div class="dropdown">
+        <asp:DropDownList ID="dwEspecialidades" CssClass="btn btn-primary dropdown-toggle" runat="server">
+        </asp:DropDownList>   
+                    </div>
+            </div>
         <asp:Panel runat="server">
+        <div class="form-group">
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
             <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
-        </asp:Panel>      
+            </div>
+        </asp:Panel>     
+        <div class="form-group">
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
-        <br/>
+            </div>
+        <br />
     </asp:Panel>   
             </asp:Panel>
         </form>
+        </asp:Panel>
 </asp:Content>
 
