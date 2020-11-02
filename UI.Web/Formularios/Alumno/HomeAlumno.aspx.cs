@@ -18,7 +18,7 @@ namespace UI.Web.Formularios.Alumno
             
                 Usu = (Usuario)Session["usuario"];
                 lblNombreUsuario.Text = Usu.NombreUsuario;
-                lblLegajo.Text = Usu.Legajo.ToString();
+                
             
         }
     }
