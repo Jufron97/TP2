@@ -62,7 +62,7 @@ namespace UI.Web.Formularios.Docente
         /// </summary>
         private void LoadGrid()
         {
-            this.GridView.DataSource = Logic.GetAll(EntityDoc);
+            this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
         }
 
@@ -188,8 +188,7 @@ namespace UI.Web.Formularios.Docente
             {
                 formPanel.Visible = true;
                 LoadForm(selectID);
-            }
-            
+            }          
         }
 
         protected void btnAceptar_Click1(object sender, EventArgs e)
