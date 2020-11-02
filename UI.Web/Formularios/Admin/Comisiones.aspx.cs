@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,29 +10,29 @@ using Academia.Business.Logic;
 
 namespace UI.Web.Formularios
 {
-    public partial class Materias : ApplicationForm
+    public partial class Comisiones : ApplicationForm
     {
         #region Atributos
 
-        private MateriaLogic _logic;
+        private ComisionLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public MateriaLogic Logic
+        public ComisionLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new MateriaLogic();
+                    this._logic = new ComisionLogic();
                 }
                 return _logic;
             }
         }
 
-        private Materia Entity
+        private Comision Entity
         {
             get;
             set;
@@ -46,28 +47,17 @@ namespace UI.Web.Formularios
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
         /// <summary>
-        /// Se carga la grilla con todos los Cursos
+        /// Se carga la grilla con todas las comisiones
         /// </summary>
         private void LoadGrid()
         {
             this.GridView.DataSource = Logic.GetAll();
             this.GridView.DataBind();
-        }
-
-        /// <summary>
-        /// Se cargan los DropDownList con los datos correspondientes de todas los planes en la BD
-        /// </summary>
-        public void cargoDropDownList()
-        {
-            //DropDown con las comisiones
-            dwPlanes.DataSource = new PlanLogic().GetAll();
-            dwPlanes.DataValueField = "ID";
-            dwPlanes.DataTextField = "Descripcion";
-            dwPlanes.DataBind();
         }
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,13 +70,12 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="materia"></param>
-        public void LoadEntity(Materia materia)
+        /// <param name="comision"></param>
+        public void LoadEntity(Comision comision)
         {
-            materia.Descripcion = txtDescripcion.Text;
-            materia.HsSemanales = Int32.Parse(txtHsSemanales.Text);
-            materia.HsTotales = Int32.Parse(txtHsTotales.Text);
-            materia.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlanes.SelectedValue));
+            comision.Descripcion = txtDescripcion.Text;
+            comision.AnioEspecialidad = Int32.Parse(txtAño.Text);
+            comision.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlan.SelectedValue));
         }
 
         /// <summary>
@@ -97,9 +86,8 @@ namespace UI.Web.Formularios
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
-            cargoDropDownList();
-            //Dependiendo del curso seleccionado se mostrara los valores del plan al cual hace referencia
-            dwPlanes.SelectedValue = Entity.IdPlan.ToString();
+            txtAño.Text = Entity.AnioEspecialidad.ToString();
+            dwPlan.SelectedValue = Entity.ID.ToString();
         }
 
         /// <summary>
@@ -114,17 +102,16 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="materia"></param>
-        public void SaveEntity(Materia materia)
+        /// <param name="comision"></param>
+        public void SaveEntity(Comision comision)
         {
-            Logic.Save(materia);
+            Logic.Save(comision);
         }
 
         public void HabilitoValidaciones(bool enable)
         {
+            reqAño.Enabled = enable;
             reqDescripcion.Enabled = enable;
-            reqHsSemanales.Enabled = enable;
-            reqHsTotales.Enabled = enable;
         }
 
         /// <summary>
@@ -133,8 +120,7 @@ namespace UI.Web.Formularios
         /// <param name="ID"></param>
         private void DeleteEntity(int ID)
         {
-            Entity = Logic.GetOne(ID);
-            Logic.Delete(Entity);
+            Logic.Delete(ID);
         }
 
         /// <summary>
@@ -147,7 +133,7 @@ namespace UI.Web.Formularios
 
         #endregion
 
-        #region EventosFormulario
+        #region Eventosormulario
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -159,6 +145,7 @@ namespace UI.Web.Formularios
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             formPanel.Visible = true;
@@ -167,13 +154,6 @@ namespace UI.Web.Formularios
             EnableForm(true);
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -198,7 +178,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Materia();
+                        Entity = new Comision();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -206,7 +186,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Materia();
+                        Entity = new Comision();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -214,10 +194,17 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Materias.aspx");
+                Response.Redirect("~/Formularios/Comisiones.aspx");
             }
         }
-    }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
+    }
     #endregion
 }

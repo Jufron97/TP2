@@ -160,17 +160,17 @@
     <Content Include="Formularios\Alumno\AlumnoInscripcion.aspx" />
     <Content Include="Formularios\Alumno\HomeAlumno.aspx" />
     <Content Include="Formularios\ApplicationForm.aspx" />
-    <Content Include="Formularios\Comisiones.aspx" />
-    <Content Include="Formularios\Cursos.aspx" />
-    <Content Include="Formularios\DocenteCursos.aspx" />
+    <Content Include="Formularios\Admin\Comisiones.aspx" />
+    <Content Include="Formularios\Admin\Cursos.aspx" />
+    <Content Include="Formularios\Admin\DocenteCursos.aspx" />
     <Content Include="Formularios\Docente\HomeDocente.aspx" />
     <Content Include="Formularios\Docente\RegistroNotas.aspx" />
     <Content Include="Formularios\Docente\ReporteAlumno.aspx" />
     <Content Include="Formularios\Docente\ReportePlanes.aspx" />
-    <Content Include="Formularios\Especialidades.aspx" />
+    <Content Include="Formularios\Admin\Especialidades.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Formularios\Materias.aspx" />
+    <Content Include="Formularios\Admin\Materias.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -181,9 +181,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="HomeAdmin.aspx" />
+    <Content Include="Formularios\Admin\HomeAdmin.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Formularios\Planes.aspx" />
+    <Content Include="Formularios\Admin\Planes.aspx" />
     <Content Include="Modal.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -215,7 +215,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Formularios\Usuarios.aspx" />
+    <Content Include="Formularios\Admin\Usuarios.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -268,25 +268,25 @@
     <Compile Include="Formularios\ApplicationForm.aspx.designer.cs">
       <DependentUpon>ApplicationForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Comisiones.aspx.cs">
+    <Compile Include="Formularios\Admin\Comisiones.aspx.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Comisiones.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cursos.aspx.cs">
+    <Compile Include="Formularios\Admin\Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Cursos.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\DocenteCursos.aspx.cs">
+    <Compile Include="Formularios\Admin\DocenteCursos.aspx.cs">
       <DependentUpon>DocenteCursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\DocenteCursos.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\DocenteCursos.aspx.designer.cs">
       <DependentUpon>DocenteCursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Docente\HomeDocente.aspx.cs">
@@ -317,28 +317,28 @@
     <Compile Include="Formularios\Docente\ReportePlanes.aspx.designer.cs">
       <DependentUpon>ReportePlanes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Especialidades.aspx.cs">
+    <Compile Include="Formularios\Admin\Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Especialidades.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Materias.aspx.cs">
+    <Compile Include="Formularios\Admin\Materias.aspx.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Materias.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Materias.aspx.designer.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HomeAdmin.aspx.cs">
+    <Compile Include="Formularios\Admin\HomeAdmin.aspx.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HomeAdmin.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
@@ -348,11 +348,11 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Planes.aspx.cs">
+    <Compile Include="Formularios\Admin\Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Planes.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Planes.aspx.designer.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -370,11 +370,11 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Usuarios.aspx.cs">
+    <Compile Include="Formularios\Admin\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Formularios\Usuarios.aspx.designer.cs">
+    <Compile Include="Formularios\Admin\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />

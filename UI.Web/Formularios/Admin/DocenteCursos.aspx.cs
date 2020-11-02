@@ -46,6 +46,7 @@ namespace UI.Web.Formularios
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 

@@ -1,38 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Business.Entities;
+using UI.Web.Formularios;
 
-namespace UI.Web.Formularios
+namespace UI.Web
 {
-    public partial class Comisiones : ApplicationForm
+    public partial class Especialidades : ApplicationForm
     {
+
         #region Atributos
 
-        private ComisionLogic _logic;
+        private EspecialidadLogic _logic;
 
         #endregion
 
         #region Propiedades
 
-        public ComisionLogic Logic
+        public EspecialidadLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    this._logic = new ComisionLogic();
+                    this._logic = new EspecialidadLogic();
                 }
                 return _logic;
             }
         }
 
-        private Comision Entity
+        private Especialidad Entity
         {
             get;
             set;
@@ -47,11 +48,12 @@ namespace UI.Web.Formularios
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
         /// <summary>
-        /// Se carga la grilla con todas las comisiones
+        /// Se carga la grilla con todas las especialidades
         /// </summary>
         private void LoadGrid()
         {
@@ -69,12 +71,10 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se carga a la entidad con los datos seleccionados en el formulario
         /// </summary>
-        /// <param name="comision"></param>
-        public void LoadEntity(Comision comision)
+        /// <param name="especialidad"></param>
+        public void LoadEntity(Especialidad especialidad)
         {
-            comision.Descripcion = txtDescripcion.Text;
-            comision.AnioEspecialidad = Int32.Parse(txtAño.Text);
-            comision.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlan.SelectedValue));
+            especialidad.Descripcion = txtDescripcion.Text;
         }
 
         /// <summary>
@@ -85,8 +85,6 @@ namespace UI.Web.Formularios
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
-            txtAño.Text = Entity.AnioEspecialidad.ToString();
-            dwPlan.SelectedValue = Entity.ID.ToString();
         }
 
         /// <summary>
@@ -101,15 +99,14 @@ namespace UI.Web.Formularios
         /// <summary>
         /// Se invoca para guardar a la entidad
         /// </summary>
-        /// <param name="comision"></param>
-        public void SaveEntity(Comision comision)
+        /// <param name="especialidad"></param>
+        public void SaveEntity(Especialidad especialidad)
         {
-            Logic.Save(comision);
+            Logic.Save(especialidad);
         }
-
+     
         public void HabilitoValidaciones(bool enable)
         {
-            reqAño.Enabled = enable;
             reqDescripcion.Enabled = enable;
         }
 
@@ -117,9 +114,9 @@ namespace UI.Web.Formularios
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="ID"></param>
-        private void DeleteEntity(int ID)
+        private void DeleteEntity(Especialidad especialidad)
         {
-            Logic.Delete(ID);
+            Logic.Delete(especialidad);
         }
 
         /// <summary>
@@ -154,6 +151,7 @@ namespace UI.Web.Formularios
         }
 
 
+
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
@@ -173,11 +171,11 @@ namespace UI.Web.Formularios
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
-                        DeleteEntity(selectID);
+                        DeleteEntity(Entity);
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        Entity = new Comision();
+                        Entity = new Especialidad();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
@@ -185,7 +183,7 @@ namespace UI.Web.Formularios
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        Entity = new Comision();
+                        Entity = new Especialidad();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
@@ -193,7 +191,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Comisiones.aspx");
+                Response.Redirect("~/Formularios/Especialidades.aspx");
             }
         }
 
