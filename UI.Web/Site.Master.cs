@@ -14,6 +14,7 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
+            LogOut.ServerClick += new System.EventHandler(this.LogOut_Click);
         }
 
         public void MuestroMenu()
@@ -54,6 +55,15 @@ namespace UI.Web
                 }
             }
             else { Response.Redirect("~/Login.aspx",false); }
-        }       
+        }
+
+        protected void LogOut_Click(object sender, EventArgs e)
+        {
+            Session["usuario"] = null;
+            Response.Redirect("~/Login", false);
+        }
+
+
+
     }
 }
