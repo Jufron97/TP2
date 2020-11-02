@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 using Academia.Business.Entities;
 
 namespace UI.Web
@@ -13,7 +14,23 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
+        }
 
+        public void MuestroMenu()
+        {
+            Usuario usu = (Usuario)Session["usuario"];
+            switch (usu.Persona.TipoPersona)
+            {
+                case Persona.TiposPersonas.Admin:
+                    MenuAdmin.Visible = true;
+                    break;
+                case Persona.TiposPersonas.Alumno:
+                    MenuAlumno.Visible = true;
+                    break;
+                case Persona.TiposPersonas.Docente:
+                    MenuDocente.Visible = true;
+                    break;
+            }
         }
 
         protected void HomeButton_Click(object sender, EventArgs e)
@@ -21,8 +38,6 @@ namespace UI.Web
             if ((Usuario)Session["usuario"] != null)
             {
                 Usuario usu = (Usuario)Session["usuario"];
-
-
                 switch (usu.Persona.TipoPersona)
                 {
                     case Persona.TiposPersonas.Admin:
@@ -39,8 +54,6 @@ namespace UI.Web
                 }
             }
             else { Response.Redirect("~/Login.aspx",false); }
-        }
-
-      
+        }       
     }
 }

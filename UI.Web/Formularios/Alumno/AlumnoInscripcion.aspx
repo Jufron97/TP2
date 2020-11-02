@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlumnoInscripcion.aspx.cs" Inherits="UI.Web.Formularios.Alumno.CursosAlumno" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <form runat="server" >
+    <div>
         <asp:Panel ID="Panel1" runat="server" CssClass="panel" HorizontalAlign="Center">      
         <asp:GridView ID="GridViewCurso" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False">
             <Columns>
@@ -21,5 +22,5 @@
         <br />
         <asp:Button ID="btnInscribir" runat="server" Text="Inscribirse" OnClick="btnInscribir_Click" />
     </asp:Panel>
-    </form>
+ </div>
 </asp:Content>

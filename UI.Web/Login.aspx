@@ -5,7 +5,7 @@
     <div class="wrapper">
 	<div class="container">
 		<h1>Bienvenido</h1>
-        <form class="form" runat="server">			
+        <div class="form" runat="server">			
             <input id="txtUsuario" name="txtUsu" type="text" placeholder="Usuario" runat="server" value="" />
 			<input id="txtContraseña" name="txtcont" type="password" placeholder="Contraseña" runat="server" value="" />
 			<button type="submit" id="IngresarButton" runat="server">Ingresar</button>
@@ -16,7 +16,7 @@
 			-->
 			<asp:ValidationSummary ID="ValidationSummary1" runat="server" style="color: #FF0000" ValidationGroup="1" /> 
 			<asp:CustomValidator ID="cvContraseña" runat="server" ControlToValidate="txtContraseña" ErrorMessage="Clave o Usuario incorrectos" ValidationGroup="1" style="color: #FF0000">*</asp:CustomValidator>    			
-			 </form>
+		</div>
 	</div>
 	<ul class="bg-bubbles">
 		<li></li>

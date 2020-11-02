@@ -33,6 +33,42 @@ namespace UI.Web
         protected global::System.Web.UI.HtmlControls.HtmlButton LogOut;
 
         /// <summary>
+        /// Control formMasterPage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm formMasterPage;
+
+        /// <summary>
+        /// Control MenuAlumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu MenuAlumno;
+
+        /// <summary>
+        /// Control MenuDocente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu MenuDocente;
+
+        /// <summary>
+        /// Control MenuAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu MenuAdmin;
+
+        /// <summary>
         /// Control bodyContentPlaceHolder.
         /// </summary>
         /// <remarks>

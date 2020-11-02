@@ -42,14 +42,12 @@ namespace UI.Web.Formularios.Alumno
         protected void Page_Load(object sender, EventArgs e)
         {
             Entity = (Usuario)Session["usuario"];
-
             if (!Page.IsPostBack)
             {
              
                 LoadGrid();
-                
+                Master.MuestroMenu();              
             }
-
         }
 
         private Usuario Entity
