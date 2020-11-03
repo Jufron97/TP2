@@ -76,7 +76,7 @@
             <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ID="reqClave" controltovalidate="txtClave" errormessage="Clave Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
-            <br />
+            <br/>
             <div class="form-group">
             <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
             <asp:TextBox ID="txtRepetirClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
@@ -84,7 +84,7 @@
                 </div>
             <asp:Panel runat="server">
                 <div class="form-group">
-                    <br/>
+            <br/>
             <br/>
                 <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
                 <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 

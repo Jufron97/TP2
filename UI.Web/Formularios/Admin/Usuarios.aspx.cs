@@ -187,7 +187,7 @@ namespace UI.Web
             reqEmail.IsValid = !Validaciones.EsCadenaValida(txtEmail.Text);
             reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text, txtRepetirClave.Text);
             reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text, txtClave.Text);
-            if (!String.Equals(txtClave, txtRepetirClave))
+            if (!String.Equals(txtClave.Text, txtRepetirClave.Text))
             {
                 reqClave.ErrorMessage = "Ingrese Claves Iguales";
             }
