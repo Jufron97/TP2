@@ -214,7 +214,7 @@ namespace Academia.Data.Database
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
                 SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario = @nombUsu, clave = @claveUsu, habilitado = @habilitadoUsu "+
                 "WHERE id_usuario = @idUsu; "+             
-                "Update personas set nombre = @nombrePer, apellido = @apellidoPer, tipo_persona = @tipoPersona, fecha_nac = @fechaNac, id_plan = @idPlan "+
+                "Update personas set nombre = @nombrePer, apellido = @apellidoPer, tipo_persona = @tipoPersona, fecha_nac = @fechaNac, id_plan = @idPlan, direccion = @direccion, email = @email,telefono = @telefono "+
                 "where id_persona = @idPer", sqlConn);
                 //Usuario
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
@@ -227,8 +227,9 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
-                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
-                //cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = usuario.Persona.Direccion;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
                 cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
                 //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
                 //
@@ -280,17 +281,18 @@ namespace Academia.Data.Database
                 OpenConnection();/*
                 SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
-                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,fecha_nac,tipo_persona,id_plan)"+
-                "values(@nombrePer, @apellidoPer, @fechaNac, @tipoPersona, @idPlan) "+
+                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,fecha_nac,tipo_persona,id_plan,email,direccion,telefono)"+
+                "values(@nombrePer, @apellidoPer, @fechaNac, @tipoPersona, @idPlan,@email,@direccion,@telefono) "+
                 "declare @idPersona int = @@identity "+
                 "insert into usuarios(nombre_usuario, clave, habilitado, id_persona) "+
                 "values(@nombUsu, @claveUsu, @habilitadoUsu, @idPersona); ", sqlConn);
                 //Persona
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = usuario.Persona.Apellido;
-                //cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
-                //cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
-                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = /*usuario.Persona.FechaNacimiento*/ DateTime.Now;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Persona.Email;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
+                cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = usuario.Persona.Direccion;
                 //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = usuario.Persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
