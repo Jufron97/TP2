@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Academia.Business.Logic;
 using Academia.Business.Entities;
 using UI.Web.Formularios;
+using Academia.Util;
 
 namespace UI.Web
 {
@@ -126,12 +127,16 @@ namespace UI.Web
         {
             txtDescripcion.Text = String.Empty;
         }
+        protected void ValidoDatos() { 
 
-        #endregion
+            reqDescripcion.IsValid = Validaciones.EsCadenaValida(txtDescripcion.Text);
+        }
 
-        #region Eventosormulario
+    #endregion
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+    #region Eventosormulario
+
+    protected void btnEliminar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
             {
@@ -166,6 +171,7 @@ namespace UI.Web
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
+            this.ValidoDatos();
             if (Page.IsValid)
             {
                 switch (this.FormMode)

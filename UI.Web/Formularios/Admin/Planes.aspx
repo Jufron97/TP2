@@ -25,7 +25,7 @@
         </asp:Label>
         <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
 
-            <asp:RequiredFieldValidator runat="server" id="ReqDescripcion" controltovalidate="txtDescripcion" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="Descripcion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
        
             </div>
         <br />
@@ -41,12 +41,14 @@
             </div>
         <asp:Panel runat="server">
         <div class="form-group">
+            <br/>
+            <br/>
             <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
             <asp:LinkButton ID="btnCancelar" runat="server" OnClick="LinkButton1_Click">Cancelar</asp:LinkButton> 
             </div>
         </asp:Panel>     
         <div class="form-group">
-        <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
+        <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="1" runat="server" />
             </div>
         <br />
     </asp:Panel>   

@@ -30,17 +30,22 @@
         <div class="form-group">
         <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>
         <asp:TextBox ID="txtNota" CssClass="form-control" runat="server"></asp:TextBox>  
-            <asp:RequiredFieldValidator runat="server" id="reqNota" controltovalidate="txtNota" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqNota" controltovalidate="txtNota" errormessage="Ingrese una nota Válida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
             
             </div>
         <br/>
     </asp:Panel> 
     <asp:Panel ID="gridPanelFormCorregir" HorizontalAlign="Center" runat="server">
         <div class="form-group">
+            <br/>
+            <br/>
         <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>
         <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton>  
             </div>
     </asp:Panel>
+        <div class="form-group">
+        <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="1" runat="server" />
+            </div>
  </asp:Panel>
 </div>
      </asp:Panel>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace UI.Web.Formularios.Docente
 {
@@ -139,7 +140,10 @@ namespace UI.Web.Formularios.Docente
             txtApellido.Text = String.Empty;
             txtNota.Text = String.Empty;
         }
-
+        protected void ValidoDatos()
+        {
+            reqNota.IsValid = Validaciones.EsNumerico(txtNota.Text);
+        }
         #endregion
 
         #region Eventosormulario
@@ -147,6 +151,7 @@ namespace UI.Web.Formularios.Docente
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
+            this.ValidoDatos();
             if (Page.IsValid)
             {
                 switch (this.FormMode)

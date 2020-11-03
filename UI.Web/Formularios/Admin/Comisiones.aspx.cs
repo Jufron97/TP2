@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace UI.Web.Formularios
 {
@@ -165,10 +166,16 @@ namespace UI.Web.Formularios
             }
         }
 
+        protected void ValidoDatos()
+        {
+            reqAño.IsValid = Validaciones.EsNumerico(txtAño.Text);
+            reqDescripcion.IsValid = Validaciones.EsCadenaValida(txtDescripcion.Text);
+        }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            HabilitoValidaciones(true);
+            this.HabilitoValidaciones(true);
+            this.ValidoDatos();
             if (Page.IsValid)
             {
                 switch (this.FormMode)

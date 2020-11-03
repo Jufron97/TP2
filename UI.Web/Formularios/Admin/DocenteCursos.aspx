@@ -47,12 +47,13 @@
             <br/>
             <asp:Panel runat="server">
                 <div class="form-group">
+                    <br/>
+            <br/>
                 <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
                 <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
                     </div>
             </asp:Panel>      
             <div class="form-group">
-        <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
                 </div>
         <br />
         </asp:Panel>

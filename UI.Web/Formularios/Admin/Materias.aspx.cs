@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace UI.Web.Formularios
 {
@@ -146,6 +147,14 @@ namespace UI.Web.Formularios
             txtDescripcion.Text = String.Empty;
         }
 
+        protected void ValidoDatos()
+        {
+            reqDescripcion.IsValid = Validaciones.EsCadenaValida(txtDescripcion.Text);
+            reqHsSemanales.IsValid = Validaciones.EsNumerico(txtHsSemanales.Text);
+            reqHsTotales.IsValid = Validaciones.EsNumerico(txtHsTotales.Text);
+        }
+
+
         #endregion
 
         #region EventosFormulario
@@ -190,6 +199,7 @@ namespace UI.Web.Formularios
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
+            this.ValidoDatos();
             if (Page.IsValid)
             {
                 switch (this.FormMode)

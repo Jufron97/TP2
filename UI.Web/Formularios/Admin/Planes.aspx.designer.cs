@@ -87,13 +87,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// Control ReqDescripcion.
+        /// Control reqDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqDescripcion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDescripcion;
 
         /// <summary>
         /// Control lblEspecialidad.
