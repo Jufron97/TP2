@@ -33,7 +33,11 @@ namespace UI.Web
             set;
         }
 
-
+        private void cargoDropDown()
+        {
+            dwTiposPersonas.DataSource = Persona.DameTusTipos();
+            dwTiposPersonas.DataBind();
+        }
         /// <summary>
         /// Carga todo los datos de los alumnos en 
         /// </summary>
@@ -49,7 +53,6 @@ namespace UI.Web
             {
                 LoadGrid();
                 Master.MuestroMenu();
-
             }
         }
 
@@ -68,13 +71,16 @@ namespace UI.Web
             usuario.Habilitado = checkHabilitado.Checked;
             usuario.Clave = txtClave.Text;
             usuario.Email = txtEmail.Text;
+            //Persona
             usuario.Persona.FechaNacimiento = CalFechaNac.SelectedDate;
             usuario.Persona.Telefono = txtTelefono.Text;
             usuario.Persona.Direccion = txtDireccion.Text;
+            usuario.Persona.TipoPersona = (Persona.TiposPersonas)(dwTiposPersonas.SelectedIndex);
         }
 
         public void LoadForm(int id)
         {
+            cargoDropDown();
             Entity = this.Logic.GetOne(id);
             txtNombre.Text = Entity.Nombre;
             txtApellido.Text = Entity.Apellido;
@@ -84,6 +90,7 @@ namespace UI.Web
             txtTelefono.Text = Entity.Persona.Telefono;
             txtDireccion.Text = Entity.Persona.Direccion;
             CalFechaNac.SelectedDate = Entity.Persona.FechaNacimiento;
+            dwTiposPersonas.SelectedValue = Entity.Persona.TipoPersona.ToString();
         }
 
         private void EnableForm(bool enable)
@@ -99,6 +106,7 @@ namespace UI.Web
             txtDireccion.Enabled = enable;
             txtTelefono.Enabled = enable;
             CalFechaNac.Enabled = enable;
+            dwTiposPersonas.Enabled = enable;
         }
 
         public void SaveEntity(Usuario usuario)
@@ -115,8 +123,7 @@ namespace UI.Web
             reqRepetirClave.Enabled = enable;
             reqEmail.Enabled = enable;
             reqDireccion.Enabled = enable;
-            reqTelefono.Enabled = enable;
-            CalFechaNac.Enabled = enable;
+            reqTelefono.Enabled = enable;                     
         }
 
 
@@ -207,8 +214,7 @@ namespace UI.Web
                     LoadGrid();
                     break;
                 case FormModes.Modificacion:
-                    Entity = new Usuario();
-                    Entity.ID = selectID;
+                    Entity = Logic.GetOne(selectID);
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
                     SaveEntity(Entity);

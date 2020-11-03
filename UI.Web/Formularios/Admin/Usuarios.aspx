@@ -72,6 +72,12 @@
             </div>
             <br />
             <div class="form-group">
+            <asp:Label ID="lblTipoPersona" runat="server" Text="Tipo Persona: "></asp:Label>
+            <asp:DropDownList ID="dwTiposPersonas" runat="server"></asp:DropDownList>
+            <br />
+            </div>
+            <br/>
+            <div class="form-group">
             <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
             <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ID="reqClave" controltovalidate="txtClave" errormessage="Clave Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
@@ -81,7 +87,8 @@
             <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
             <asp:TextBox ID="txtRepetirClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ID="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
-                </div>
+                </div>  
+            <br />
             <asp:Panel runat="server">
                 <div class="form-group">
             <br/>
