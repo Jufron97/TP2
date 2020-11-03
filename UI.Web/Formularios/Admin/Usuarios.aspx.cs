@@ -183,8 +183,8 @@ namespace UI.Web
             reqDireccion.IsValid = Validaciones.EsDireccionValida(txtDireccion.Text);
             reqTelefono.IsValid = Validaciones.EsTelefonoValido(txtTelefono.Text);
             reqNombUsuario.IsValid = Validaciones.EsUsuarioValido(txtNombreUsuario.Text);
-            reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text);
-            reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text);
+            reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text,txtRepetirClave.Text);
+            reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text,txtClave.Text);
             reqEmail.IsValid = Validaciones.EsEmailValido(txtEmail.Text);
         }
 

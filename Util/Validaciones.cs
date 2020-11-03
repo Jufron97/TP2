@@ -24,11 +24,15 @@ namespace Academia.Util
             return !(Regex.IsMatch(usu, patron) || Regex.IsMatch(usu, espaciosBlancos));
         }
 
-        public static bool ValidarLongitudClave(string clave)
+        public static bool ValidarLongitudClave(string clave,string claveRep)
         {
-            if (clave != null)
+            if (String.Equals(clave, claveRep))
             {
-                return clave.Length < 8;
+                if (clave != null)
+                {
+                    return clave.Length < 8;
+                }
+                else return false;
             }
             else return false;
         }
