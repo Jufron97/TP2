@@ -107,7 +107,7 @@ namespace UI.Web
      
         public void HabilitoValidaciones(bool enable)
         {
-            reqDescripcion.Enabled = enable;
+            //reqDescripcion.Enabled = enable;
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Especialidades.aspx");
+                Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
             }
         }
 
