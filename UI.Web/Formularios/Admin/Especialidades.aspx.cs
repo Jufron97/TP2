@@ -107,7 +107,7 @@ namespace UI.Web
      
         public void HabilitoValidaciones(bool enable)
         {
-            reqDescripcion.Enabled = enable;
+            //reqDescripcion.Enabled = enable;
         }
 
         /// <summary>

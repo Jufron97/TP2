@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
-<asp:Content ID="formEspecialidades" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+<asp:Content ID="formEspecialidades" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server"> 
     <asp:Panel runat="server" style="border: 1px solid #000; width: 100%; height:80%; left:0%;position:relative;">
     <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
         <asp:Panel runat="server">
@@ -22,13 +22,12 @@
     <asp:Panel ID="formPanel" HorizontalAlign="Center" runat="server" Visible="false">
         <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
-        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="*" Enabled="false" ForeColor="Red" />
+        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>        
             </div>
         <asp:Panel runat="server">
             <div class="form-group">
-            <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>  
-            <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
+            <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" OnClientClickOnClientClick="javascript:return Validation();">Aceptar</asp:LinkButton>  
+            <asp:LinkButton ID="btnCancelar" runat="server" mi OnClick="btnCancelar_Click">Cancelar</asp:LinkButton> 
                 </div>
         </asp:Panel>    
         <div class="form-group">
