@@ -191,7 +191,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Especialidades.aspx");
+                Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
             }
         }
 

@@ -219,7 +219,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/DocenteCursos.aspx");
+                Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
             }
         }
 

@@ -215,7 +215,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Materias.aspx");
+                Response.Redirect("~/Formularios/Admin/Materias.aspx");
             }
         }
     }

@@ -27,13 +27,13 @@
             <div class="form-group">
             <asp:Label ID="lblNombre" runat="server" Text="Nombre: "></asp:Label>
             <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqNombre" controltovalidate="txtNombre" errormessage="Nombre Invalido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblApellido" runat="server" Text="Apellido: "></asp:Label>
             <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"> </asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqApellido" controltovalidate="txtApellido" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqApellido" controltovalidate="txtApellido" errormessage="Apellido Invalido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <br />
             <div class="form-group">
@@ -44,25 +44,43 @@
             <div class="form-group">
             <asp:Label ID="lblNombreUsuario" runat="server" Text="Usuario: "></asp:Label>
             <asp:TextBox ID="txtNombreUsuario" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqNombUsuario" controltovalidate="txtNombreUsuario" errormessage="Nombre Usuario Invalido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
             <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqEmail" controltovalidate="txtEmail" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqEmail" controltovalidate="txtEmail" errormessage="Email Invalido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                  </div>
+            <br />
+            <div class="form-group">
+            <asp:Label ID="lblTelefono" runat="server" Text="Telefono: "></asp:Label>
+            <asp:TextBox ID="txtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" id="reqTelefono" controltovalidate="txtTelefono" errormessage="Telefono Invalido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+                 </div>
+            <br />
+            <div class="form-group">
+            <asp:Label ID="lblDireccion" runat="server" Text="Direccion: "></asp:Label>
+            <asp:TextBox ID="txtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" id="reqDireccion" controltovalidate="txtDireccion" errormessage="Direccion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red">*</asp:RequiredFieldValidator>
+                 </div>
+            <br />
+            <div class="form-group">
+            <asp:Label ID="lblFechaNac" runat="server" Text="Fecha Nacimiento: "></asp:Label>
+            <br />
+            <asp:Calendar ID="CalFechaNac" runat="server"></asp:Calendar>
+            </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
             <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
             <asp:TextBox ID="txtRepetirClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" Enabled="false" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <asp:Panel runat="server">
                 <div class="form-group">
@@ -71,7 +89,7 @@
                     </div>
             </asp:Panel>   
             <div class="form-group">
-        <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
+        <asp:ValidationSummary ID="vsUsuario" ValidationGroup="1" runat="server" />
                 </div>
         <br />
         </asp:Panel>

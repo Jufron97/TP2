@@ -10,7 +10,7 @@ namespace Academia.Util
 {
     public class Validaciones
     {
-        public static Boolean emailBienEscrito(string email)
+        public static Boolean EsEmailValido(string email)
         {
             String expresion;
             expresion = @"\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*";

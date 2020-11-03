@@ -218,7 +218,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Cursos.aspx");
+                Response.Redirect("~/Formularios/Admin/Cursos.aspx");
             }
         }
 

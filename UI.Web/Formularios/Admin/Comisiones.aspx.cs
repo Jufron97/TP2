@@ -194,7 +194,7 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Comisiones.aspx");
+                Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
             }
         }
 

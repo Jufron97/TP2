@@ -210,7 +210,7 @@ namespace UI.Web
                     default:
                         break;
                 }
-                Response.Redirect("~/Formularios/Planes.aspx");
+                Response.Redirect("~/Formularios/Admin/Planes.aspx");
             }
         }
     }

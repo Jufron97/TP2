@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 using UI.Web.Formularios;
 
 namespace UI.Web
@@ -67,7 +68,9 @@ namespace UI.Web
             usuario.Habilitado = checkHabilitado.Checked;
             usuario.Clave = txtClave.Text;
             usuario.Email = txtEmail.Text;
-            usuario.Persona.FechaNacimiento = DateTime.Now;
+            usuario.Persona.FechaNacimiento = CalFechaNac.SelectedDate;
+            usuario.Persona.Telefono = txtTelefono.Text;
+            usuario.Persona.Direccion = txtDireccion.Text;
         }
 
         public void LoadForm(int id)
@@ -78,6 +81,9 @@ namespace UI.Web
             txtNombreUsuario.Text = Entity.NombreUsuario;
             txtEmail.Text = Entity.Email;
             checkHabilitado.Checked = Entity.Habilitado;
+            txtTelefono.Text = Entity.Persona.Telefono;
+            txtDireccion.Text = Entity.Persona.Direccion;
+            CalFechaNac.SelectedDate = Entity.Persona.FechaNacimiento;
         }
 
         private void EnableForm(bool enable)
@@ -90,6 +96,9 @@ namespace UI.Web
             txtClave.Enabled = enable;
             txtRepetirClave.Enabled = enable;
             lblRepetirClave.Enabled = enable;
+            txtDireccion.Enabled = enable;
+            txtTelefono.Enabled = enable;
+            CalFechaNac.Enabled = enable;
         }
 
         public void SaveEntity(Usuario usuario)
@@ -105,6 +114,9 @@ namespace UI.Web
             reqClave.Enabled = enable;
             reqRepetirClave.Enabled = enable;
             reqEmail.Enabled = enable;
+            reqDireccion.Enabled = enable;
+            reqTelefono.Enabled = enable;
+            CalFechaNac.Enabled = enable;
         }
 
 
@@ -122,6 +134,9 @@ namespace UI.Web
             checkHabilitado.Checked = false;
             txtClave.Text = String.Empty;
             txtRepetirClave.Text = String.Empty;
+            txtDireccion.Text = String.Empty;
+            txtTelefono.Text = String.Empty;
+            CalFechaNac.SelectedDate = DateTime.Now;
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -161,10 +176,23 @@ namespace UI.Web
             }
         }
 
+        protected void ValidoDatos()
+        {
+            reqApellido.IsValid = Validaciones.EsNombreValido(txtApellido.Text);
+            reqNombre.IsValid = Validaciones.EsNombreValido(txtNombre.Text);
+            reqDireccion.IsValid = Validaciones.EsDireccionValida(txtDireccion.Text);
+            reqTelefono.IsValid = Validaciones.EsTelefonoValido(txtTelefono.Text);
+            reqNombUsuario.IsValid = Validaciones.EsUsuarioValido(txtNombreUsuario.Text);
+            reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text);
+            reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text);
+            reqEmail.IsValid = Validaciones.EsEmailValido(txtEmail.Text);
+        }
+
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
+            ValidoDatos();
             if (Page.IsValid)
             {
             switch (this.FormMode)
@@ -190,7 +218,7 @@ namespace UI.Web
                 default:
                     break;
                 }
-                Response.Redirect("~/Formularios/Usuarios.aspx");
+                Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
 
             }          
         }
