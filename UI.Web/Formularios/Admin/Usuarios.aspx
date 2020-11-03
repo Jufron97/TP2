@@ -62,8 +62,8 @@
             <div class="form-group">
             <asp:Label ID="lblDireccion" runat="server" Text="Direccion: "></asp:Label>
             <asp:TextBox ID="txtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqDireccion" controltovalidate="txtDireccion" errormessage="Direccion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red">*</asp:RequiredFieldValidator>
-                 </div>
+            <asp:RequiredFieldValidator runat="server" ID="reqDireccion" controltovalidate="txtDireccion" errormessage="Direccion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red">*</asp:RequiredFieldValidator>
+            </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblFechaNac" runat="server" Text="Fecha Nacimiento: "></asp:Label>
@@ -74,13 +74,13 @@
             <div class="form-group">
             <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
             <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqClave" controltovalidate="txtClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator runat="server" ID="reqClave" controltovalidate="txtClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <br />
             <div class="form-group">
             <asp:Label ID="lblRepetirClave" runat="server" Text="Repetir Clave: "></asp:Label>
             <asp:TextBox ID="txtRepetirClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator runat="server" ID="reqRepetirClave" controltovalidate="txtRepetirClave" errormessage="*" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
                 </div>
             <asp:Panel runat="server">
                 <div class="form-group">

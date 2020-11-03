@@ -178,14 +178,15 @@ namespace UI.Web
 
         protected void ValidoDatos()
         {
-            reqApellido.IsValid = Validaciones.EsNombreValido(txtApellido.Text);
-            reqNombre.IsValid = Validaciones.EsNombreValido(txtNombre.Text);
-            reqDireccion.IsValid = Validaciones.EsDireccionValida(txtDireccion.Text);
-            reqTelefono.IsValid = Validaciones.EsTelefonoValido(txtTelefono.Text);
-            reqNombUsuario.IsValid = Validaciones.EsUsuarioValido(txtNombreUsuario.Text);
-            reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text,txtRepetirClave.Text);
-            reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text,txtClave.Text);
-            reqEmail.IsValid = Validaciones.EsEmailValido(txtEmail.Text);
+            reqApellido.IsValid = Validaciones.EsCadenaValida(txtApellido.Text);
+            reqNombre.IsValid = Validaciones.EsCadenaValida(txtNombre.Text);
+            reqDireccion.IsValid = Validaciones.EsCadenaValida(txtDireccion.Text);
+            reqTelefono.IsValid = Validaciones.EsCadenaValida(txtTelefono.Text);
+            reqNombUsuario.IsValid = Validaciones.EsCadenaValida(txtNombreUsuario.Text);   
+            //Se tiene que negar con el signo ! por que si no, devolveria que el email es invalido
+            reqEmail.IsValid = !Validaciones.EsCadenaValida(txtEmail.Text);
+            reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text, txtRepetirClave.Text);
+            reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text, txtClave.Text);
         }
 
 

@@ -10,62 +10,62 @@ namespace Academia.Util
 {
     public class Validaciones
     {
-        public static Boolean EsEmailValido(string email)
+        private static string patron = @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$";
+
+        /// <summary>
+        /// Se verifica que la cadena sea menor o igual a 50 caracteres y que no sea vacia
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
+        public static bool VerificoLongitudYVacio(string cadena)
         {
-            String expresion;
-            expresion = @"\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*";
-            return Regex.IsMatch(email, expresion);
+            return cadena.Length < 50 && !String.IsNullOrEmpty(cadena);
         }
 
-        public static bool EsUsuarioValido(string usu)
+        /// <summary>
+        /// Devuelve true si es un cadena valida, caso contrario false
+        /// </summary>
+        /// <param name="usu"></param>
+        /// <returns></returns>
+        public static bool EsCadenaValida(string cadena)
         {
-            string patron = "[^ \\w_.-]";
-            string espaciosBlancos = "[ \\s]";
-            return !(Regex.IsMatch(usu, patron) || Regex.IsMatch(usu, espaciosBlancos));
+            if (VerificoLongitudYVacio(cadena))
+            {
+                return !Regex.IsMatch(cadena,patron);
+            }
+            else
+            {
+                return false;
+            }
         }
 
+        /// <summary>
+        /// Devuelve true si es un valor numerico, caso contrario false
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
+        public static bool EsNumerico(string cadena)
+        {
+            return Int32.TryParse(cadena, out int resultado);
+        }
+
+        /// <summary>
+        /// Devuelve true si es un nombre valido, caso contrario false
+        /// </summary>
+        /// <param name="usu"></param>
+        /// <returns></returns>
         public static bool ValidarLongitudClave(string clave,string claveRep)
         {
             if (String.Equals(clave, claveRep))
             {
-                if (clave != null)
+                if (!String.IsNullOrEmpty(clave))
                 {
                     return clave.Length < 8;
                 }
-                else return false;
+                else 
+                    return false;
             }
             else return false;
         }
-
-        public static bool EsNombreValido(string nombre)
-        {
-            string patron = "[^ a-zA-Z]";
-            return Regex.IsMatch(nombre, patron);
-        }
-
-        public static bool EsDescripcionValida(string descripcion)
-        {
-            string patron = "[\\w]";
-            return Regex.IsMatch(descripcion, patron);
-        }
-
-        public static bool EsLegajoValido(string legajo)
-        {
-            string patron = @"(\d){5}";
-            return Regex.IsMatch(legajo, patron);
-        }
-
-        public static bool EsTelefonoValido(string telefono)
-        {
-            string patron = @"(\d){7,}";
-            return Regex.IsMatch(telefono, patron);
-        }
-
-        public static bool EsDireccionValida(string direccion)
-        {
-            string patron = @"(\w|\s)+ \d{1,5} ((b|B)(i|I)(s|S))?";
-            return Regex.IsMatch(direccion, patron);
-        }
-
     }
 }
