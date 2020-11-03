@@ -26,7 +26,11 @@ namespace Academia.Util
 
         public static bool ValidarLongitudClave(string clave)
         {
-            return clave.Length < 8;
+            if (clave != null)
+            {
+                return clave.Length < 8;
+            }
+            else return false;
         }
 
         public static bool EsNombreValido(string nombre)
