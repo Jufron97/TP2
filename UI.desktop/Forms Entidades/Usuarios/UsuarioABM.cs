@@ -42,7 +42,6 @@ namespace Academia.UI.Desktop
             cbPlanes.ValueMember = "ID";
             cbPlanes.DisplayMember = "Descripcion";
             cbTiposPersonas.DataSource = Persona.DameTusTipos();
-
         }
 
         /// <summary>
@@ -79,17 +78,18 @@ namespace Academia.UI.Desktop
             //Usuario
             this.txtID.Text = this.UsuarioActual.ID.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
+            this.txtNombreUsuario.Text = this.UsuarioActual.NombreUsuario;
             //Persona 
-            this.txtNombre.Text = this.UsuarioActual.Persona.Nombre;
+            this.txtNombrePersona.Text = this.UsuarioActual.Persona.Nombre;
             this.txtApellido.Text = this.UsuarioActual.Persona.Apellido;
+            this.txtLegajo.Text = this.UsuarioActual.Persona.Legajo.ToString();
+            this.txtDireccion.Text = this.UsuarioActual.Persona.Direccion;
+            this.txtEmail.Text = this.UsuarioActual.Persona.Email;
+            this.txtTelefono.Text = this.UsuarioActual.Persona.Telefono;
             this.cbPlanes.SelectedValue = this.UsuarioActual.Persona.IDPlan;
-            dtpFechaNac.Value = UsuarioActual.Persona.FechaNacimiento;
+            this.dtpFechaNac.Value = this.UsuarioActual.Persona.FechaNacimiento;
             //Para ver que tipo de persona es
-            cbTiposPersonas.SelectedItem = UsuarioActual.Persona.TipoPersona;
-            /*
-             * ACA IRIAN TODOS LOS DATOS QUE FALTAN DEL FORMULARIO
-             */
+            this.cbTiposPersonas.SelectedItem = this.UsuarioActual.Persona.TipoPersona;
         }
 
         /// <summary>
@@ -97,14 +97,18 @@ namespace Academia.UI.Desktop
         /// </summary>
         public void CastearDatosUsuario()
         {
-            UsuarioActual = new Usuario();
+            //Datos Usuario
             this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-            this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
+            this.UsuarioActual.NombreUsuario = this.txtNombreUsuario.Text;
             this.UsuarioActual.Clave = this.txtClave.Text;
-            //Persona
-            this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+            //Datos Persona
+            this.UsuarioActual.Persona.Nombre = this.txtNombrePersona.Text;
             this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
             this.UsuarioActual.Persona.FechaNacimiento = this.dtpFechaNac.Value;
+            this.UsuarioActual.Persona.Direccion = this.txtDireccion.Text;
+            this.UsuarioActual.Persona.Telefono = this.txtTelefono.Text;
+            this.UsuarioActual.Persona.Email = this.txtEmail.Text;
+            this.UsuarioActual.Persona.Legajo = Int32.Parse(this.txtLegajo.Text);
             //Se castea a el objeto Plan que se selecciono, ya que el DataSource del ComboBox son objetos
             this.UsuarioActual.Persona.Plan = (Plan)this.cbPlanes.SelectedItem;
             //Se verifica el tipo de persona seleccionada
@@ -114,7 +118,7 @@ namespace Academia.UI.Desktop
         /// <summary>
         /// Metodo que se utiliza para pasar los datos de los TXT a un objeto correspindientes
         /// </summary>
-        public void MapearADatos2()
+        new public virtual void MapearADatos()
         {
             //Dependiendo del tipo de formulario, se le asigna el tipo al usuario
             switch(this.Modo)
@@ -123,12 +127,12 @@ namespace Academia.UI.Desktop
                     UsuarioActual.State = Usuario.States.Deleted;
                     break;
                 case ApplicationForm.ModoForm.Alta:
+                    this.UsuarioActual = new Usuario();
                     CastearDatosUsuario();
                     this.UsuarioActual.State = Usuario.States.New;
                     break;
                 case ApplicationForm.ModoForm.Modificacion:
-                    CastearDatosUsuario();
-                    this.UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
+                    CastearDatosUsuario();                    
                     this.UsuarioActual.State = Usuario.States.Modified;
                     break;
                 default: 
@@ -138,7 +142,7 @@ namespace Academia.UI.Desktop
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos2();
+            MapearADatos();
             new UsuarioLogic().Save(UsuarioActual);
         }
 
@@ -148,81 +152,53 @@ namespace Academia.UI.Desktop
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (existenCamposVacios())
+            if (validoDatos())
             {
-                if (verificoCampos())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {
-                Notificar("Existen campos vacios, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notificar("Existen campos erroneos, por favor verifique", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public bool existenCamposVacios()
+        public bool validoDatos()
         {
             bool validador = true;
-            if (String.IsNullOrEmpty(txtNombre.Text))
+            if (!Validaciones.EsCadenaValida(txtNombrePersona.Text))
             {
-                errProvider.SetError(txtNombre, "El campo no puede estar vacio!");
+                errProvider.SetError(txtNombrePersona, "El campo ingresado es erroneo!");
                 validador = false;
             }
-            if (String.IsNullOrEmpty(txtApellido.Text))
+            if (!Validaciones.EsCadenaValida(txtApellido.Text))
             {
-                errProvider.SetError(txtApellido, "El campo no puede estar vacio!");
+                errProvider.SetError(txtApellido, "El campo ingresado es erroneo!");
                 validador = false;
             }
-            if (String.IsNullOrEmpty(txtClave.Text))
+            if (!Validaciones.EsCadenaValida(txtClave.Text))
             {
-                errProvider.SetError(txtClave, "El campo no puede estar vacio!");
+                errProvider.SetError(txtClave, "El campo ingresado es erroneo!");
                 validador = false;
             }
-            if (String.IsNullOrEmpty(txtConfirmarClave.Text))
+            if (!Validaciones.EsCadenaValida(txtConfirmarClave.Text))
             {
-                errProvider.SetError(txtClave, "El campo no puede estar vacio!");
+                errProvider.SetError(txtConfirmarClave, "El campo ingresado es erroneo!");
                 validador = false;
             }
-            if (String.IsNullOrEmpty(txtUsuario.Text))
+            if (!Validaciones.EsCadenaValida(txtNombreUsuario.Text))
             {
-                errProvider.SetError(txtUsuario, "El campo no puede estar vacio!");
+                errProvider.SetError(txtNombreUsuario, "El campo ingresado es erroneo!");
                 validador = false;
+            }          
+            if (Validaciones.ValidarLongitudClave(txtClave.Text,txtConfirmarClave.Text))
+            {
+
             }
             return validador;
         }
+     
 
-        public bool verificoCampos()
-        {
-            bool validador = true;
-            string mensaje = null;
-            if (txtClave.TextLength < 8)
-            {
-                mensaje += "La contraseña debe ser mayor a 8 caracteres\n";
-                validador = false;
-            }
-            if (txtClave.Text != txtConfirmarClave.Text)
-            {
-                mensaje += "Las claves no coinciden\n";
-                validador = false;
-            }/*
-            if(!Validaciones.emailBienEscrito(txtEmail.Text))
-            {
-                mensaje += "El mail ingresado no es valido\n";
-                validador = false;
-            }*/
-            if (!String.IsNullOrEmpty(mensaje))
-            {
-                Notificar(mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return validador;
-
-        }
         new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
@@ -261,7 +237,12 @@ namespace Academia.UI.Desktop
             IniciarFormulario();
         }
 
+
         #endregion
 
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }      
 }

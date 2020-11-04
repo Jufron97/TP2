@@ -76,7 +76,7 @@ namespace Academia.Data.Database
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas", Ex);
                 throw Ex;
             }
             finally
@@ -151,7 +151,7 @@ namespace Academia.Data.Database
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la persona", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -195,7 +195,7 @@ namespace Academia.Data.Database
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                Exception ExcepcionManejada = new Exception("Error al modificar datos del usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al modificar datos de la persona", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -225,7 +225,7 @@ namespace Academia.Data.Database
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                Exception ExcepcionManejada = new Exception("Error al eliminar al usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar la persona", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -238,14 +238,14 @@ namespace Academia.Data.Database
         /// Se inserta a la persona en la Base de Datos
         /// </summary>
         /// <param name="persona"></param>
-        public void Insert(Persona persona)
-        {
-            
+        public int Insert(Persona persona)
+        {           
             try
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan) "+
-                "values (@nombrePer,apellidoPer,@direccion,@email,@telefono,@fechaNac,@legajo,@tipoPersona,@idPlan)",sqlConn);
+                "values (@nombrePer,@apellidoPer,@direccion,@email,@telefono,@fechaNac,@legajo,@tipoPersona,@idPlan) "+
+                "select @@identity",sqlConn);
                 /*
                 SqlCommand cmdSave = new SqlCommand("InsertarPersona", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
@@ -253,17 +253,20 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = persona.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
                 cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
-                cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = persona.Legajo;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.IDPlan;
+                Int32 id = (Int32)cmdSave.ExecuteScalar();
+                return (int)id;
             }
             catch (Exception Ex)
             {
                 //ACA SE DEJARIA ASENTADO CUAL FUE EL TIPO DE ERROR EN EL LOG
                 //new Log(Ex.Message);
-                Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al crear a la persona", Ex);
                 throw Ex;
             }
             finally

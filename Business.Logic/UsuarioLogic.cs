@@ -71,7 +71,7 @@ namespace Academia.Business.Logic
                 return false;
             }
         }
-
+        /*
         /// <summary>
         /// Elimina a un usuario persistido con el ID especificado de la base de datos
         /// </summary>
@@ -79,8 +79,12 @@ namespace Academia.Business.Logic
         public void Delete(int id)
         {
             UsuarioData.Delete(id);
-        }
+        }*/
 
+        /// <summary>
+        /// Elimina a un usuario especificado de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public void Delete(Usuario Usu)
         {
             UsuarioData.Delete(Usu);

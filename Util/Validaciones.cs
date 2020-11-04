@@ -65,7 +65,8 @@ namespace Academia.Util
                 else 
                     return false;
             }
-            else return false;
+            else 
+                return false;
         }
     }
 }
