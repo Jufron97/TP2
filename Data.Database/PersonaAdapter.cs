@@ -112,7 +112,7 @@ namespace Academia.Data.Database
                     per.TipoPersona = (Persona.TiposPersonas)drUsuarios["tipo_persona"];
                     per.Plan = new PlanAdapter().GetOne((int)drUsuarios["id_plan"]);
                     //Asi se verifica si son nulos o no los datos
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    if (String.IsNullOrEmpty(drUsuarios["direccion"].ToString()))
                     {
                         per.Direccion = "No posee";
                     }
@@ -120,7 +120,7 @@ namespace Academia.Data.Database
                     {
                         per.Direccion = (string)drUsuarios["direccion"];
                     }
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    if (String.IsNullOrEmpty(drUsuarios["email"].ToString()))
                     {
                         per.Email = "No posee";
                     }
@@ -128,7 +128,7 @@ namespace Academia.Data.Database
                     {
                         per.Email = (string)drUsuarios["email"];
                     }
-                    if (String.IsNullOrEmpty(drUsuarios["legajo"].ToString()))
+                    if (String.IsNullOrEmpty(drUsuarios["telefono"].ToString()))
                     {
                         per.Telefono = "No posee";
                     }
@@ -173,14 +173,17 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("Update personas set nombre=@nombrePer,apellido=@apellidoPer,email=@email,"+
-                "telefono=@telefono,fecha_nac=@fehcaNac,legajo=@legajo,tipo_persona=@tipoPersona,id_plan=@idPlan ",sqlConn);
+                "telefono=@telefono,direccion=@direccion,fecha_nac=@fechaNac,legajo=@legajo,tipo_persona=@tipoPersona,id_plan=@idPlan " +
+                "where id_persona=@idPersona",sqlConn);
                 /*
                 SqlCommand cmdSave = new SqlCommand("ActualizarPersona", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
+                cmdSave.Parameters.Add("@idPersona", SqlDbType.Int).Value = persona.ID;
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = persona.Nombre;
                 cmdSave.Parameters.Add("@apellidoPer", SqlDbType.VarChar, 50).Value = persona.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
                 cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = persona.TipoPersona;
