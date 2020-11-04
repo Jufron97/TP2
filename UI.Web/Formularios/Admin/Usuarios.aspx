@@ -68,6 +68,7 @@
             <div class="form-group">
             <asp:Label ID="lblFechaNac" runat="server" Text="Fecha Nacimiento: "></asp:Label>
             <br />
+            <br />
             <asp:Calendar ID="CalFechaNac" runat="server"></asp:Calendar>
             </div>
             <br />

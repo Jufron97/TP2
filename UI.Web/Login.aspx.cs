@@ -37,7 +37,7 @@ namespace UI.Web
         {
             if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
             {
-                this.cvContraseña.IsValid = true;             
+                            
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
                 //Se asigna el usuario a la sesion para no perderlo
                 Session["usuario"] = usu;
@@ -59,7 +59,7 @@ namespace UI.Web
             }
             else
             {
-                this.cvContraseña.IsValid = false;
+                
                 MessageBox.Show("Usuario o Contraseña incorrectos");
             }
             return;

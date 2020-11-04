@@ -127,9 +127,9 @@ namespace UI.Web
         }
 
 
-        private void DeleteEntity(Usuario usu)
+        private void DeleteEntity(int id)
         {
-            Logic.Delete(usu);
+            Logic.Delete(id);
         }
 
         private void ClearForm()
@@ -191,7 +191,7 @@ namespace UI.Web
             reqTelefono.IsValid = Validaciones.EsCadenaValida(txtTelefono.Text);
             reqNombUsuario.IsValid = Validaciones.EsCadenaValida(txtNombreUsuario.Text);   
             //Se tiene que negar con el signo ! por que si no, devolveria que el email es invalido
-            reqEmail.IsValid = !Validaciones.EsCadenaValida(txtEmail.Text);
+            reqEmail.IsValid = Validaciones.EsCadenaValida(txtEmail.Text);
             reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text, txtRepetirClave.Text);
             reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text, txtClave.Text);
             if (!String.Equals(txtClave.Text, txtRepetirClave.Text))
@@ -205,14 +205,10 @@ namespace UI.Web
         {
             HabilitoValidaciones(true);
             ValidoDatos();
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode!=FormModes.Baja)
             {
             switch (this.FormMode)
                 {
-                case FormModes.Baja:
-                    DeleteEntity(Logic.GetOne(selectID));
-                    LoadGrid();
-                    break;
                 case FormModes.Modificacion:
                     //Esto lo hicimos por que no podiamos traer el ID de la persona
                     Entity = Logic.GetOne(selectID);
@@ -232,7 +228,13 @@ namespace UI.Web
                 }
                 Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
 
-            }          
+            }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                HabilitoValidaciones(false);
+                DeleteEntity(selectID);
+                LoadGrid();
+            }
         }
     }
 }
