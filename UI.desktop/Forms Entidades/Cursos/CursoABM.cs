@@ -186,6 +186,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             this.Notificar(this.Text, mensaje, botones, icono);
         }
 
+        public void limpioErrores()
+        {
+            errProvider.Clear();
+        }
+
         #endregion
 
         #region EventosFormulario
@@ -197,6 +202,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            limpioErrores();
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 if (Validar())

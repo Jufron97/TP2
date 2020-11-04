@@ -38,6 +38,7 @@ namespace UI.Web
             dwTiposPersonas.DataSource = Persona.DameTusTipos();
             dwTiposPersonas.DataBind();
         }
+
         /// <summary>
         /// Carga todo los datos de los alumnos en 
         /// </summary>
@@ -129,7 +130,7 @@ namespace UI.Web
 
         private void DeleteEntity(Usuario usu)
         {
-            Logic.Delete(usu);
+            Logic.Delete(usu.ID);
         }
 
         private void ClearForm()
@@ -158,6 +159,7 @@ namespace UI.Web
         }
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDown();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
