@@ -69,16 +69,17 @@ namespace UI.Web
 
         public void LoadEntity(Usuario usuario)
         {
-            usuario.Nombre = txtNombre.Text;
             usuario.NombreUsuario = txtNombreUsuario.Text;
-            usuario.Apellido = txtApellido.Text;
             usuario.Habilitado = checkHabilitado.Checked;
             usuario.Clave = txtClave.Text;
-            usuario.Email = txtEmail.Text;
             //Persona
+            usuario.Persona.Apellido = txtApellido.Text;
+            usuario.Persona.Nombre = txtNombre.Text;
+            usuario.Persona.Email = txtEmail.Text;
             usuario.Persona.FechaNacimiento = CalFechaNac.SelectedDate;
             usuario.Persona.Telefono = txtTelefono.Text;
             usuario.Persona.Direccion = txtDireccion.Text;
+            usuario.Persona.Plan = new PlanLogic().GetOne(Int32.Parse(dwPlan.SelectedValue));
             usuario.Persona.TipoPersona = (Persona.TiposPersonas)(dwTiposPersonas.SelectedIndex);
         }
 
