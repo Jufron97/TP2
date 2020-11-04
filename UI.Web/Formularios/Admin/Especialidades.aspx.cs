@@ -172,14 +172,10 @@ namespace UI.Web
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode != FormModes.Baja)
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        DeleteEntity(Entity);
-                        LoadGrid();
-                        break;
                     case FormModes.Modificacion:
                         Entity = new Especialidad();
                         Entity.ID = selectID;
@@ -199,6 +195,13 @@ namespace UI.Web
                 }
                 Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
             }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                DeleteEntity(Entity);
+                LoadGrid();
+                Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
+            }
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

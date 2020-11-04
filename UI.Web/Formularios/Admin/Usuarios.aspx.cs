@@ -33,7 +33,7 @@ namespace UI.Web
             set;
         }
 
-        private void cargoDropDown()
+        private void CargoDropDown()
         {
             dwTiposPersonas.DataSource = Persona.DameTusTipos();
             dwTiposPersonas.DataBind();
@@ -80,7 +80,7 @@ namespace UI.Web
 
         public void LoadForm(int id)
         {
-            cargoDropDown();
+            CargoDropDown();
             Entity = this.Logic.GetOne(id);
             txtNombre.Text = Entity.Nombre;
             txtApellido.Text = Entity.Apellido;
@@ -158,6 +158,7 @@ namespace UI.Web
         }
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            CargoDropDown();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
@@ -234,6 +235,7 @@ namespace UI.Web
                 HabilitoValidaciones(false);
                 DeleteEntity(selectID);
                 LoadGrid();
+                Response.Redirect("~/Formularios/Admin/Planes.aspx");
             }
         }
     }

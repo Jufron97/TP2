@@ -193,15 +193,10 @@ namespace UI.Web
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode != FormModes.Baja)
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        Entity = new PlanLogic().GetOne(selectID);                       
-                        DeleteEntity(Entity);
-                        LoadGrid();
-                        break;
                     case FormModes.Modificacion:
                         Entity = new Plan();
                         Entity.ID = selectID;
@@ -219,6 +214,13 @@ namespace UI.Web
                     default:
                         break;
                 }
+                Response.Redirect("~/Formularios/Admin/Planes.aspx");
+            }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                Entity = new PlanLogic().GetOne(selectID);
+                DeleteEntity(Entity);
+                LoadGrid();
                 Response.Redirect("~/Formularios/Admin/Planes.aspx");
             }
         }

@@ -202,14 +202,10 @@ namespace UI.Web.Formularios
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode != FormModes.Baja)
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        DeleteEntity(selectID);
-                        LoadGrid();
-                        break;
                     case FormModes.Modificacion:
                         Entity = new Materia();
                         Entity.ID = selectID;
@@ -227,6 +223,12 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
+                Response.Redirect("~/Formularios/Admin/Materias.aspx");
+            }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                DeleteEntity(selectID);
+                LoadGrid();
                 Response.Redirect("~/Formularios/Admin/Materias.aspx");
             }
         }

@@ -186,14 +186,10 @@ namespace UI.Web.Formularios
         {
             this.HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode != FormModes.Baja)
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        DeleteEntity(selectID);
-                        LoadGrid();
-                        break;
                     case FormModes.Modificacion:
                         Entity = new Comision();
                         Entity.ID = selectID;
@@ -213,6 +209,13 @@ namespace UI.Web.Formularios
                 }
                 Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
             }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                DeleteEntity(selectID);
+                LoadGrid();
+                Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
+            }
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

@@ -194,15 +194,10 @@ namespace UI.Web.Formularios
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
-            if (Page.IsValid)
+            if (Page.IsValid && this.FormMode != FormModes.Baja)
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        Entity = Logic.GetOne(selectID);
-                        DeleteEntity(Entity);
-                        LoadGrid();
-                        break;
                     case FormModes.Modificacion:
                         Entity = new DocenteCurso();
                         Entity.ID = selectID;
@@ -220,6 +215,13 @@ namespace UI.Web.Formularios
                     default:
                         break;
                 }
+                Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
+            }
+            else if (this.FormMode == FormModes.Baja)
+            {
+                Entity = Logic.GetOne(selectID);
+                DeleteEntity(Entity);
+                LoadGrid();
                 Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
             }
         }
