@@ -238,14 +238,14 @@ namespace Academia.Data.Database
         /// Se inserta a la persona en la Base de Datos
         /// </summary>
         /// <param name="persona"></param>
-        public int Insert(Persona persona)
+        public object Insert(Persona persona)
         {           
             try
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("insert into personas (nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan) "+
-                "values (@nombrePer,@apellidoPer,@direccion,@email,@telefono,@fechaNac,@legajo,@tipoPersona,@idPlan) "+
-                "select @@identity",sqlConn);
+                "values (@nombrePer,@apellidoPer,@direccion,@email,@telefono,@fechaNac,@legajo,@tipoPersona,@idPlan); "+
+                "select @@IDENTITY;", sqlConn);
                 /*
                 SqlCommand cmdSave = new SqlCommand("InsertarPersona", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
@@ -259,8 +259,8 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.IDPlan;
-                Int32 id = (Int32)cmdSave.ExecuteScalar();
-                return (int)id;
+                var idPersona = cmdSave.ExecuteScalar();
+                return idPersona;
             }
             catch (Exception Ex)
             {

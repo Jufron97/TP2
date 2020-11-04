@@ -283,7 +283,7 @@ namespace Academia.Data.Database
             {
                 OpenConnection();
                 //Persona
-                int idPersona = new PersonaAdapter().Insert(usuario.Persona);
+                var idPersona = new PersonaAdapter().Insert(usuario.Persona);
                 /*
                 SqlCommand cmdSave = new SqlCommand("InsertarUsuario", sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
