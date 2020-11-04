@@ -259,8 +259,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.IDPlan;
-                var idPersona = cmdSave.ExecuteScalar();
-                return idPersona;
+                return cmdSave.ExecuteScalar();
             }
             catch (Exception Ex)
             {
