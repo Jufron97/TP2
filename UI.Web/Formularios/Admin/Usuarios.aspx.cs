@@ -127,9 +127,9 @@ namespace UI.Web
         }
 
 
-        private void DeleteEntity(int ID)
+        private void DeleteEntity(Usuario usu)
         {
-            Logic.Delete(ID);
+            Logic.Delete(usu);
         }
 
         private void ClearForm()
@@ -210,7 +210,7 @@ namespace UI.Web
             switch (this.FormMode)
                 {
                 case FormModes.Baja:
-                    DeleteEntity(selectID);
+                    DeleteEntity(Logic.GetOne(selectID));
                     LoadGrid();
                     break;
                 case FormModes.Modificacion:

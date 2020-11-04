@@ -67,7 +67,7 @@ namespace UI.Web
         {
             dwEspecialidades.DataSource = new EspecialidadLogic().GetAll();
             dwEspecialidades.DataValueField = "ID";
-            dwEspecialidades.DataTextField = "Descripcion";            
+            dwEspecialidades.DataTextField = "Descripcion";
             dwEspecialidades.DataBind();
         }
 
