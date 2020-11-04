@@ -102,7 +102,8 @@ namespace Academia.Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdDocenteInscripcion = new SqlCommand("select * from docentes_cursos dc inner join alumnos_inscripciones ai on ai.id_curso=dc.id_curso where dc.id_docente=@idDocente", sqlConn);
+                SqlCommand cmdDocenteInscripcion = new SqlCommand("select * from docentes_cursos dc inner join "+ 
+                "alumnos_inscripciones ai on ai.id_curso=dc.id_curso where dc.id_docente=@idDocente", sqlConn);
                 cmdDocenteInscripcion.Parameters.Add("@idDocente", SqlDbType.Int).Value = usuario.Persona.ID;
                 SqlDataReader drInscripciones = cmdDocenteInscripcion.ExecuteReader();
                 while (drInscripciones.Read())

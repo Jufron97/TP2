@@ -92,5 +92,10 @@ namespace Academia.UI.Desktop
         {
             new CursoABM().ShowDialog();
         }
+
+        private void imgNet_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ERA POR ABAJO PALACIOS",this.Text,MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }

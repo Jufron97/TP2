@@ -194,6 +194,7 @@
             this.imgNet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgNet.TabIndex = 2;
             this.imgNet.TabStop = false;
+            this.imgNet.Click += new System.EventHandler(this.imgNet_Click);
             // 
             // FormularioPrincipal
             // 
