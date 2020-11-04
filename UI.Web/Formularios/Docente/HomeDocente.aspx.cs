@@ -14,10 +14,9 @@ namespace UI.Web.Formularios.Docente
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             Usu = (Usuario)Session["usuario"];
             lblNombreUsuario.Text = Usu.NombreUsuario;
-            Master.MuestroMenu();
+            Master.MuestroMenu();           
         }
 
     }

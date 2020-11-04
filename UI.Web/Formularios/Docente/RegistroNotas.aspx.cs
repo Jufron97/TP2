@@ -55,6 +55,7 @@ namespace UI.Web.Formularios.Docente
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
@@ -140,10 +141,12 @@ namespace UI.Web.Formularios.Docente
             txtApellido.Text = String.Empty;
             txtNota.Text = String.Empty;
         }
+
         protected void ValidoDatos()
         {
             reqNota.IsValid = Validaciones.EsNumerico(txtNota.Text);
         }
+
         #endregion
 
         #region Eventosormulario
@@ -161,15 +164,14 @@ namespace UI.Web.Formularios.Docente
                         LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        EntityIns = new Inscripcion();
-                        EntityIns.ID = selectID;
+                        EntityIns = new InscripcionLogic().GetOne(selectID);
                         EntityIns.State = BusinessEntity.States.Modified;
                         LoadEntity(EntityIns);
-                        SaveEntity(EntityIns);
+                        SaveEntity(EntityIns);                        
                         LoadGrid();
                         break;
                     case FormModes.Alta:
-                        EntityIns = new Inscripcion();
+                        EntityIns = new InscripcionLogic().GetOne(selectID);
                         LoadEntity(EntityIns);
                         SaveEntity(EntityIns);
                         LoadGrid();
@@ -194,10 +196,12 @@ namespace UI.Web.Formularios.Docente
             if (isEntititySelected)
             {
                 formPanel.Visible = true;
+                gridPanelFormCorregir.Visible = true;
                 LoadForm(selectID);
-            }          
-        }
-        
+                this.FormMode = FormModes.Modificacion;
+            }
+        }        
     }
+
     #endregion
 }

@@ -55,8 +55,7 @@ namespace UI.Web
 
                     default: Response.Redirect("~/Login.aspx",false);
                         break;
-                }
-                
+                }               
             }
             else
             {

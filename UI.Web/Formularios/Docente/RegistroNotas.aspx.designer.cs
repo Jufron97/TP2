@@ -114,15 +114,6 @@ namespace UI.Web.Formularios.Docente
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNota;
 
         /// <summary>
-        /// Control gridPanelFormCorregir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridPanelFormCorregir;
-
-        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>
@@ -141,6 +132,15 @@ namespace UI.Web.Formularios.Docente
         protected global::System.Web.UI.WebControls.LinkButton btnCancelar;
 
         /// <summary>
+        /// Control gridPanelFormCorregir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel gridPanelFormCorregir;
+
+        /// <summary>
         /// Control ValidationSummary2.
         /// </summary>
         /// <remarks>
@@ -148,5 +148,19 @@ namespace UI.Web.Formularios.Docente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new UI.Web.Site Master
+        {
+            get
+            {
+                return ((UI.Web.Site)(base.Master));
+            }
+        }
     }
 }

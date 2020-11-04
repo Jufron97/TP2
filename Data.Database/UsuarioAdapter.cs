@@ -252,7 +252,7 @@ namespace Academia.Data.Database
             }
         }
 
-        public void Delete(Usuario usu)
+        public void Delete(int id)
         {
             try
             {
@@ -261,7 +261,7 @@ namespace Academia.Data.Database
                 SqlCommand cmdDelete = new SqlCommand("EliminarUsuario", sqlConn);
                 cmdDelete.CommandType = CommandType.StoredProcedure;*/
                 SqlCommand cmdDelete = new SqlCommand("delete from usuarios where id_usuario = @idUsuario", sqlConn);
-                cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = usu.ID;
+                cmdDelete.Parameters.Add("@idUsuario", SqlDbType.Int).Value = id;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -330,7 +330,7 @@ namespace Academia.Data.Database
                     Update(usuario);
                     break;
                 case BusinessEntity.States.Deleted:
-                    Delete(usuario);
+                    Delete(usuario.ID);
                     break;
                 default:
                     usuario.State = BusinessEntity.States.Unmodified;
