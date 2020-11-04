@@ -17,7 +17,7 @@ namespace UI.Web.Formularios.Docente
 
             Usu = (Usuario)Session["usuario"];
             lblNombreUsuario.Text = Usu.NombreUsuario;
-            
+            Master.MuestroMenu();
         }
 
     }
