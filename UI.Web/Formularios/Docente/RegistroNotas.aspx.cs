@@ -55,6 +55,7 @@ namespace UI.Web.Formularios.Docente
             if (!Page.IsPostBack)
             {
                 LoadGrid();
+                Master.MuestroMenu();
             }
         }
 
@@ -195,6 +196,7 @@ namespace UI.Web.Formularios.Docente
             if (isEntititySelected)
             {
                 formPanel.Visible = true;
+                gridPanelFormCorregir.Visible = true;
                 LoadForm(selectID);
                 this.FormMode = FormModes.Modificacion;
             }
