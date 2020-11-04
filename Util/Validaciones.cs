@@ -125,7 +125,7 @@ namespace Academia.Util
             {
                 if (!String.IsNullOrEmpty(clave))
                 {
-                    return clave.Length > 8;
+                    return clave.Length >= 8;
                 }
                 else 
                     return false;

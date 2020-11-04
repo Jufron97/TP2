@@ -65,6 +65,12 @@
             <asp:RequiredFieldValidator runat="server" ID="reqDireccion" controltovalidate="txtDireccion" errormessage="Direccion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red">*</asp:RequiredFieldValidator>
             </div>
             <br />
+            <br />
+            <div class="form-group">
+            <asp:Label ID="lblPlan" runat="server" Text="Plan: "></asp:Label>
+            <asp:DropDownList ID="dwPlan" runat="server" ></asp:DropDownList>
+            </div>
+            <br />
             <div class="form-group">
             <asp:Label ID="lblFechaNac" runat="server" Text="Fecha Nacimiento: "></asp:Label>
             <br />
