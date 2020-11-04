@@ -35,6 +35,10 @@ namespace UI.Web
 
         private void cargoDropDown()
         {
+            dwPlan.DataSource = new PlanLogic().GetAll();
+            dwPlan.DataValueField = "ID";
+            dwPlan.DataTextField = "Descripcion";
+            dwPlan.DataBind();
             dwTiposPersonas.DataSource = Persona.DameTusTipos();
             dwTiposPersonas.DataBind();
         }
@@ -158,6 +162,7 @@ namespace UI.Web
         }
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDown();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
@@ -190,7 +195,6 @@ namespace UI.Web
             reqDireccion.IsValid = Validaciones.EsCadenaValida(txtDireccion.Text);
             reqTelefono.IsValid = Validaciones.EsCadenaValida(txtTelefono.Text);
             reqNombUsuario.IsValid = Validaciones.EsCadenaValida(txtNombreUsuario.Text);   
-            //Se tiene que negar con el signo ! por que si no, devolveria que el email es invalido
             reqEmail.IsValid = Validaciones.EsCadenaValida(txtEmail.Text);
             reqClave.IsValid = Validaciones.ValidarLongitudClave(txtClave.Text, txtRepetirClave.Text);
             reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text, txtClave.Text);
