@@ -62,8 +62,5 @@ namespace UI.Web
             Session["usuario"] = null;
             Response.Redirect("~/Login", false);
         }
-
-
-
     }
 }

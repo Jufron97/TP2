@@ -30,7 +30,7 @@
         <div class="form-group">
         <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>
         <asp:TextBox ID="txtNota" CssClass="form-control" runat="server"></asp:TextBox>  
-            <asp:RequiredFieldValidator runat="server" id="reqNota" controltovalidate="txtNota" errormessage="Ingrese una nota Válida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator runat="server" id="reqNota"  controltovalidate="txtNota" errormessage="Valor ingresado no es numerico" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
             
             </div>
         <br/>
