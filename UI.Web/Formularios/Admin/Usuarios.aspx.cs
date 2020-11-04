@@ -196,7 +196,7 @@ namespace UI.Web
             reqRepetirClave.IsValid = Validaciones.ValidarLongitudClave(txtRepetirClave.Text, txtClave.Text);
             if (!String.Equals(txtClave.Text, txtRepetirClave.Text))
             {
-                reqClave.ErrorMessage = "Ingrese Claves Iguales";
+                reqClave.ErrorMessage = "Las Claves No Coinciden";
             }
         }
 
