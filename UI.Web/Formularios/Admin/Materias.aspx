@@ -5,7 +5,7 @@
     <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
         <asp:Panel runat="server">
         <asp:Panel ID="gridPanel" HorizontalAlign="Center" runat="server">
-        <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+        <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" style="align-self:center;position:relative;font-size:20px;" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
                 <asp:BoundField DataField="HsSemanales" HeaderText="Horas Semanales" />

@@ -3,7 +3,7 @@
  <asp:Panel runat="server" style="border: 1px solid #000; width: 100%; height:80%; left:0%;position:relative;">
     <div runat="server" class="form-inline" Height="100%" Width="100%" Padding="0%" Position="absolute">
     <asp:Panel runat="server">
-        <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+        <asp:GridView ID="GridView" CssClass="table-striped" HorizontalAlign="Center" style="align-self:center;position:relative;font-size:20px;" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="NombreAlumno" HeaderText="Nombre" />
                 <asp:BoundField DataField="ApellidoAlumno" HeaderText="Apellido" />
