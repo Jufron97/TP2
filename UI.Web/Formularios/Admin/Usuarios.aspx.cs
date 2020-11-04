@@ -238,6 +238,7 @@ namespace UI.Web
                 HabilitoValidaciones(false);
                 DeleteEntity(selectID);
                 LoadGrid();
+                Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
             }
         }
     }
