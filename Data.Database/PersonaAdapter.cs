@@ -238,7 +238,7 @@ namespace Academia.Data.Database
         /// Se inserta a la persona en la Base de Datos
         /// </summary>
         /// <param name="persona"></param>
-        public object Insert(Persona persona)
+        public int Insert(Persona persona)
         {           
             try
             {
@@ -259,7 +259,7 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = persona.TipoPersona;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.IDPlan;
-                return cmdSave.ExecuteScalar();
+                return Int32.Parse(cmdSave.ExecuteScalar().ToString());
             }
             catch (Exception Ex)
             {
