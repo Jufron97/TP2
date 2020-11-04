@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
 {
@@ -67,7 +68,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
         }
 
-        public void MapearADatos2()
+        new public virtual void MapearADatos()
         {
             switch(this.Modo)
             {
@@ -96,20 +97,38 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             this.txtDescripcion.Text = this.EspecialidadActual.Descripcion.ToString();           
         }
 
+        public bool validoDatos()
+        {
+            bool validador = true;
+            if (Validaciones.EstaVacioCampo(txtDescripcion.Text))
+            {
+                if (!Validaciones.VerificoLongitudCampo(txtDescripcion.Text))
+                {
+                    errProvider.SetError(txtDescripcion, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtDescripcion, "Este campo no puede estar vacio");
+                validador = false;
+            }
+            return validador;
+        }
+
         /// <summary>
         /// Metodo utilizado para validar los datos ingresados al formulario 
         /// </summary>
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (this.txtDescripcion.TextLength == 0)
+            if (validoDatos())
             {
-                Notificar("El campo Descripcion esta vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -165,8 +184,5 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
         }
 
         #endregion
-
-        
-
     }
 }

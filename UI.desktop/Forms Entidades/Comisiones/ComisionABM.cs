@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 {
@@ -87,7 +88,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
             this.ComisionActual.Plan = (Plan)cbPlan.SelectedItem;
         }
 
-        public void MapearADatos2()
+        new public virtual void MapearADatos()
         {
             switch(this.Modo)
             {
@@ -108,41 +109,39 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos2();
+            MapearADatos();
             new ComisionLogic().Save(ComisionActual);
         }
 
-        /// <summary>
-        /// Se verifica si existen campos nulos
-        /// </summary>
-        /// <returns></returns>
-        public bool verificoCamposNulos()
+        public bool ValidoDatos()
         {
             bool validador = true;
-            if(String.IsNullOrEmpty(txtAnioEspecialidad.Text))
+            //Valido la descripcion
+            if (Validaciones.EstaVacioCampo(txtDescripcion.Text))
             {
-                validador = false;
-                errorProv.SetError(txtAnioEspecialidad, "Este campo no puede estar vacio!");
+                if (!Validaciones.VerificoLongitudCampo(txtDescripcion.Text))
+                {
+                    errProvider.SetError(txtDescripcion, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
             }
-            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            else
             {
+                errProvider.SetError(txtDescripcion, "Este campo no puede estar vacio");
                 validador = false;
-                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
             }
-            return validador;
-        }
-
-        /// <summary>
-        /// Se verifica que los campos ingresados correspondan a los valores predeterminados
-        /// </summary>
-        /// <returns></returns>
-        public bool verificoValores()
-        {
-            bool validador = true;
-            string mensaje = null;
-            if (Int32.TryParse(this.txtAnioEspecialidad.Text, out int valor) == false)
+            //Valido el año
+            if (Validaciones.EstaVacioCampo(txtAnioEspecialidad.Text))
             {
-                mensaje += "El año ingresado no es valido";
+                if (!Validaciones.EsNumerico(txtAnioEspecialidad.Text))
+                {
+                    errProvider.SetError(txtAnioEspecialidad, "El campo ingresado no es numerico");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtAnioEspecialidad, "Este campo no puede estar vacio");
                 validador = false;
             }
             return validador;
@@ -150,16 +149,9 @@ namespace Academia.UI.Desktop.Forms_Entidades.Comisiones
 
         new public virtual bool Validar()
         {
-            if (verificoCamposNulos())
+            if (ValidoDatos())
             {
-                if(verificoValores())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {

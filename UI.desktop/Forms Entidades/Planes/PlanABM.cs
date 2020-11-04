@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Planes
 {
@@ -110,17 +111,23 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             new PlanLogic().Save(PlanActual);
         }
 
-        public bool verificoCamposNulos()
+        public bool validoDatos()
         {
-            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            bool validador = true;
+            if (Validaciones.EstaVacioCampo(txtDescripcion.Text))
             {
-                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
-                return false;
+                if (!Validaciones.VerificoLongitudCampo(txtDescripcion.Text))
+                {
+                    errProvider.SetError(txtDescripcion, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
             }
             else
             {
-                return true;
+                errProvider.SetError(txtDescripcion, "Este campo no puede estar vacio");
+                validador = false;
             }
+            return validador;
         }
 
         /// <summary>
@@ -129,7 +136,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (verificoCamposNulos())
+            if (validoDatos())
             {
                 return true;
             }

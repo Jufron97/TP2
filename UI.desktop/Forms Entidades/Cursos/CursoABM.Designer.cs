@@ -42,9 +42,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbMateria = new System.Windows.Forms.ComboBox();
             this.cbComision = new System.Windows.Forms.ComboBox();
-            this.errorProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDMateria, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblIDComision, 0, 2);
@@ -160,7 +160,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(285, 224);
+            this.btnAceptar.Location = new System.Drawing.Point(284, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -186,7 +186,7 @@
             this.cbMateria.FormattingEnabled = true;
             this.cbMateria.Location = new System.Drawing.Point(124, 44);
             this.cbMateria.Name = "cbMateria";
-            this.cbMateria.Size = new System.Drawing.Size(136, 21);
+            this.cbMateria.Size = new System.Drawing.Size(135, 21);
             this.cbMateria.TabIndex = 12;
             // 
             // cbComision
@@ -199,9 +199,9 @@
             this.cbComision.Size = new System.Drawing.Size(100, 21);
             this.cbComision.TabIndex = 13;
             // 
-            // errorProv
+            // errProvider
             // 
-            this.errorProv.ContainerControl = this;
+            this.errProvider.ContainerControl = this;
             // 
             // CursoABM
             // 
@@ -215,7 +215,7 @@
             this.Shown += new System.EventHandler(this.CursoDesktop_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,6 +235,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbMateria;
         private System.Windows.Forms.ComboBox cbComision;
-        private System.Windows.Forms.ErrorProvider errorProv;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

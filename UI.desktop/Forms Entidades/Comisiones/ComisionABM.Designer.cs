@@ -40,9 +40,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.cbPlan = new System.Windows.Forms.ComboBox();
-            this.errorProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tlpComision.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpComision
@@ -51,7 +51,7 @@
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.55556F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.44444F));
             this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tlpComision.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tlpComision.Controls.Add(this.lblID, 0, 0);
             this.tlpComision.Controls.Add(this.lblDescripcion, 0, 1);
             this.tlpComision.Controls.Add(this.lblAnio_Especialidad, 0, 2);
@@ -88,7 +88,7 @@
             // 
             this.lblDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(26, 77);
+            this.lblDescripcion.Location = new System.Drawing.Point(25, 77);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             this.lblAnio_Especialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAnio_Especialidad.AutoSize = true;
-            this.lblAnio_Especialidad.Location = new System.Drawing.Point(13, 135);
+            this.lblAnio_Especialidad.Location = new System.Drawing.Point(12, 135);
             this.lblAnio_Especialidad.Name = "lblAnio_Especialidad";
             this.lblAnio_Especialidad.Size = new System.Drawing.Size(89, 13);
             this.lblAnio_Especialidad.TabIndex = 3;
@@ -117,7 +117,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtID.Location = new System.Drawing.Point(118, 18);
+            this.txtID.Location = new System.Drawing.Point(117, 18);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(83, 20);
@@ -127,7 +127,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtDescripcion.Location = new System.Drawing.Point(118, 74);
+            this.txtDescripcion.Location = new System.Drawing.Point(117, 74);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(184, 20);
             this.txtDescripcion.TabIndex = 8;
@@ -136,7 +136,7 @@
             // txtAnioEspecialidad
             // 
             this.txtAnioEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAnioEspecialidad.Location = new System.Drawing.Point(118, 131);
+            this.txtAnioEspecialidad.Location = new System.Drawing.Point(117, 131);
             this.txtAnioEspecialidad.Name = "txtAnioEspecialidad";
             this.txtAnioEspecialidad.Size = new System.Drawing.Size(83, 20);
             this.txtAnioEspecialidad.TabIndex = 9;
@@ -158,7 +158,7 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(346, 229);
+            this.btnAceptar.Location = new System.Drawing.Point(345, 229);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 5;
@@ -171,14 +171,14 @@
             this.cbPlan.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlan.FormattingEnabled = true;
-            this.cbPlan.Location = new System.Drawing.Point(118, 188);
+            this.cbPlan.Location = new System.Drawing.Point(117, 188);
             this.cbPlan.Name = "cbPlan";
             this.cbPlan.Size = new System.Drawing.Size(83, 21);
             this.cbPlan.TabIndex = 10;
             // 
-            // errorProv
+            // errProvider
             // 
-            this.errorProv.ContainerControl = this;
+            this.errProvider.ContainerControl = this;
             // 
             // ComisionABM
             // 
@@ -192,7 +192,7 @@
             this.Shown += new System.EventHandler(this.ComisionDesktop_Shown);
             this.tlpComision.ResumeLayout(false);
             this.tlpComision.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -210,6 +210,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtAnioEspecialidad;
         private System.Windows.Forms.ComboBox cbPlan;
-        private System.Windows.Forms.ErrorProvider errorProv;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

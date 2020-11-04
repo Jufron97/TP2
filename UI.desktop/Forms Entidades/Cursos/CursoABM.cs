@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Util;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 {
@@ -99,7 +100,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
             this.CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
         }
 
-        public void MapearADatos2()
+        new public void MapearADatos()
         {
             switch(this.Modo)
             {
@@ -117,57 +118,49 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
                     break;
             }
         }
-
-
-        public bool validoCamposNulos()
+        public bool ValidoDatos()
         {
             bool validador = true;
-            if(String.IsNullOrEmpty(txtAñoCalendario.Text))
+            //Valido el año calendario
+            if (Validaciones.EstaVacioCampo(txtAñoCalendario.Text))
             {
-                validador = false;
-                errorProv.SetError(txtAñoCalendario, "Este campo no puede estar vacio!");
+                if (!Validaciones.EsNumerico(txtAñoCalendario.Text))
+                {
+                    errProvider.SetError(txtAñoCalendario, "El campo ingresado no es numerico");
+                    validador = false;
+                }
             }
-            if(String.IsNullOrEmpty(txtCupo.Text))
+            else
             {
+                errProvider.SetError(txtAñoCalendario, "Este campo no puede estar vacio");
                 validador = false;
-                errorProv.SetError(txtCupo, "Este campo no puede estar vacio!");
+            }
+            //Valido el cupo
+            if (Validaciones.EstaVacioCampo(txtCupo.Text))
+            {
+                if (!Validaciones.EsNumerico(txtCupo.Text))
+                {
+                    errProvider.SetError(txtCupo, "El campo ingresado no es numerico");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtCupo, "Este campo no puede estar vacio");
+                validador = false;
             }
             return validador;
         }
 
-        public bool validoValores()
-        {
-            bool validador = true;
-            string mensaje = null;
-            if(Int32.TryParse(txtAñoCalendario.Text, out int valor2) == false)
-            {
-                mensaje += "Año Calendario ingresado no valido\n";
-                validador = false;
-            }           
-            if (Int32.TryParse(txtCupo.Text, out int valor3) == false)
-            {
-                mensaje += "Cupo ingresado no valido\n";
-                validador = false;
-            }
-            return validador;
-        }
         /// <summary>
         /// Metodo utilizado para validar los datos ingresados al formulario 
         /// </summary>
         /// <returns></returns>
         new public virtual bool Validar()
         {
-            if (validoCamposNulos())
+            if (ValidoDatos())
             {
-                if(validoValores())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-                
+                return true;
             }
             else
             {
@@ -178,7 +171,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos2();
+            MapearADatos();
             new CursoLogic().Save(CursoActual);
         }
 
@@ -225,59 +218,5 @@ namespace Academia.UI.Desktop.Forms_Entidades.Cursos
         }
 
         #endregion
-
-
-        #region CodigoViejo
-
-        public CursoABM(ModoForm modo) : this()
-        {
-            this.Modo = modo;
-            btnAceptar.Text = "Guardar";
-        }
-
-        public CursoABM(int ID, ModoForm modo) : this()
-        {
-            Modo = modo;
-            if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                CursoActual = new CursoLogic().GetOne(ID);
-                MapearDeDatos();
-            }
-            if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                CursoActual = new CursoLogic().GetOne(ID); ;
-                MapearDeDatos();
-            }
-        }
-
-        new public virtual void MapearADatos()
-        {
-            if (this.Modo == ApplicationForm.ModoForm.Alta)
-            {
-                CursoActual = new Curso();
-                //this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
-                //this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
-                this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
-                this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
-                CursoActual.State = BusinessEntity.States.New;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Modificacion)
-            {
-                //this.CursoActual.Materia.ID = Int32.Parse(this.txtIDMateria.Text);
-                //this.CursoActual.Comision.ID = Int32.Parse(this.txtIDComision.Text);
-                this.CursoActual.AnioCalendario = Int32.Parse(this.txtAñoCalendario.Text);
-                this.CursoActual.Cupo = Int32.Parse(this.txtCupo.Text);
-                CursoActual.State = BusinessEntity.States.Modified;
-            }
-            else if (this.Modo == ApplicationForm.ModoForm.Baja)
-            {
-                //new CursoLogic().Delete(Int32.Parse(this.txtID.Text));
-
-            }
-        }
-
-        #endregion
-
- 
     }
 }

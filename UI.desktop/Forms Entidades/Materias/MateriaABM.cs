@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Academia.Util;
 
 namespace Academia.UI.Desktop.Forms_Entidades.Materias
 {
@@ -108,60 +109,60 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             }
         }
 
-        public bool verificoCamposNulos()
+        public bool ValidoDatos()
         {
             bool validador = true;
-            if(String.IsNullOrEmpty(txtDescripcion.Text))
+            //Valido la descripcion
+            if (Validaciones.EstaVacioCampo(txtDescripcion.Text))
             {
-                validador = false;
-                errorProv.SetError(txtDescripcion, "Este campo no puede estar vacio!");
+                if (!Validaciones.VerificoLongitudCampo(txtDescripcion.Text))
+                {
+                    errProvider.SetError(txtDescripcion, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
             }
-            if (String.IsNullOrEmpty(txtHorasTotales.Text))
+            else
             {
+                errProvider.SetError(txtDescripcion, "Este campo no puede estar vacio");
                 validador = false;
-                errorProv.SetError(txtHorasTotales, "Este campo no puede estar vacio!");
             }
-            if (String.IsNullOrEmpty(txtHsSemanales.Text))
+            //Valido las HsTotales
+            if (Validaciones.EstaVacioCampo(txtHorasTotales.Text))
             {
+                if (!Validaciones.EsNumerico(txtHorasTotales.Text))
+                {
+                    errProvider.SetError(txtHorasTotales, "El campo ingresado no es numerico");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtHorasTotales, "Este campo no puede estar vacio");
                 validador = false;
-                errorProv.SetError(txtHsSemanales, "Este campo no puede estar vacio!");
+            }
+            //Valido las HsSemanales
+            if (Validaciones.EstaVacioCampo(txtHsSemanales.Text))
+            {
+                if (!Validaciones.EsNumerico(txtHsSemanales.Text))
+                {
+                    errProvider.SetError(txtHsSemanales, "El campo ingresado no es numerico");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtHsSemanales, "Este campo no puede estar vacio");
+                validador = false;
             }
             return validador;
         }
 
-        public bool verificoValores()
-        {
-            bool validador = true;
-            string mensaje = null;
-            if (Int32.TryParse(txtHsSemanales.Text, out int valor) == false)
-            {
-                mensaje+="HsSemanales ingresadas no validas\n";
-                validador = false;
-            }
-            if (Int32.TryParse(txtHorasTotales.Text, out int valor1) == false)
-            {
-                mensaje += "HsTotales ingresadas no validas\n";
-                validador = false;
-            }
-            if(!String.IsNullOrEmpty(mensaje))
-            {
-                Notificar(mensaje, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return validador;
-        }
         
         new public virtual bool Validar()
         {
-            if (verificoCamposNulos())
+            if (ValidoDatos())
             {
-                if(verificoValores())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {

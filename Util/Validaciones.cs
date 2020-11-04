@@ -114,8 +114,6 @@ namespace Academia.Util
             return Int32.TryParse(cadena, out int resultado);
         }
 
-
-
         /// <summary>
         /// Devuelve true si es un nombre valido, caso contrario false
         /// </summary>
