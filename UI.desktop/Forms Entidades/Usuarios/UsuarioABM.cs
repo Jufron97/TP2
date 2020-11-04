@@ -166,38 +166,129 @@ namespace Academia.UI.Desktop
         public bool validoDatos()
         {
             bool validador = true;
-            if (!Validaciones.EsCadenaValida(txtNombrePersona.Text))
+            //Se valida el nombre de la persona
+            if (Validaciones.EstaVacioCampo(txtNombrePersona.Text))
             {
-                errProvider.SetError(txtNombrePersona, "El campo ingresado es erroneo!");
+                if(Validaciones.VerificoLongitudCampo(txtNombrePersona.Text))
+                { 
+                    if(Validaciones.EsCampoValido(txtNombrePersona.Text))
+                    {
+                        errProvider.SetError(txtNombrePersona, "El nombre ingresado no es valido");
+                        validador = false;
+                    }
+                }
+                else
+                {
+                    errProvider.SetError(txtNombrePersona, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtNombrePersona, "Este campo no puede estar vacio");
                 validador = false;
             }
-            if (!Validaciones.EsCadenaValida(txtApellido.Text))
+            //Valido Apellido
+            if (Validaciones.EstaVacioCampo(txtApellido.Text))
             {
-                errProvider.SetError(txtApellido, "El campo ingresado es erroneo!");
+                if (Validaciones.VerificoLongitudCampo(txtApellido.Text))
+                {
+                    if (Validaciones.EsCampoValido(txtApellido.Text))
+                    {
+                        errProvider.SetError(txtApellido, "El Apellido ingresado no es valido");
+                        validador = false;
+                    }
+                }
+                else
+                {
+                    errProvider.SetError(txtApellido, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtApellido, "Este campo no puede estar vacio");
                 validador = false;
             }
-            if (!Validaciones.EsCadenaValida(txtClave.Text))
+            //Valido Clave
+            if (Validaciones.EstaVacioCampo(txtClave.Text))
             {
-                errProvider.SetError(txtClave, "El campo ingresado es erroneo!");
+                if (Validaciones.VerificoLongitudCampo(txtClave.Text))
+                {
+                    if (!Validaciones.EsCampoValido(txtClave.Text))
+                    {
+                        errProvider.SetError(txtClave, "Clave ingresada no es valida");
+                        validador = false;
+                    }
+                }
+                else
+                {
+                    errProvider.SetError(txtClave, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtClave, "Este campo no puede estar vacio");
                 validador = false;
             }
-            if (!Validaciones.EsCadenaValida(txtConfirmarClave.Text))
+            //Valido RepetirClave
+            if (Validaciones.EstaVacioCampo(txtConfirmarClave.Text))
             {
-                errProvider.SetError(txtConfirmarClave, "El campo ingresado es erroneo!");
+                if (Validaciones.VerificoLongitudCampo(txtConfirmarClave.Text))
+                {
+                    if (!Validaciones.EsCampoValido(txtConfirmarClave.Text))
+                    {
+                        errProvider.SetError(txtConfirmarClave, "Clave ingresada no es valida");
+                        validador = false;
+                    }
+                }
+                else
+                {
+                    errProvider.SetError(txtConfirmarClave, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtConfirmarClave, "Este campo no puede estar vacio");
                 validador = false;
             }
-            if (!Validaciones.EsCadenaValida(txtNombreUsuario.Text))
+            //Valido NombreUsuario
+            if (Validaciones.EstaVacioCampo(txtNombreUsuario.Text))
             {
-                errProvider.SetError(txtNombreUsuario, "El campo ingresado es erroneo!");
+                if (Validaciones.VerificoLongitudCampo(txtNombreUsuario.Text))
+                {
+                    if (Validaciones.EsCampoValido(txtNombreUsuario.Text))
+                    {
+                        errProvider.SetError(txtNombreUsuario, "Nombre de usuario ingresado no es valido");
+                        validador = false;
+                    }
+                }
+                else
+                {
+                    errProvider.SetError(txtNombreUsuario, "El campo debe contener menos de 50 caracteres");
+                    validador = false;
+                }
+            }
+            else
+            {
+                errProvider.SetError(txtNombreUsuario, "Este campo no puede estar vacio");
                 validador = false;
-            }          
-            if (Validaciones.ValidarLongitudClave(txtClave.Text,txtConfirmarClave.Text))
+            }
+            if(!Validaciones.ClavesIguales(txtClave.Text,txtConfirmarClave.Text))
             {
-
+                errProvider.SetError(txtClave, "Las claves no coinciden");
+                errProvider.SetError(txtConfirmarClave, "Las claves no coinciden");
+                validador = false;
             }
             return validador;
         }
      
+        public void limpioErrores()
+        {
+            errProvider.Clear();
+        }
 
         new public void Notificar(string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {
@@ -209,6 +300,7 @@ namespace Academia.UI.Desktop
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            limpioErrores();
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 if (Validar())
@@ -239,10 +331,5 @@ namespace Academia.UI.Desktop
 
 
         #endregion
-
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }      
 }

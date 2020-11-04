@@ -100,7 +100,7 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(229, 174);
+            this.lblUsuario.Location = new System.Drawing.Point(222, 174);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(44, 26);
             this.lblUsuario.TabIndex = 47;
@@ -251,7 +251,7 @@
             // lblLegajo
             // 
             this.lblLegajo.AutoSize = true;
-            this.lblLegajo.Location = new System.Drawing.Point(227, 144);
+            this.lblLegajo.Location = new System.Drawing.Point(222, 144);
             this.lblLegajo.Name = "lblLegajo";
             this.lblLegajo.Size = new System.Drawing.Size(39, 13);
             this.lblLegajo.TabIndex = 63;
@@ -280,10 +280,10 @@
             this.txtClave.Size = new System.Drawing.Size(109, 20);
             this.txtClave.TabIndex = 66;
             // 
-            // txtUsuario
+            // txtNombreUsuario
             // 
             this.txtNombreUsuario.Location = new System.Drawing.Point(288, 179);
-            this.txtNombreUsuario.Name = "txtUsuario";
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(109, 20);
             this.txtNombreUsuario.TabIndex = 67;
             // 
@@ -294,10 +294,10 @@
             this.txtConfirmarClave.Size = new System.Drawing.Size(109, 20);
             this.txtConfirmarClave.TabIndex = 68;
             // 
-            // txtNombre
+            // txtNombrePersona
             // 
             this.txtNombrePersona.Location = new System.Drawing.Point(72, 39);
-            this.txtNombrePersona.Name = "txtNombre";
+            this.txtNombrePersona.Name = "txtNombrePersona";
             this.txtNombrePersona.Size = new System.Drawing.Size(108, 20);
             this.txtNombrePersona.TabIndex = 69;
             // 
