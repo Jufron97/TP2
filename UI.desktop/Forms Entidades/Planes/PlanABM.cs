@@ -86,7 +86,12 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
             this.PlanActual.Especialidad = (Especialidad)cbEspecialidad.SelectedItem;
         }
 
-        public void MapearADatos2()
+        public void limpioErrores()
+        {
+            errProvider.Clear();
+        }
+
+        new public virtual void MapearADatos()
         {
             switch (this.Modo)
             {
@@ -107,7 +112,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
 
         new public virtual void GuardarCambios()
         {
-            MapearADatos2();
+            MapearADatos();
             new PlanLogic().Save(PlanActual);
         }
 
@@ -163,6 +168,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Planes
         #region EventosFormulario
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            limpioErrores();
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 if (Validar())

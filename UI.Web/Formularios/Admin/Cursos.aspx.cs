@@ -173,6 +173,7 @@ namespace UI.Web.Formularios
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDownList();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
@@ -193,7 +194,7 @@ namespace UI.Web.Formularios
         protected void ValidoDatos()
         {
             reqAño.IsValid = Validaciones.EsNumerico(txtAño.Text);
-            reqCupo.IsValid = Validaciones.EsCadenaValida(txtCupo.Text);
+            reqCupo.IsValid = Validaciones.EsNumerico(txtCupo.Text);
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

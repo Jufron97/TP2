@@ -160,15 +160,17 @@ namespace UI.Web
                 LoadForm(selectID);
             }
         }
+
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDownList();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
             EnableForm(true);
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             ClearForm();
             EnableForm(false);
@@ -220,6 +222,8 @@ namespace UI.Web
                 Response.Redirect("~/Formularios/Admin/Planes.aspx");
             }
         }
+
+
     }
 
     #endregion

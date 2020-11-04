@@ -84,7 +84,6 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                     this.EspecialidadActual.ID = Convert.ToInt32(this.txtID.Text);
                     this.EspecialidadActual.State = BusinessEntity.States.Modified;
                     break;
-
             }
         }
 
@@ -132,6 +131,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             }
         }
 
+        public void limpioErrores()
+        {
+            errProvider.Clear();
+        }
+
         new public virtual void GuardarCambios()
         {
             MapearADatos();
@@ -158,8 +162,17 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
             this.Close();
         }
 
+        private void EspecialidadDesktop_Shown(object sender, EventArgs e)
+        {
+            IniciarFormulario();
+        }
+
+        #endregion
+
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            limpioErrores();
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 if (Validar())
@@ -177,12 +190,5 @@ namespace Academia.UI.Desktop.Forms_Entidades.Especialidades
                 }
             }
         }
-
-        private void EspecialidadDesktop_Shown(object sender, EventArgs e)
-        {
-            IniciarFormulario();
-        }
-
-        #endregion
     }
 }

@@ -171,7 +171,7 @@ namespace Academia.UI.Desktop
             {
                 if(Validaciones.VerificoLongitudCampo(txtNombrePersona.Text))
                 { 
-                    if(Validaciones.EsCampoValido(txtNombrePersona.Text))
+                    if(!Validaciones.EsCampoValido(txtNombrePersona.Text))
                     {
                         errProvider.SetError(txtNombrePersona, "El nombre ingresado no es valido");
                         validador = false;
@@ -193,7 +193,7 @@ namespace Academia.UI.Desktop
             {
                 if (Validaciones.VerificoLongitudCampo(txtApellido.Text))
                 {
-                    if (Validaciones.EsCampoValido(txtApellido.Text))
+                    if (!Validaciones.EsCampoValido(txtApellido.Text))
                     {
                         errProvider.SetError(txtApellido, "El Apellido ingresado no es valido");
                         validador = false;
@@ -259,7 +259,7 @@ namespace Academia.UI.Desktop
             {
                 if (Validaciones.VerificoLongitudCampo(txtNombreUsuario.Text))
                 {
-                    if (Validaciones.EsCampoValido(txtNombreUsuario.Text))
+                    if (!Validaciones.EsCampoValido(txtNombreUsuario.Text))
                     {
                         errProvider.SetError(txtNombreUsuario, "Nombre de usuario ingresado no es valido");
                         validador = false;

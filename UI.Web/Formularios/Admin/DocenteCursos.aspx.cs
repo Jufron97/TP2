@@ -173,6 +173,7 @@ namespace UI.Web.Formularios
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDownList();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();

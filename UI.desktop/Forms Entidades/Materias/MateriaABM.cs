@@ -66,6 +66,11 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
             }
         }
 
+        public void limpioErrores()
+        {
+            errProvider.Clear();
+        }
+
         new public virtual void MapearDeDatos()
         {
             this.txtID.Text = this.MateriaActual.ID.ToString();
@@ -191,6 +196,7 @@ namespace Academia.UI.Desktop.Forms_Entidades.Materias
         /// <returns></returns>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            limpioErrores();
             if (this.Modo == ApplicationForm.ModoForm.Alta || this.Modo == ApplicationForm.ModoForm.Modificacion)
             {
                 if (Validar())
