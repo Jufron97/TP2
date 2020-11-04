@@ -213,15 +213,18 @@ namespace Academia.Data.Database
                 SqlCommand cmdSave = new SqlCommand("ActualizarUsuario",sqlConn);
                 cmdSave.CommandType = CommandType.StoredProcedure;*/
                 SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario = @nombUsu, clave = @claveUsu, habilitado = @habilitadoUsu "+
-                "WHERE id_usuario = @idUsu; "+             
-                "Update personas set nombre = @nombrePer, apellido = @apellidoPer, tipo_persona = @tipoPersona, fecha_nac = @fechaNac, id_plan = @idPlan, direccion = @direccion, email = @email,telefono = @telefono "+
-                "where id_persona = @idPer", sqlConn);
+                "WHERE id_usuario = @idUsu;", sqlConn);
+                /*"Update personas set nombre = @nombrePer, apellido = @apellidoPer, tipo_persona = @tipoPersona, fecha_nac = @fechaNac, id_plan = @idPlan, direccion = @direccion, email = @email,telefono = @telefono "+
+                "where id_persona = @idPer", sqlConn);*/
                 //Usuario
                 cmdSave.Parameters.Add("@nombUsu", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@claveUsu", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitadoUsu", SqlDbType.Bit).Value = usuario.Habilitado;               
                 cmdSave.Parameters.Add("@idUsu", SqlDbType.Int).Value = usuario.ID;
+                cmdSave.ExecuteNonQuery();
                 //Persona
+                new PersonaAdapter().Update(usuario.Persona);
+                /*
                 cmdSave.Parameters.Add("@idPer", SqlDbType.Int).Value = usuario.Persona.ID;
                 cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = usuario.Persona.IDPlan;
                 cmdSave.Parameters.Add("@nombrePer", SqlDbType.VarChar, 50).Value = usuario.Persona.Nombre;
@@ -231,9 +234,9 @@ namespace Academia.Data.Database
                 cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = usuario.Persona.Direccion;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = usuario.Persona.Telefono;
                 cmdSave.Parameters.Add("@fechaNac", SqlDbType.DateTime).Value = usuario.Persona.FechaNacimiento;
-                //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;
+                //cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = usuario.Persona.Legajo;*/
                 //
-                cmdSave.ExecuteNonQuery();
+                
             }
             catch (Exception Ex)
             {

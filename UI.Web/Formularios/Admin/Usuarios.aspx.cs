@@ -214,6 +214,7 @@ namespace UI.Web
                     LoadGrid();
                     break;
                 case FormModes.Modificacion:
+                    //Esto lo hicimos por que no podiamos traer el ID de la persona
                     Entity = Logic.GetOne(selectID);
                     Entity.State = BusinessEntity.States.Modified;
                     LoadEntity(Entity);
