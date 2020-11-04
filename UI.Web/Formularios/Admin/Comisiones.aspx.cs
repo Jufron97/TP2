@@ -43,6 +43,7 @@ namespace UI.Web.Formularios
 
         #region Metodos
 
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -50,6 +51,14 @@ namespace UI.Web.Formularios
                 LoadGrid();
                 Master.MuestroMenu();
             }
+        }
+
+        public void cargoDropDownList()
+        {
+            dwPlan.DataSource = new PlanLogic().GetAll();
+            dwPlan.DataValueField = "ID";
+            dwPlan.DataTextField = "Descripcion";
+            dwPlan.DataBind();
         }
 
         /// <summary>
@@ -149,6 +158,7 @@ namespace UI.Web.Formularios
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            cargoDropDownList();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
