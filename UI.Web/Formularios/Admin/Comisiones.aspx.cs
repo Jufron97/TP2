@@ -39,17 +39,26 @@ namespace UI.Web.Formularios
             set;
         }
 
+        public Usuario UsuarioActual
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Metodos
 
-        
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            UsuarioActual = (Usuario)Session["usuario"];
+            if (UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Admin)
             {
-                LoadGrid();
-                Master.MuestroMenu();
+                if (!Page.IsPostBack)
+                {
+                    LoadGrid();
+                    Master.MuestroMenu();
+                }
             }
         }
 

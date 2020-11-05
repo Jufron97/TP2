@@ -36,8 +36,7 @@ namespace UI.Web
         protected void IngresarButton_Click(object sender, EventArgs e)
         {
             if (Usuariologic.verificoLogin(txtUsuario.Value, txtContraseña.Value))
-            {
-                            
+            {                           
                 Usuario usu = Usuariologic.GetOne(txtUsuario.Value, txtContraseña.Value);
                 //Se asigna el usuario a la sesion para no perderlo
                 Session["usuario"] = usu;

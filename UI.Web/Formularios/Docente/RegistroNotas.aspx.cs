@@ -52,11 +52,14 @@ namespace UI.Web.Formularios.Docente
         protected void Page_Load(object sender, EventArgs e)
         {
             EntityDoc = (Usuario)Session["usuario"];
-            if (!Page.IsPostBack)
+            if (EntityDoc.Persona.TipoPersona==Persona.TiposPersonas.Docente)
             {
-                LoadGrid();
-                Master.MuestroMenu();
-            }
+                if (!Page.IsPostBack)
+                {
+                    LoadGrid();
+                    Master.MuestroMenu();
+                }
+            }            
         }
 
         /// <summary>

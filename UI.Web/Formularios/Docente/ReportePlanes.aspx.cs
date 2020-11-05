@@ -12,11 +12,21 @@ namespace UI.Web.Formularios.Docente
 {
     public partial class ReportePlanes : System.Web.UI.Page
     {
+        Usuario Usuario 
+        { 
+            get; 
+            set; 
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            Usuario = (Usuario)Session["usuario"];
+            if (Usuario.Persona.TipoPersona == Persona.TiposPersonas.Docente)
             {
-                LoadReport();
+                if (!Page.IsPostBack)
+                {
+                    LoadReport();
+                }
             }
         }
 
