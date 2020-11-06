@@ -13,16 +13,22 @@ namespace UI.Web.Formularios.Docente
     public partial class ReporteAlumno : System.Web.UI.Page
     {
 
-        Usuario Usuario { get; set; }
+        Usuario Usuario 
+        { 
+            get; 
+            set; 
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario = (Usuario)HttpContext.Current.Session["usuario"];
-
-            if (!Page.IsPostBack)
+            Usuario = (Usuario)Session["usuario"];
+            if (Usuario.Persona.TipoPersona == Persona.TiposPersonas.Docente)
             {
-                LoadReport();
-            }
-
+                if (!Page.IsPostBack)
+                {
+                    LoadReport();
+                }
+            }          
         }
 
         public void LoadReport()

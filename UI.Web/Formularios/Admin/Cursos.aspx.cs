@@ -38,16 +38,25 @@ namespace UI.Web.Formularios
             set;
         }
 
+        public Usuario UsuarioActual
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Metodos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            UsuarioActual = (Usuario)Session["usuario"];
+            if (UsuarioActual.Persona.TipoPersona == Persona.TiposPersonas.Admin)
             {
-                LoadGrid();
-                Master.MuestroMenu();
+                if (!Page.IsPostBack)
+                {
+                    LoadGrid();
+                    Master.MuestroMenu();
+                }
             }
         }       
 
@@ -103,7 +112,9 @@ namespace UI.Web.Formularios
         /// <param name="id"></param>
         public void LoadForm(int id)
         {
-            Entity = this.Logic.GetOne(id); 
+            Entity = this.Logic.GetOne(id);
+            txtAño.Text = Entity.AnioCalendario.ToString();
+            txtCupo.Text = Entity.Cupo.ToString();
             //Se cargan los dropDownList 
             cargoDropDownList();
             //Dependiendo del curso seleccionado se mostrara los valores de las comisiones y la materia a la cual hace referencia
@@ -142,9 +153,9 @@ namespace UI.Web.Formularios
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="curso"></param>
-        private void DeleteEntity(Curso curso)
+        private void DeleteEntity(int ID)
         {
-            Logic.Delete(curso);
+            Logic.Delete(ID);
         }
 
         /// <summary>
@@ -201,41 +212,36 @@ namespace UI.Web.Formularios
         {
             this.HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch(this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Baja:
-                        Entity = Logic.GetOne(selectID);
-                        DeleteEntity(Entity);
-                        LoadGrid();
-                        break;
-                    case FormModes.Modificacion:
+                case FormModes.Alta:
+                    if(Page.IsValid)
+                    {
                         Entity = new Curso();
-                        Entity.ID = selectID;
+                        Entity.State = BusinessEntity.States.New;
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();                     
+                    }
+                    break;
+                case FormModes.Modificacion:
+                    if (Page.IsValid)
+                    {
+                        Entity = new CursoLogic().GetOne(selectID);
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    case FormModes.Alta:
-                        Entity = new Curso();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/Cursos.aspx");
+                    }
+                    break;
+                case FormModes.Baja:
+                    DeleteEntity(selectID);
+                    LoadGrid();
+                    break;
+                default:
+                    break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                Entity = Logic.GetOne(selectID);
-                DeleteEntity(Entity);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Cursos.aspx");
-            }
+            Response.Redirect("~/Formularios/Admin/Cursos.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
