@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
 using Academia.Util;
+using System.Windows.Forms;
 
 namespace UI.Web.Formularios
 {

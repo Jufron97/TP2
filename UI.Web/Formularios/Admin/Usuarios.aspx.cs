@@ -233,7 +233,7 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                    }                   
+                    }
                     break;
                 case FormModes.Alta:
                     if (Page.IsValid)

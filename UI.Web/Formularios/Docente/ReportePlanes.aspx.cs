@@ -32,13 +32,12 @@ namespace UI.Web.Formularios.Docente
 
         public void LoadReport()
         {
-            RvPlanes.ProcessingMode = ProcessingMode.Local;
-            RvPlanes.LocalReport.ReportPath = @"A:\Juan\Facu\NET\Unidad 5\Lab5.6\TP2L05\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";
+            RvPlanes.LocalReport.ReportPath = @"C:\Users\Jeremias\Desktop\Gonza\Facultad\4°\.Net\Laboratorios\Unidad 4\TP 2 - Laboratorio 5\TP2\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";
             
             ReportDataSource reportDataSource = new ReportDataSource("DsPlanes", new PlanLogic().GetAll());
 
             RvPlanes.LocalReport.DataSources.Add(reportDataSource);
-
+            RvPlanes.DataBind();
             RvPlanes.LocalReport.Refresh();
 
         }

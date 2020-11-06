@@ -9,8 +9,8 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
  
         <rsweb:ReportViewer ID="RvPlanes" runat="server" ProcessingMode="Local" Height="100%" Width="100%" Padding="0%" Position="absolute">
-    <ServerReport  ReportServerUrl="~/Formularios/Docente/ReportePlanes"/>
-    </rsweb:ReportViewer>
+            <ServerReport  ReportServerUrl="~/Formularios/Docente/ReportePlanes" ReportPath="C:\Users\Jeremias\Desktop\Gonza\Facultad\4°\.Net\Laboratorios\Unidad 4\TP 2 - Laboratorio 5\TP2\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc"/>
+        </rsweb:ReportViewer>
 </asp:Panel>
     </div>
     
