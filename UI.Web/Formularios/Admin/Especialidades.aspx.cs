@@ -125,9 +125,9 @@ namespace UI.Web
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="ID"></param>
-        private void DeleteEntity(Especialidad especialidad)
+        private void DeleteEntity(int ID)
         {
-            Logic.Delete(especialidad);
+            Logic.Delete(ID);
         }
 
         /// <summary>
@@ -159,6 +159,7 @@ namespace UI.Web
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
             ClearForm();
@@ -182,36 +183,36 @@ namespace UI.Web
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch(this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Modificacion:
+                case FormModes.Alta:
+                    if(Page.IsValid)
+                    {
                         Entity = new Especialidad();
-                        Entity.ID = selectID;
+                        Entity.State = BusinessEntity.States.New;
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
+                    }
+                    break;
+                case FormModes.Modificacion:
+                    if(Page.IsValid)
+                    {
+                        Entity = new EspecialidadLogic().GetOne(selectID);
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    case FormModes.Alta:
-                        Entity = new Especialidad();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
+                    }
+                    break;
+                case FormModes.Baja:
+                    DeleteEntity(selectID);
+                    LoadGrid();
+                    break;
+                default:
+                    break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                DeleteEntity(Entity);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
-            }
-
+            Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

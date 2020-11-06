@@ -108,7 +108,7 @@ namespace UI.Web
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
             cargoDropDownList();
-            dwEspecialidades.SelectedValue = Entity.ID.ToString();
+            dwEspecialidades.SelectedValue = Entity.IDEspecialidad.ToString();
         }
 
         /// <summary>
@@ -118,6 +118,7 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
+            dwEspecialidades.Enabled = enable;
         }
 
         /// <summary>
@@ -138,9 +139,9 @@ namespace UI.Web
         /// Se invoca para eliminar a la entidad por el ID enviado
         /// </summary>
         /// <param name="plan"></param>
-        private void DeleteEntity(Plan plan)
+        private void DeleteEntity(int id)
         {
-            Logic.Delete(plan);
+            Logic.Delete(id);
         }
 
         /// <summary>
@@ -180,14 +181,6 @@ namespace UI.Web
             EnableForm(true);
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
-
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
@@ -198,44 +191,53 @@ namespace UI.Web
             }
         }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
+
+
+
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch (this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Modificacion:
+                case FormModes.Modificacion:
+                   if (Page.IsValid)
+                    {
                         Entity = new Plan();
                         Entity.ID = selectID;
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    case FormModes.Alta:
+                    }
+                    break;
+                case FormModes.Alta:
+                    if (Page.IsValid)
+                    {
                         Entity = new Plan();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/Planes.aspx");
+                    }
+                    break;
+               case FormModes.Baja:
+                    HabilitoValidaciones(false);
+                    DeleteEntity(selectID);
+                    LoadGrid();
+                    break;
+                default:
+                    break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                Entity = new PlanLogic().GetOne(selectID);
-                DeleteEntity(Entity);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Planes.aspx");
-            }
+            Response.Redirect("~/Formularios/Admin/Planes.aspx");
         }
-
-
     }
 
     #endregion

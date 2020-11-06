@@ -106,7 +106,8 @@ namespace UI.Web.Formularios
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
             txtAño.Text = Entity.AnioEspecialidad.ToString();
-            dwPlan.SelectedValue = Entity.ID.ToString();
+            cargoDropDownList();
+            dwPlan.SelectedValue = Entity.IDPlan.ToString();
         }
 
         /// <summary>
@@ -116,6 +117,8 @@ namespace UI.Web.Formularios
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
+            txtAño.Enabled = enable;
+            dwPlan.Enabled = enable;
         }
 
         /// <summary>
@@ -148,6 +151,7 @@ namespace UI.Web.Formularios
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;
+            txtAño.Text = String.Empty;
         }
 
         #endregion
@@ -195,36 +199,36 @@ namespace UI.Web.Formularios
         {
             this.HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch(this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Modificacion:
+                case FormModes.Alta:
+                    if(Page.IsValid)
+                    {
                         Entity = new Comision();
-                        Entity.ID = selectID;
+                        Entity.State = BusinessEntity.States.New;
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
+                    }
+                    break;
+                case FormModes.Modificacion:
+                    if (Page.IsValid)
+                    {
+                        Entity = new ComisionLogic().GetOne(selectID);
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    case FormModes.Alta:
-                        Entity = new Comision();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
+                    }
+                    break;
+                case FormModes.Baja:
+                    DeleteEntity(selectID);
+                    LoadGrid();
+                    break;
+                default:
+                    break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                DeleteEntity(selectID);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
-            }
-
+            Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

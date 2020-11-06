@@ -124,13 +124,13 @@ namespace Academia.Data.Database
             }
         }
 
-        public void Delete(Curso curso)
+        public void Delete(int ID)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from cursos where id_curso=@idCurso", sqlConn);
-                cmdDelete.Parameters.Add("@idCurso", SqlDbType.Int).Value = curso.ID;
+                cmdDelete.Parameters.Add("@idCurso", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -180,7 +180,7 @@ namespace Academia.Data.Database
                     Update(curso);
                     break;
                 case BusinessEntity.States.Deleted:
-                    Delete(curso);
+                    Delete(curso.ID);
                     break;
                 default:
                     curso.State = BusinessEntity.States.Unmodified;

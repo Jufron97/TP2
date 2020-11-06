@@ -108,7 +108,7 @@ namespace Academia.Data.Database
         /// Elimina el plan especificado por el ID
         /// </summary>
         /// <param name="plan"></param>
-        public void Delete(Plan plan)
+        public void Delete(int ID)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace Academia.Data.Database
                 SqlCommand cmdDelete = new SqlCommand("EliminarPlan", sqlConn);
                 cmdDelete.CommandType = CommandType.StoredProcedure;*/             
                 SqlCommand cmdDelete = new SqlCommand("delete from planes where id_plan = @idPlan", sqlConn);
-                cmdDelete.Parameters.Add("@idPlan", SqlDbType.Int).Value = plan.ID;
+                cmdDelete.Parameters.Add("@idPlan", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -174,7 +174,7 @@ namespace Academia.Data.Database
                     Update(plan);
                     break;
                 case BusinessEntity.States.Deleted:
-                    Delete(plan);
+                    Delete(plan.ID);
                     break;
                 default:
                     plan.State = BusinessEntity.States.Unmodified;

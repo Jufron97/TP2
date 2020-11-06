@@ -41,9 +41,9 @@ namespace Academia.Business.Logic
             return EspecialidadData.GetOne(id);
         }
 
-        public void Delete(Especialidad especialidad)
+        public void Delete(int ID)
         {
-            EspecialidadData.Delete(especialidad);
+            EspecialidadData.Delete(ID);
         }
 
         public void Save(Especialidad especialidad)

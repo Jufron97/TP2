@@ -108,6 +108,8 @@ namespace UI.Web.Formularios
         {
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
+            txtHsSemanales.Text = Entity.HsSemanales.ToString();
+            txtHsTotales.Text = Entity.HsTotales.ToString();
             cargoDropDownList();
             //Dependiendo del curso seleccionado se mostrara los valores del plan al cual hace referencia
             dwPlanes.SelectedValue = Entity.IdPlan.ToString();
@@ -120,6 +122,9 @@ namespace UI.Web.Formularios
         private void EnableForm(bool enable)
         {
             txtDescripcion.Enabled = enable;
+            txtHsSemanales.Enabled = enable;
+            txtHsTotales.Enabled = enable;
+            dwPlanes.Enabled = enable;
         }
 
         /// <summary>
@@ -154,6 +159,8 @@ namespace UI.Web.Formularios
         private void ClearForm()
         {
             txtDescripcion.Text = String.Empty;
+            txtHsSemanales.Text = String.Empty;
+            txtHsTotales.Text = String.Empty;
         }
 
         protected void ValidoDatos()
@@ -181,10 +188,10 @@ namespace UI.Web.Formularios
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            ClearForm();
             cargoDropDownList();
             formPanel.Visible = true;
             FormMode = FormModes.Alta;
-            ClearForm();
             EnableForm(true);
         }
 
@@ -211,35 +218,36 @@ namespace UI.Web.Formularios
         {
             HabilitoValidaciones(true);
             this.ValidoDatos();
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch (this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Modificacion:
+                case FormModes.Modificacion:
+                    if (Page.IsValid)
+                    {
+                      Entity = new MateriaLogic().GetOne(selectID);
+                      Entity.State = BusinessEntity.States.Modified;
+                      LoadEntity(Entity);
+                      SaveEntity(Entity);
+                      LoadGrid();
+                    }
+                    break;
+                case FormModes.Alta:
+                    if (Page.IsValid)
+                    {
                         Entity = new Materia();
-                        Entity.ID = selectID;
-                        Entity.State = BusinessEntity.States.Modified;
+                        Entity.State = BusinessEntity.States.New;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    case FormModes.Alta:
-                        Entity = new Materia();
-                        LoadEntity(Entity);
-                        SaveEntity(Entity);
-                        LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/Materias.aspx");
+                    }
+                    break;
+                case FormModes.Baja:
+                    DeleteEntity(selectID);
+                    LoadGrid();
+                    break;
+                default:
+                    break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                DeleteEntity(selectID);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Materias.aspx");
-            }
+            Response.Redirect("~/Formularios/Admin/Materias.aspx");
         }
     }
 

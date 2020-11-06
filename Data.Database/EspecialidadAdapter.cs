@@ -93,13 +93,13 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
-        public void Delete(Especialidad especialidad)
+        public void Delete(int ID)
         {
             try
             {
                 OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("delete from especialidades where id_especialidad=@id", sqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -134,6 +134,7 @@ namespace Academia.Data.Database
                 CloseConnection();
             }
         }
+
         public void Save(Especialidad especialidad)
         {
             switch (especialidad.State)
@@ -145,7 +146,7 @@ namespace Academia.Data.Database
                     Update(especialidad);
                     break;
                 case BusinessEntity.States.Deleted:
-                    Delete(especialidad);
+                    Delete(especialidad.ID);
                     break;
                 default:
                     especialidad.State = BusinessEntity.States.Unmodified;

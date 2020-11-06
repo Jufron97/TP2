@@ -123,6 +123,8 @@ namespace UI.Web
             txtTelefono.Enabled = enable;
             CalFechaNac.Enabled = enable;
             dwTiposPersonas.Enabled = enable;
+            dwPlan.Enabled = enable;
+
         }
 
         public void SaveEntity(Usuario usuario)
@@ -221,37 +223,36 @@ namespace UI.Web
         {
             HabilitoValidaciones(true);
             ValidoDatos();
-            if (Page.IsValid && this.FormMode!=FormModes.Baja)
-            {
             switch (this.FormMode)
                 {
                 case FormModes.Modificacion:
-                    //Esto lo hicimos por que no podiamos traer el ID de la persona
-                    Entity = Logic.GetOne(selectID);
-                    Entity.State = BusinessEntity.States.Modified;
-                    LoadEntity(Entity);
-                    SaveEntity(Entity);
-                    LoadGrid();
+                    if (Page.IsValid)
+                    {
+                        Entity = Logic.GetOne(selectID);
+                        Entity.State = BusinessEntity.States.Modified;
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
+                    }                   
                     break;
                 case FormModes.Alta:
-                    Entity = new Usuario();
-                    LoadEntity(Entity);
-                    SaveEntity(Entity);
-                    LoadGrid();
+                    if (Page.IsValid)
+                    {
+                        Entity = new Usuario();
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
+                    }
                     break;
+                case FormModes.Baja:
+                     HabilitoValidaciones(false);
+                     DeleteEntity(selectID);
+                     LoadGrid();
+                     break;
                 default:
-                    break;
-                }
-                Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
-
+                     break;
             }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                HabilitoValidaciones(false);
-                DeleteEntity(selectID);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
-            }
+            Response.Redirect("~/Formularios/Admin/Usuarios.aspx");           
         }
     }
 }
