@@ -221,7 +221,8 @@ namespace UI.Web.Formularios
                         Entity.State = BusinessEntity.States.New;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
-                        LoadGrid();                     
+                        LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Cursos.aspx");
                     }
                     break;
                 case FormModes.Modificacion:
@@ -232,16 +233,17 @@ namespace UI.Web.Formularios
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Cursos.aspx");
                     }
                     break;
                 case FormModes.Baja:
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Cursos.aspx");
                     break;
                 default:
                     break;
-            }
-            Response.Redirect("~/Formularios/Admin/Cursos.aspx");
+            }           
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

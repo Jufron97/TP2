@@ -26,19 +26,19 @@
         <div class="form-group">
         <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion:"></asp:Label>
         <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="Descripcion Invalida" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator runat="server" id="reqDescripcion" controltovalidate="txtDescripcion" errormessage="Descripcion Invalida" ValidationGroup="1" ForeColor="Red" >*</asp:RequiredFieldValidator>
             </div>
         <br />
         <div class="form-group">
         <asp:Label ID="lblHsSemanales" runat="server" Text="Horas Semanales: "></asp:Label>
         <asp:TextBox ID="txtHsSemanales" CssClass="form-control" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="Ingrese un horario semanal valido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator runat="server" id="reqHsSemanales" controltovalidate="txtHsSemanales" errormessage="Ingrese un horario semanal valido" ValidationGroup="1"  ForeColor="Red" >*</asp:RequiredFieldValidator>
             </div>
             <br />
         <div class="form-group">
         <asp:Label ID="lblHsTotales" runat="server" Text="Horas Totales: "></asp:Label>
         <asp:TextBox ID="txtHsTotales" CssClass="form-control" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="Ingrese un horario total valido" ValidationGroup="1" Enabled="false" ForeColor="Red" >*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator runat="server" id="reqHsTotales" controltovalidate="txtHsTotales" errormessage="Ingrese un horario total valido" ValidationGroup="1"  ForeColor="Red" >*</asp:RequiredFieldValidator>
             </div>
         <br />
         <div class="form-group">
@@ -57,8 +57,8 @@
                 </div>
         </asp:Panel>     
         <div class="form-group">
-        <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="1" runat="server" />
-            </div>
+            <asp:ValidationSummary ID="valSummary" ShowValidationErrors="true" HeaderText="Campos erroneos" runat="server" ValidationGroup="1" />
+        </div>
         <br />
     </asp:Panel>
             </asp:Panel>

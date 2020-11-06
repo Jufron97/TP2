@@ -8,6 +8,7 @@ using Academia.Business.Entities;
 using Academia.Business.Logic;
 using Academia.Util;
 using System.Windows.Forms;
+using System.Web.UI.HtmlControls;
 
 namespace UI.Web.Formularios
 {
@@ -229,6 +230,7 @@ namespace UI.Web.Formularios
                       LoadEntity(Entity);
                       SaveEntity(Entity);
                       LoadGrid();
+                      Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     }
                     break;
                 case FormModes.Alta:
@@ -239,16 +241,17 @@ namespace UI.Web.Formularios
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     }
                     break;
                 case FormModes.Baja:
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     break;
                 default:
                     break;
-            }
-            Response.Redirect("~/Formularios/Admin/Materias.aspx");
+            }            
         }
     }
 

@@ -200,8 +200,6 @@ namespace UI.Web
         }
 
 
-
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
@@ -217,6 +215,7 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     }
                     break;
                 case FormModes.Alta:
@@ -226,17 +225,19 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     }
                     break;
                case FormModes.Baja:
                     HabilitoValidaciones(false);
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     break;
                 default:
                     break;
             }
-            Response.Redirect("~/Formularios/Admin/Planes.aspx");
+            
         }
     }
 

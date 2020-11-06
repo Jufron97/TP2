@@ -209,6 +209,7 @@ namespace UI.Web.Formularios
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
                     }
                     break;
                 case FormModes.Modificacion:
@@ -219,16 +220,17 @@ namespace UI.Web.Formularios
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
                     }
                     break;
                 case FormModes.Baja:
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
                     break;
                 default:
                     break;
             }
-            Response.Redirect("~/Formularios/Admin/Comisiones.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
