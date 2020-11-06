@@ -27,9 +27,8 @@ namespace UI.Web.Formularios.Docente
 
         public void LoadReport()
         {
-            
+            RvInscripciones.ProcessingMode = ProcessingMode.Local;
             RvInscripciones.LocalReport.ReportPath = @"A:\Juan\Facu\NET\Unidad 5\Lab5.6\TP2L05\UI.desktop\Formularios Principales\Docente\ReporteAlumnos.rdlc";
-
             ReportDataSource reportDataSource = new ReportDataSource("DsInscripciones",new InscripcionLogic().GetAll(Usuario));
 
             RvInscripciones.LocalReport.DataSources.Add(reportDataSource);

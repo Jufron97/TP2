@@ -22,9 +22,9 @@ namespace UI.Web.Formularios.Docente
 
         public void LoadReport()
         {
-            
+            RvPlanes.ProcessingMode = ProcessingMode.Local;
             RvPlanes.LocalReport.ReportPath = @"A:\Juan\Facu\NET\Unidad 5\Lab5.6\TP2L05\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";
-
+            
             ReportDataSource reportDataSource = new ReportDataSource("DsPlanes", new PlanLogic().GetAll());
 
             RvPlanes.LocalReport.DataSources.Add(reportDataSource);

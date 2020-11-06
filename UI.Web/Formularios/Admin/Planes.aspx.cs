@@ -98,7 +98,7 @@ namespace UI.Web
             Entity = this.Logic.GetOne(id);
             txtDescripcion.Text = Entity.Descripcion;
             cargoDropDownList();
-            dwEspecialidades.SelectedValue = Entity.ID.ToString();
+            dwEspecialidades.SelectedValue = Entity.IDEspecialidad.ToString();
         }
 
         /// <summary>

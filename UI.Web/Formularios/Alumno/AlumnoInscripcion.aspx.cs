@@ -45,7 +45,7 @@ namespace UI.Web.Formularios.Alumno
             if (!Page.IsPostBack)
             {            
                 LoadGrid();
-                Master.MuestroMenu();              
+                Master.MuestroMenu();
             }
         }
 
@@ -69,7 +69,7 @@ namespace UI.Web.Formularios.Alumno
                 this.GridViewCurso.DataSource = InsLog.GetAll(Entity);
                 this.GridViewCurso.DataBind();
             }
-            else if (operacion == "InscripcionCurso") 
+            else if (operacion == "InscripcionCurso")
             {
                 this.GridViewCurso.Visible = false;
                 //Se cargan todos los cursos posibles a inscribir
