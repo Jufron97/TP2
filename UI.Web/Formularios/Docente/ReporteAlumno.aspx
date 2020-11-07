@@ -5,7 +5,7 @@
  <div runat="server">
     <asp:Panel ID="PanelReport" runat="server" style="border: 1px solid #000; width: 100%; height:80%; left:0%;position:relative;">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <rsweb:ReportViewer ID="RvInscripciones" runat="server" ProcessingMode="Local">
+            <rsweb:ReportViewer ID="RvInscripciones" runat="server" ProcessingMode="Local" Width="950px">
                 <ServerReport ReportServerUrl="~/Formularios/Docente/ReporteAlumno"/>
             </rsweb:ReportViewer>       
         </asp:Panel>

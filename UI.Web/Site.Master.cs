@@ -54,13 +54,16 @@ namespace UI.Web
                         break;
                 }
             }
-            else { Response.Redirect("~/Login.aspx",false); }
+            else 
+            { 
+                Response.Redirect("~/Login.aspx",false); 
+            }
         }
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
             Session["usuario"] = null;
-            Response.Redirect("~/Login", false);
+            Response.Redirect("~/Login.aspx", false);
         }
     }
 }

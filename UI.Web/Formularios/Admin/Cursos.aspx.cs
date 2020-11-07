@@ -89,9 +89,7 @@ namespace UI.Web.Formularios
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
-            LoadForm(this.selectID);
         }
 
         /// <summary>
@@ -191,11 +189,20 @@ namespace UI.Web.Formularios
             EnableForm(true);
         }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            LoadGrid();
+        }
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             if (isEntititySelected)
             {
+                ClearForm();
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -246,13 +253,7 @@ namespace UI.Web.Formularios
             }           
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-            EnableForm(false);
-            formPanel.Visible = false;
-            LoadGrid();
-        }
+
     }
 
     #endregion
