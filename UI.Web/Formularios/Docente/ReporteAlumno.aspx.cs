@@ -26,6 +26,7 @@ namespace UI.Web.Formularios.Docente
             {
                 if (!Page.IsPostBack)
                 {
+                    Master.MuestroMenu();
                     LoadReport();
                 }
             }          
@@ -33,18 +34,10 @@ namespace UI.Web.Formularios.Docente
 
         public void LoadReport()
         {
-            RvInscripciones.ProcessingMode = ProcessingMode.Local;
-            RvInscripciones.LocalReport.ReportPath = @"C:\Users\Jeremias\Desktop\Gonza\Facultad\4°\.Net\Laboratorios\Unidad 4\TP 2 - Laboratorio 5\TP2\UI.Web\Formularios\Docente\ReporteAlumnos.rdlc";
-            
-            
+            RvInscripciones.LocalReport.ReportPath = @"C:\Users\User\source\repos\TP2\UI.desktop\Formularios Principales\Docente\ReporteAlumnos.rdlc";                       
             ReportDataSource reportDataSource = new ReportDataSource("DsInscripciones",new InscripcionLogic().GetAll(Usuario));
-
             RvInscripciones.LocalReport.DataSources.Add(reportDataSource);
-            RvInscripciones.DataBind();
-            RvInscripciones.LocalReport.Refresh();
-            
+            RvInscripciones.LocalReport.Refresh();           
         }
-
-
     }
 }

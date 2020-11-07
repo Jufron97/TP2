@@ -30,7 +30,7 @@ namespace Academia.UI.Desktop.Formularios_Principales.Docente
             InscripcionBindingSource.DataSource = new InscripcionLogic().GetAll(Usuario);
 
             ReportDataSource reportDataSource = new ReportDataSource("DsInscripciones", InscripcionBindingSource);
-
+            this.RvInscripciones.LocalReport.DataSources.Clear();
             RvInscripciones.LocalReport.DataSources.Add(reportDataSource);
 
             RvInscripciones.LocalReport.Refresh();

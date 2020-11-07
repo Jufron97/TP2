@@ -25,6 +25,7 @@ namespace UI.Web.Formularios.Docente
             {
                 if (!Page.IsPostBack)
                 {
+                    Master.MuestroMenu();
                     LoadReport();
                 }
             }
@@ -32,16 +33,10 @@ namespace UI.Web.Formularios.Docente
 
         public void LoadReport()
         {
-            RvPlanes.LocalReport.ReportPath = @"C:\Users\Jeremias\Desktop\Gonza\Facultad\4°\.Net\Laboratorios\Unidad 4\TP 2 - Laboratorio 5\TP2\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";
-            
+            RvPlanes.LocalReport.ReportPath = @"C:\Users\User\source\repos\TP2\UI.desktop\Formularios Principales\Docente\ReportePlanes.rdlc";            
             ReportDataSource reportDataSource = new ReportDataSource("DsPlanes", new PlanLogic().GetAll());
-
-            RvPlanes.LocalReport.DataSources.Add(reportDataSource);
-            RvPlanes.DataBind();
+            RvPlanes.LocalReport.DataSources.Add(reportDataSource);         
             RvPlanes.LocalReport.Refresh();
-
         }
-
-
     }
 }
