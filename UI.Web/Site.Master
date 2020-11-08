@@ -3,7 +3,7 @@
     <div class="btndiv">
             <button type="submit" id="HomeButton" runat="server">Home</button>
             <button type="submit" id="LogOut" runat="server">Cerrar Sesión</button> 
-        </div>
+    </div>
 </header>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -52,6 +52,11 @@
     </table>  
         </asp:Panel>
    </form>
+    <footer>
+        <div class="btndiv">
+            <button type="submit" id="btnContacto" runat="server" >Contacto</button>
+        </div>
+    </footer>
  </body>
 </html>
 

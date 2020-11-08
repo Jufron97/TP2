@@ -1,5 +1,5 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="UI.Web.Contact" %>
-
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="UI.Web.Contact" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <h2 ><%: Title %>.</h2>
     <h3>Trabajo practico para la materia Tecnologías de Desarrollo de Software IDE.</h3>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Academia.Business.Entities;
 
 namespace UI.Web
 {
@@ -11,8 +12,12 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Title = "Universidad Tecnologica Nacional de Rosario";
-
+            if (!Page.IsPostBack)
+            {
+                //Usuario usu = (Usuario)Session["usuario"];
+                Page.Title = "Universidad Tecnologica Nacional de Rosario";
+                Master.MuestroMenu();
+            }
         }
     }
 }

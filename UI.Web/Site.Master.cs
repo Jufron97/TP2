@@ -15,23 +15,27 @@ namespace UI.Web
         {
             HomeButton.ServerClick += new System.EventHandler(this.HomeButton_Click);
             LogOut.ServerClick += new System.EventHandler(this.LogOut_Click);
+            btnContacto.ServerClick += new System.EventHandler(this.btnContacto_Click);
         }
 
         public void MuestroMenu()
         {
             Usuario usu = (Usuario)Session["usuario"];
-            switch (usu.Persona.TipoPersona)
+            if (usu!=null)
             {
-                case Persona.TiposPersonas.Admin:
-                    MenuAdmin.Visible = true;
-                    break;
-                case Persona.TiposPersonas.Alumno:
-                    MenuAlumno.Visible = true;
-                    break;
-                case Persona.TiposPersonas.Docente:
-                    MenuDocente.Visible = true;
-                    break;
-            }
+                switch (usu.Persona.TipoPersona)
+                {
+                    case Persona.TiposPersonas.Admin:
+                        MenuAdmin.Visible = true;
+                        break;
+                    case Persona.TiposPersonas.Alumno:
+                        MenuAlumno.Visible = true;
+                        break;
+                    case Persona.TiposPersonas.Docente:
+                        MenuDocente.Visible = true;
+                        break;
+                }
+            }          
         }
 
         protected void HomeButton_Click(object sender, EventArgs e)
@@ -65,5 +69,11 @@ namespace UI.Web
             Session["usuario"] = null;
             Response.Redirect("~/Login.aspx", false);
         }
+
+        protected void btnContacto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Contact.aspx", false);
+        }
+
     }
 }
