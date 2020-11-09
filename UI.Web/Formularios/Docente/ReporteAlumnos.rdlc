@@ -2,22 +2,28 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Tablix Name="TbInscripciones">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>6.77333cm</Width>
+              <Width>4.41312cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.77333cm</Width>
+              <Width>7.56167cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.77333cm</Width>
+              <Width>7.72042cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.97083cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.96542cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.62177cm</Height>
+              <Height>0.68792cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -28,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ID</Value>
+                              <Value>Nombre Alumno</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -58,7 +64,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Descripcion</Value>
+                              <Value>Desc Materia</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -88,7 +94,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Especialidad</Value>
+                              <Value>Desc Comision</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -109,28 +115,88 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Condicion</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Nota</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.88636cm</Height>
+              <Height>1.16417cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ID">
+                    <Textbox Name="NombreAlumno">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ID.Value</Value>
+                              <Value>=Fields!NombreAlumno.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ID</rd:DefaultName>
+                      <rd:DefaultName>NombreAlumno</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -146,21 +212,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Descripcion">
+                    <Textbox Name="DescMateria">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Descripcion.Value</Value>
+                              <Value>=Fields!DescMateria.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Descripcion</rd:DefaultName>
+                      <rd:DefaultName>DescMateria</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -176,21 +242,81 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="DescEspecialidad">
+                    <Textbox Name="DescComision">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!DescEspecialidad.Value</Value>
+                              <Value>=Fields!DescComision.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>DescEspecialidad</rd:DefaultName>
+                      <rd:DefaultName>DescComision</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Condicion">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Condicion.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Condicion</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Nota">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Nota.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Nota</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -213,6 +339,8 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -225,9 +353,9 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DsPlanes</DataSetName>
-        <Height>1.50813cm</Height>
-        <Width>20.31999cm</Width>
+        <DataSetName>DsInscripciones</DataSetName>
+        <Height>1.8521cm</Height>
+        <Width>24.63146cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -235,10 +363,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.90625in</Height>
+    <Height>7.08334in</Height>
     <Style />
   </Body>
-  <Width>8in</Width>
+  <Width>9.71826in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -256,34 +384,58 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>a6adcd17-cc56-4d6c-a17a-4d36d204188a</rd:DataSourceID>
+      <rd:DataSourceID>8b9e6b42-a81a-4cc6-a618-880a50df6b12</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DsPlanes">
+    <DataSet Name="DsInscripciones">
       <Query>
         <DataSourceName>AcademiaBusinessEntities</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="DescEspecialidad">
-          <DataField>DescEspecialidad</DataField>
+        <Field Name="Alumno">
+          <DataField>Alumno</DataField>
+          <rd:TypeName>Academia.Business.Entities.Persona</rd:TypeName>
+        </Field>
+        <Field Name="ApellidoAlumno">
+          <DataField>ApellidoAlumno</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Descripcion">
-          <DataField>Descripcion</DataField>
+        <Field Name="Condicion">
+          <DataField>Condicion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Especialidad">
-          <DataField>Especialidad</DataField>
-          <rd:TypeName>Academia.Business.Entities.Especialidad</rd:TypeName>
+        <Field Name="Curso">
+          <DataField>Curso</DataField>
+          <rd:TypeName>Academia.Business.Entities.Curso</rd:TypeName>
+        </Field>
+        <Field Name="DescComision">
+          <DataField>DescComision</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DescMateria">
+          <DataField>DescMateria</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ID">
           <DataField>ID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="IDEspecialidad">
-          <DataField>IDEspecialidad</DataField>
+        <Field Name="IDAlumno">
+          <DataField>IDAlumno</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IDCurso">
+          <DataField>IDCurso</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NombreAlumno">
+          <DataField>NombreAlumno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nota">
+          <DataField>Nota</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="State">
@@ -293,11 +445,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Academia.Business.Entities</rd:DataSetName>
-        <rd:TableName>Plan</rd:TableName>
-        <rd:ObjectDataSourceType>Academia.Business.Entities.Plan, Academia.Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>Inscripcion</rd:TableName>
+        <rd:ObjectDataSourceType>Academia.Business.Entities.Inscripcion, Academia.Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>922958be-5dd7-4acc-b0e4-02f2958ca095</rd:ReportID>
+  <rd:ReportID>c9e3a708-40be-45d7-910f-a6df056ecb7c</rd:ReportID>
 </Report>

@@ -74,9 +74,7 @@ namespace UI.Web
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
-            LoadForm(this.selectID);
         }
 
         /// <summary>
@@ -172,6 +170,8 @@ namespace UI.Web
         {
             if (isEntititySelected)
             {
+                ClearForm();
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -187,12 +187,13 @@ namespace UI.Web
             {
                 case FormModes.Alta:
                     if(Page.IsValid)
-                    {
+                    {                     
                         Entity = new Especialidad();
                         Entity.State = BusinessEntity.States.New;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
                     }
                     break;
                 case FormModes.Modificacion:
@@ -203,16 +204,17 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
                     }
                     break;
                 case FormModes.Baja:
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
                     break;
                 default:
                     break;
             }
-            Response.Redirect("~/Formularios/Admin/Especialidades.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

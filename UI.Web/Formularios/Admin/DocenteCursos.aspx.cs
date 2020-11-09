@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
+using Microsoft.Ajax.Utilities;
 
 namespace UI.Web.Formularios
 {
@@ -194,35 +195,35 @@ namespace UI.Web.Formularios
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             HabilitoValidaciones(true);
-            if (Page.IsValid && this.FormMode != FormModes.Baja)
+            switch(this.FormMode)
             {
-                switch (this.FormMode)
-                {
-                    case FormModes.Modificacion:
-                        Entity = new DocenteCurso();
-                        Entity.ID = selectID;
+                case FormModes.Modificacion:
+                    if(Page.IsValid)
+                    {
+                        Entity = new DocenteCursoLogic().GetOne(selectID);
                         Entity.State = BusinessEntity.States.Modified;
                         LoadEntity(Entity);
                         SaveEntity(Entity);
-                        LoadGrid();
-                        break;
-                    case FormModes.Alta:
+                        LoadGrid();                        
+                        Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");                       
+                    }
+                    break;
+                case FormModes.Alta:
+                    if(Page.IsValid)
+                    {
                         Entity = new DocenteCurso();
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                        break;
-                    default:
-                        break;
-                }
-                Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
-            }
-            else if (this.FormMode == FormModes.Baja)
-            {
-                Entity = Logic.GetOne(selectID);
-                DeleteEntity(Entity);
-                LoadGrid();
-                Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
+                        Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
+                    }
+                    break;
+                case FormModes.Baja:
+                    Entity = Logic.GetOne(selectID);
+                    DeleteEntity(Entity);
+                    LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/DocenteCursos.aspx");
+                    break;
             }
         }
 

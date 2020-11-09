@@ -84,9 +84,7 @@ namespace UI.Web
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
-            LoadForm(this.selectID);
         }
 
         /// <summary>
@@ -185,6 +183,8 @@ namespace UI.Web
         {
             if (isEntititySelected)
             {
+                ClearForm();
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -198,8 +198,6 @@ namespace UI.Web
             formPanel.Visible = false;
             LoadGrid();
         }
-
-
 
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -217,6 +215,7 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     }
                     break;
                 case FormModes.Alta:
@@ -226,17 +225,19 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     }
                     break;
                case FormModes.Baja:
                     HabilitoValidaciones(false);
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Planes.aspx");
                     break;
                 default:
                     break;
             }
-            Response.Redirect("~/Formularios/Admin/Planes.aspx");
+            
         }
     }
 

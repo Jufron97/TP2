@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using Academia.Business.Entities;
 using Academia.Business.Logic;
 using Academia.Util;
+using System.Windows.Forms;
+using System.Web.UI.HtmlControls;
 
 namespace UI.Web.Formularios
 {
@@ -83,9 +85,7 @@ namespace UI.Web.Formularios
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
-            LoadForm(this.selectID);
         }
 
         /// <summary>
@@ -207,6 +207,8 @@ namespace UI.Web.Formularios
         {
             if (isEntititySelected)
             {
+                ClearForm();
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -228,6 +230,7 @@ namespace UI.Web.Formularios
                       LoadEntity(Entity);
                       SaveEntity(Entity);
                       LoadGrid();
+                      Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     }
                     break;
                 case FormModes.Alta:
@@ -238,16 +241,17 @@ namespace UI.Web.Formularios
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     }
                     break;
                 case FormModes.Baja:
                     DeleteEntity(selectID);
                     LoadGrid();
+                    Response.Redirect("~/Formularios/Admin/Materias.aspx");
                     break;
                 default:
                     break;
-            }
-            Response.Redirect("~/Formularios/Admin/Materias.aspx");
+            }            
         }
     }
 

@@ -34,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Nombre Alumno</Value>
+                              <Value>Alumno</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -64,7 +64,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Desc Materia</Value>
+                              <Value>Materia</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -94,7 +94,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Desc Comision</Value>
+                              <Value>Comision</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -113,6 +113,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -354,7 +355,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsInscripciones</DataSetName>
-        <Height>1.8521cm</Height>
+        <Height>1.85209cm</Height>
         <Width>24.63146cm</Width>
         <Style>
           <Border>

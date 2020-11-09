@@ -13,6 +13,7 @@ namespace UI.Web.Formularios.Alumno
     public partial class AlumnoInscripcion : ApplicationForm
     {
         private CursoLogic _curlogic;
+        
         private CursoLogic CurLog
         {
             get
@@ -57,7 +58,6 @@ namespace UI.Web.Formularios.Alumno
             set;
         }
 
-
         private void LoadGrid()
         {
             string operacion = Request.QueryString["op"].ToString();
@@ -87,7 +87,7 @@ namespace UI.Web.Formularios.Alumno
                 Inscripcion insAlumno = new Inscripcion();
                 //Se pasarian los objetos correspondientes a la inscripcion
                 insAlumno.Alumno = Entity.Persona;
-                insAlumno.Curso = ((Curso)CurLog.GetOne(selectID));
+                insAlumno.Curso = (Curso)CurLog.GetOne(selectID);
                 insAlumno.Condicion = "En Cursado";
                 insAlumno.State = BusinessEntity.States.New;
                 //En primera parte se valida que el usuario no este inscripto

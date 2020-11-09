@@ -73,9 +73,7 @@ namespace UI.Web
 
         protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
             selectID = (int)GridView.SelectedValue;
-            LoadForm(this.selectID);
         }
 
         public void LoadEntity(Usuario usuario)
@@ -195,7 +193,8 @@ namespace UI.Web
         {
             if (isEntititySelected)
             {
-                
+                ClearForm();
+                EnableForm(true);
                 formPanel.Visible = true;
                 FormMode = FormModes.Modificacion;
                 LoadForm(this.selectID);
@@ -233,7 +232,8 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
-                    }                   
+                        Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
+                    }
                     break;
                 case FormModes.Alta:
                     if (Page.IsValid)
@@ -242,17 +242,19 @@ namespace UI.Web
                         LoadEntity(Entity);
                         SaveEntity(Entity);
                         LoadGrid();
+                        Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
                     }
                     break;
                 case FormModes.Baja:
                      HabilitoValidaciones(false);
                      DeleteEntity(selectID);
                      LoadGrid();
+                     Response.Redirect("~/Formularios/Admin/Usuarios.aspx");     
                      break;
                 default:
                      break;
             }
-            Response.Redirect("~/Formularios/Admin/Usuarios.aspx");
+                  
         }
     }
 }
