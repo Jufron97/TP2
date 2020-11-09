@@ -345,5 +345,8 @@
     </Content>
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
