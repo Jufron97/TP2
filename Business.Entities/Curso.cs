@@ -96,4 +96,8 @@ namespace Academia.Business.Entities
 
         #endregion
     }
+
+    public class Class1
+    {
+    }
 }
